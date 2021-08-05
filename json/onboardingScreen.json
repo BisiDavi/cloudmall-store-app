@@ -1,0 +1,23 @@
+[
+  {
+    "key": 1,
+    "title": "Welcome to Cloudmall",
+    "description": "Shop at your convenience",
+    "image": "./assets/pizza.png",
+    "backgroundColor": "red"
+  },
+  {
+    "key": 2,
+    "title": "Partner your store with Cloudmall",
+    "description": "Earn more with Cloudmall",
+    "image": "./assets/shopper.png",
+    "backgroundColor": "blue"
+  },
+  {
+    "key": 3,
+    "title": "Track your sales with Cloudmall",
+    "description": "Track daily, weekly, monthly sales",
+    "image": "./assets/trackSales.png",
+    "backgroundColor": "green"
+  }
+]

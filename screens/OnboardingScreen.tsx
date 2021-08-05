@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Button, Image } from "react-native-elements";
 import AppIntroSlider from "react-native-app-intro-slider";
-import RegisterScreen from "./SignupScreen";
+import SignupScreen from "./SignupScreen";
 import pizzaImage from "../assets/images/pizza.png";
 import shopperImage from "../assets/images/shopper.jpg";
 import trackSalesImage from "../assets/images/trackSales.png";
@@ -84,24 +84,20 @@ export default function OnboardingScreen() {
     <Button buttonStyle={styles.button} onPress={onDone} title="Done" />
   );
 
-  return (
-    <>
-      {showApp ? (
-        <SafeAreaView>
-          <RegisterScreen />
-        </SafeAreaView>
-      ) : (
-        <AppIntroSlider
-          data={slides}
-          renderItem={RenderItem}
-          showSkipButton={true}
-          renderNextButton={renderNextButton}
-          renderSkipButton={renderSkipButton}
-          renderDoneButton={renderDoneButton}
-          bottomButton
-        />
-      )}
-    </>
+  return showApp ? (
+    <SafeAreaView>
+      <SignupScreen />
+    </SafeAreaView>
+  ) : (
+    <AppIntroSlider
+      data={slides}
+      renderItem={RenderItem}
+      showSkipButton={true}
+      renderNextButton={renderNextButton}
+      renderSkipButton={renderSkipButton}
+      renderDoneButton={renderDoneButton}
+      bottomButton
+    />
   );
 }
 
@@ -127,7 +123,7 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 16
+    fontSize: 16,
   },
   description: {
     fontSize: 16,

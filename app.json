@@ -5,24 +5,29 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "splash": {
+        "image": "./assets/ios/logo-white@3x.png",
+        "resizeMode": "cover"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
+      },
+      "splash": {
+        "hdpi": "./assets/android/drawable-hdpi/logo-white.png",
+        "mdpi": "./assets/android/drawable-mdpi/logo-white.png",
+        "xhdpi": "./assets/android/drawable-xhdpi/logo-white.png",
+        "xxhdpi": "./assets/android/drawable-xxhdpi/logo-white.png",
+        "xxxhdpi": "./assets/android/drawable-xxxhdpi/logo-white.png",
+        "resizeMode": "cover"
       }
     },
     "web": {

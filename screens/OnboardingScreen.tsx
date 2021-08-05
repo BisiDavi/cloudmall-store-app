@@ -55,20 +55,33 @@ export default function OnboardingScreen() {
         <Text style={styles.title}>{item.title}</Text>
         <Image
           source={item.image}
-          style={{ width: 300, height: 300 }}
-          PlaceholderContent={<ActivityIndicator />}
+          style={{ width: 300, height: 250 }}
+          PlaceholderContent={
+            <ActivityIndicator size="large" color="#0000ff" />
+          }
         />
         <Text style={styles.description}>{item.description}</Text>
       </View>
     );
   }
 
-  const renderNextButton = () => <Button style={styles.button} title="Next" />;
+  function renderNextButton() {
+    return (
+      <View style={styles.button}>
+        <Text style={styles.text}>Next</Text>
+      </View>
+    );
+  }
   const renderSkipButton = () => (
-    <Button style={styles.button} onPress={onSkip} title="Skip" />
+    <Button
+      buttonStyle={{ marginTop: 20 }}
+      onPress={onSkip}
+      type="outline"
+      title="Skip"
+    />
   );
   const renderDoneButton = () => (
-    <Button style={styles.button} onPress={onDone} title="Done" />
+    <Button buttonStyle={styles.button} onPress={onDone} title="Done" />
   );
 
   return (
@@ -102,20 +115,36 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "space-around",
-    paddingBottom: 100,
+    marginBottom: 100,
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
     marginTop: 30,
+    marginBottom: 0,
+    textAlign: "center",
+  },
+  text: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 16
   },
   description: {
     fontSize: 16,
     fontWeight: "normal",
+    textAlign: "center",
+    marginBottom: 60,
   },
   button: {
     marginTop: 10,
     marginBottom: 10,
+    justifyContent: "center",
+    backgroundColor: "blue",
+    padding: 20,
+    height: 45,
+    borderRadius: 5,
+    flex: 1,
+    alignItems: "center",
   },
 });
 

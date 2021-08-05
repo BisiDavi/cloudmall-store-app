@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add -D babel-plugin-module-resolver
+  /usr/local/bin/node /usr/local/bin/yarnpkg add @react-native-community/masked-view@0.1.10 react-native-screens@~3.4.0
 
 PATH: 
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
@@ -14,8 +14,16 @@ Platform:
   linux x64
 
 Trace: 
-  Error: unexpected end of file
-      at Zlib.zlibOnError [as onerror] (zlib.js:188:17)
+  Error: https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.2.0.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141390:19)
+      at Object.onceWrapper (events.js:519:28)
+      at ClientRequest.emit (events.js:400:28)
+      at TLSSocket.emitRequestTimeout (_http_client.js:790:9)
+      at Object.onceWrapper (events.js:519:28)
+      at TLSSocket.emit (events.js:412:35)
+      at TLSSocket.Socket._onTimeout (net.js:484:8)
+      at listOnTimeout (internal/timers.js:557:17)
+      at processTimers (internal/timers.js:500:7)
 
 npm manifest: 
   {

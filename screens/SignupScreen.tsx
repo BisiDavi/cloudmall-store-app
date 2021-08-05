@@ -26,7 +26,7 @@ export default function SignupScreen() {
           textContentType="password"
           secureTextEntry={true}
         />
-        <Button title="Create Account" />
+        <Button style={styles.button} title="Create Account" />
         <Text>Already have an account? Login in </Text>
       </View>
     </SafeAreaView>
@@ -35,11 +35,11 @@ export default function SignupScreen() {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    flexDirection: "column",
     backgroundColor: "red",
-    flex:2
   },
   text: {
     fontSize: 14,
@@ -51,7 +51,12 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderStyle: "solid",
     height: 40,
-    margin: 10,
+    marginTop: 10,
+    marginBottom: 10,
     padding: 10,
+  },
+  button: {
+    marginTop: 20,
+    marginBottom: 20,
   },
 });

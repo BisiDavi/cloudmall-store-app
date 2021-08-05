@@ -1,5 +1,6 @@
+import "react-native-gesture-handler";
 import * as React from "react";
-import { Text } from "react-native";
+import { ActivityIndicator } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -11,6 +12,7 @@ import SignupScreen from "../screens/SignupScreen";
 import StoreDetailsScreenOne from "../screens/StoreDetailsScreenOne";
 import StoreDetailsScreenTwo from "../screens/StoreDetailsScreenTwo";
 import StoreAddressScreen from "../screens/StoreAddressScreen";
+import LoadingActivityIndicator from "../components/LoadingActivityIndicator";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -37,7 +39,7 @@ export default function Navigation() {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      fallback={<Text>Loading ...</Text>}
+      fallback={<LoadingActivityIndicator />}
     >
       <RootNavigator />
     </NavigationContainer>

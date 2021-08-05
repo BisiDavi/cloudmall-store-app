@@ -1,9 +1,10 @@
+import * as React from "react";
 import { StyleSheet, View, Text } from "react-native";
 
 export default function OrdersScreen() {
   return (
     <View style={styles.container}>
-      <Text>Ordersa Screen</Text>
+      <Text>Orders a Screen</Text>
     </View>
   );
 }

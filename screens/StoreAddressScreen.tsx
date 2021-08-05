@@ -1,10 +1,14 @@
 import * as React from "react";
 import { StyleSheet, View, Text } from "react-native";
+import { Input, Button } from "react-native-elements";
 
-export default function ProfileScreen() {
+export default function StoreAddressScreen() {
   return (
     <View style={styles.container}>
-      <Text>Profile Screen</Text>
+      <Text>Stores Address</Text>
+
+      <Input label="Phone number" textContentType="telephoneNumber" />
+      <Button title="Confirm Address" />
     </View>
   );
 }

@@ -1,18 +1,22 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   StyleSheet,
   View,
   Text,
-  Image,
+  ActivityIndicator,
   ImageSourcePropType,
 } from "react-native";
-import { Button } from "react-native-elements";
+import { Button, Image } from "react-native-elements";
 import AppIntroSlider from "react-native-app-intro-slider";
-import RegisterScreen from "./RegisterScreen";
+import RegisterScreen from "./SignupScreen";
+import pizzaImage from "../assets/images/pizza.png";
+import shopperImage from "../assets/images/shopper.jpg";
+import trackSalesImage from "../assets/images/trackSales.png";
 
 export default function OnboardingScreen() {
   const [showApp, setShowApp] = useState(false);
+
   function onDone() {
     return setShowApp(true);
   }
@@ -24,37 +28,48 @@ export default function OnboardingScreen() {
       key: 1,
       title: "Welcome to Cloudmall",
       description: "Shop at your convenience",
-      image: require("./assets/pizza.png"),
-      backgroundColor: "red",
+      image: pizzaImage,
+      backgroundColor: "#E3E3EE;",
     },
     {
       key: 2,
       title: "Partner your store with Cloudmall",
       description: "Earn more with Cloudmall",
-      image: require("./assets/shopper.png"),
-      backgroundColor: "blue",
+      image: shopperImage,
+      backgroundColor: "#E3E3EE;",
     },
     {
       key: 3,
       title: "Track your sales with Cloudmall",
       description: "Track daily, weekly, monthly sales",
-      image: require("./assets/trackSales.png"),
-      backgroundColor: "green",
+      image: trackSalesImage,
+      backgroundColor: "#E3E3EE;",
     },
   ];
   function RenderItem({ item }: RenderItemProps) {
     return (
-      <View style={styles.renderItem}>
-        <Text>{item.title}</Text>
-        <Image source={item.image} />
-        <Text>{item.description}</Text>
+      <View
+        style={[styles.renderItem, { backgroundColor: item.backgroundColor }]}
+        key={item.key}
+      >
+        <Text style={styles.title}>{item.title}</Text>
+        <Image
+          source={item.image}
+          style={{ width: 300, height: 300 }}
+          PlaceholderContent={<ActivityIndicator />}
+        />
+        <Text style={styles.description}>{item.description}</Text>
       </View>
     );
   }
 
-  const renderNextButton = () => <Button title="Next" />;
-
-  const renderSkipButton = () => <Button title="Skip" />;
+  const renderNextButton = () => <Button style={styles.button} title="Next" />;
+  const renderSkipButton = () => (
+    <Button style={styles.button} onPress={onSkip} title="Skip" />
+  );
+  const renderDoneButton = () => (
+    <Button style={styles.button} onPress={onDone} title="Done" />
+  );
 
   return (
     <>
@@ -66,11 +81,11 @@ export default function OnboardingScreen() {
         <AppIntroSlider
           data={slides}
           renderItem={RenderItem}
-          onDone={onDone}
           showSkipButton={true}
-          onSkip={onSkip}
           renderNextButton={renderNextButton}
           renderSkipButton={renderSkipButton}
+          renderDoneButton={renderDoneButton}
+          bottomButton
         />
       )}
     </>
@@ -88,6 +103,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     paddingBottom: 100,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: 30,
+  },
+  description: {
+    fontSize: 16,
+    fontWeight: "normal",
+  },
+  button: {
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 

@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import * as React from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 

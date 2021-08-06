@@ -74,7 +74,7 @@ export default function OnboardingScreen() {
   }
   const renderSkipButton = () => (
     <Button
-      buttonStyle={{ marginTop: 20 }}
+      buttonStyle={{ marginTop: 10 }}
       onPress={onSkip}
       type="outline"
       title="Skip"
@@ -91,6 +91,7 @@ export default function OnboardingScreen() {
   ) : (
     <AppIntroSlider
       data={slides}
+      keyExtractor={(item) => item.key.toString()}
       renderItem={RenderItem}
       showSkipButton={true}
       renderNextButton={renderNextButton}
@@ -132,8 +133,8 @@ const styles = StyleSheet.create({
     marginBottom: 60,
   },
   button: {
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 5,
+    marginBottom: 5,
     justifyContent: "center",
     backgroundColor: "blue",
     padding: 20,

@@ -1,3 +1,3 @@
-## Cloudmall Store App 
+## Cloudmall Store App
 
-### Built with React Native.
+##### Built with React Native.

@@ -18,7 +18,8 @@
       "@screens/*": ["screens/*"],
       "@hooks/*": ["hooks/*"],
       "@assets/*": ["assets/*"],
-      "@json/*": ["json/*"]
+      "@json/*": ["json/*"],
+      "@types/*": ["types/*"]
     }
   },
   "exclude": [

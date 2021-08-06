@@ -19,11 +19,11 @@ function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
-      <Stack.Screen name="SignupScreen" component={SignupScreen} />
       <Stack.Screen
         name="StoreDetailsScreenOne"
         component={StoreDetailsScreenOne}
       />
+      <Stack.Screen name="SignupScreen" component={SignupScreen} />
       <Stack.Screen
         name="StoreDetailsScreenTwo"
         component={StoreDetailsScreenTwo}

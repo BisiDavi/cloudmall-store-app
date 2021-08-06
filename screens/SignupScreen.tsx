@@ -1,69 +1,70 @@
+import { StackScreenProps } from "@react-navigation/stack";
 import * as React from "react";
-import { StyleSheet, SafeAreaView, View, Text } from "react-native";
-import { Button } from "react-native-elements";
-import InputField from "../components/InputField";
+import { StyleSheet, View, Text } from "react-native";
+import { Button, Input } from "react-native-elements";
 
-export default function SignupScreen() {
+import { RootStackParamList } from "@types/.";
+
+export default function SignupScreen({
+  navigation,
+}: StackScreenProps<RootStackParamList, "SignupScreen">) {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.text}>Welcome to Cloudmall, Create an Account</Text>
-      <View style={styles.container}>
-        <InputField
+      <View style={styles.form}>
+        <Input
           label="Email"
           keyboardType="email-address"
           textContentType="emailAddress"
         />
-        <InputField
-          label="Password"
+        <Input label="Password" textContentType="password" secureTextEntry />
+        <Input
+          label="Re-enter Password"
           textContentType="password"
           secureTextEntry
         />
-        <InputField
-          label="Re-enter Password"
-          textContentType="password"  
-          secureTextEntry
-        />
+        <Button type="outline" title="Create Account" />
+        <View style={styles.createAccount}>
+          <Text>Already have an account? </Text>
+          <Button
+            onPress={() => navigation.navigate("Login")}
+            buttonStyle={styles.login}
+            type="clear"
+            title="Login in"
+          />
+        </View>
       </View>
-      <Button
-        buttonStyle={styles.button}
-        type="outline"
-        title="Create Account"
-      />
-      <Text>Already have an account? Login in </Text>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
-    flexGrow: 1,
+    backgroundColor: "blue",
     alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: "red",
-    height: 100,
+    flexDirection: "column",
+    justifyContent: "space-around",
+    padding: 20,
+  },
+  form: {
+    flex: 10,
   },
   text: {
     fontSize: 18,
     fontWeight: "bold",
-    marginTop: 20,
+    marginTop: 50,
     textAlign: "center",
-  },
-  input: {
-    borderRadius: 1,
-    borderColor: "black",
-    borderStyle: "solid",
-    borderWidth: 1,
-    height: 40,
-    marginTop: 10,
-    marginBottom: 10,
-    marginRight: 40,
-    marginLeft: 40,
   },
   button: {
     marginTop: 20,
     marginBottom: 20,
     backgroundColor: "black",
+  },
+  createAccount: {
+    alignItems: "center",
+  },
+  login: {
+    marginTop: 20,
   },
 });

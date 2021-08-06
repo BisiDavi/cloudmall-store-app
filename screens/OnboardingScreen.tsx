@@ -1,3 +1,4 @@
+import { StackScreenProps } from "@react-navigation/stack";
 import React, { useState } from "react";
 import {
   SafeAreaView,
@@ -10,11 +11,15 @@ import {
 import { Button, Image } from "react-native-elements";
 import AppIntroSlider from "react-native-app-intro-slider";
 import SignupScreen from "./SignupScreen";
-import pizzaImage from "../assets/images/pizza.png";
-import shopperImage from "../assets/images/shopper.jpg";
-import trackSalesImage from "../assets/images/trackSales.png";
 
-export default function OnboardingScreen() {
+import pizzaImage from "@assets/images/pizza.png";
+import shopperImage from "@assets/images/shopper.jpg";
+import trackSalesImage from "@assets/images/trackSales.png";
+import { RootStackParamList } from "@types/.";
+
+export default function OnboardingScreen({
+  navigation,
+}: StackScreenProps<RootStackParamList, "OnboardingScreen">) {
   const [showApp, setShowApp] = useState(false);
 
   function onDone() {

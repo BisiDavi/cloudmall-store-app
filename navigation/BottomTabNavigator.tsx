@@ -16,7 +16,7 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen name="Orders" component={TabOneNavigator} />
       <BottomTab.Screen name="Dashboard" component={TabTwoNavigator} />
       <BottomTab.Screen name="Mystore" component={TabThreeNavigator} />
-      <BottomTab.Screen name="Profile" component={TabOFourNavigator} />
+      <BottomTab.Screen name="Profile" component={TabFourNavigator} />
     </BottomTab.Navigator>
   );
 }
@@ -31,26 +31,31 @@ function TabOneNavigator() {
   );
 }
 
+const TabTwoStack = createStackNavigator();
+
 function TabTwoNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen name="DashboardScreen" component={DashboardScreen} />
-    </TabOneStack.Navigator>
+    <TabTwoStack.Navigator>
+      <TabTwoStack.Screen name="DashboardScreen" component={DashboardScreen} />
+    </TabTwoStack.Navigator>
   );
 }
+
+const TabThreeStack = createStackNavigator();
 
 function TabThreeNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen name="MystoreScreen" component={MyStoreScreen} />
-    </TabOneStack.Navigator>
+    <TabThreeStack.Navigator>
+      <TabThreeStack.Screen name="MystoreScreen" component={MyStoreScreen} />
+    </TabThreeStack.Navigator>
   );
 }
+const TabFourStack = createStackNavigator();
 
-function TabOFourNavigator() {
+function TabFourNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen name="ProfileScreen" component={ProfileScreen} />
-    </TabOneStack.Navigator>
+    <TabFourStack.Navigator>
+      <TabFourStack.Screen name="ProfileScreen" component={ProfileScreen} />
+    </TabFourStack.Navigator>
   );
 }

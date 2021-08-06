@@ -11,10 +11,8 @@ export default function InputField({
   onChangeText,
   value,
   keyboardType,
-  textContentType,
   label,
   secureTextEntry = false,
-  ...props
 }: InputFieldProps) {
   return (
     <SafeAreaView style={styles.inputField}>
@@ -32,16 +30,14 @@ export default function InputField({
 
 const styles = StyleSheet.create({
   inputField: {
-    flex: 1,
+    height: 60,
+    width:1,
     flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
   },
   input: {
-    height: 40,
-    margin: 12,
+    height: 20,
+    margin: 5,
     borderWidth: 1,
-    width: 100,
     padding: 10,
   },
 });

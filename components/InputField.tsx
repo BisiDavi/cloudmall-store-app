@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  KeyboardTypeOptions,
-} from "react-native";
+import { StyleSheet, KeyboardTypeOptions } from "react-native";
+import { Input } from "react-native-elements";
 
 export default function InputField({
   onChangeText,
@@ -13,32 +8,40 @@ export default function InputField({
   keyboardType,
   label,
   secureTextEntry = false,
+  styles,
 }: InputFieldProps) {
   return (
-    <SafeAreaView style={styles.inputField}>
-      <Text>{label}</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={value}
-        secureTextEntry={secureTextEntry}
-        keyboardType={keyboardType}
-      />
-    </SafeAreaView>
+    <Input
+      label={label}
+      inputContainerStyle={[inputStyles.inputContainer, styles?.container]}
+      labelStyle={[inputStyles.label, styles?.label]}
+      inputStyle={[inputStyles.input, styles?.input]}
+      keyboardType={keyboardType}
+      value={value}
+      onChangeText={onChangeText}
+      secureTextEntry={secureTextEntry}
+    />
   );
 }
 
-const styles = StyleSheet.create({
-  inputField: {
-    height: 60,
-    width:1,
-    flexDirection: "column",
+const inputStyles = StyleSheet.create({
+  inputContainer: {
+    width: "100%",
+    borderBottomWidth: 0,
+    marginBottom: 0,
   },
   input: {
-    height: 20,
-    margin: 5,
+    borderColor: "black",
     borderWidth: 1,
+    height: 30,
+    borderBottomColor: "black",
     padding: 10,
+    marginBottom: 0,
+  },
+  label: {
+    color: "black",
+    marginTop: 5,
+    marginBottom: 5,
   },
 });
 
@@ -49,4 +52,5 @@ interface InputFieldProps {
   keyboardType?: KeyboardTypeOptions;
   secureTextEntry?: boolean;
   textContentType?: string;
+  styles?: any;
 }

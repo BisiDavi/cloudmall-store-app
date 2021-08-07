@@ -1,20 +1,25 @@
+import { StackScreenProps } from "@react-navigation/stack";
 import * as React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Input, Button } from "react-native-elements";
 
-export default function StoreDetailsScreenOne() {
+import { RootStackParamList } from "@types/.";
+import InputField from "@components/InputField";
+
+export default function StoreDetailsScreenOne({
+  navigation,
+}: StackScreenProps<RootStackParamList, "StoreDetailsScreenOne">) {
   return (
     <View style={styles.container}>
       <Text>Stores Details</Text>
-      <Input label="Name of Store" errorMessage="Please enter a valid email" />
-      <Input
+      <InputField label="Name of Store" />
+      <InputField
         label="Email address of store"
         textContentType="emailAddress"
-        errorMessage="Please enter a valid email"
       />
-      <Input label="Phone number" textContentType="telephoneNumber" />
-      <Input label="Address" textContentType="fullStreetAddress" />
-      <Button title="Next" />
+      <InputField label="Phone number" textContentType="telephoneNumber" />
+      <InputField label="Address" textContentType="fullStreetAddress" />
+      <Button buttonStyle={styles.buttonStyle} title="Next" />
     </View>
   );
 }
@@ -24,5 +29,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  buttonStyle: {
+    width: 250,
   },
 });

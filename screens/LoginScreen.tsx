@@ -12,7 +12,7 @@ import { Button, Input } from "react-native-elements";
 
 import { RootStackParamList } from "@types/.";
 
-export default function SignupScreen({
+export default function LoginScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, "SignupScreen">) {
   return (
@@ -52,6 +52,7 @@ export default function SignupScreen({
             />
             <Button
               type="solid"
+              titleStyle={{ textAlign: "center", margin: "auto", color: "red" }}
               onPress={() => navigation.navigate("StoreDetailsScreenOne")}
               title="Create Account"
               buttonStyle={styles.createAccount}
@@ -90,16 +91,11 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: "100%",
-    borderBottomWidth: 0,
-    marginBottom: 0,
   },
   input: {
     borderColor: "black",
     borderWidth: 1,
-    height: 30,
-    borderBottomColor: "black",
-    padding: 10,
-    marginBottom: 0,
+    borderBottomWidth: 1,
   },
   label: {
     color: "black",
@@ -119,9 +115,12 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
   createAccount: {
+    alignItems: "center",
     marginTop: 20,
-    marginBottom: 10,
-    width: 250,
+    display: "flex",
+    marginBottom: 20,
+    width: "100%",
+    justifyContent: "center",
   },
   withAccount: {
     alignItems: "center",

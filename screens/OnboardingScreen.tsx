@@ -91,7 +91,7 @@ export default function OnboardingScreen({
 
   return showApp ? (
     <SafeAreaView>
-      <SignupScreen />
+      <SignupScreen navigation={navigation} />
     </SafeAreaView>
   ) : (
     <AppIntroSlider

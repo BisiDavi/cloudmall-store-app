@@ -8,9 +8,10 @@ import {
   Text,
   ScrollView,
 } from "react-native";
-import { Button, Input } from "react-native-elements";
+import { Button } from "react-native-elements";
 
-import { RootStackParamList } from "@types/.";
+import { RootStackParamList } from "customTypes";
+import InputField from "@components/InputField";
 
 export default function LoginScreen({
   navigation,
@@ -22,48 +23,32 @@ export default function LoginScreen({
     >
       <ScrollView>
         <View style={styles.container}>
-          <Text style={styles.text}>
-            Welcome to Cloudmall, Create an Account
-          </Text>
+          <Text style={styles.text}>Welcome to Cloudmall, Login</Text>
           <View style={styles.form}>
-            <Input
+            <InputField
               label="Email"
-              inputContainerStyle={styles.inputContainer}
-              labelStyle={styles.label}
-              inputStyle={styles.input}
               keyboardType="email-address"
               textContentType="emailAddress"
             />
-            <Input
+            <InputField
               label="Password"
-              inputStyle={styles.input}
-              labelStyle={styles.label}
-              inputContainerStyle={styles.inputContainer}
               textContentType="password"
               secureTextEntry
             />
-            <Input
-              label="Re-enter Password"
-              labelStyle={styles.label}
-              inputContainerStyle={styles.inputContainer}
-              inputStyle={styles.input}
-              textContentType="password"
-              secureTextEntry
-            />
+
             <Button
               type="solid"
-              titleStyle={{ textAlign: "center", margin: "auto", color: "red" }}
               onPress={() => navigation.navigate("StoreDetailsScreenOne")}
               title="Create Account"
               buttonStyle={styles.createAccount}
             />
             <View style={styles.withAccount}>
-              <Text>Already have an account? </Text>
+              <Text>Don't have an account? </Text>
               <Button
-                onPress={() => navigation.navigate("LoginScreen")}
+                onPress={() => navigation.navigate("SignupScreen")}
                 buttonStyle={styles.login}
                 type="clear"
-                title="Login in"
+                title="Sign up"
               />
             </View>
           </View>
@@ -89,19 +74,6 @@ const styles = StyleSheet.create({
     paddingRight: 20,
     alignItems: "center",
   },
-  inputContainer: {
-    width: "100%",
-  },
-  input: {
-    borderColor: "black",
-    borderWidth: 1,
-    borderBottomWidth: 1,
-  },
-  label: {
-    color: "black",
-    marginTop: 5,
-    marginBottom: 5,
-  },
   text: {
     fontSize: 18,
     fontWeight: "bold",
@@ -119,7 +91,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     display: "flex",
     marginBottom: 20,
-    width: "100%",
+    width: 250,
     justifyContent: "center",
   },
   withAccount: {

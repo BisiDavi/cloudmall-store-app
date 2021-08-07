@@ -8,9 +8,10 @@ import {
   Text,
   ScrollView,
 } from "react-native";
-import { Button, Input } from "react-native-elements";
+import { Button } from "react-native-elements";
 
-import { RootStackParamList } from "@types/.";
+import { RootStackParamList } from "customTypes";
+import InputField from "@components/InputField";
 
 export default function SignupScreen({
   navigation,
@@ -26,27 +27,18 @@ export default function SignupScreen({
             Welcome to Cloudmall, Create an Account
           </Text>
           <View style={styles.form}>
-            <Input
+            <InputField
               label="Email"
-              inputContainerStyle={styles.inputContainer}
-              labelStyle={styles.label}
-              inputStyle={styles.input}
               keyboardType="email-address"
               textContentType="emailAddress"
             />
-            <Input
+            <InputField
               label="Password"
-              inputStyle={styles.input}
-              labelStyle={styles.label}
-              inputContainerStyle={styles.inputContainer}
               textContentType="password"
               secureTextEntry
             />
-            <Input
+            <InputField
               label="Re-enter Password"
-              labelStyle={styles.label}
-              inputContainerStyle={styles.inputContainer}
-              inputStyle={styles.input}
               textContentType="password"
               secureTextEntry
             />
@@ -88,19 +80,7 @@ const styles = StyleSheet.create({
     paddingRight: 20,
     alignItems: "center",
   },
-  inputContainer: {
-    width: "100%",
-    borderBottomWidth: 0,
-    marginBottom: 0,
-  },
-  input: {
-    borderColor: "black",
-    borderWidth: 1,
-    height: 30,
-    borderBottomColor: "black",
-    padding: 10,
-    marginBottom: 0,
-  },
+
   label: {
     color: "black",
     marginTop: 5,

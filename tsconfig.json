@@ -19,7 +19,7 @@
       "@hooks/*": ["hooks/*"],
       "@assets/*": ["assets/*"],
       "@json/*": ["json/*"],
-      "@types/*": ["types/*"]
+      "@customTypes/*": ["customTypes/*"]
     }
   },
   "exclude": [

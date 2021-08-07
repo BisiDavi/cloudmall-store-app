@@ -1,8 +1,12 @@
+import { StackScreenProps } from "@react-navigation/stack";
 import * as React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Image, Button } from "react-native-elements";
+import { RootStackParamList } from "@customTypes/.";
 
-export default function StoreDetailsScreenThree() {
+export default function StoreDetailsScreenThree({
+  navigation,
+}: StackScreenProps<RootStackParamList, "StoreDetailsScreenTwo">) {
   return (
     <View style={styles.container}>
       <Text>Upload Store's Image</Text>

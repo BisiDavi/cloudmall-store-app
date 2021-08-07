@@ -15,7 +15,7 @@ import SignupScreen from "./SignupScreen";
 import pizzaImage from "@assets/images/pizza.png";
 import shopperImage from "@assets/images/shopper.jpg";
 import trackSalesImage from "@assets/images/trackSales.png";
-import { RootStackParamList } from "@types/.";
+import { RootStackParamList } from "customTypes";
 
 export default function OnboardingScreen({
   navigation,

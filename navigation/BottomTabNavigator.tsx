@@ -6,7 +6,7 @@ import MyStoreScreen from "../screens/MyStore";
 
 import OrdersScreen from "../screens/OrdersScreen";
 import ProfileScreen from "../screens/ProfileScreen";
-import { BottomTabParamList } from "../types";
+import { BottomTabParamList } from "../customTypes";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 

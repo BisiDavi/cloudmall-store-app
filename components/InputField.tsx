@@ -42,6 +42,7 @@ const inputStyles = StyleSheet.create({
     color: "black",
     marginTop: 5,
     marginBottom: 5,
+    fontWeight: "500",
   },
 });
 

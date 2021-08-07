@@ -1,20 +1,29 @@
+import { StackScreenProps } from "@react-navigation/stack";
 import * as React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { Input, Button } from "react-native-elements";
+import { Button } from "react-native-elements";
+import InputField from "@components/InputField";
 
-export default function StoreDetailsScreenTwo() {
+import { RootStackParamList } from "@customTypes/.";
+
+export default function StoreDetailsScreenTwo({
+  navigation,
+}: StackScreenProps<RootStackParamList, "StoreDetailsScreenTwo">) {
   return (
     <View style={styles.container}>
       <Text>Stores Details</Text>
-      <View>
-        <Text>Type of Store</Text>
-        <Input label="In store" />
-        <Input label="Pickup" />
+      <Text>Type of Store</Text>
+      <View style={{ alignItems: "center", display: "flex" }}>
+        <InputField label="In store" />
+        <InputField label="Pickup" />
       </View>
-      <Input label="Open days" />
-      <Input label="Phone number" textContentType="telephoneNumber" />
-      <Input label="Address" textContentType="fullStreetAddress" />
-      <Button title="Next" />
+      <InputField label="Open days" />
+      <InputField label="Phone number" textContentType="telephoneNumber" />
+      <InputField label="Address" textContentType="fullStreetAddress" />
+      <Button
+        title="Next"
+        onPress={() => navigation.navigate("StoreDetailsScreenThree")}
+      />
     </View>
   );
 }

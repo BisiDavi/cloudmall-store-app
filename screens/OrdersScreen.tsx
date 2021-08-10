@@ -8,9 +8,13 @@ export default function OrdersScreen() {
   const [index, setIndex] = useState(0);
   return (
     <View style={styles.container}>
-      <Tab value={index} onChange={setIndex}>
-        <Tab.Item title="New Orders" />
-        <Tab.Item title="Completed Orders" />
+      <Tab
+        indicatorStyle={{ backgroundColor: "red" }}
+        value={index}
+        onChange={setIndex}
+      >
+        <Tab.Item titleStyle={styles.tabItem} title="New Orders" />
+        <Tab.Item titleStyle={styles.tabItem} title="Completed Orders" />
       </Tab>
 
       <TabView value={index} onChange={setIndex}>
@@ -34,8 +38,10 @@ const styles = StyleSheet.create({
   TabOneView: {
     width: "100%",
   },
-  TabOneItem: {
+  tabItem: {
     color: "black",
+    fontSize: 12,
+    marginBottom: 0,
   },
   TabTwoView: {
     width: "100%",

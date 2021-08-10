@@ -1,5 +1,6 @@
 import * as React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import DashboardScreen from "../screens/DashboardScreen";
 import MyStoreScreen from "../screens/MyStore";
@@ -28,11 +29,27 @@ const TabOneStack = createStackNavigator();
 
 function TabOneNavigator() {
   return (
-    <TabOneStack.Navigator screenOptions={{ headerShown: false }}>
-      <TabOneStack.Screen name="OrdersScreen" component={OrdersScreen} />
+    <TabOneStack.Navigator
+      screenOptions={{ headerShown: true, headerTitleAlign: "center" }}
+    >
+      <TabOneStack.Screen
+        name="Orders"
+        options={{
+          headerTitleStyle: {
+            fontSize: 16,
+          },
+        }}
+        component={OrdersScreen}
+      />
     </TabOneStack.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  taboneScreen: {
+    justifyContent: "center",
+  },
+});
 
 const TabTwoStack = createStackNavigator();
 

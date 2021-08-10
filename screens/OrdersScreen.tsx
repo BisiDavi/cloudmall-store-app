@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Tab, TabView } from "react-native-elements";
+import NewOrdersTab from "@components/NewOrdersTab";
+import CompletedOrdersTab from "@components/CompletedOrdersTab";
 
 export default function OrdersScreen() {
   const [index, setIndex] = useState(0);
@@ -13,10 +15,10 @@ export default function OrdersScreen() {
 
       <TabView value={index} onChange={setIndex}>
         <TabView.Item style={styles.TabOneView}>
-          <Text>New Orders</Text>
+          <NewOrdersTab />
         </TabView.Item>
         <TabView.Item style={styles.TabTwoView}>
-          <Text>Completed Orders</Text>
+          <CompletedOrdersTab />
         </TabView.Item>
       </TabView>
     </View>
@@ -27,20 +29,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-start",
-    flexDirection:"column"
+    flexDirection: "column",
   },
   TabOneView: {
-    backgroundColor: "red",
     width: "100%",
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+  },
+  TabOneItem: {
+    color: "black",
   },
   TabTwoView: {
-    backgroundColor: "blue",
     width: "100%",
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });

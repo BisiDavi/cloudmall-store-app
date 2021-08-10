@@ -4,31 +4,37 @@ export default {
   prefixes: [Linking.makeUrl("/")],
   config: {
     screens: {
-      Root: {
+      BottomNav: {
         screens: {
-          TabOne: {
+          Orders: {
             screens: {
-              OrdersScreen: "orders",
+              OrdersScreen: "*",
             },
           },
-          TabTwo: {
+          Dashboard: {
             screens: {
-              DashboardScreen: "dashboard",
+              DashboardScreen: "*",
             },
           },
-          TabThree: {
+          Mystore: {
             screens: {
-              MystoreScreen: "mystore",
+              MystoreScreen: "*",
             },
           },
-          TabFour: {
+          Profile: {
             screens: {
-              ProfileScreen: "profile",
+              ProfileScreen: "*",
             },
           },
         },
       },
       SignupScreen: "*",
+      OnboardingScreen: "*",
+      LoginScreen: "*",
+      StoreDetailsScreenOne: "*",
+      StoreDetailsScreenTwo: "*",
+      StoreDetailsScreenThree: "*",
+      StoreAddressScreen: "*",
     },
   },
 };

@@ -12,7 +12,10 @@ const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
   return (
-    <BottomTab.Navigator initialRouteName="Orders">
+    <BottomTab.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Orders"
+    >
       <BottomTab.Screen name="Orders" component={TabOneNavigator} />
       <BottomTab.Screen name="Dashboard" component={TabTwoNavigator} />
       <BottomTab.Screen name="Mystore" component={TabThreeNavigator} />
@@ -25,7 +28,7 @@ const TabOneStack = createStackNavigator();
 
 function TabOneNavigator() {
   return (
-    <TabOneStack.Navigator>
+    <TabOneStack.Navigator screenOptions={{ headerShown: false }}>
       <TabOneStack.Screen name="OrdersScreen" component={OrdersScreen} />
     </TabOneStack.Navigator>
   );
@@ -35,7 +38,7 @@ const TabTwoStack = createStackNavigator();
 
 function TabTwoNavigator() {
   return (
-    <TabTwoStack.Navigator>
+    <TabTwoStack.Navigator screenOptions={{ headerShown: false }}>
       <TabTwoStack.Screen name="DashboardScreen" component={DashboardScreen} />
     </TabTwoStack.Navigator>
   );
@@ -45,7 +48,7 @@ const TabThreeStack = createStackNavigator();
 
 function TabThreeNavigator() {
   return (
-    <TabThreeStack.Navigator>
+    <TabThreeStack.Navigator screenOptions={{ headerShown: false }}>
       <TabThreeStack.Screen name="MystoreScreen" component={MyStoreScreen} />
     </TabThreeStack.Navigator>
   );
@@ -54,7 +57,7 @@ const TabFourStack = createStackNavigator();
 
 function TabFourNavigator() {
   return (
-    <TabFourStack.Navigator>
+    <TabFourStack.Navigator screenOptions={{ headerShown: false }}>
       <TabFourStack.Screen name="ProfileScreen" component={ProfileScreen} />
     </TabFourStack.Navigator>
   );

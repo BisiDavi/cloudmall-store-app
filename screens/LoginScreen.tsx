@@ -39,7 +39,7 @@ export default function LoginScreen({
             <Button
               type="solid"
               onPress={() => navigation.navigate("StoreDetailsScreenOne")}
-              title="Create Account"
+              title="Login"
               buttonStyle={styles.createAccount}
             />
             <View style={styles.withAccount}>

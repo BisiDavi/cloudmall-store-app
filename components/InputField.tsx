@@ -11,7 +11,7 @@ export default function InputField({
   styles,
   rightIcon,
   ...props
-}: any) {
+}: InputFieldProps) {
   return (
     <Input
       {...props}
@@ -59,7 +59,8 @@ interface InputFieldProps {
   label: string;
   keyboardType?: KeyboardTypeOptions;
   secureTextEntry?: boolean;
-  textContentType?: string;
   styles?: any;
   rightIcon?: any;
+  errorMessage?: any;
+  textContentType?: "password" | "emailAddress";
 }

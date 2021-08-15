@@ -35,13 +35,6 @@ export default function SignupScreen({
     }
   }, [confirmPassword]);
 
-  function confirmPasswordHandler(text?: any) {
-    setConfirmPassword(text);
-  }
-
-  console.log("email", email);
-  console.log("confirmPassword", confirmPassword);
-
   const passwordIcon = hidePassword ? "eye-off" : "eye";
 
   return (
@@ -81,7 +74,7 @@ export default function SignupScreen({
               label="Re-enter Password"
               textContentType="password"
               value={confirmPassword}
-              onChangeText={confirmPasswordHandler}
+              onChangeText={(text?: any) => setConfirmPassword(text)}
               secureTextEntry={hidePassword}
               errorMessage={passwordMatch}
               rightIcon={

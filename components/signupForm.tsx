@@ -2,7 +2,7 @@ import { StackScreenProps } from "@react-navigation/stack";
 import React, { useState, useEffect } from "react";
 import { Feather } from "@expo/vector-icons";
 import { Formik } from "formik";
-import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
+import { StyleSheet, View, Text, ToastAndroid } from "react-native";
 import { Button } from "react-native-elements";
 import Spinner from "react-native-loading-spinner-overlay";
 
@@ -21,6 +21,10 @@ export default function SignupForm({
     setHidePassword(!hidePassword);
   }
 
+  function showToast(message: string) {
+    ToastAndroid.show(message, ToastAndroid.LONG);
+  }
+
   const passwordIcon = hidePassword ? "eye-off" : "eye";
 
   return (
@@ -30,16 +34,16 @@ export default function SignupForm({
       onSubmit={(values) => {
         setLoading(true);
         const { email, password } = values;
-        console.log("values", values);
         axiosInstance
           .post("/register", { email, password })
           .then((response) => {
             setLoading(false);
-            console.log("response", response);
+            showToast(response?.data.message);
+            navigation.navigate("StoreDetailsScreenOne");
           })
           .catch((error) => {
             setLoading(false);
-            console.error("error", error);
+            showToast(error.response.data?.message);
           });
       }}
     >
@@ -103,7 +107,6 @@ export default function SignupForm({
               />
             }
           />
-          {/* () => navigation.navigate("StoreDetailsScreenOne") */}
           <Button
             type="solid"
             onPress={handleSubmit}

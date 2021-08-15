@@ -1,6 +1,5 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import React, { useState, useEffect } from "react";
-import { Feather } from "@expo/vector-icons";
+import React from "react";
 import {
   StyleSheet,
   KeyboardAvoidingView,
@@ -9,34 +8,13 @@ import {
   Text,
   ScrollView,
 } from "react-native";
-import { Button } from "react-native-elements";
 
 import { RootStackParamList } from "customTypes";
-import InputField from "@components/InputField";
+import SignupForm from "@components/signupForm";
 
 export default function SignupScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, "SignupScreen">) {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState("");
-  const [hidePassword, setHidePassword] = useState(true);
-  const [passwordMatch, setPasswordMatch] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  function passwordVisbilityHandler() {
-    setHidePassword(!hidePassword);
-  }
-
-  useEffect(() => {
-    if (password !== confirmPassword) {
-      setPasswordMatch("Password doesn't match");
-    } else {
-      setPasswordMatch("");
-    }
-  }, [confirmPassword]);
-
-  const passwordIcon = hidePassword ? "eye-off" : "eye";
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -47,61 +25,7 @@ export default function SignupScreen({
           <Text style={styles.text}>
             Welcome to Cloudmall, Create an Account
           </Text>
-          <View style={styles.form}>
-            <InputField
-              label="Email"
-              onChangeText={(text?: any) => setEmail(text)}
-              value={email}
-              keyboardType="email-address"
-              textContentType="emailAddress"
-            />
-            <InputField
-              label="Password"
-              value={password}
-              onChangeText={(text?: any) => setPassword(text)}
-              textContentType="password"
-              secureTextEntry={hidePassword}
-              rightIcon={
-                <Feather
-                  name={passwordIcon}
-                  onPress={passwordVisbilityHandler}
-                  color="black"
-                  size={24}
-                />
-              }
-            />
-            <InputField
-              label="Re-enter Password"
-              textContentType="password"
-              value={confirmPassword}
-              onChangeText={(text?: any) => setConfirmPassword(text)}
-              secureTextEntry={hidePassword}
-              errorMessage={passwordMatch}
-              rightIcon={
-                <Feather
-                  name={passwordIcon}
-                  onPress={passwordVisbilityHandler}
-                  color="black"
-                  size={24}
-                />
-              }
-            />
-            <Button
-              type="solid"
-              onPress={() => navigation.navigate("StoreDetailsScreenOne")}
-              title="Create Account"
-              buttonStyle={styles.createAccount}
-            />
-            <View style={styles.withAccount}>
-              <Text>Already have an account? </Text>
-              <Button
-                onPress={() => navigation.navigate("LoginScreen")}
-                buttonStyle={styles.login}
-                type="clear"
-                title="Login in"
-              />
-            </View>
-          </View>
+          <SignupForm navigation={navigation} />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

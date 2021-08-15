@@ -1,5 +1,5 @@
 export type RootStackParamList = {
-  SignupScreen: undefined;
+  SignupScreen?: undefined;
   BottomNav: undefined;
   OnboardingScreen: undefined;
   StoreDetailsScreenOne: undefined;

@@ -54,7 +54,7 @@ const inputStyles = StyleSheet.create({
 });
 
 interface InputFieldProps {
-  onChangeText?: () => void;
+  onChangeText?: (e?: any) => void;
   value?: string;
   label: string;
   keyboardType?: KeyboardTypeOptions;
@@ -62,5 +62,6 @@ interface InputFieldProps {
   styles?: any;
   rightIcon?: any;
   errorMessage?: any;
+  onBlur?: (e?: any) => void;
   textContentType?: "password" | "emailAddress";
 }

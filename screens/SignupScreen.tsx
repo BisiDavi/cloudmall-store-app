@@ -1,5 +1,6 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import * as React from "react";
+import React, { useState, useEffect } from "react";
+import { Feather } from "@expo/vector-icons";
 import {
   StyleSheet,
   KeyboardAvoidingView,
@@ -16,6 +17,33 @@ import InputField from "@components/InputField";
 export default function SignupScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, "SignupScreen">) {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState("");
+  const [hidePassword, setHidePassword] = useState(true);
+  const [passwordMatch, setPasswordMatch] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  function passwordVisbilityHandler() {
+    setHidePassword(!hidePassword);
+  }
+
+  useEffect(() => {
+    if (password !== confirmPassword) {
+      setPasswordMatch("Password doesn't match");
+    } else {
+      setPasswordMatch("");
+    }
+  }, [confirmPassword]);
+
+  function confirmPasswordHandler(text?: any) {
+    setConfirmPassword(text);
+  }
+
+  console.log("email", email);
+  console.log("confirmPassword", confirmPassword);
+
+  const passwordIcon = hidePassword ? "eye-off" : "eye";
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -29,18 +57,41 @@ export default function SignupScreen({
           <View style={styles.form}>
             <InputField
               label="Email"
+              onChangeText={(text?: any) => setEmail(text)}
+              value={email}
               keyboardType="email-address"
               textContentType="emailAddress"
             />
             <InputField
               label="Password"
+              value={password}
+              onChangeText={(text?: any) => setPassword(text)}
               textContentType="password"
-              secureTextEntry
+              secureTextEntry={hidePassword}
+              rightIcon={
+                <Feather
+                  name={passwordIcon}
+                  onPress={passwordVisbilityHandler}
+                  color="black"
+                  size={24}
+                />
+              }
             />
             <InputField
               label="Re-enter Password"
               textContentType="password"
-              secureTextEntry
+              value={confirmPassword}
+              onChangeText={confirmPasswordHandler}
+              secureTextEntry={hidePassword}
+              errorMessage={passwordMatch}
+              rightIcon={
+                <Feather
+                  name={passwordIcon}
+                  onPress={passwordVisbilityHandler}
+                  color="black"
+                  size={24}
+                />
+              }
             />
             <Button
               type="solid"

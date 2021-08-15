@@ -9,9 +9,12 @@ export default function InputField({
   label,
   secureTextEntry = false,
   styles,
-}: InputFieldProps) {
+  rightIcon,
+  ...props
+}: any) {
   return (
     <Input
+      {...props}
       label={label}
       inputContainerStyle={[inputStyles.inputContainer, styles?.container]}
       labelStyle={[inputStyles.label, styles?.label]}
@@ -20,6 +23,8 @@ export default function InputField({
       value={value}
       onChangeText={onChangeText}
       secureTextEntry={secureTextEntry}
+      rightIcon={rightIcon}
+      rightIconContainerStyle={inputStyles.rightIconStyle}
     />
   );
 }
@@ -27,14 +32,13 @@ export default function InputField({
 const inputStyles = StyleSheet.create({
   inputContainer: {
     width: "100%",
-    borderBottomWidth: 0,
     marginBottom: 0,
-  },
-  input: {
     borderColor: "black",
     borderWidth: 1,
-    height: 30,
     borderBottomColor: "black",
+  },
+  input: {
+    height: 30,
     padding: 10,
     marginBottom: 0,
   },
@@ -43,6 +47,9 @@ const inputStyles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
     fontWeight: "500",
+  },
+  rightIconStyle: {
+    width: 30,
   },
 });
 
@@ -54,4 +61,5 @@ interface InputFieldProps {
   secureTextEntry?: boolean;
   textContentType?: string;
   styles?: any;
+  rightIcon?: any;
 }

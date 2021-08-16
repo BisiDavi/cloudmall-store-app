@@ -63,5 +63,9 @@ interface InputFieldProps {
   rightIcon?: any;
   errorMessage?: any;
   onBlur?: (e?: any) => void;
-  textContentType?: "password" | "emailAddress";
+  textContentType?:
+    | "password"
+    | "emailAddress"
+    | "telephoneNumber"
+    | "fullStreetAddress";
 }

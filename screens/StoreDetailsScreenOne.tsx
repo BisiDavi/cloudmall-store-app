@@ -11,7 +11,6 @@ export default function StoreDetailsScreenOne({
 }: StackScreenProps<RootStackParamList, "StoreDetailsScreenOne">) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Stores Details</Text>
       <InputField label="Name of Store" />
       <InputField
         label="Email address of store"
@@ -37,9 +36,9 @@ export default function StoreDetailsScreenOne({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: "center",
     justifyContent: "center",
     padding: 20,
+    paddingTop: 0,
   },
   buttonStyle: {
     width: 250,
@@ -54,7 +53,8 @@ const styles = StyleSheet.create({
     textAlign: "left",
     fontWeight: "bold",
     justifyContent: "flex-start",
-    marginBottom: 30,
+    marginBottom: 0,
+    marginTop: 0,
     width: "100%",
     alignItems: "flex-start",
   },

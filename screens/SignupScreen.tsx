@@ -22,9 +22,6 @@ export default function SignupScreen({
     >
       <ScrollView>
         <View style={styles.container}>
-          <Text style={styles.text}>
-            Welcome to Cloudmall, Create an Account
-          </Text>
           <SignupForm navigation={navigation} />
         </View>
       </ScrollView>
@@ -39,44 +36,5 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-around",
     alignItems: "center",
-  },
-  form: {
-    justifyContent: "space-around",
-    marginTop: 20,
-    marginBottom: 50,
-    paddingLeft: 20,
-    paddingRight: 20,
-    alignItems: "center",
-  },
-
-  label: {
-    color: "black",
-    marginTop: 5,
-    marginBottom: 5,
-  },
-  text: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginTop: 60,
-    lineHeight: 24,
-    textAlign: "center",
-  },
-  button: {
-    marginTop: 20,
-    marginBottom: 20,
-    backgroundColor: "black",
-  },
-  createAccount: {
-    marginTop: 20,
-    marginBottom: 10,
-    width: 250,
-  },
-  withAccount: {
-    alignItems: "center",
-    justifyContent: "space-around",
-    flexDirection: "row",
-  },
-  login: {
-    marginTop: 0,
   },
 });

@@ -21,18 +21,37 @@ function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
-      <Stack.Screen name="SignupScreen" component={SignupScreen} />
-      <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      <Stack.Screen
+        name="SignupScreen"
+        options={{
+          headerShown: true,
+          headerTitleAlign: "center",
+          title: "Signup",
+        }}
+        component={SignupScreen}
+      />
+      <Stack.Screen
+        name="LoginScreen"
+        options={{
+          headerShown: true,
+          headerTitleAlign: "center",
+          title: "Login",
+        }}
+        component={LoginScreen}
+      />
       <Stack.Screen
         name="StoreDetailsScreenOne"
+        options={{ headerShown: true, title: "Store Details" }}
         component={StoreDetailsScreenOne}
       />
       <Stack.Screen
         name="StoreDetailsScreenTwo"
+        options={{ headerShown: true, title: "Store Details" }}
         component={StoreDetailsScreenTwo}
       />
       <Stack.Screen
         name="StoreDetailsScreenThree"
+        options={{ headerShown: true, title: "Store Details" }}
         component={StoreDetailsScreenThree}
       />
       <Stack.Screen name="StoreAddressScreen" component={StoreAddressScreen} />

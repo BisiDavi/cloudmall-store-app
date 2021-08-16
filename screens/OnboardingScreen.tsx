@@ -1,5 +1,5 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -19,7 +19,7 @@ import { RootStackParamList } from "customTypes";
 
 export default function OnboardingScreen({
   navigation,
-}: StackScreenProps<RootStackParamList, "OnboardingScreen">) {
+}: StackScreenProps<RootStackParamList, "SignupScreen">) {
   const [showApp, setShowApp] = useState(false);
 
   function onDone() {
@@ -28,6 +28,11 @@ export default function OnboardingScreen({
   function onSkip() {
     return setShowApp(true);
   }
+
+  useEffect(() => {
+    showApp && showSignupScreen();
+  }, [showApp]);
+
   const slides: slidesInteface[] = [
     {
       key: 1,
@@ -89,11 +94,11 @@ export default function OnboardingScreen({
     <Button buttonStyle={styles.button} onPress={onDone} title="Done" />
   );
 
-  return showApp ? (
-    <SafeAreaView>
-      <SignupScreen navigation={navigation} />
-    </SafeAreaView>
-  ) : (
+  function showSignupScreen() {
+    navigation.push("SignupScreen");
+  }
+
+  return (
     <AppIntroSlider
       data={slides}
       keyExtractor={(item) => item.key.toString()}

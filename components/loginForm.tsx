@@ -9,11 +9,11 @@ import Spinner from "react-native-loading-spinner-overlay";
 import { RootStackParamList } from "customTypes";
 import InputField from "@components/InputField";
 import axiosInstance from "network/axiosInstance";
-import registrationSchema from "./signupSchema";
+import loginSchema from "./loginSchema";
 
-export default function SignupForm({
+export default function LoginForm({
   navigation,
-}: StackScreenProps<RootStackParamList, "SignupScreen">) {
+}: StackScreenProps<RootStackParamList, "LoginScreen">) {
   const [loading, setLoading] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
 
@@ -29,13 +29,13 @@ export default function SignupForm({
 
   return (
     <Formik
-      validationSchema={registrationSchema}
-      initialValues={{ email: "", password: "", confirmPassword: "" }}
+      validationSchema={loginSchema}
+      initialValues={{ email: "", password: "" }}
       onSubmit={(values) => {
         setLoading(true);
         const { email, password } = values;
         axiosInstance
-          .post("/register", { email, password })
+          .post("/login", { email, password })
           .then((response) => {
             setLoading(false);
             showToast(response?.data.message);
@@ -86,41 +86,20 @@ export default function SignupForm({
               />
             }
           />
-          <InputField
-            label="Re-enter Password"
-            textContentType="password"
-            value={values.confirmPassword}
-            onChangeText={handleChange("confirmPassword")}
-            onBlur={handleBlur("confirmPassword")}
-            secureTextEntry={hidePassword}
-            errorMessage={
-              errors.confirmPassword &&
-              touched.confirmPassword &&
-              errors.confirmPassword
-            }
-            rightIcon={
-              <Feather
-                name={passwordIcon}
-                onPress={passwordVisbilityHandler}
-                color="black"
-                size={24}
-              />
-            }
-          />
           <Button
             type="solid"
             onPress={handleSubmit}
+            title="Login"
             disabled={!isValid}
-            title="Create Account"
             buttonStyle={styles.createAccount}
           />
           <View style={styles.withAccount}>
-            <Text>Already have an account? </Text>
+            <Text>Don't have an account? </Text>
             <Button
-              onPress={() => navigation.navigate("LoginScreen")}
+              onPress={() => navigation.navigate("SignupScreen")}
               buttonStyle={styles.login}
               type="clear"
-              title="Login in"
+              title="Sign up"
             />
           </View>
         </View>
@@ -130,6 +109,13 @@ export default function SignupForm({
 }
 
 const styles = StyleSheet.create({
+  container: {
+    height: "100%",
+    width: "100%",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
   form: {
     justifyContent: "space-around",
     marginTop: 20,
@@ -137,12 +123,6 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     alignItems: "center",
-  },
-
-  label: {
-    color: "black",
-    marginTop: 5,
-    marginBottom: 5,
   },
   text: {
     fontSize: 18,
@@ -157,9 +137,12 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
   createAccount: {
+    alignItems: "center",
     marginTop: 20,
-    marginBottom: 10,
+    display: "flex",
+    marginBottom: 20,
     width: 250,
+    justifyContent: "center",
   },
   withAccount: {
     alignItems: "center",

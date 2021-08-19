@@ -1,7 +1,6 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import React, { useState, useEffect } from "react";
 import {
-  SafeAreaView,
   StyleSheet,
   View,
   Text,
@@ -10,7 +9,6 @@ import {
 } from "react-native";
 import { Button, Image } from "react-native-elements";
 import AppIntroSlider from "react-native-app-intro-slider";
-import SignupScreen from "./SignupScreen";
 
 import pizzaImage from "@assets/images/pizza.png";
 import shopperImage from "@assets/images/shopper.jpg";

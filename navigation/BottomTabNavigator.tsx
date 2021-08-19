@@ -33,7 +33,7 @@ function TabOneNavigator() {
       screenOptions={{ headerShown: true, headerTitleAlign: "center" }}
     >
       <TabOneStack.Screen
-        name="Orders"
+        name="OrderScreen"
         options={{
           headerTitleStyle: {
             fontSize: 16,
@@ -56,7 +56,15 @@ const TabTwoStack = createStackNavigator();
 function TabTwoNavigator() {
   return (
     <TabTwoStack.Navigator screenOptions={{ headerShown: false }}>
-      <TabTwoStack.Screen name="DashboardScreen" component={DashboardScreen} />
+      <TabTwoStack.Screen
+        name="DashboardScreen"
+        options={{
+          headerShown: true,
+          headerTitleAlign: "center",
+          title: "Dashboard",
+        }}
+        component={DashboardScreen}
+      />
     </TabTwoStack.Navigator>
   );
 }

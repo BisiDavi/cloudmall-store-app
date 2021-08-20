@@ -38,6 +38,7 @@ function TabOneNavigator() {
           headerTitleStyle: {
             fontSize: 16,
           },
+          title: "Orders",
         }}
         component={OrdersScreen}
       />
@@ -74,7 +75,15 @@ const TabThreeStack = createStackNavigator();
 function TabThreeNavigator() {
   return (
     <TabThreeStack.Navigator screenOptions={{ headerShown: false }}>
-      <TabThreeStack.Screen name="MystoreScreen" component={MyStoreScreen} />
+      <TabThreeStack.Screen
+        name="MystoreScreen"
+        options={{
+          headerShown: true,
+          headerTitleAlign: "center",
+          title: "My Store",
+        }}
+        component={MyStoreScreen}
+      />
     </TabThreeStack.Navigator>
   );
 }
@@ -83,7 +92,15 @@ const TabFourStack = createStackNavigator();
 function TabFourNavigator() {
   return (
     <TabFourStack.Navigator screenOptions={{ headerShown: false }}>
-      <TabFourStack.Screen name="ProfileScreen" component={ProfileScreen} />
+      <TabFourStack.Screen
+        name="ProfileScreen"
+        options={{
+          headerShown: true,
+          headerTitleAlign: "center",
+          title: "Profile",
+        }}
+        component={ProfileScreen}
+      />
     </TabFourStack.Navigator>
   );
 }

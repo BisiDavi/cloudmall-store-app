@@ -3642,6 +3642,11 @@ expo-modules-core@~0.2.0:
   resolved "https://registry.yarnpkg.com/expo-modules-core/-/expo-modules-core-0.2.0.tgz#68e5b6e53d0afbf8d131578831aed657589a2d42"
   integrity sha512-inpfZ5X/BaTtbj2wG9PA9AC0MN8VyId6KSRlVuEg7+ziurHBy/kKDFxpOddUokhwiln2uhoYPSStJjR/tKypdw==
 
+expo-secure-store@^10.2.0:
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/expo-secure-store/-/expo-secure-store-10.2.0.tgz#561dfea4d6b4d05a738643d80a15403ebe0e515d"
+  integrity sha512-yNahMY3qzEotAYdsE02ps4yGfDay2twasHfsI/7gJB9SrwXYFx5bJuCDk8uTo8jsm6psvDjO+9VMM2DSPHik2A==
+
 expo-splash-screen@^0.11.2, expo-splash-screen@~0.11.2:
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-0.11.2.tgz#70c69052981cc982d12030f2a1df5b35af7ee752"
@@ -5257,6 +5262,11 @@ jsonify@~0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
   integrity sha1-LHS27kHZPKUbe1qu6PUDYx0lKnM=
+
+jwt-decode@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-3.1.2.tgz#3fb319f3675a2df0c2895c8f5e9fa4b67b04ed59"
+  integrity sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==
 
 kind-of@^1.1.0:
   version "1.1.0"

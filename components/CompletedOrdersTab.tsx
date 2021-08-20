@@ -1,34 +1,41 @@
 import React from "react";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList, SafeAreaView } from "react-native";
 import { ListItem, Avatar, Image } from "react-native-elements";
 import CompletedOrdersList from "@json/completed-order.json";
 import clipboard from "@assets/clipboard.png";
 
+const completedOrders = ({ completedOrder }: any) => (
+  <ListItem key={completedOrder.id} style={styles.listItem} bottomDivider>
+    <Avatar avatarStyle={styles.avatar} rounded />
+    <ListItem.Content>
+      <View style={styles.row}>
+        <Text>{completedOrder.name}</Text>
+        <Text>{completedOrder.code}</Text>
+      </View>
+      <View style={styles.row}>
+        <Text>{completedOrder.time}</Text>
+        <Image style={styles.clipboard} source={clipboard} />
+        <Text style={styles.status}>{completedOrder.status}</Text>
+      </View>
+    </ListItem.Content>
+  </ListItem>
+);
+
 export default function CompletedOrdersTab() {
   return (
-    <ScrollView style={styles.scrollView}>
-      {CompletedOrdersList.map((CompletedOrder) => (
-        <ListItem key={CompletedOrder.id} style={styles.listItem} bottomDivider>
-          <Avatar avatarStyle={styles.avatar} rounded />
-          <ListItem.Content>
-            <View style={styles.row}>
-              <Text>{CompletedOrder.name}</Text>
-              <Text>{CompletedOrder.code}</Text>
-            </View>
-            <View style={styles.row}>
-              <Text>{CompletedOrder.time}</Text>
-              <Image style={styles.clipboard} source={clipboard} />
-              <Text style={styles.status}>{CompletedOrder.status}</Text>
-            </View>
-          </ListItem.Content>
-        </ListItem>
-      ))}
-    </ScrollView>
+    <SafeAreaView>
+      <FlatList
+        style={styles.flatList}
+        data={CompletedOrdersList}
+        renderItem={completedOrders}
+        keyExtractor={(completedOrder) => completedOrder.id.toString()}
+      ></FlatList>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  scrollView: {
+  flatList: {
     flex: 1,
   },
   listItem: {

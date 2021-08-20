@@ -1,19 +1,31 @@
-import { StackScreenProps } from "@react-navigation/stack";
 import React, { useState } from "react";
+import { RouteProp } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { Feather } from "@expo/vector-icons";
 import { Formik } from "formik";
 import { StyleSheet, View, Text, ToastAndroid } from "react-native";
 import { Button } from "react-native-elements";
 import Spinner from "react-native-loading-spinner-overlay";
 
-import { RootStackParamList } from "customTypes";
+import { RootStackParamList } from "../customTypes";
 import InputField from "@components/InputField";
 import axiosInstance from "network/axiosInstance";
 import loginSchema from "./loginSchema";
+import { saveAuthtoken } from "@utils/.";
 
-export default function LoginForm({
-  navigation,
-}: StackScreenProps<RootStackParamList, "LoginScreen">) {
+type LoginScreenNavigationProps = StackNavigationProp<
+  RootStackParamList,
+  "LoginScreen"
+>;
+
+type LoginScreenRouteProps = RouteProp<RootStackParamList, "LoginScreen">;
+
+type loginFormProps = {
+  route?: LoginScreenRouteProps;
+  navigation: LoginScreenNavigationProps;
+};
+
+export default function LoginForm({ navigation }: loginFormProps) {
   const [loading, setLoading] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
 
@@ -38,7 +50,9 @@ export default function LoginForm({
           .post("/login", { email, password })
           .then((response) => {
             setLoading(false);
+            console.log("response", response.data.token);
             showToast(response?.data.message);
+            saveAuthtoken(response.data.token);
             navigation.navigate("StoreDetailsScreenOne");
           })
           .catch((error) => {

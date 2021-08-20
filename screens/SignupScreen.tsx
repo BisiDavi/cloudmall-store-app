@@ -1,5 +1,5 @@
-import { StackScreenProps } from "@react-navigation/stack";
 import React from "react";
+import { StackNavigationProp } from "@react-navigation/stack";
 import {
   StyleSheet,
   KeyboardAvoidingView,
@@ -12,9 +12,16 @@ import {
 import { RootStackParamList } from "customTypes";
 import SignupForm from "@components/signupForm";
 
-export default function SignupScreen({
-  navigation,
-}: StackScreenProps<RootStackParamList, "SignupScreen">) {
+type SignupScreenNavigationProps = StackNavigationProp<
+  RootStackParamList,
+  "SignupScreen"
+>;
+
+type signupScreenProps = {
+  navigation: SignupScreenNavigationProps;
+};
+
+export default function SignupScreen({ navigation }: signupScreenProps) {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}

@@ -10,9 +10,9 @@ import {
 import { Button, Image } from "react-native-elements";
 import AppIntroSlider from "react-native-app-intro-slider";
 
-import pizzaImage from "@assets/images/pizza.png";
-import shopperImage from "@assets/images/shopper.jpg";
-import trackSalesImage from "@assets/images/trackSales.png";
+import pizzaImage from "@assets/pizza.png";
+import shopperImage from "@assets/shopper.jpg";
+import trackSalesImage from "@assets/trackSales.png";
 import { RootStackParamList } from "customTypes";
 
 export default function OnboardingScreen({

@@ -8,7 +8,9 @@ export default {
         screens: {
           Orders: {
             screens: {
-              OrdersScreen: "*",
+              OrdersScreen: {
+                path: "orders",
+              },
             },
           },
           Dashboard: {

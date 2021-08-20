@@ -19,9 +19,25 @@
       "@hooks/*": ["hooks/*"],
       "@assets/*": ["assets/*"],
       "@json/*": ["json/*"],
-      "@customTypes/*": ["customTypes/*"]
+      "@customTypes/*": ["customTypes/*"],
+      "@utils/*": ["utils/*"]
     }
   },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.js",
+    "**/*.tsx",
+    "**/*.jsx",
+    "**/**/*.ts",
+    "**/**/*.js",
+    "**/**/*.tsx",
+    "**/**/*.jsx",
+    "**/**/**/*.ts",
+    "**/**/**/*.tsx",
+    "**/**/**/*.js",
+    "**/**/**/*.jsx"
+  ],
   "exclude": [
     "node_modules",
     "babel.config.js",

@@ -1,20 +1,30 @@
-import { StackScreenProps } from "@react-navigation/stack";
+import { RouteProp } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import * as React from "react";
 import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
   View,
-  Text,
   ScrollView,
 } from "react-native";
 
 import { RootStackParamList } from "customTypes";
 import LoginForm from "@components/loginForm";
 
-export default function LoginScreen({
-  navigation,
-}: StackScreenProps<RootStackParamList, "LoginScreen">) {
+type LoginScreenNavigationProps = StackNavigationProp<
+  RootStackParamList,
+  "LoginScreen"
+>;
+
+type LoginScreenRouteProps = RouteProp<RootStackParamList, "LoginScreen">;
+
+type Props = {
+  route: LoginScreenRouteProps;
+  navigation: LoginScreenNavigationProps;
+};
+
+export default function LoginScreen({ navigation }: Props) {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}

@@ -6,7 +6,7 @@ import InputField from "@components/InputField";
 
 import { RootStackParamList } from "@customTypes/.";
 import RadioField from "@components/RadioField";
-import infoIcon from "@assets/images/infoIcon.png";
+import infoIcon from "@assets/infoIcon.png";
 
 const radioField = [{ label: "Instore" }, { label: "Pickup" }];
 

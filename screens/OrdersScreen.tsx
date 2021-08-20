@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, SafeAreaView, Text } from "react-native";
 import { Tab, TabView } from "react-native-elements";
 import NewOrdersTab from "@components/NewOrdersTab";
 import CompletedOrdersTab from "@components/CompletedOrdersTab";
@@ -7,7 +7,7 @@ import CompletedOrdersTab from "@components/CompletedOrdersTab";
 export default function OrdersScreen() {
   const [index, setIndex] = useState(0);
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Tab
         indicatorStyle={{ backgroundColor: "red" }}
         value={index}
@@ -25,14 +25,13 @@ export default function OrdersScreen() {
           <CompletedOrdersTab />
         </TabView.Item>
       </TabView>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
     flexDirection: "column",
   },
   TabOneView: {

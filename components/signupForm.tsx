@@ -1,5 +1,6 @@
-import { StackScreenProps } from "@react-navigation/stack";
+import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useState } from "react";
+import { RouteProp } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import { Formik } from "formik";
 import { StyleSheet, View, Text, ToastAndroid } from "react-native";
@@ -11,9 +12,19 @@ import InputField from "@components/InputField";
 import axiosInstance from "network/axiosInstance";
 import registrationSchema from "./signupSchema";
 
-export default function SignupForm({
-  navigation,
-}: StackScreenProps<RootStackParamList, "SignupScreen">) {
+type SignupFormNavigationProps = StackNavigationProp<
+  RootStackParamList,
+  "SignupScreen"
+>;
+
+type SignupFormRouteProps = RouteProp<RootStackParamList, "SignupScreen">;
+
+type signupFormProps = {
+  route?: SignupFormRouteProps;
+  navigation: SignupFormNavigationProps;
+};
+
+export default function SignupForm({ navigation }: signupFormProps) {
   const [loading, setLoading] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
 

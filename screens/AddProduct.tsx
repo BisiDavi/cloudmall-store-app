@@ -2,7 +2,7 @@ import * as React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Switch, Image, ListItem } from "react-native-elements";
 import storeContent from "@json/my-store-content.json";
-import pizza from "@assets/pizza.png";
+import pizza from "../assets/pizza.png";
 
 export default function MyStoreScreen() {
   return (

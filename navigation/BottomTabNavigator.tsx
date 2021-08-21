@@ -8,6 +8,7 @@ import MyStoreScreen from "../screens/MyStore";
 import OrdersScreen from "../screens/OrdersScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import { BottomTabParamList } from "../customTypes";
+import AddProductScreen from "@screens/AddProductScreen";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -19,7 +20,7 @@ export default function BottomTabNavigator() {
     >
       <BottomTab.Screen name="Orders" component={TabOneNavigator} />
       <BottomTab.Screen name="Dashboard" component={TabTwoNavigator} />
-      <BottomTab.Screen name="Mystore" component={TabThreeNavigator} />
+      <BottomTab.Screen name="Mystore" component={TabThreeNavigator} />      
       <BottomTab.Screen name="Profile" component={TabFourNavigator} />
     </BottomTab.Navigator>
   );
@@ -41,6 +42,16 @@ function TabOneNavigator() {
           title: "Orders",
         }}
         component={OrdersScreen}
+      />
+      <TabOneStack.Screen
+        name="AddProductScreen"
+        options={{
+          headerTitleStyle: {
+            fontSize: 16,
+          },
+          title: "Orders",
+        }}
+        component={AddProductScreen}
       />
     </TabOneStack.Navigator>
   );

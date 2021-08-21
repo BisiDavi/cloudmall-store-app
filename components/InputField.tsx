@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { StyleSheet, KeyboardTypeOptions } from "react-native";
 import { Input } from "react-native-elements";
 
@@ -16,9 +16,9 @@ export default function InputField({
     <Input
       {...props}
       label={label}
-      inputContainerStyle={[inputStyles.inputContainer, styles?.container]}
-      labelStyle={[inputStyles.label, styles?.label]}
-      inputStyle={[inputStyles.input, styles?.input]}
+      inputContainerStyle={[inputStyles.inputContainer, props.styleContainer]}
+      labelStyle={[inputStyles.label, props.styleLabel]}
+      inputStyle={[inputStyles.input, props.styleInput]}
       keyboardType={keyboardType}
       value={value}
       onChangeText={onChangeText}
@@ -54,15 +54,18 @@ const inputStyles = StyleSheet.create({
 });
 
 interface InputFieldProps {
-  onChangeText?: (e?: any) => void;
-  value?: string;
+  onChangeText?: (e: string | ChangeEvent<any>) => void;
+  value?: any;
   label: string;
   keyboardType?: KeyboardTypeOptions;
   secureTextEntry?: boolean;
   styles?: any;
   rightIcon?: any;
   errorMessage?: any;
-  onBlur?: (e?: any) => void;
+  styleContainer?: any;
+  styleLabel?: any;
+  styleInput?: any;
+  onBlur?: (e: string | ChangeEvent<any>) => void;
   textContentType?:
     | "password"
     | "emailAddress"

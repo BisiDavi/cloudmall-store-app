@@ -8,15 +8,11 @@ import { Formik } from "formik";
 import addProductSchema from "@components/addProductSchema";
 
 export default function AddProductScreen() {
+  const productContent: productType[] = addproductContent;
+  const productValues = ["AddNewProduct", "EditAProduct", "ViewStore"];
   return (
     <View style={styles.container}>
-      <Switch color="orange" />
-      <Image
-        style={styles.productImage}
-        source={pizza}
-        height={300}
-        width={300}
-      />
+      <Image style={styles.productImage} source={pizza} />
       <Formik
         validationSchema={addProductSchema}
         initialValues={{ productName: "", productAmount: "", productSize: "" }}
@@ -34,12 +30,15 @@ export default function AddProductScreen() {
           touched,
           isValid,
         }) => (
-          <form>
-            {addproductContent.map((item: any, index) => (
+          <View>
+            {productContent.map((item, index) => (
               <InputField
-                onChangeText={() => handleChange(item.name)}
-                onBlur={() => handleBlur(item.name)}
+                onChangeText={handleChange(item.name)}
+                onBlur={handleBlur(item.name)}
                 value={values[item.name]}
+                styleInput={styles.input}
+                styleContainer={styles.inputContainer}
+                styleLabel={styles.inputLabel}
                 errorMessage={errors[item.name] && touched[item.name]}
                 key={index}
                 label={item.label}
@@ -47,11 +46,12 @@ export default function AddProductScreen() {
             ))}
             <Button
               disabled={!isValid}
-              title="Add Produt"
+              title="Add Product"
               type="solid"
               onPress={handleSubmit}
+              buttonStyle={styles.button}
             />
-          </form>
+          </View>
         )}
       </Formik>
     </View>
@@ -62,19 +62,34 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    padding: 20,
   },
   productImage: {
-    height: 200,
+    height: 150,
     width: 200,
+    marginBottom:20
+  },
+  button: {
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+    marginLeft: 30,
+    marginRight: 30,
+  },
+  inputLabel: {
+    padding: 0,
+    marginTop: -5,
+  },
+  inputContainer: {
+    padding: 0,
+    height: 35,
+    marginBottom: 0,
+  },
+  input: {
+    padding: 0,
   },
 });
-
-type valuesType = {
-  productName: string;
-  productAmount: string;
-  productSize: string;
-};
 
 type productType = {
   label: string;

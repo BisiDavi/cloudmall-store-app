@@ -35,27 +35,36 @@ export default function RootNavigator() {
             <Stack.Screen name="BottomNav" component={BottomTabNavigator} />
             <Stack.Screen
               name="StoreDetailsScreenOne"
-              options={{ headerShown: true, title: "Store Details" }}
+              options={{
+                headerShown: true,
+                headerTitleAlign: "center",
+                title: "Store Details",
+              }}
               component={StoreDetailsScreenOne}
             />
             <Stack.Screen
               name="StoreDetailsScreenTwo"
-              options={{ headerShown: true, title: "Store Details" }}
+              options={{
+                headerShown: true,
+                headerTitleAlign: "center",
+                title: "Store Details",
+              }}
               component={StoreDetailsScreenTwo}
             />
             <Stack.Screen
               name="StoreDetailsScreenThree"
-              options={{ headerShown: true, title: "Store Details" }}
+              options={{
+                headerShown: true,
+                headerTitleAlign: "center",
+                title: "Store Details",
+              }}
               component={StoreDetailsScreenThree}
             />
             <Stack.Screen
               name="StoreAddressScreen"
               component={StoreAddressScreen}
             />
-            <Stack.Screen
-              name="StoreAddressScreen"
-              component={AddProductScreen}
-            />
+           
           </>
         ) : (
           <>

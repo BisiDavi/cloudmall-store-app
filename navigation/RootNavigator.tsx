@@ -29,6 +29,7 @@ export default function RootNavigator() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {!isSignedIn ? (
           <>
+            <Stack.Screen name="BottomNav" component={BottomTabNavigator} />
             <Stack.Screen
               name="StoreDetailsScreenOne"
               options={{ headerShown: true, title: "Store Details" }}
@@ -48,7 +49,6 @@ export default function RootNavigator() {
               name="StoreAddressScreen"
               component={StoreAddressScreen}
             />
-            <Stack.Screen name="BottomNav" component={BottomTabNavigator} />
           </>
         ) : (
           <>

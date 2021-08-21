@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Text, StyleSheet, FlatList, SafeAreaView } from "react-native";
+import React, { useCallback } from "react";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import { ListItem, Avatar, Image } from "react-native-elements";
 import CompletedOrdersList from "@json/completed-order.json";
 import clipboard from "@assets/clipboard.png";
@@ -16,43 +16,45 @@ type completedOrders = {
   item: ordersList;
 };
 
-const completedOrders = ({ item }: completedOrders) => {
-  console.log("item", item);
-  return (
-    <ListItem key={item?.id} style={styles.listItem} bottomDivider>
-      <Avatar avatarStyle={styles.avatar} rounded />
-      <ListItem.Content>
-        <View style={styles.row}>
-          <Text>{item?.name}</Text>
-          <Text>{item?.code}</Text>
-        </View>
-        <View style={styles.row}>
-          <Text>{item?.time}</Text>
-          <Image style={styles.clipboard} source={clipboard} />
-          <Text style={styles.status}>{item?.status}</Text>
-        </View>
-      </ListItem.Content>
-    </ListItem>
-  );
-};
-
 export default function CompletedOrdersTab() {
+  const completedOrders = useCallback(function renderItem({
+    item,
+  }: completedOrders) {
+    console.log("item", item);
+    return (
+      <ListItem key={item?.id} style={styles.listItem} bottomDivider>
+        <Avatar avatarStyle={styles.avatar} rounded />
+        <ListItem.Content>
+          <View style={styles.row}>
+            <Text>{item?.name}</Text>
+            <Text>{item?.code}</Text>
+          </View>
+          <View style={styles.row}>
+            <Text>{item?.time}</Text>
+            <Image style={styles.clipboard} source={clipboard} />
+            <Text style={styles.status}>{item?.status}</Text>
+          </View>
+        </ListItem.Content>
+      </ListItem>
+    );
+  },
+  []);
+
   return (
-    <SafeAreaView style={styles.container}>
+    <View>
       <FlatList
         data={CompletedOrdersList}
         renderItem={completedOrders}
-        keyExtractor={(item) => item.id.toString()}
-      ></FlatList>
-    </SafeAreaView>
+        initialNumToRender={5}
+        keyExtractor={function (item) {
+          return item.id.toString();
+        }}
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 0,
-  },
   listItem: {
     alignItems: "center",
     backgroundColor: "red",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useCallback } from "react";
 import { View, Text, FlatList, SafeAreaView, StyleSheet } from "react-native";
 import { ListItem, Avatar, Image } from "react-native-elements";
 import NewOrdersList from "@json/new-order.json";
@@ -17,39 +17,41 @@ type newOrder = {
   item: ordersList;
 };
 
-const renderItem = ({ item }: newOrder) => (
-  <ListItem key={item?.id} style={styles.listItem} bottomDivider>
-    <Avatar avatarStyle={styles.avatar} rounded />
-    <ListItem.Content>
-      <View style={styles.row}>
-        <Text>{item?.name}</Text>
-        <Text>{item?.code}</Text>
-      </View>
-      <View style={styles.row}>
-        <Text>{item?.time}</Text>
-        <Image style={styles.clipboard} source={clipboard} />
-        <Text style={styles.status}>{item?.status}</Text>
-      </View>
-    </ListItem.Content>
-  </ListItem>
-);
-
 export default function NewOrdersTab() {
+  const newOrdersTab = useCallback(function renderItem({ item }: newOrder) {
+    return (
+      <ListItem key={item?.id} style={styles.listItem} bottomDivider>
+        <Avatar avatarStyle={styles.avatar} rounded />
+        <ListItem.Content>
+          <View style={styles.row}>
+            <Text>{item?.name}</Text>
+            <Text>{item?.code}</Text>
+          </View>
+          <View style={styles.row}>
+            <Text>{item?.time}</Text>
+            <Image style={styles.clipboard} source={clipboard} />
+            <Text style={styles.status}>{item?.status}</Text>
+          </View>
+        </ListItem.Content>
+      </ListItem>
+    );
+  }, []);
+
   return (
-    <SafeAreaView style={styles.container}>
+    <View>
       <FlatList
         data={NewOrdersList}
-        renderItem={renderItem}
-        keyExtractor={(newOrder) => newOrder.id.toString()}
-      ></FlatList>
-    </SafeAreaView>
+        renderItem={newOrdersTab}
+        initialNumToRender={5}
+        keyExtractor={function (newOrder) {
+          return newOrder.id.toString();
+        }}
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   listItem: {
     flexDirection: "row",
     alignItems: "center",

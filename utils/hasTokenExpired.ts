@@ -1,8 +1,8 @@
 import jwtDecode from "jwt-decode";
 
-export default function hasTokenExpired(token: string) {
+export default function hasTokenExpired(token: string | null) {
+  if (token === null || token === undefined) return null;
   const decoded: { exp: number; iat: number } = jwtDecode(token);
-  console.log("decoded", decoded);
   const currentDate = new Date();
   let tokenExpired;
   if (decoded.exp * 1000 < currentDate.getTime()) {
@@ -11,5 +11,5 @@ export default function hasTokenExpired(token: string) {
   } else {
     tokenExpired = false;
   }
-  console.log("tokenExpired", tokenExpired);
+  return tokenExpired;
 }

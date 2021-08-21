@@ -1,5 +1,5 @@
 import { StackNavigationProp } from "@react-navigation/stack";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { RouteProp } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import { Formik } from "formik";
@@ -11,6 +11,7 @@ import { RootStackParamList } from "customTypes";
 import InputField from "@components/InputField";
 import axiosInstance from "network/axiosInstance";
 import registrationSchema from "./signupSchema";
+import AuthContext from "../context/AuthContext";
 
 type SignupFormNavigationProps = StackNavigationProp<
   RootStackParamList,
@@ -27,6 +28,8 @@ type signupFormProps = {
 export default function SignupForm({ navigation }: signupFormProps) {
   const [loading, setLoading] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
+
+  const { authContext } = useContext(AuthContext);
 
   function passwordVisbilityHandler() {
     setHidePassword(!hidePassword);
@@ -45,17 +48,18 @@ export default function SignupForm({ navigation }: signupFormProps) {
       onSubmit={(values) => {
         setLoading(true);
         const { email, password } = values;
-        axiosInstance
-          .post("/register", { email, password })
-          .then((response) => {
-            setLoading(false);
-            showToast(response?.data.message);
-            navigation.navigate("StoreDetailsScreenOne");
-          })
-          .catch((error) => {
-            setLoading(false);
-            showToast(error.response.data?.message);
-          });
+        authContext.signUp(email, password);
+        // axiosInstance
+        //   .post("/register", { email, password })
+        //   .then((response) => {
+        //     setLoading(false);
+        //     showToast(response?.data.message);
+        //     navigation.navigate("StoreDetailsScreenOne");
+        //   })
+        //   .catch((error) => {
+        //     setLoading(false);
+        //     showToast(error.response.data?.message);
+        //   });
       }}
     >
       {({

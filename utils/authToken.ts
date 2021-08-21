@@ -1,7 +1,8 @@
 import * as SecureStore from "expo-secure-store";
-import hasTokenExpired from "@utils/hasTokenExpired";
+import hasTokenExpired from "./hasTokenExpired";
 
-export async function saveAuthtoken(token: string) {
+export async function saveAuthtoken(token: any) {
+  if (token === null || undefined) return;
   const checkTokenExpiry = hasTokenExpired(token);
   if (!checkTokenExpiry) {
     await SecureStore.setItemAsync("secure_auth_token", token);
@@ -9,6 +10,11 @@ export async function saveAuthtoken(token: string) {
 }
 
 export async function getAuthtoken() {
-  const authToken = await SecureStore.getItemAsync("secure_auth_token");
-  return authToken;
+  try {
+    const authToken = await SecureStore.getItemAsync("secure_auth_token");
+    return authToken;
+  } catch (e) {
+    console.log("error", e);
+    return null;
+  }
 }

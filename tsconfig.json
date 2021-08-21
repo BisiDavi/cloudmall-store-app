@@ -20,7 +20,8 @@
       "@assets/*": ["assets/*"],
       "@json/*": ["json/*"],
       "@customTypes/*": ["customTypes/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@context/*": ["context/*"]
     }
   },
   "include": [

@@ -12,6 +12,7 @@ export async function saveAuthtoken(token: any) {
 export async function getAuthtoken() {
   try {
     const authToken = await SecureStore.getItemAsync("secure_auth_token");
+    console.log("authToken", authToken);
     return authToken;
   } catch (e) {
     console.log("error", e);

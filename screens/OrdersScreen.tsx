@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, SafeAreaView, Text } from "react-native";
+import { StyleSheet, SafeAreaView, View, Text } from "react-native";
 import { Tab, TabView } from "react-native-elements";
 import NewOrdersTab from "@components/NewOrdersTab";
 import CompletedOrdersTab from "@components/CompletedOrdersTab";
@@ -32,10 +32,10 @@ export default function OrdersScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
   },
   TabOneView: {
     width: "100%",
+    height: 500,
   },
   tabItem: {
     color: "black",
@@ -44,5 +44,6 @@ const styles = StyleSheet.create({
   },
   TabTwoView: {
     width: "100%",
+    height: 500,
   },
 });

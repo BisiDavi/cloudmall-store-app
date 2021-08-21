@@ -4,47 +4,58 @@ import { ListItem, Avatar, Image } from "react-native-elements";
 import CompletedOrdersList from "@json/completed-order.json";
 import clipboard from "@assets/clipboard.png";
 
-const completedOrders = ({ completedOrder }: any) => (
-  <ListItem
-    key={completedOrder.id.toString()}
-    style={styles.listItem}
-    bottomDivider
-  >
-    <Avatar avatarStyle={styles.avatar} rounded />
-    <ListItem.Content>
-      <View style={styles.row}>
-        <Text>{completedOrder.name}</Text>
-        <Text>{completedOrder.code}</Text>
-      </View>
-      <View style={styles.row}>
-        <Text>{completedOrder.time}</Text>
-        <Image style={styles.clipboard} source={clipboard} />
-        <Text style={styles.status}>{completedOrder.status}</Text>
-      </View>
-    </ListItem.Content>
-  </ListItem>
-);
+type ordersList = {
+  id: number;
+  name: string;
+  code: string;
+  time: string;
+  status: string;
+};
+
+type completedOrders = {
+  item: ordersList;
+};
+
+const completedOrders = ({ item }: completedOrders) => {
+  console.log("item", item);
+  return (
+    <ListItem key={item?.id} style={styles.listItem} bottomDivider>
+      <Avatar avatarStyle={styles.avatar} rounded />
+      <ListItem.Content>
+        <View style={styles.row}>
+          <Text>{item?.name}</Text>
+          <Text>{item?.code}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text>{item?.time}</Text>
+          <Image style={styles.clipboard} source={clipboard} />
+          <Text style={styles.status}>{item?.status}</Text>
+        </View>
+      </ListItem.Content>
+    </ListItem>
+  );
+};
 
 export default function CompletedOrdersTab() {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <FlatList
-        style={styles.flatList}
         data={CompletedOrdersList}
         renderItem={completedOrders}
-        keyExtractor={(completedOrder) => completedOrder.id.toString()}
+        keyExtractor={(item) => item.id.toString()}
       ></FlatList>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  flatList: {
+  container: {
     flex: 1,
+    marginTop: 0,
   },
   listItem: {
-    flexDirection: "row",
     alignItems: "center",
+    backgroundColor: "red",
   },
   row: {
     flexDirection: "row",

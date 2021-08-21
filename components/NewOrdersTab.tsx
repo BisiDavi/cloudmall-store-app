@@ -14,21 +14,21 @@ type ordersList = {
 };
 
 type newOrder = {
-  newOrder: ordersList;
+  item: ordersList;
 };
 
-const renderItem = ({ newOrder }: any) => (
-  <ListItem key={newOrder.id} style={styles.listItem} bottomDivider>
+const renderItem = ({ item }: newOrder) => (
+  <ListItem key={item?.id} style={styles.listItem} bottomDivider>
     <Avatar avatarStyle={styles.avatar} rounded />
     <ListItem.Content>
       <View style={styles.row}>
-        <Text>{newOrder.name}</Text>
-        <Text>{newOrder.code}</Text>
+        <Text>{item?.name}</Text>
+        <Text>{item?.code}</Text>
       </View>
       <View style={styles.row}>
-        <Text>{newOrder.time}</Text>
+        <Text>{item?.time}</Text>
         <Image style={styles.clipboard} source={clipboard} />
-        <Text style={styles.status}>{newOrder.status}</Text>
+        <Text style={styles.status}>{item?.status}</Text>
       </View>
     </ListItem.Content>
   </ListItem>
@@ -36,9 +36,8 @@ const renderItem = ({ newOrder }: any) => (
 
 export default function NewOrdersTab() {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <FlatList
-        style={styles.flatList}
         data={NewOrdersList}
         renderItem={renderItem}
         keyExtractor={(newOrder) => newOrder.id.toString()}
@@ -48,7 +47,7 @@ export default function NewOrdersTab() {
 }
 
 const styles = StyleSheet.create({
-  flatList: {
+  container: {
     flex: 1,
   },
   listItem: {

@@ -7,17 +7,18 @@ import { signupUser, loginUser } from "../utils/authRequest";
 export default function AuthProvider({ children }: PropsWithChildren<{}>) {
   const { state, dispatch } = useAuthReducer();
   const [authToken, setAuthToken] = useState<string | null>(null);
-  
+
+  async function storedToken() {
+    const token = await getAuthtoken();
+    setAuthToken(token);
+  }
+
   useEffect(() => {
-    async function storedToken() {
-      const token = await getAuthtoken();
-      setAuthToken(token);
-    }
     storedToken();
     if (authToken !== null) {
       dispatch({ type: "APP_LOAD", token: authToken });
     }
-  }, []);
+  }, [authToken]);
 
   const authContext = useMemo(
     () => ({

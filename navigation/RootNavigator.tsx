@@ -14,10 +14,13 @@ export default function RootNavigator() {
   const { state } = useContext(AuthContext);
   const isSignedIn = hasTokenExpired(state.userToken);
 
-  function displayStackScreen(stackContent: displayStackScreenType) {
+  function displayStackScreen(
+    stackContent: displayStackScreenType,
+    index: number
+  ) {
     return stackContent.title ? (
       <Stack.Screen
-        key={stackContent.name}
+        key={`${stackContent.name}-${index}`}
         name={stackContent.name}
         options={{
           headerShown: true,
@@ -28,6 +31,7 @@ export default function RootNavigator() {
       />
     ) : (
       <Stack.Screen
+        key={`${stackContent.name}-${index}`}
         name={stackContent.name}
         component={displayScreenComponent(stackContent.name)}
       />
@@ -40,14 +44,14 @@ export default function RootNavigator() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {!isSignedIn ? (
           <>
-            {rootNavigationContent.privatePage.map((item: any) =>
-              displayStackScreen(item)
+            {rootNavigationContent.privatePage.map((item: any, index) =>
+              displayStackScreen(item, index)
             )}
           </>
         ) : (
           <>
-            {rootNavigationContent.publicPage.map((item: any) =>
-              displayStackScreen(item)
+            {rootNavigationContent.publicPage.map((item: any, index) =>
+              displayStackScreen(item, index)
             )}
           </>
         )}

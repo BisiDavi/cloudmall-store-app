@@ -1,16 +1,15 @@
 import React from "react";
 import { Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import StoresIcon from "@assets/stores.png";
+import orderIcon from "@assets/orders.png";
+import { BottomTabParamList } from "../customTypes";
 import {
   TabOneNavigator,
   TabTwoNavigator,
   TabThreeNavigator,
   TabFourNavigator,
-} from "@navigation/TabNavigator";
-import StoresIcon from "@assets/stores.png";
-import orderIcon from "@assets/orders.png";
-
-import { BottomTabParamList } from "../customTypes";
+} from "./TabNavigator";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -37,7 +36,7 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="MyStore"
         options={{
-          tabBarIcon: ({ tintColor }:any) => (
+          tabBarIcon: ({ tintColor }: any) => (
             <Image
               source={StoresIcon}
               fadeDuration={0}

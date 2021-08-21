@@ -13,3 +13,7 @@ export { default as OrdersScreen } from "@screens/OrdersScreen";
 export { default as ProfileScreen } from "@screens/ProfileScreen";
 export { default as ViewStoreScreen } from "@screens/ViewStoreScreen";
 export { default as EditProductScreen } from "@screens/EditProductScreen";
+
+export { default as AvailableBalanceScreen } from "@screens/AvailableBalanceScreen";
+export { default as AmountPaidScreen } from "@screens/AmountPaidScreen";
+export { default as StatisticsScreen } from "@screens/StatisticsScreen";

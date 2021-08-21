@@ -29,7 +29,7 @@ export default function DashboardScreen({ navigation }: Props) {
     <View style={styles.container}>
       <View>
         {dashboardContent.card.map((item: dashboardContentType, index) => (
-          <View key={index}>
+          <View key={`${item.category}-${index}`}>
             <Text style={styles.category}>{item.category}</Text>
             <View style={styles.row}>
               {item.content.map((content, index) => (

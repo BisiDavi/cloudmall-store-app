@@ -17,6 +17,9 @@ import {
   StoreDetailsScreenThree,
   StoreAddressScreen,
 } from "@screens/.";
+import AvailableBalanceScreen from "@screens/AvailableBalanceScreen";
+import AmountPaidScreen from "@screens/AmountPaidScreen";
+import StatisticsScreen from "@screens/StatisticsScreen";
 
 export function displayScreenComponent(name: string | RootStackParamList): any {
   switch (name) {
@@ -50,6 +53,12 @@ export function displayScreenComponent(name: string | RootStackParamList): any {
       return StoreDetailsScreenThree;
     case "StoreAddressScreen":
       return StoreAddressScreen;
+    case "AvailableBalanceScreen":
+      return AvailableBalanceScreen;
+    case "AmountPaidScreen":
+      return AmountPaidScreen;
+    case "StatisticsScreen":
+      return StatisticsScreen;
     default:
       return null;
   }

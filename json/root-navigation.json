@@ -9,6 +9,9 @@
     { "name": "StoreDetailsScreenOne", "title": "Store Details" },
     { "name": "StoreDetailsScreenTwo", "title": "Store Details" },
     { "name": "StoreDetailsScreenThree", "title": "Store Details" },
-    { "name": "StoreAddressScreen" }
+    { "name": "StoreAddressScreen" },
+    { "name": "AvailableBalanceScreen", "title": "Available Balance" },
+    { "name": "AmountPaidScreen", "title": "Amount Paid" },
+    { "name": "StatisticsScreen", "title": "Statistics" }
   ]
 }

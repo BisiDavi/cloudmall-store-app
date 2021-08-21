@@ -1,10 +1,24 @@
+import { RouteProp } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import * as React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import DashboardCard from "@components/DashboardCard";
-
 import dashboardContent from "@json/dashboard.json";
+import { BottomTabParamList } from "../customTypes";
 
-export default function DashboardScreen() {
+type DashboardScreenNavigationProps = StackNavigationProp<
+  BottomTabParamList,
+  "Dashboard"
+>;
+
+type DashboardScreenRouteProps = RouteProp<BottomTabParamList, "Dashboard">;
+
+type Props = {
+  route?: DashboardScreenRouteProps;
+  navigation: DashboardScreenNavigationProps;
+};
+
+export default function DashboardScreen({ navigation }: Props) {
   return (
     <View style={styles.container}>
       <View>

@@ -20,7 +20,6 @@ export default function CompletedOrdersTab() {
   const completedOrders = useCallback(function renderItem({
     item,
   }: completedOrders) {
-    console.log("item", item);
     return (
       <ListItem key={item?.id} style={styles.listItem} bottomDivider>
         <Avatar avatarStyle={styles.avatar} rounded />

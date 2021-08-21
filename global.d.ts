@@ -4,3 +4,7 @@ declare module "*.jpg" {
 declare module "*.png" {
   export default "" as ImageSourcePropType;
 }
+
+declare module "*.svg" {
+  export default "" as ImageSourcePropType;
+}

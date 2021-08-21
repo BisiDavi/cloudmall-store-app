@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from "react-native";
 
-import { RootStackParamList } from "customTypes";
+import { RootStackParamList } from "../customTypes";
 import LoginForm from "@components/loginForm";
 
 type LoginScreenNavigationProps = StackNavigationProp<

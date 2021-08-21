@@ -5,13 +5,16 @@ import Spinner from "react-native-loading-spinner-overlay";
 
 import { RootStackParamList } from "../customTypes";
 import BottomTabNavigator from "./BottomTabNavigator";
-import OnboardingScreen from "@screens/OnboardingScreen";
-import SignupScreen from "@screens/SignupScreen";
-import StoreDetailsScreenOne from "@screens/StoreDetailsScreenOne";
-import StoreDetailsScreenTwo from "@screens/StoreDetailsScreenTwo";
-import StoreAddressScreen from "@screens/StoreAddressScreen";
-import LoginScreen from "@screens/LoginScreen";
-import StoreDetailsScreenThree from "@screens/StoreDetailsScreenThree";
+import {
+  OnboardingScreen,
+  SignupScreen,
+  StoreDetailsScreenOne,
+  StoreDetailsScreenTwo,
+  StoreAddressScreen,
+  LoginScreen,
+  AddProductScreen,
+  StoreDetailsScreenThree,
+} from "@screens/.";
 import { hasTokenExpired } from "../utils/.";
 import AuthContext from "../context/AuthContext";
 
@@ -48,6 +51,10 @@ export default function RootNavigator() {
             <Stack.Screen
               name="StoreAddressScreen"
               component={StoreAddressScreen}
+            />
+            <Stack.Screen
+              name="StoreAddressScreen"
+              component={AddProductScreen}
             />
           </>
         ) : (

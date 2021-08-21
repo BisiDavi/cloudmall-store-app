@@ -1,0 +1,5 @@
+[
+  { "label": "Name of Product" , "name":"productName"},
+  { "label": "Amount of Product" , "name":"productAmount"},
+  { "label": "Size or any other info", "name":"productSize" }
+]

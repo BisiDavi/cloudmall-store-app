@@ -4,27 +4,41 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Spinner from "react-native-loading-spinner-overlay";
 
 import { RootStackParamList } from "../customTypes";
-import BottomTabNavigator from "./BottomTabNavigator";
-import {
-  OnboardingScreen,
-  SignupScreen,
-  StoreDetailsScreenOne,
-  StoreDetailsScreenTwo,
-  StoreAddressScreen,
-  LoginScreen,
-  AddProductScreen,
-  StoreDetailsScreenThree,
-} from "@screens/.";
+import rootNavigationContent from "@json/root-navigation.json";
 import { hasTokenExpired } from "../utils/.";
 import AuthContext from "../context/AuthContext";
+import { displayScreenComponent } from "../utils/displayScreenComponents";
 
 const Stack = createStackNavigator<RootStackParamList>();
+
+type displayStackScreenType = {
+  name: keyof RootStackParamList;
+  title?: string;
+};
+
+function displayStackScreen(stackContent: displayStackScreenType) {
+  return stackContent.title ? (
+    <Stack.Screen
+      key={stackContent.name}
+      name={stackContent.name}
+      options={{
+        headerShown: true,
+        headerTitleAlign: "center",
+        title: "Store Details",
+      }}
+      component={displayScreenComponent(stackContent.name)}
+    />
+  ) : (
+    <Stack.Screen
+      name={stackContent.name}
+      component={displayScreenComponent(stackContent.name)}
+    />
+  );
+}
 
 export default function RootNavigator() {
   const { state } = useContext(AuthContext);
   const isSignedIn = hasTokenExpired(state.userToken);
-
-  console.log("state RootNavigator", state);
 
   return (
     <>
@@ -32,64 +46,15 @@ export default function RootNavigator() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {!isSignedIn ? (
           <>
-            <Stack.Screen name="BottomNav" component={BottomTabNavigator} />
-            <Stack.Screen
-              name="StoreDetailsScreenOne"
-              options={{
-                headerShown: true,
-                headerTitleAlign: "center",
-                title: "Store Details",
-              }}
-              component={StoreDetailsScreenOne}
-            />
-            <Stack.Screen
-              name="StoreDetailsScreenTwo"
-              options={{
-                headerShown: true,
-                headerTitleAlign: "center",
-                title: "Store Details",
-              }}
-              component={StoreDetailsScreenTwo}
-            />
-            <Stack.Screen
-              name="StoreDetailsScreenThree"
-              options={{
-                headerShown: true,
-                headerTitleAlign: "center",
-                title: "Store Details",
-              }}
-              component={StoreDetailsScreenThree}
-            />
-            <Stack.Screen
-              name="StoreAddressScreen"
-              component={StoreAddressScreen}
-            />
-           
+            {rootNavigationContent.privatePage.map((item: any) =>
+              displayStackScreen(item)
+            )}
           </>
         ) : (
           <>
-            <Stack.Screen
-              name="OnboardingScreen"
-              component={OnboardingScreen}
-            />
-            <Stack.Screen
-              name="SignupScreen"
-              options={{
-                headerShown: true,
-                headerTitleAlign: "center",
-                title: "Signup",
-              }}
-              component={SignupScreen}
-            />
-            <Stack.Screen
-              name="LoginScreen"
-              options={{
-                headerShown: true,
-                headerTitleAlign: "center",
-                title: "Login",
-              }}
-              component={LoginScreen}
-            />
+            {rootNavigationContent.publicPage.map((item: any) =>
+              displayStackScreen(item)
+            )}
           </>
         )}
       </Stack.Navigator>

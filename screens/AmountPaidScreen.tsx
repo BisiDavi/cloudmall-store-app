@@ -9,11 +9,11 @@ export default function AmountPaidScreen() {
       <ListItem key={item?.id} bottomDivider>
         <ListItem.Content>
           <View style={styles.row}>
-            <Text>{item?.name}</Text>
-            <Text>{item?.price}</Text>
+            <Text>{item.price}</Text>
+            <Text>{item.duration}</Text>
           </View>
           <View style={styles.row}>
-            <Text>{item?.duration}</Text>
+            <Text>{item.method}</Text>
           </View>
         </ListItem.Content>
       </ListItem>
@@ -24,7 +24,7 @@ export default function AmountPaidScreen() {
       <FlatList
         data={amountPaidContent}
         renderItem={amountPaid}
-        initialNumToRender={5}
+        initialNumToRender={7}
         keyExtractor={function (item) {
           return item.id.toString();
         }}
@@ -50,12 +50,12 @@ const styles = StyleSheet.create({
 });
 
 type ItemType = {
-  item: AvailableBalanceType;
+  item: amountPaidType;
 };
 
-type AvailableBalanceType = {
+type amountPaidType = {
   id: number;
-  name: string;
   price: string;
   duration: string;
+  method: string;
 };

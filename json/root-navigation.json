@@ -1,0 +1,14 @@
+{
+  "publicPage": [
+    { "name": "OnboardingScreen" },
+    { "name": "SignupScreen", "title": "Signup" },
+    { "name": "LoginScreen", "title": "Login" }
+  ],
+  "privatePage": [
+    { "name": "BottomNav" },
+    { "name": "StoreDetailsScreenOne", "title": "Store Details" },
+    { "name": "StoreDetailsScreenTwo", "title": "Store Details" },
+    { "name": "StoreDetailsScreenThree", "title": "Store Details" },
+    { "name": "StoreAddressScreen" }
+  ]
+}

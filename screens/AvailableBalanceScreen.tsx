@@ -24,7 +24,7 @@ export default function AvailableBalanceScreen() {
       <FlatList
         data={availableBalanceContent}
         renderItem={availableBalance}
-        initialNumToRender={5}
+        initialNumToRender={7}
         keyExtractor={function (item) {
           return item.id.toString();
         }}

@@ -16,4 +16,6 @@ export type BottomTabParamList = {
   Dashboard: undefined;
   Mystore: undefined;
   Profile: undefined;
+  ViewStoreScreen: undefined;
+  EditProductScreen: undefined;
 };

@@ -1,0 +1,11 @@
+{
+  "tabOne": [
+    { "name": "OrderScreen", "title": "Orders" },
+    { "name": "AddProductScreen", "title": "Add a new Product" },
+    { "name": "ViewStoreScreen", "title": "Ongbona" },
+    { "name": "EditProductScreen", "title": "Edit a new Product" }
+  ],
+  "tabTwo": [{ "name": "DashboardScreen", "title": "Dashboard" }],
+  "tabThree": [{ "name": "MystoreScreen", "title": "My Store" }],
+  "tabFour": [{ "name": "ProfileScreen", "title": "Profile" }]
+}

@@ -1,5 +1,5 @@
 [
   { "title": "Add a new product", "link":"AddProductScreen" },
-  { "title": "Edit a product", "link":"EditAProductScreen" },
+  { "title": "Edit a product", "link":"EditProductScreen" },
   { "title": "View my store", "link":"ViewStoreScreen" }
 ]

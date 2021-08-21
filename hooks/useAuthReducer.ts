@@ -30,6 +30,12 @@ export default function useAuthReducer() {
             ...prevState,
             isLoading: true,
           };
+        case "APP_LOAD":
+          return {
+            ...prevState,
+            isLoading: false,
+            userToken: action.token,
+          };
       }
     },
     {
@@ -42,7 +48,7 @@ export default function useAuthReducer() {
 }
 
 type actionType = {
-  type: "SIGN_IN" | "SIGN_OUT" | "SIGN_UP" | "LOADING";
+  type: "SIGN_IN" | "SIGN_OUT" | "SIGN_UP" | "LOADING" | "APP_LOAD";
   token?: string;
 };
 

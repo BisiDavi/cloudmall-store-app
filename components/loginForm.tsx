@@ -3,15 +3,12 @@ import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { Feather } from "@expo/vector-icons";
 import { Formik } from "formik";
-import { StyleSheet, View, Text, ToastAndroid } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { Button } from "react-native-elements";
-import Spinner from "react-native-loading-spinner-overlay";
 
 import { RootStackParamList } from "../customTypes";
 import InputField from "@components/InputField";
-import axiosInstance from "network/axiosInstance";
 import loginSchema from "./loginSchema";
-import { saveAuthtoken } from "../utils/.";
 import AuthContext from "../context/AuthContext";
 
 type LoginScreenNavigationProps = StackNavigationProp<
@@ -27,42 +24,21 @@ type loginFormProps = {
 };
 
 export default function LoginForm({ navigation }: loginFormProps) {
-  const [loading, setLoading] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
-
   const { authContext } = useContext(AuthContext);
+  const passwordIcon = hidePassword ? "eye-off" : "eye";
 
   function passwordVisbilityHandler() {
     setHidePassword(!hidePassword);
   }
-
-  function showToast(message: string) {
-    ToastAndroid.show(message, ToastAndroid.LONG);
-  }
-
-  const passwordIcon = hidePassword ? "eye-off" : "eye";
 
   return (
     <Formik
       validationSchema={loginSchema}
       initialValues={{ email: "", password: "" }}
       onSubmit={(values) => {
-        // setLoading(true);
         const { email, password } = values;
         authContext.loginIn(email, password);
-        // axiosInstance
-        //   .post("/login", { email, password })
-        //   .then((response) => {
-        //     setLoading(false);
-        //     console.log("response", response.data.token);
-        //     showToast(response?.data.message);
-        //     saveAuthtoken(response.data.token);
-        //     navigation.navigate("StoreDetailsScreenOne");
-        //   })
-        //   .catch((error) => {
-        //     setLoading(false);
-        //     showToast(error.response.data?.message);
-        //   });
       }}
     >
       {({
@@ -75,7 +51,6 @@ export default function LoginForm({ navigation }: loginFormProps) {
         isValid,
       }) => (
         <View style={styles.form}>
-          <Spinner visible={loading} color="blue" />
           <InputField
             label="Email"
             onChangeText={handleChange("email")}

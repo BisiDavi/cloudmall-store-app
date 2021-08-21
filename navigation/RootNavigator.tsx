@@ -21,6 +21,8 @@ export default function RootNavigator() {
   const { state } = useContext(AuthContext);
   const isSignedIn = hasTokenExpired(state.userToken);
 
+  console.log("state RootNavigator", state);
+
   return (
     <>
       <Spinner visible={state.isLoading} color="blue" />

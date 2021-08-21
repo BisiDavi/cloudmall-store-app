@@ -11,7 +11,6 @@ export async function signupUser(
     .then((response) => {
       showToast(response?.data.message);
       token = response.data.token;
-      console.log("token", token);
       return token;
     })
     .catch((error) => {
@@ -34,7 +33,6 @@ export async function loginUser(
       console.log("response", response.data.token);
       showToast(response?.data.message);
       token = response.data.token;
-      console.log("token", token);
       return token;
     })
     .catch((error) => {

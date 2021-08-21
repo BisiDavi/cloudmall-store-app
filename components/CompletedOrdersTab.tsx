@@ -5,7 +5,11 @@ import CompletedOrdersList from "@json/completed-order.json";
 import clipboard from "@assets/clipboard.png";
 
 const completedOrders = ({ completedOrder }: any) => (
-  <ListItem key={completedOrder.id} style={styles.listItem} bottomDivider>
+  <ListItem
+    key={completedOrder.id.toString()}
+    style={styles.listItem}
+    bottomDivider
+  >
     <Avatar avatarStyle={styles.avatar} rounded />
     <ListItem.Content>
       <View style={styles.row}>

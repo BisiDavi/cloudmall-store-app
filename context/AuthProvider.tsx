@@ -1,18 +1,29 @@
-import React, { PropsWithChildren, useMemo } from "react";
+import React, { PropsWithChildren, useState, useMemo, useEffect } from "react";
 import useAuthReducer from "@hooks/useAuthReducer";
 import AuthContext from "./AuthContext";
-import { saveAuthtoken } from "../utils/.";
+import { getAuthtoken, saveAuthtoken } from "../utils/.";
 import { signupUser, loginUser } from "../utils/authRequest";
 
 export default function AuthProvider({ children }: PropsWithChildren<{}>) {
   const { state, dispatch } = useAuthReducer();
+  const [authToken, setAuthToken] = useState<string | null>(null);
+  
+  useEffect(() => {
+    async function storedToken() {
+      const token = await getAuthtoken();
+      setAuthToken(token);
+    }
+    storedToken();
+    if (authToken !== null) {
+      dispatch({ type: "APP_LOAD", token: authToken });
+    }
+  }, []);
 
   const authContext = useMemo(
     () => ({
       loginIn: async (email: string, password: string) => {
         dispatch({ type: "LOADING" });
         const loginInToken = await loginUser(email, password);
-        console.log("loginInToken", loginInToken);
         await saveAuthtoken(loginInToken);
         dispatch({ type: "SIGN_IN", token: loginInToken });
       },
@@ -22,7 +33,6 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
         const signUpToken = await signupUser(email, password);
         await saveAuthtoken(signUpToken);
         dispatch({ type: "SIGN_UP", token: signUpToken });
-        console.log("state", state);
       },
     }),
     []

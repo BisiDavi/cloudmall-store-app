@@ -26,17 +26,12 @@ type signupFormProps = {
 };
 
 export default function SignupForm({ navigation }: signupFormProps) {
-  const [loading, setLoading] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
 
   const { authContext } = useContext(AuthContext);
 
   function passwordVisbilityHandler() {
     setHidePassword(!hidePassword);
-  }
-
-  function showToast(message: string) {
-    ToastAndroid.show(message, ToastAndroid.LONG);
   }
 
   const passwordIcon = hidePassword ? "eye-off" : "eye";
@@ -46,20 +41,8 @@ export default function SignupForm({ navigation }: signupFormProps) {
       validationSchema={registrationSchema}
       initialValues={{ email: "", password: "", confirmPassword: "" }}
       onSubmit={(values) => {
-        setLoading(true);
         const { email, password } = values;
         authContext.signUp(email, password);
-        // axiosInstance
-        //   .post("/register", { email, password })
-        //   .then((response) => {
-        //     setLoading(false);
-        //     showToast(response?.data.message);
-        //     navigation.navigate("StoreDetailsScreenOne");
-        //   })
-        //   .catch((error) => {
-        //     setLoading(false);
-        //     showToast(error.response.data?.message);
-        //   });
       }}
     >
       {({
@@ -72,7 +55,6 @@ export default function SignupForm({ navigation }: signupFormProps) {
         isValid,
       }) => (
         <View style={styles.form}>
-          <Spinner visible={loading} color="blue" />
           <InputField
             label="Email"
             onChangeText={handleChange("email")}

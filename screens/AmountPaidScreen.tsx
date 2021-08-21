@@ -1,28 +1,34 @@
-import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
-import DashboardCard from "@components/DashboardCard";
-
-import dashboardContent from "@json/dashboard.json";
+import React, { useCallback } from "react";
+import { StyleSheet, View, Text, FlatList } from "react-native";
+import { ListItem } from "react-native-elements";
+import amountPaidContent from "@json/amount-paid.json";
 
 export default function AmountPaidScreen() {
+  const amountPaid = useCallback(function renderItem({ item }: ItemType) {
+    return (
+      <ListItem key={item?.id} bottomDivider>
+        <ListItem.Content>
+          <View style={styles.row}>
+            <Text>{item?.name}</Text>
+            <Text>{item?.price}</Text>
+          </View>
+          <View style={styles.row}>
+            <Text>{item?.duration}</Text>
+          </View>
+        </ListItem.Content>
+      </ListItem>
+    );
+  }, []);
   return (
     <View style={styles.container}>
-      <View>
-        {dashboardContent.map((item, index) => (
-          <View key={index}>
-            <Text style={styles.category}>{item.category}</Text>
-            <View style={styles.row}>
-              {item.content.map((content, index) => (
-                <DashboardCard key={index} content={content} />
-              ))}
-            </View>
-          </View>
-        ))}
-      </View>
-      <View>
-        <Text>Statistics</Text>
-        <Text>Performance: Number of orders vs days.</Text>
-      </View>
+      <FlatList
+        data={amountPaidContent}
+        renderItem={amountPaid}
+        initialNumToRender={5}
+        keyExtractor={function (item) {
+          return item.id.toString();
+        }}
+      />
     </View>
   );
 }
@@ -42,3 +48,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+
+type ItemType = {
+  item: AvailableBalanceType;
+};
+
+type AvailableBalanceType = {
+  id: number;
+  name: string;
+  price: string;
+  duration: string;
+};

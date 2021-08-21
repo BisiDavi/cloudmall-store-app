@@ -18,16 +18,27 @@ type Props = {
   navigation: DashboardScreenNavigationProps;
 };
 
+type dashboardContentType = {
+  category: string;
+  link: string;
+  content: { title: string; amount: string }[];
+};
+
 export default function DashboardScreen({ navigation }: Props) {
   return (
     <View style={styles.container}>
       <View>
-        {dashboardContent.map((item, index) => (
+        {dashboardContent.card.map((item: dashboardContentType, index) => (
           <View key={index}>
             <Text style={styles.category}>{item.category}</Text>
             <View style={styles.row}>
               {item.content.map((content, index) => (
-                <DashboardCard key={index} content={content} />
+                <DashboardCard
+                  key={index}
+                  link={item.link}
+                  navigation={navigation}
+                  content={content}
+                />
               ))}
             </View>
           </View>

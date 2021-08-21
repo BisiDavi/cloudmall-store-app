@@ -1,16 +1,34 @@
-[
-  {
-    "category": "Balance",
-    "content": [
-      { "title": "Available balance", "amount": "100,000 Naira" },
-      { "title": "Amount Paid", "amount": "90,000 Naira" }
-    ]
-  },
-  {
-    "category": "Orders",
-    "content": [
-      { "title": "Number of Orders", "amount": "250" },
-      { "title": "Number of Orders", "amount": "250" }
-    ]
+{
+  "card": [
+    {
+      "category": "Balance",
+      "link": "AvailableBalanceScreen",
+      "content": [
+        {
+          "title": "Available balance",
+          "amount": "100,000 Naira"
+        },
+        {
+          "title": "Amount Paid",
+          "amount": "90,000 Naira"
+        }
+      ]
+    },
+    {
+      "category": "Orders",
+      "link": "AmountPaidScreen",
+      "content": [
+        {
+          "title": "Number of Orders",
+          "amount": "250"
+        },
+        { "title": "Number of Orders", "amount": "250" }
+      ]
+    }
+  ],
+  "chart": {
+    "category": "Statistics",
+    "link": "StatisticsScreen",
+    "text": "Performance: Number of orders vs days."
   }
-]
+}

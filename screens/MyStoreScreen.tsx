@@ -4,15 +4,15 @@ import * as React from "react";
 import { StyleSheet, View, ActivityIndicator } from "react-native";
 import { Switch, Image, ListItem } from "react-native-elements";
 import storeContent from "@json/my-store-content.json";
-import { RootStackParamList } from "../customTypes";
+import { BottomTabParamList } from "../customTypes";
 import pizza from "@assets/pizza.png";
 
 type LoginScreenNavigationProps = StackNavigationProp<
-  RootStackParamList,
+  BottomTabParamList,
   "MyStore"
 >;
 
-type LoginScreenRouteProps = RouteProp<RootStackParamList, "MyStore">;
+type LoginScreenRouteProps = RouteProp<BottomTabParamList, "MyStore">;
 
 type Props = {
   route: LoginScreenRouteProps;

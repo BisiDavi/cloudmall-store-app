@@ -18,7 +18,7 @@ export default function BottomTabNavigator() {
     >
       <BottomTab.Screen name="Orders" component={TabOneNavigator} />
       <BottomTab.Screen name="Dashboard" component={TabTwoNavigator} />
-      <BottomTab.Screen name="Mystore" component={TabThreeNavigator} />
+      <BottomTab.Screen name="MyStore" component={TabThreeNavigator} />
       <BottomTab.Screen name="Profile" component={TabFourNavigator} />
     </BottomTab.Navigator>
   );

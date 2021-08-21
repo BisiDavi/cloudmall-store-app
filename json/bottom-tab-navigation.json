@@ -6,6 +6,6 @@
     { "name": "EditProductScreen", "title": "Edit a new Product" }
   ],
   "tabTwo": [{ "name": "DashboardScreen", "title": "Dashboard" }],
-  "tabThree": [{ "name": "MystoreScreen", "title": "My Store" }],
+  "tabThree": [{ "name": "MyStoreScreen", "title": "My Store" }],
   "tabFour": [{ "name": "ProfileScreen", "title": "Profile" }]
 }

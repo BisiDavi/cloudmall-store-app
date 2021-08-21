@@ -72,7 +72,7 @@ export function TabThreeNavigator() {
 export function TabFourNavigator() {
   return (
     <TabFourStack.Navigator screenOptions={{ headerShown: false }}>
-      {bottomTabContent.tabThree.map((tab, index) => (
+      {bottomTabContent.tabFour.map((tab, index) => (
         <TabFourStack.Screen
           name={tab.name}
           key={index}

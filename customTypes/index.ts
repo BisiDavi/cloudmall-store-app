@@ -7,14 +7,13 @@ export type RootStackParamList = {
   StoreAddressScreen: undefined;
   StoreDetailsScreenThree: undefined;
   LoginScreen?: undefined;
-  MyStore: undefined;
 };
 
 export type BottomTabParamList = {
   AddProductScreen: undefined;
   Orders: undefined;
   Dashboard: undefined;
-  Mystore: undefined;
+  MyStore: undefined;
   Profile: undefined;
   ViewStoreScreen: undefined;
   EditProductScreen: undefined;

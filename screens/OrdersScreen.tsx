@@ -1,31 +1,35 @@
 import React, { useState } from "react";
-import { StyleSheet, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView, View, Text } from "react-native";
 import { Tab, TabView } from "react-native-elements";
 import NewOrdersTab from "@components/NewOrdersTab";
 import CompletedOrdersTab from "@components/CompletedOrdersTab";
+import AppModal from "@components/AppModal";
 
 export default function OrdersScreen() {
   const [index, setIndex] = useState(0);
-  return (
-    <SafeAreaView style={styles.container}>
-      <Tab
-        indicatorStyle={{ backgroundColor: "red" }}
-        value={index}
-        onChange={setIndex}
-      >
-        <Tab.Item titleStyle={styles.tabItem} title="New Orders" />
-        <Tab.Item titleStyle={styles.tabItem} title="Completed Orders" />
-      </Tab>
 
-      <TabView value={index} onChange={setIndex}>
-        <TabView.Item style={styles.TabOneView}>
-          <NewOrdersTab />
-        </TabView.Item>
-        <TabView.Item style={styles.TabTwoView}>
-          <CompletedOrdersTab />
-        </TabView.Item>
-      </TabView>
-    </SafeAreaView>
+  return (
+    <>
+      
+      <SafeAreaView style={styles.container}>
+        <Tab
+          indicatorStyle={{ backgroundColor: "red" }}
+          value={index}
+          onChange={setIndex}
+        >
+          <Tab.Item titleStyle={styles.tabItem} title="New Orders" />
+          <Tab.Item titleStyle={styles.tabItem} title="Completed Orders" />
+        </Tab>
+        <TabView value={index} onChange={setIndex}>
+          <TabView.Item style={styles.TabOneView}>
+            <NewOrdersTab  />
+          </TabView.Item>
+          <TabView.Item style={styles.TabTwoView}>
+            <CompletedOrdersTab />
+          </TabView.Item>
+        </TabView>
+      </SafeAreaView>
+    </>
   );
 }
 

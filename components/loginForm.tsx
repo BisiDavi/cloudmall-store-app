@@ -58,7 +58,7 @@ export default function LoginForm({ navigation }: loginFormProps) {
             value={values.email}
             keyboardType="email-address"
             textContentType="emailAddress"
-            errorMessage={errors.email && touched.email}
+            errorMessage={errors.email && touched.email && errors.email}
           />
           <InputField
             label="Password"
@@ -66,7 +66,9 @@ export default function LoginForm({ navigation }: loginFormProps) {
             onChangeText={handleChange("password")}
             onBlur={handleBlur("password")}
             textContentType="password"
-            errorMessage={errors.password && touched.password}
+            errorMessage={
+              errors.password && touched.password && errors.password
+            }
             secureTextEntry={hidePassword}
             rightIcon={
               <Feather

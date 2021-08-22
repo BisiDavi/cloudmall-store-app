@@ -6,10 +6,7 @@ const axiosInstance = axios.create({
 });
 
 export const setClientToken = (token: any) => {
-  axiosInstance.interceptors.request.use(function (config) {
-    config.headers.Authorization = `Bearer ${token}`;
-    return config;
-  });
+  axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 };
 
 export default axiosInstance;

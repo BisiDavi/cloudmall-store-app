@@ -1,35 +1,126 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React, { useState } from "react";
+import Spinner from "react-native-loading-spinner-overlay";
+import { Formik } from "formik";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Platform,
+  KeyboardAvoidingView,
+  ScrollView,
+  ToastAndroid,
+} from "react-native";
 import { Button } from "react-native-elements";
 
 import { RootStackParamList } from "@customTypes/.";
 import InputField from "@components/InputField";
+import { storeDetailsSchema } from "@components/StoreDetailsSchema";
+import axiosInstance from "../network/axiosInstance";
 
 export default function StoreDetailsScreenOne({
   navigation,
 }: StackScreenProps<RootStackParamList, "StoreDetailsScreenOne">) {
+  const [loading, setLoading] = useState(false);
+
   return (
-    <View style={styles.container}>
-      <InputField label="Name of Store" />
-      <InputField
-        label="Email address of store"
-        textContentType="emailAddress"
-      />
-      <InputField label="Phone number" textContentType="telephoneNumber" />
-      <InputField
-        label="Address"
-        styles={{ input: styles.addressField }}
-        textContentType="fullStreetAddress"
-      />
-      <View style={styles.buttonView}>
-        <Button
-          buttonStyle={styles.buttonStyle}
-          onPress={() => navigation.navigate("StoreAddressScreen")}
-          title="Next"
-        />
-      </View>
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      enabled={true}
+    >
+      <ScrollView>
+        <Spinner visible={loading} color="blue" />
+        <View style={styles.container}>
+          <Formik
+            validationSchema={storeDetailsSchema}
+            initialValues={{
+              name: "",
+              storeEmail: "",
+              phoneNumber: "",
+              address: "",
+            }}
+            onSubmit={async (values) => {
+              setLoading(true);
+              await axiosInstance
+                .post("/store", values)
+                .then((response) => {
+                  console.log("response", response.data);
+                  ToastAndroid.show(response.data, ToastAndroid.LONG);
+                  setLoading(false);
+                  navigation.navigate("StoreAddressScreen");
+                })
+                .catch((error) => {
+                  setLoading(false);
+                  console.error("error", error.response.data);
+                  ToastAndroid.show(error.data.data, ToastAndroid.LONG);
+                });
+            }}
+          >
+            {({
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              values,
+              errors,
+              touched,
+              isValid,
+            }) => (
+              <View>
+                <InputField
+                  label="Name of Store"
+                  onChangeText={handleChange("name")}
+                  onBlur={handleBlur("name")}
+                  value={values.name}
+                  errorMessage={errors.name && touched.name && errors.name}
+                />
+                <InputField
+                  label="Email address of store"
+                  textContentType="emailAddress"
+                  onChangeText={handleChange("storeEmail")}
+                  onBlur={handleBlur("storeEmail")}
+                  value={values.storeEmail}
+                  keyboardType="email-address"
+                  errorMessage={
+                    errors.storeEmail && touched.storeEmail && errors.storeEmail
+                  }
+                />
+                <InputField
+                  label="Phone number"
+                  textContentType="telephoneNumber"
+                  onChangeText={handleChange("phoneNumber")}
+                  onBlur={handleBlur("phoneNumber")}
+                  value={values.phoneNumber}
+                  errorMessage={
+                    errors.phoneNumber &&
+                    touched.phoneNumber &&
+                    errors.phoneNumber
+                  }
+                />
+                <InputField
+                  label="Address"
+                  styles={{ input: styles.addressField }}
+                  textContentType="fullStreetAddress"
+                  onChangeText={handleChange("address")}
+                  onBlur={handleBlur("address")}
+                  value={values.address}
+                  errorMessage={
+                    errors.address && touched.address && errors.address
+                  }
+                />
+                <View style={styles.buttonView}>
+                  <Button
+                    buttonStyle={styles.buttonStyle}
+                    onPress={handleSubmit}
+                    disabled={!isValid}
+                    title="Next"
+                  />
+                </View>
+              </View>
+            )}
+          </Formik>
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -38,7 +129,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 20,
-    paddingTop: 0,
   },
   buttonStyle: {
     width: 250,

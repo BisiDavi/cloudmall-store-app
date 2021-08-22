@@ -10,6 +10,7 @@ export default function InputField({
   secureTextEntry = false,
   styles,
   rightIcon,
+  errorMessage,
   ...props
 }: InputFieldProps) {
   return (
@@ -21,6 +22,7 @@ export default function InputField({
       inputStyle={[inputStyles.input, props.styleInput]}
       keyboardType={keyboardType}
       value={value}
+      errorMessage={errorMessage}
       onChangeText={onChangeText}
       secureTextEntry={secureTextEntry}
       rightIcon={rightIcon}

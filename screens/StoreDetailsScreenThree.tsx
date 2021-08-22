@@ -38,7 +38,7 @@ export default function StoreDetailsScreenThree({
     if (!result.cancelled) {
       console.log("result", result);
       setImage(result.uri);
-      axiosInstance.post("/store/", { storeImage: image?.uri });
+      // axiosInstance.post("/store/", { storeImage: image?.uri });
     }
     setLoading(false);
   };

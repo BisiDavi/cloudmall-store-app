@@ -21,7 +21,8 @@
       "@json/*": ["json/*"],
       "@customTypes/*": ["customTypes/*"],
       "@utils/*": ["utils/*"],
-      "@context/*": ["context/*"]
+      "@context/*": ["context/*"],
+      "@network/*": ["network/*"]
     }
   },
   "include": [

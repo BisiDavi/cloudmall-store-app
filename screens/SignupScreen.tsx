@@ -3,10 +3,9 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import {
   StyleSheet,
   KeyboardAvoidingView,
+  ScrollView,
   Platform,
   View,
-  Text,
-  ScrollView,
 } from "react-native";
 
 import { RootStackParamList } from "customTypes";

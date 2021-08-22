@@ -5,8 +5,8 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
-  View,
   ScrollView,
+  View,
 } from "react-native";
 
 import { RootStackParamList } from "../customTypes";

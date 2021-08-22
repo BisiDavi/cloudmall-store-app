@@ -28,7 +28,7 @@ export default function StoreDetailsScreenOne({
   const [storeId, setStoreId] = useState(null);
   const dispatch = useDispatch();
 
-  useStoreSetupNavigation(navigation);
+  const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
 
   console.log("storeId", storeId);
 
@@ -58,7 +58,7 @@ export default function StoreDetailsScreenOne({
                   if (response.status === 200) {
                     setStoreId(data?._id);
                     showToast(`${data.name} stores created`);
-                    dispatch(SetupStoreScreenAction(1, false));
+                    onBoardingNextScreen(1, false);
                     navigation.navigate("StoreAddressScreen");
                   } else {
                     showToast(data);

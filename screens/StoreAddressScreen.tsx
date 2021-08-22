@@ -1,6 +1,8 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import * as React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
+import MapView, { Marker } from "react-native-maps";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { Button } from "react-native-elements";
 import InputField from "@components/InputField";
 
@@ -9,11 +11,37 @@ import { RootStackParamList } from "@customTypes/.";
 export default function StoreAddressScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, "StoreAddressScreen">) {
+  const [cordinate, setCoordinate] = useState({
+    latitude: 37.78825,
+    longitude: -122.4324,
+  });
+  function googlePlaceAutocomplete(data: any, details: any) {
+    console.log("data", data);
+    console.log("details", details);
+  }
   return (
     <View style={styles.container}>
-      <View style={styles.mapView}></View>
+      <MapView
+        style={styles.mapView}
+        initialRegion={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+      >
+        <Marker draggable coordinate={cordinate} />
+      </MapView>
       <View style={styles.inputView}>
-        <InputField label="Phone number" textContentType="telephoneNumber" />
+        <GooglePlacesAutocomplete
+          placeholder="Choose your location on the map"
+          onPress={googlePlaceAutocomplete}
+          query={{
+            language: "en",
+            key:""
+          }}
+        />
+        {/* <InputField label="Choose your location on the map" /> */}
         <Button
           buttonStyle={styles.button}
           onPress={() => navigation.navigate("StoreDetailsScreenTwo")}
@@ -29,7 +57,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     padding: 0,
-  },  
+  },
   mapView: {
     marginTop: 0,
     height: 320,

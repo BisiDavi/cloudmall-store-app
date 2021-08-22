@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "cloudmallStore",
-    "slug": "cloudmallStore",
+    "slug": "cloudmall-Store",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -12,6 +12,8 @@
     },
     "assetBundlePatterns": ["**/**/*"],
     "ios": {
+      "bundleIdentifier": "cloudmall.stores.app",
+      "buildNumber": "1.0.0",
       "supportsTablet": true,
       "splash": {
         "image": "./assets/ios/splash@3x.png",
@@ -19,6 +21,8 @@
       }
     },
     "android": {
+      "package": "cloudmall.stores.app",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

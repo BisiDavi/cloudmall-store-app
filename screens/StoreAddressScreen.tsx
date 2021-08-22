@@ -1,6 +1,6 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import React, { useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Dimensions } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { Button } from "react-native-elements";
@@ -11,11 +11,12 @@ import { RootStackParamList } from "@customTypes/.";
 export default function StoreAddressScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, "StoreAddressScreen">) {
+  console.log("height dimension", Dimensions.get("window").height);
   const [cordinate, setCoordinate] = useState({
     latitude: 37.78825,
     longitude: -122.4324,
   });
-  function googlePlaceAutocomplete(data: any, details: any) {
+  function googlePlaceAutocomplete(data: any, details: any = null) {
     console.log("data", data);
     console.log("details", details);
   }
@@ -38,10 +39,10 @@ export default function StoreAddressScreen({
           onPress={googlePlaceAutocomplete}
           query={{
             language: "en",
-            key:""
+            key: "",
+            components: "country:nigeria",
           }}
         />
-        {/* <InputField label="Choose your location on the map" /> */}
         <Button
           buttonStyle={styles.button}
           onPress={() => navigation.navigate("StoreDetailsScreenTwo")}
@@ -60,9 +61,9 @@ const styles = StyleSheet.create({
   },
   mapView: {
     marginTop: 0,
-    height: 320,
+    height: Dimensions.get("window").height,
+    width: Dimensions.get("window").width,
     backgroundColor: "#C4C4C4",
-    width: "100%",
   },
   inputView: {
     marginTop: 20,

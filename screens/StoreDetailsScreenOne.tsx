@@ -9,7 +9,6 @@ import {
   Platform,
   KeyboardAvoidingView,
   ScrollView,
-  ToastAndroid,
 } from "react-native";
 import { Button } from "react-native-elements";
 
@@ -17,11 +16,20 @@ import { RootStackParamList } from "@customTypes/.";
 import InputField from "@components/InputField";
 import { storeDetailsSchema } from "@components/StoreDetailsSchema";
 import axiosInstance from "../network/axiosInstance";
+import showToast from "../utils/showToast";
 
 export default function StoreDetailsScreenOne({
   navigation,
 }: StackScreenProps<RootStackParamList, "StoreDetailsScreenOne">) {
   const [loading, setLoading] = useState(false);
+  const [storeId, setStoreId] = useState(null);
+
+  function submitFormHandler(handleSubmit: any) {
+    handleSubmit();
+    storeId !== null && navigation.navigate("StoreAddressScreen");
+  }
+
+  console.log("storeId", storeId);
 
   return (
     <KeyboardAvoidingView
@@ -44,15 +52,18 @@ export default function StoreDetailsScreenOne({
               await axiosInstance
                 .post("/store", values)
                 .then((response) => {
-                  console.log("response", response.data);
-                  ToastAndroid.show(response.data, ToastAndroid.LONG);
+                  const data: any = response.data;
                   setLoading(false);
-                  navigation.navigate("StoreAddressScreen");
+                  if (response.status === 200) {
+                    setStoreId(data?._id);
+                    return showToast(`${data.name} stores created`);
+                  } else {
+                    showToast(data);
+                  }
                 })
                 .catch((error) => {
                   setLoading(false);
-                  console.error("error", error.response.data);
-                  ToastAndroid.show(error.data.data, ToastAndroid.LONG);
+                  showToast(error.response.data);
                 });
             }}
           >
@@ -110,7 +121,7 @@ export default function StoreDetailsScreenOne({
                 <View style={styles.buttonView}>
                   <Button
                     buttonStyle={styles.buttonStyle}
-                    onPress={handleSubmit}
+                    onPress={() => submitFormHandler(handleSubmit)}
                     disabled={!isValid}
                     title="Next"
                   />

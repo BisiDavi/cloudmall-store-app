@@ -24,11 +24,6 @@ export default function StoreDetailsScreenOne({
   const [loading, setLoading] = useState(false);
   const [storeId, setStoreId] = useState(null);
 
-  function submitFormHandler(handleSubmit: any) {
-    handleSubmit();
-    storeId !== null && navigation.navigate("StoreAddressScreen");
-  }
-
   console.log("storeId", storeId);
 
   return (
@@ -56,7 +51,8 @@ export default function StoreDetailsScreenOne({
                   setLoading(false);
                   if (response.status === 200) {
                     setStoreId(data?._id);
-                    return showToast(`${data.name} stores created`);
+                    showToast(`${data.name} stores created`);
+                    navigation.navigate("StoreAddressScreen");
                   } else {
                     showToast(data);
                   }
@@ -121,7 +117,7 @@ export default function StoreDetailsScreenOne({
                 <View style={styles.buttonView}>
                   <Button
                     buttonStyle={styles.buttonStyle}
-                    onPress={() => submitFormHandler(handleSubmit)}
+                    onPress={handleSubmit}
                     disabled={!isValid}
                     title="Next"
                   />

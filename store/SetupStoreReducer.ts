@@ -8,8 +8,8 @@ export function SetupStoreReducer(
   },
   action: actionType
 ) {
+  console.log("state", state);
   const { payload, type } = action;
-  console.log("payload", payload);
   switch (type) {
     case STOREDETAILS_PAGE: {
       return {

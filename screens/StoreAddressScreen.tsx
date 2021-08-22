@@ -4,17 +4,21 @@ import { StyleSheet, View, Dimensions } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { Button } from "react-native-elements";
-import InputField from "@components/InputField";
 
 import { RootStackParamList } from "@customTypes/.";
+import { useStoreSetupNavigation } from "@hooks/.";
+import getDeviceDimensions from "../utils/getDeviceDimensions";
+
+const { deviceHeight, deviceWidth } = getDeviceDimensions();
 
 export default function StoreAddressScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, "StoreAddressScreen">) {
+  useStoreSetupNavigation(navigation);
   console.log("height dimension", Dimensions.get("window").height);
   const [cordinate, setCoordinate] = useState({
-    latitude: 37.78825,
-    longitude: -122.4324,
+    latitude: 7.4905,
+    longitude: 4.5521,
   });
   function googlePlaceAutocomplete(data: any, details: any = null) {
     console.log("data", data);
@@ -25,8 +29,8 @@ export default function StoreAddressScreen({
       <MapView
         style={styles.mapView}
         initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
+          latitude: 7.4905,
+          longitude: 4.5521,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
@@ -62,24 +66,29 @@ const styles = StyleSheet.create({
   },
   mapView: {
     marginTop: 0,
-    height: Dimensions.get("window").height * 0.6,
-    width: Dimensions.get("window").width,
+    height: deviceHeight * 0.6,
+    width: deviceWidth,
     backgroundColor: "#C4C4C4",
   },
   inputView: {
     marginTop: 20,
     marginBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
+    padding: 20,
+    display: "flex",
     justifyContent: "flex-start",
-    alignItems: "center",
+    // alignItems: "center",
+    height: deviceHeight * 0.4,
+    width: deviceWidth,
+    backgroundColor: "red",
   },
   input: {
     height: 40,
-    width: "100%",
-    marginTop: 100,
+    width: deviceWidth,
+    marginTop: 10,
   },
   button: {
     width: 250,
+    backgroundColor: "blue",
+    margin: 0,
   },
 });

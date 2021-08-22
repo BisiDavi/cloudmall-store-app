@@ -10,6 +10,7 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
 
   async function storedToken() {
     const token = await getAuthtoken();
+    console.log("token", token);
     setAuthToken(token);
   }
 

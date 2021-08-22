@@ -20,6 +20,7 @@
     "expo-asset": "^8.3.3",
     "expo-constants": "^11.0.1",
     "expo-font": "^9.2.1",
+    "expo-image-picker": "~10.2.2",
     "expo-linear-gradient": "^9.2.0",
     "expo-linking": "^2.3.1",
     "expo-secure-store": "^10.2.0",

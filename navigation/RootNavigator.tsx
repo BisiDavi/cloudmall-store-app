@@ -45,10 +45,10 @@ export default function RootNavigator() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {!isSignedIn ? (
           <>
-            <Stack.Screen name="BottomNav" component={BottomTabNavigator} />
             {rootNavigationContent.privatePage.map((item: any, index) =>
               displayStackScreen(item, index)
             )}
+            <Stack.Screen name="BottomNav" component={BottomTabNavigator} />
           </>
         ) : (
           <>

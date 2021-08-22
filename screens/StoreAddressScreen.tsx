@@ -11,7 +11,6 @@ export default function StoreAddressScreen({
 }: StackScreenProps<RootStackParamList, "StoreAddressScreen">) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Stores Address</Text>
       <View style={styles.mapView}></View>
       <View style={styles.inputView}>
         <InputField label="Phone number" textContentType="telephoneNumber" />
@@ -28,14 +27,11 @@ export default function StoreAddressScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    margin: 20,
-    fontWeight: "bold",
-  },
+    justifyContent: "flex-start",
+    padding: 0,
+  },  
   mapView: {
+    marginTop: 0,
     height: 320,
     backgroundColor: "#C4C4C4",
     width: "100%",

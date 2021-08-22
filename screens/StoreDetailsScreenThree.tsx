@@ -5,6 +5,7 @@ import { Image, Button } from "react-native-elements";
 import * as ImagePicker from "expo-image-picker";
 import { RootStackParamList } from "@customTypes/.";
 import Spinner from "react-native-loading-spinner-overlay";
+import axiosInstance from "network/axiosInstance";
 
 export default function StoreDetailsScreenThree({
   navigation,
@@ -34,9 +35,10 @@ export default function StoreDetailsScreenThree({
       allowsEditing: false,
       aspect: [4, 3],
     });
-    console.log("result", result);
     if (!result.cancelled) {
+      console.log("result", result);
       setImage(result.uri);
+      axiosInstance.post("/store/", { storeImage: image?.uri });
     }
     setLoading(false);
   };

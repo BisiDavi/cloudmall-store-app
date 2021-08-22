@@ -26,7 +26,7 @@ export default function RootNavigator() {
         options={{
           headerShown: true,
           headerTitleAlign: "center",
-          title: "Store Details",
+          title: stackContent.title,
         }}
         component={displayScreenComponent(stackContent.name)}
       />

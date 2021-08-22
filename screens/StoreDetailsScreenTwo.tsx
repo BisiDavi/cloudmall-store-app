@@ -16,7 +16,6 @@ export default function StoreDetailsScreenTwo({
   const [storeDetails, setStoreDetails] = useState(null);
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Stores Details</Text>
       <View style={styles.typeView}>
         <Text style={styles.storeTypeText}>Type of Store</Text>
         <Image source={infoIcon} style={styles.iconImage} />
@@ -47,14 +46,8 @@ export default function StoreDetailsScreenTwo({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: "center",
-    justifyContent: "center",
-    paddingLeft: 20,
-    paddingRight: 20,
-  },
-  title: {
-    fontWeight: "bold",
-    fontSize: 20,
+    justifyContent: "flex-start",
+    padding: 20,
   },
   inputField: {
     marginTop: 1,
@@ -73,7 +66,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingLeft: 10,
     paddingRight: 20,
-    marginTop: 10,
+    paddingTop: 0,
+    marginTop: 0,
     marginBottom: 10,
   },
   storeTypeText: {

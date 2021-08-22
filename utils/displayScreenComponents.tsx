@@ -1,4 +1,3 @@
-import BottomTabNavigator from "@navigation/BottomTabNavigator";
 import AddProductScreen from "@screens/AddProductScreen";
 import AmountPaidScreen from "@screens/AmountPaidScreen";
 import AvailableBalanceScreen from "@screens/AvailableBalanceScreen";
@@ -17,7 +16,6 @@ import StoreDetailsScreenThree from "@screens/StoreDetailsScreenThree";
 import StoreDetailsScreenTwo from "@screens/StoreDetailsScreenTwo";
 import ViewStoreScreen from "@screens/ViewStoreScreen";
 import { RootStackParamList } from "../customTypes";
-
 
 export function displayScreenComponent(name: string | RootStackParamList): any {
   switch (name) {
@@ -41,8 +39,6 @@ export function displayScreenComponent(name: string | RootStackParamList): any {
       return SignupScreen;
     case "LoginScreen":
       return LoginScreen;
-    case "BottomNav":
-      return BottomTabNavigator;
     case "StoreDetailsScreenOne":
       return StoreDetailsScreenOne;
     case "StoreDetailsScreenTwo":

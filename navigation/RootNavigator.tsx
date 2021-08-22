@@ -7,6 +7,7 @@ import rootNavigationContent from "@json/root-navigation.json";
 import { hasTokenExpired } from "../utils/.";
 import AuthContext from "../context/AuthContext";
 import { displayScreenComponent } from "../utils/displayScreenComponents";
+import BottomTabNavigator from "./BottomTabNavigator";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -44,6 +45,7 @@ export default function RootNavigator() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {!isSignedIn ? (
           <>
+            <Stack.Screen name="BottomNav" component={BottomTabNavigator} />
             {rootNavigationContent.privatePage.map((item: any, index) =>
               displayStackScreen(item, index)
             )}

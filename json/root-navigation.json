@@ -5,7 +5,6 @@
     { "name": "LoginScreen", "title": "Login" }
   ],
   "privatePage": [
-    { "name": "BottomNav" },
     { "name": "StoreDetailsScreenOne", "title": "Store Details" },
     { "name": "StoreDetailsScreenTwo", "title": "Store Details" },
     { "name": "StoreDetailsScreenThree", "title": "Store Details" },

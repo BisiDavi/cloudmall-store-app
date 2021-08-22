@@ -1,7 +1,7 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Spinner from "react-native-loading-spinner-overlay";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
 import {
   StyleSheet,
@@ -17,8 +17,9 @@ import { RootStackParamList } from "@customTypes/.";
 import InputField from "@components/InputField";
 import { storeDetailsSchema } from "@components/StoreDetailsSchema";
 import axiosInstance from "../network/axiosInstance";
-import showToast from "../utils/showToast";
+import { showToast, screenNavigate } from "../utils/.";
 import { SetupStoreScreenAction } from "../store/SetupStoreAction";
+import { RootState } from "../store/RootReducer";
 
 export default function StoreDetailsScreenOne({
   navigation,
@@ -26,6 +27,18 @@ export default function StoreDetailsScreenOne({
   const [loading, setLoading] = useState(false);
   const [storeId, setStoreId] = useState(null);
   const dispatch = useDispatch();
+  const setupStorestate = useSelector((state: RootState) => state.setupStore);
+
+  console.log("setupStorestate", setupStorestate);
+
+  useEffect(() => {
+    if (setupStorestate.formPage !== 0) {
+      console.log("I am executed");
+      screenNavigate(setupStorestate.formPage, navigation);
+    } else {
+      console.log("not ready");
+    }
+  }, []);
 
   console.log("storeId", storeId);
 

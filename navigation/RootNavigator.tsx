@@ -1,23 +1,22 @@
 import "react-native-gesture-handler";
 import React, { useContext, useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { useSelector } from "react-redux";
 import Spinner from "react-native-loading-spinner-overlay";
 import { RootStackParamList } from "../customTypes";
 import rootNavigationContent from "@json/root-navigation.json";
-import { hasTokenExpired } from "../utils/.";
+import { hasTokenExpired,  } from "../utils/.";
 import AuthContext from "../context/AuthContext";
 import { displayScreenComponent } from "../utils/displayScreenComponents";
 import BottomTabNavigator from "./BottomTabNavigator";
 import { setClientToken } from "../network/axiosInstance";
-import { RootState } from "../store/RootReducer";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 export default function RootNavigator() {
   const { state } = useContext(AuthContext);
   const isSignedIn = hasTokenExpired(state.userToken);
-  const storeSetupstate = useSelector((state: RootState) => state.setupStore);
+
+
 
   useEffect(() => {
     if (!isSignedIn) {

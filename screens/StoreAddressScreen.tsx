@@ -42,6 +42,7 @@ export default function StoreAddressScreen({
             key: "",
             components: "country:nigeria",
           }}
+          styles={styles.input}
         />
         <Button
           buttonStyle={styles.button}
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
   },
   mapView: {
     marginTop: 0,
-    height: Dimensions.get("window").height,
+    height: Dimensions.get("window").height * 0.6,
     width: Dimensions.get("window").width,
     backgroundColor: "#C4C4C4",
   },
@@ -70,8 +71,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingLeft: 20,
     paddingRight: 20,
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
+  },
+  input: {
+    height: 40,
+    width: "100%",
+    marginTop: 100,
   },
   button: {
     width: 250,

@@ -1,6 +1,7 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import React, { useState } from "react";
 import Spinner from "react-native-loading-spinner-overlay";
+import { useDispatch } from "react-redux";
 import { Formik } from "formik";
 import {
   StyleSheet,
@@ -17,12 +18,14 @@ import InputField from "@components/InputField";
 import { storeDetailsSchema } from "@components/StoreDetailsSchema";
 import axiosInstance from "../network/axiosInstance";
 import showToast from "../utils/showToast";
+import { SetupStoreScreenAction } from "../store/SetupStoreAction";
 
 export default function StoreDetailsScreenOne({
   navigation,
 }: StackScreenProps<RootStackParamList, "StoreDetailsScreenOne">) {
   const [loading, setLoading] = useState(false);
   const [storeId, setStoreId] = useState(null);
+  const dispatch = useDispatch();
 
   console.log("storeId", storeId);
 
@@ -52,6 +55,7 @@ export default function StoreDetailsScreenOne({
                   if (response.status === 200) {
                     setStoreId(data?._id);
                     showToast(`${data.name} stores created`);
+                    dispatch(SetupStoreScreenAction(1, false));
                     navigation.navigate("StoreAddressScreen");
                   } else {
                     showToast(data);

@@ -1,0 +1,2 @@
+export const STOREDETAILS_PAGE = "STOREDETAILS_PAGE";
+

@@ -13,13 +13,12 @@ import DisplayFormElements from "../../utils/displayFormElements";
 
 const radioField = [{ label: "Instore" }, { label: "Pickup" }];
 
-
 export default function StoreDetailsFormOne({ navigation }: any) {
   const [loading, setLoading] = useState(false);
   const [storeId, setStoreId] = useState(null);
   const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
   return (
-    <View>
+    <View style={styles.form}>
       <Spinner visible={loading} color="blue" />
       <Formik
         validationSchema={storeDetailsScreenOneSchema}
@@ -61,7 +60,7 @@ export default function StoreDetailsFormOne({ navigation }: any) {
           touched,
           isValid,
         }) => (
-          <View style={styles.form}>
+          <View>
             {storeDetailsFormOne.map((formElement, index: number) => (
               <DisplayFormElements
                 key={index}
@@ -72,7 +71,7 @@ export default function StoreDetailsFormOne({ navigation }: any) {
                 errors={errors}
                 touched={touched}
               />
-            ))}            
+            ))}
             <View style={styles.buttonView}>
               <Button
                 buttonStyle={styles.buttonStyle}
@@ -91,6 +90,8 @@ export default function StoreDetailsFormOne({ navigation }: any) {
 const styles = StyleSheet.create({
   form: {
     marginTop: 10,
+    padding: 20,
+    paddingTop: 0,
   },
   buttonStyle: {
     width: 250,

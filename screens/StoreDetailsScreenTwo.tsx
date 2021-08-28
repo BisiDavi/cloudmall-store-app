@@ -3,30 +3,27 @@ import React, { useState } from "react";
 import {
   StyleSheet,
   View,
-  Text,
   Platform,
   KeyboardAvoidingView,
   ScrollView,
 } from "react-native";
 import { Formik } from "formik";
-import { Button, Image } from "react-native-elements";
+import { Button } from "react-native-elements";
 import InputField from "@components/InputField";
-
 import { RootStackParamList } from "@customTypes/.";
 import RadioField from "@components/RadioField";
-import infoIcon from "@assets/infoIcon.png";
 import { useStoreSetupNavigation } from "@hooks/.";
 import axiosInstance from "../network/axiosInstance";
 import { storeDetailsScreenTwoSchema } from "@components/forms/StoreDetailsSchema";
 import { showToast } from "../utils/.";
 import ProgressIndicator from "@components/ProgressIndicator";
+import StoreDetailsFormTwo from "@components/forms/StoreDetailsFormTwo";
 
 const radioField = [{ label: "Instore" }, { label: "Pickup" }];
 
 export default function StoreDetailsScreenTwo({
   navigation,
 }: StackScreenProps<RootStackParamList, "StoreDetailsScreenTwo">) {
-  const [storeDetails, setStoreDetails] = useState(null);
   const [loading, setLoading] = useState(false);
   const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
 
@@ -37,11 +34,7 @@ export default function StoreDetailsScreenTwo({
     >
       <ScrollView>
         <View style={styles.container}>
-          <ProgressIndicator selected={1} />
-          <View style={styles.typeView}>
-            <Text style={styles.storeTypeText}>Type of Store</Text>
-            <Image source={infoIcon} style={styles.iconImage} />
-          </View>
+          <ProgressIndicator selected={2} />
           <Formik
             validationSchema={storeDetailsScreenTwoSchema}
             initialValues={{
@@ -79,30 +72,15 @@ export default function StoreDetailsScreenTwo({
               isValid,
             }) => (
               <>
-                <RadioField content={radioField} />
-                <InputField
-                  styles={{ input: styles.inputField }}
-                  label="Open days"
-                  onChangeText={handleChange("openDays")}
-                  value={values.openingDays}
-                />
-                <InputField
-                  label="Phone number"
-                  textContentType="telephoneNumber"
-                />
-                <InputField
-                  label="Address"
-                  styles={{ input: styles.addressField }}
-                  textContentType="fullStreetAddress"
-                />
+                <StoreDetailsFormTwo navigation={navigation} />
                 <View style={styles.buttonView}>
-                  <Button
+                  {/* <Button
                     title="Next"
                     buttonStyle={styles.button}
                     onPress={() =>
                       navigation.navigate("StoreDetailsScreenThree")
                     }
-                  />
+                  /> */}
                 </View>
               </>
             )}
@@ -122,7 +100,7 @@ const styles = StyleSheet.create({
   inputField: {
     marginTop: 1,
     padding: 0,
-  },  
+  },
   typeView: {
     flexDirection: "row",
     alignItems: "center",

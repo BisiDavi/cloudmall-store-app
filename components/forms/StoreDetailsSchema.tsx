@@ -8,9 +8,11 @@ export const storeDetailsScreenOneSchema = yup.object().shape({
     .required("email address is required"),
   phoneNumber: yup.string().required("phone number is required"),
   storeAddress: yup.string().required("store address is required"),
+  storeType: yup.string().required("store type is required"),
 });
 
 export const storeDetailsScreenTwoSchema = yup.object().shape({
-  openingDays: yup.string().required("sopen days field is required"),
-  phoneNumber: yup.string().required("phone number is required"),
+  storeOwnerName: yup.string().required("store owner name is required"),
+  openingDays: yup.string().required("store open days is required"),
+  storeOpenTime: yup.string().required("store open days is required"),
 });

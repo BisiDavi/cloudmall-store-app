@@ -7,7 +7,7 @@ import { useStoreSetupNavigation } from "@hooks/.";
 import axiosInstance from "../../network/axiosInstance";
 import { showToast } from "../../utils";
 import DisplayFormElements from "../../utils/displayFormElements";
-import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
+import storeDetailsFormTwo from "@json/storeDetailsFormTwo.json";
 import { storeDetailsScreenTwoSchema } from "@components/forms/StoreDetailsSchema";
 
 export default function StoreDetailsFormTwo({ navigation }: any) {
@@ -20,8 +20,9 @@ export default function StoreDetailsFormTwo({ navigation }: any) {
       <Formik
         validationSchema={storeDetailsScreenTwoSchema}
         initialValues={{
-          storeType: "",
+          storeOwnerName: "",
           openingDays: "",
+          storeOpenTime: "",
         }}
         onSubmit={async (values) => {
           setLoading(true);
@@ -54,7 +55,7 @@ export default function StoreDetailsFormTwo({ navigation }: any) {
           isValid,
         }) => (
           <View style={styles.form}>
-            {storeDetailsFormOne.map((formElement, index: number) => (
+            {storeDetailsFormTwo.map((formElement, index: number) => (
               <DisplayFormElements
                 key={index}
                 formElement={formElement}

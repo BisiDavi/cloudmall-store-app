@@ -28,7 +28,7 @@ export default function DisplayFormElements({
     }
     case "radio": {
       return (
-        <RadioField content={formElement.fields} onPress={props.handleChange} />
+        <RadioField content={formElement} onPress={props.handleChange} />
       );
     }
     default:

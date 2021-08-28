@@ -33,7 +33,7 @@
     "name": "storeType",
     "label": "Type of Store",
     "icon": true,
-    "iconName": "info",
+    "iconName": "infoIcon",
     "type": "radio",
     "fields": [
       { "name": "instore", "label": "Instore" },

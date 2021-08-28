@@ -29,11 +29,13 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width * 0.21,
     borderColor: colors.gray,
     borderWidth: 1,
+    margin: 0,
     backgroundColor: colors.orange,
   },
   notSelected: {
     backgroundColor: "white",
     height: 5,
+    margin: 0,
     width: Dimensions.get("window").width * 0.21,
     borderColor: colors.gray,
     borderWidth: 1,

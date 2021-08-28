@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from "react";
-import { StyleSheet, KeyboardTypeOptions } from "react-native";
 import { Input } from "react-native-elements";
+import { StyleSheet, KeyboardTypeOptions } from "react-native";
+import colors from "../utils/colors";
 
 export default function InputField({
   onChangeText,
@@ -35,9 +36,9 @@ const inputStyles = StyleSheet.create({
   inputContainer: {
     width: "100%",
     marginBottom: 0,
-    borderColor: "black",
+    borderColor: colors.mallBlue3,
     borderWidth: 1,
-    borderBottomColor: "black",
+    borderRadius: 5,
   },
   input: {
     height: 30,

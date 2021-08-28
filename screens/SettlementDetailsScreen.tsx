@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { RootStackParamList } from "@customTypes/.";
 import ProgressIndicator from "@components/ProgressIndicator";
-import StoreDetailsFormOne from "@components/forms/StoreDetailsFormOne";
+import SettlementDetailsForm from "@components/forms/SettlementDetailsForm";
 
 export default function SettlementDetailsScreen({
   navigation,
@@ -22,13 +22,12 @@ export default function SettlementDetailsScreen({
       <ScrollView>
         <View style={styles.container}>
           <ProgressIndicator selected={3} />
-          <StoreDetailsFormOne navigation={navigation} />
+          <SettlementDetailsForm navigation={navigation} />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {

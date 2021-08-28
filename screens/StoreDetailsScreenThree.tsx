@@ -6,6 +6,7 @@ import * as ImagePicker from "expo-image-picker";
 import { RootStackParamList } from "@customTypes/.";
 import Spinner from "react-native-loading-spinner-overlay";
 import axiosInstance from "network/axiosInstance";
+import colors from "@utils/colors";
 
 export default function StoreDetailsScreenThree({
   navigation,
@@ -87,10 +88,11 @@ const styles = StyleSheet.create({
     width: 300,
   },
   imageView: {
-    height: 250,
-    width: 300,
+    height: 282,
+    width: 282,
     margin: 20,
-    backgroundColor: "#C4C4C4",
+    backgroundColor: "white",
+    borderColor: colors.mallBlue5
   },
   image: {
     height: 250,

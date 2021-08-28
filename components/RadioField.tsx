@@ -78,11 +78,11 @@ const styles = StyleSheet.create({
 
 interface RadioFieldProps {
   content: {
-    name: string;
-    label: string;
-    icon: boolean;
+    name?: string;
+    label?: string;
+    icon?: boolean;
     type: string;
-    fields: itemType[] | undefined;
+    fields?: itemType[] | undefined;
     iconName?: string | undefined;
   };
   onPress: any;

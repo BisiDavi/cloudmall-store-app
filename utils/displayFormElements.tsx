@@ -2,6 +2,7 @@ import React, { ChangeEvent } from "react";
 import { KeyboardTypeOptions } from "react-native";
 import InputField from "@components/InputField";
 import RadioField from "@components/RadioField";
+import SelectField from "@components/SelectField";
 
 export default function DisplayFormElements({
   formElement,
@@ -15,7 +16,7 @@ export default function DisplayFormElements({
           placeholder={formElement.placeholder}
           textContentType={formElement?.textContentType}
           onChangeText={props?.handleChange(formElement.name)}
-          onBlur={props.handleBlur(formElement.name)}
+          onBlur={props?.handleBlur(formElement.name)}
           value={props.values[formElement.name]}
           keyboardType={formElement?.keyboardType}
           errorMessage={
@@ -27,8 +28,15 @@ export default function DisplayFormElements({
       );
     }
     case "radio": {
+      return <RadioField content={formElement} onPress={props.handleChange} />;
+    }
+    case "select": {
       return (
-        <RadioField content={formElement} onPress={props.handleChange} />
+        <SelectField
+          content={formElement}
+          onValueChange={props.handleChange(formElement.name)}
+          selectedValue={props.values[formElement.name]}
+        />
       );
     }
     default:
@@ -41,9 +49,10 @@ interface displayFormElementsProps {
     name: string;
     label?: any;
     placeholder?: string;
-    fields?: { name?: string; label?: string }[];
+    fields?: { name?: string; label?: string }[] | undefined;
     type: string;
     keyboardType?: KeyboardTypeOptions | undefined;
+    options?: string[] | undefined;
     textContentType?:
       | "password"
       | "emailAddress"
@@ -54,6 +63,6 @@ interface displayFormElementsProps {
   handleChange: (e: string | ChangeEvent<any>) => any;
   handleBlur: (e: string | ChangeEvent<any>) => any;
   values: any;
-  errors: any;
-  touched: any;
+  errors?: any;
+  touched?: any;
 }

@@ -4,9 +4,10 @@ import { StyleSheet, View, Text, Platform, ToastAndroid } from "react-native";
 import { Image, Button } from "react-native-elements";
 import * as ImagePicker from "expo-image-picker";
 import { RootStackParamList } from "@customTypes/.";
+import UploadIcon from "@assets/upload.png";
 import Spinner from "react-native-loading-spinner-overlay";
-import axiosInstance from "network/axiosInstance";
-import colors from "@utils/colors";
+import axiosInstance from "../network/axiosInstance";
+import colors from "../utils/colors";
 
 export default function StoreDetailsScreenThree({
   navigation,
@@ -53,7 +54,9 @@ export default function StoreDetailsScreenThree({
             This image will appear as your store front on the user's app
           </Text>
           {!image ? (
-            <View style={styles.imageView} />
+            <View style={styles.imageView}>
+              <Image source={UploadIcon}  />
+            </View>
           ) : (
             <Image style={styles.image} source={{ uri: image }} />
           )}
@@ -91,8 +94,10 @@ const styles = StyleSheet.create({
     height: 282,
     width: 282,
     margin: 20,
-    backgroundColor: "white",
-    borderColor: colors.mallBlue5
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
+    borderColor: colors.mallBlue5,
   },
   image: {
     height: 250,

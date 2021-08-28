@@ -1,34 +1,45 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
-import { ButtonGroup } from "react-native-elements";
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { Dimensions } from "react-native";
 
-export default function ProgressIndicator() {
-  const [selectedIndex, setSelectedIndex] = useState(1);
-  const [selectedIndexes, setSelectedIndexes] = useState([]);
+import colors from "../utils/colors";
+
+export default function ProgressIndicator({ selected }: ProgressIndicator) {
+  const numberofIndicators = new Array(4).fill("");
 
   return (
-    <ButtonGroup
-      buttonStyle={{ width: 50, height: 10, backgroundColor: "blue" }}
-      buttonContainerStyle={{}}
-      buttons={["", "", "", "", ""]}
-      containerStyle={{}}
-      disabled={[1, 2, 3, 4]}
-      disabledStyle={{}}
-      disabledTextStyle={{}}
-      disabledSelectedStyle={{}}
-      disabledSelectedTextStyle={{}}
-      innerBorderStyle={{}}
-      selectedButtonStyle={{}}
-      selectedIndex={selectedIndex}
-      selectedIndexes={selectedIndexes}
-    />
+    <View style={styles.progressIndicator}>
+      {numberofIndicators.map((_, index) => {
+        const indicatorStyle =
+          index < selected ? styles.selected : styles.notSelected;
+        return <View style={indicatorStyle} key={index}></View>;
+      })}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  progressIndicator: {
+    display: "flex",
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+  },
+  selected: {
+    height: 5,
+    width: Dimensions.get("window").width * 0.21,
+    borderColor: colors.gray,
+    borderWidth: 1,
+    backgroundColor: colors.orange,
+  },
+  notSelected: {
+    backgroundColor: "white",
+    height: 5,
+    width: Dimensions.get("window").width * 0.21,
+    borderColor: colors.gray,
+    borderWidth: 1,
   },
 });
+
+interface ProgressIndicator {
+  selected: number;
+}

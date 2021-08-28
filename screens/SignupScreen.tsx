@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 import { RootStackParamList } from "customTypes";
-import SignupForm from "@components/signupForm";
+import SignupForm from "@components/forms/SignupForm";
 
 type SignupScreenNavigationProps = StackNavigationProp<
   RootStackParamList,

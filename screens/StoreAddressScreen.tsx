@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { Button } from "react-native-elements";
+import { Button, Text } from "react-native-elements";
 
 import { RootStackParamList } from "@customTypes/.";
 import { useStoreSetupNavigation } from "@hooks/.";
@@ -54,6 +54,7 @@ export default function StoreAddressScreen({
             <Marker draggable coordinate={cordinate} />
           </MapView>
           <View style={styles.inputView}>
+            <Text>Address of Store</Text>
             <GooglePlacesAutocomplete
               placeholder="Choose your location on the map"
               onPress={googlePlaceAutocomplete}
@@ -94,13 +95,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: deviceHeight * 0.3,
     width: deviceWidth,
-    backgroundColor: "lightgray",
+    backgroundColor: "white",
   },
   input: {
     height: 40,
     width: deviceWidth,
     marginTop: 10,
     marginBottom: 0,
+    borderColor:'blue',
+    backgroundColor:'red'
   },
   button: {
     justifyContent: "center",

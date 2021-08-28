@@ -5,7 +5,7 @@ import addproductContent from "@json/add-product.json";
 import pizza from "@assets/pizza.png";
 import InputField from "@components/InputField";
 import { Formik } from "formik";
-import addProductSchema from "@components/addProductSchema";
+import addProductSchema from "@components/forms/AddProductSchema";
 
 export default function AddProductScreen() {
   const productContent: productType[] = addproductContent;

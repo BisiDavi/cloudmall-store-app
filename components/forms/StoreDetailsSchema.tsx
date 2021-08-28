@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const storeDetailsSchema = yup.object().shape({
+export const storeDetailsScreenOneSchema = yup.object().shape({
   name: yup.string().required("store name is required"),
   storeEmail: yup
     .string()
@@ -8,4 +8,9 @@ export const storeDetailsSchema = yup.object().shape({
     .required("email address is required"),
   phoneNumber: yup.string().required("phone number is required"),
   address: yup.string().required("store address is required"),
+});
+
+export const storeDetailsScreenTwoSchema = yup.object().shape({
+  openingDays: yup.string().required("sopen days field is required"),
+  phoneNumber: yup.string().required("phone number is required"),
 });

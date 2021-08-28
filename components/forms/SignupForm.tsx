@@ -1,44 +1,48 @@
+import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useState, useContext } from "react";
 import { RouteProp } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
 import { Feather } from "@expo/vector-icons";
 import { Formik } from "formik";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, ToastAndroid } from "react-native";
 import { Button } from "react-native-elements";
+import Spinner from "react-native-loading-spinner-overlay";
 
-import { RootStackParamList } from "../customTypes";
+import { RootStackParamList } from "customTypes";
 import InputField from "@components/InputField";
-import loginSchema from "./loginSchema";
-import AuthContext from "../context/AuthContext";
+import axiosInstance from "network/axiosInstance";
+import registrationSchema from "./SignupSchema";
+import AuthContext from "../../context/AuthContext";
 
-type LoginScreenNavigationProps = StackNavigationProp<
+type SignupFormNavigationProps = StackNavigationProp<
   RootStackParamList,
-  "LoginScreen"
+  "SignupScreen"
 >;
 
-type LoginScreenRouteProps = RouteProp<RootStackParamList, "LoginScreen">;
+type SignupFormRouteProps = RouteProp<RootStackParamList, "SignupScreen">;
 
-type loginFormProps = {
-  route?: LoginScreenRouteProps;
-  navigation: LoginScreenNavigationProps;
+type signupFormProps = {
+  route?: SignupFormRouteProps;
+  navigation: SignupFormNavigationProps;
 };
 
-export default function LoginForm({ navigation }: loginFormProps) {
+export default function SignupForm({ navigation }: signupFormProps) {
   const [hidePassword, setHidePassword] = useState(true);
+
   const { authContext } = useContext(AuthContext);
-  const passwordIcon = hidePassword ? "eye-off" : "eye";
 
   function passwordVisbilityHandler() {
     setHidePassword(!hidePassword);
   }
 
+  const passwordIcon = hidePassword ? "eye-off" : "eye";
+
   return (
     <Formik
-      validationSchema={loginSchema}
-      initialValues={{ email: "", password: "" }}
+      validationSchema={registrationSchema}
+      initialValues={{ email: "", password: "", confirmPassword: "" }}
       onSubmit={(values) => {
         const { email, password } = values;
-        authContext.loginIn(email, password);
+        authContext.signUp(email, password);
       }}
     >
       {({
@@ -79,20 +83,41 @@ export default function LoginForm({ navigation }: loginFormProps) {
               />
             }
           />
+          <InputField
+            label="Re-enter Password"
+            textContentType="password"
+            value={values.confirmPassword}
+            onChangeText={handleChange("confirmPassword")}
+            onBlur={handleBlur("confirmPassword")}
+            secureTextEntry={hidePassword}
+            errorMessage={
+              errors.confirmPassword &&
+              touched.confirmPassword &&
+              errors.confirmPassword
+            }
+            rightIcon={
+              <Feather
+                name={passwordIcon}
+                onPress={passwordVisbilityHandler}
+                color="black"
+                size={24}
+              />
+            }
+          />
           <Button
             type="solid"
             onPress={handleSubmit}
-            title="Login"
             disabled={!isValid}
+            title="Create Account"
             buttonStyle={styles.createAccount}
           />
           <View style={styles.withAccount}>
-            <Text>Don't have an account? </Text>
+            <Text>Already have an account? </Text>
             <Button
-              onPress={() => navigation.navigate("SignupScreen")}
+              onPress={() => navigation.navigate("LoginScreen")}
               buttonStyle={styles.login}
               type="clear"
-              title="Sign up"
+              title="Login in"
             />
           </View>
         </View>
@@ -102,13 +127,6 @@ export default function LoginForm({ navigation }: loginFormProps) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    height: "100%",
-    width: "100%",
-    flexDirection: "column",
-    justifyContent: "space-around",
-    alignItems: "center",
-  },
   form: {
     justifyContent: "space-around",
     marginTop: 20,
@@ -116,6 +134,12 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     alignItems: "center",
+  },
+
+  label: {
+    color: "black",
+    marginTop: 5,
+    marginBottom: 5,
   },
   text: {
     fontSize: 18,
@@ -130,12 +154,9 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
   createAccount: {
-    alignItems: "center",
     marginTop: 20,
-    display: "flex",
-    marginBottom: 20,
+    marginBottom: 10,
     width: 250,
-    justifyContent: "center",
   },
   withAccount: {
     alignItems: "center",

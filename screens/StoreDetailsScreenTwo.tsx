@@ -8,13 +8,17 @@ import {
   KeyboardAvoidingView,
   ScrollView,
 } from "react-native";
+import { Formik } from "formik";
 import { Button, Image } from "react-native-elements";
 import InputField from "@components/InputField";
 
 import { RootStackParamList } from "@customTypes/.";
 import RadioField from "@components/RadioField";
 import infoIcon from "@assets/infoIcon.png";
-import useStoreSetupNavigation from "@hooks/useStoreSetupNavigation";
+import { useStoreSetupNavigation } from "@hooks/.";
+import axiosInstance from "../network/axiosInstance";
+import { storeDetailsScreenTwoSchema } from "@components/forms/StoreDetailsSchema";
+import { showToast } from "../utils/.";
 
 const radioField = [{ label: "Instore" }, { label: "Pickup" }];
 
@@ -22,7 +26,8 @@ export default function StoreDetailsScreenTwo({
   navigation,
 }: StackScreenProps<RootStackParamList, "StoreDetailsScreenTwo">) {
   const [storeDetails, setStoreDetails] = useState(null);
-  useStoreSetupNavigation(navigation);
+  const [loading, setLoading] = useState(false);
+  const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
 
   return (
     <KeyboardAvoidingView
@@ -35,25 +40,75 @@ export default function StoreDetailsScreenTwo({
             <Text style={styles.storeTypeText}>Type of Store</Text>
             <Image source={infoIcon} style={styles.iconImage} />
           </View>
-          <View style={styles.storeType}>
-            {radioField.map((content, index) => (
-              <RadioField content={content} key={index} />
-            ))}
-          </View>
-          <InputField styles={{ input: styles.inputField }} label="Open days" />
-          <InputField label="Phone number" textContentType="telephoneNumber" />
-          <InputField
-            label="Address"
-            styles={{ input: styles.addressField }}
-            textContentType="fullStreetAddress"
-          />
-          <View style={styles.buttonView}>
-            <Button
-              title="Next"
-              buttonStyle={styles.button}
-              onPress={() => navigation.navigate("StoreDetailsScreenThree")}
-            />
-          </View>
+          <Formik
+            validationSchema={storeDetailsScreenTwoSchema}
+            initialValues={{
+              storeType: "",
+              openingDays: "",              
+            }}
+            onSubmit={async (values) => {
+              setLoading(true);
+              await axiosInstance
+                .post("/store", values)
+                .then((response) => {
+                  const data: any = response.data;
+                  setLoading(false);
+                  if (response.status === 200) {
+                    showToast(`${data.name} stores created`);
+                    onBoardingNextScreen(3, false);
+                    navigation.navigate("StoreAddressScreen");
+                  } else {
+                    showToast(data);
+                  }
+                })
+                .catch((error) => {
+                  setLoading(false);
+                  showToast(error.response.data);
+                });
+            }}
+          >
+            {({
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              values,
+              errors,
+              touched,
+              isValid,
+            }) => (
+              <>
+                <View style={styles.storeType}>
+                  {radioField.map((content, index) => (
+                    <RadioField content={content} key={index} />
+                  ))}
+                </View>
+                <InputField
+                  styles={{ input: styles.inputField }}
+                  label="Open days"
+                  onChangeText={handleChange("openDays")}
+                  value={values.openingDays}
+                />
+                <InputField
+                  label="Phone number"
+                  textContentType="telephoneNumber"
+                />
+                <InputField
+                  label="Address"
+                  styles={{ input: styles.addressField }}
+                  textContentType="fullStreetAddress"
+                />
+                <View style={styles.buttonView}>
+                  <Button
+                    title="Next"
+                    buttonStyle={styles.button}
+                    onPress={() =>
+                      navigation.navigate("StoreDetailsScreenThree")
+                    }
+                  />
+                </View>
+              </>
+            )}
+          </Formik>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

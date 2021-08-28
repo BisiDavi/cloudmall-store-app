@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 import { RootStackParamList } from "../customTypes";
-import LoginForm from "@components/loginForm";
+import LoginForm from "@components/forms/LoginForm";
 
 type LoginScreenNavigationProps = StackNavigationProp<
   RootStackParamList,

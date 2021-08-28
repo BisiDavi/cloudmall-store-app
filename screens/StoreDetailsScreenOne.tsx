@@ -21,7 +21,7 @@ export default function StoreDetailsScreenOne({
     >
       <ScrollView>
         <View style={styles.container}>
-          <ProgressIndicator selected={3} />
+          <ProgressIndicator selected={1} />
           <StoreDetailsFormOne navigation={navigation} />
         </View>
       </ScrollView>

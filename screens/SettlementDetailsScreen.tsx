@@ -21,7 +21,7 @@ export default function SettlementDetailsScreen({
     >
       <ScrollView>
         <View style={styles.container}>
-          <ProgressIndicator selected={1} />
+          <ProgressIndicator selected={3} />
           <StoreDetailsFormOne navigation={navigation} />
         </View>
       </ScrollView>

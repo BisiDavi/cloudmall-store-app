@@ -11,7 +11,7 @@ import { RootStackParamList } from "@customTypes/.";
 import ProgressIndicator from "@components/ProgressIndicator";
 import StoreDetailsFormOne from "@components/forms/StoreDetailsFormOne";
 
-export default function StoreDetailsScreenOne({
+export default function SettlementDetailsScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, "StoreDetailsScreenOne">) {
   return (
@@ -21,13 +21,14 @@ export default function StoreDetailsScreenOne({
     >
       <ScrollView>
         <View style={styles.container}>
-          <ProgressIndicator selected={3} />
+          <ProgressIndicator selected={1} />
           <StoreDetailsFormOne navigation={navigation} />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

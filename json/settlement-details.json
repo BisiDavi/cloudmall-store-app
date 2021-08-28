@@ -1,0 +1,26 @@
+[
+  {
+    "label": "Settlement plan",
+    "type": "select",
+    "options": ["Daily", "Weekly", "Monthly"],
+    "name": "settlementPlan"
+  },
+  {
+    "label": "Bank Name",
+    "type": "input",
+    "placeholder": "Bank Name",
+    "name": "bankName"
+  },
+  {
+    "label": "Account Number (Must be 10 digits)",
+    "type": "input",
+    "placeholder": "Your account number",
+    "name": "accountNumber"
+  },
+  {
+    "label": "Account Name",
+    "type": "input",
+    "placeholder": "Your account name",
+    "name": "accountName"
+  }
+]

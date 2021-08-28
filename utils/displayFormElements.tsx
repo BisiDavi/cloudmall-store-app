@@ -51,14 +51,15 @@ interface displayFormElementsProps {
     placeholder?: string;
     fields?: { name?: string; label?: string }[] | undefined;
     type: string;
-    keyboardType?: KeyboardTypeOptions | undefined;
+    keyboardType?: KeyboardTypeOptions | undefined | any;
     options?: string[] | undefined;
     textContentType?:
       | "password"
       | "emailAddress"
       | "telephoneNumber"
       | "fullStreetAddress"
-      | undefined;
+      | undefined
+      | any;
   };
   handleChange: (e: string | ChangeEvent<any>) => any;
   handleBlur: (e: string | ChangeEvent<any>) => any;

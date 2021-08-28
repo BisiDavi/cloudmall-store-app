@@ -7,9 +7,9 @@ import { storeDetailsScreenOneSchema } from "@components/forms/StoreDetailsSchem
 import { useStoreSetupNavigation } from "@hooks/.";
 import axiosInstance from "../../network/axiosInstance";
 import { showToast, colors, DisplayFormElements } from "../../utils";
-import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
+import settlementDetails from "@json/settlement-details.json";
 
-export default function StoreDetailsFormOne({ navigation }: any) {
+export default function SettlementDetailsForm({ navigation }: any) {
   const [loading, setLoading] = useState(false);
   const [storeId, setStoreId] = useState(null);
   const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
@@ -57,7 +57,7 @@ export default function StoreDetailsFormOne({ navigation }: any) {
           isValid,
         }) => (
           <View>
-            {storeDetailsFormOne.map((formElement, index: number) => (
+            {settlementDetails.map((formElement, index: number) => (
               <DisplayFormElements
                 key={index}
                 formElement={formElement}
@@ -72,7 +72,11 @@ export default function StoreDetailsFormOne({ navigation }: any) {
               <Button
                 buttonStyle={styles.buttonStyle}
                 onPress={handleSubmit}
-                disabled={!isValid}
+                title="Skip"
+              />
+              <Button
+                buttonStyle={styles.buttonStyle}
+                onPress={handleSubmit}
                 title="Next"
               />
             </View>

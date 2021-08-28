@@ -4,9 +4,13 @@ import { RadioButton } from "react-native-paper";
 
 export default function RadioField({ content }: RadioFieldProps) {
   return (
-    <View style={styles.radioField}>
-      <Text style={styles.label}>{content.label}</Text>
-      <RadioButton value={content.label} status={content.status} />
+    <View style={styles.storeType}>
+      {content?.map((item: itemType, index: number) => (
+        <View key={index} style={styles.radioField}>
+          <Text style={styles.label}>{item.label}</Text>
+          <RadioButton value={item.label} status={item.status} />
+        </View>
+      ))}
     </View>
   );
 }
@@ -24,11 +28,20 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: "500",
   },
+  storeType: {
+    alignItems: "center",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    margin: 10,
+  },
 });
 
 interface RadioFieldProps {
-  content: {
-    label: string;
-    status?: any;
-  };
+  content: itemType[] | undefined;
 }
+
+type itemType = {
+  label: string;
+  status?: any;
+};

@@ -44,7 +44,7 @@ export default function StoreDetailsScreenTwo({
             validationSchema={storeDetailsScreenTwoSchema}
             initialValues={{
               storeType: "",
-              openingDays: "",              
+              openingDays: "",
             }}
             onSubmit={async (values) => {
               setLoading(true);
@@ -77,11 +77,7 @@ export default function StoreDetailsScreenTwo({
               isValid,
             }) => (
               <>
-                <View style={styles.storeType}>
-                  {radioField.map((content, index) => (
-                    <RadioField content={content} key={index} />
-                  ))}
-                </View>
+                <RadioField content={radioField} />
                 <InputField
                   styles={{ input: styles.inputField }}
                   label="Open days"
@@ -124,14 +120,7 @@ const styles = StyleSheet.create({
   inputField: {
     marginTop: 1,
     padding: 0,
-  },
-  storeType: {
-    alignItems: "center",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    margin: 10,
-  },
+  },  
   typeView: {
     flexDirection: "row",
     alignItems: "center",

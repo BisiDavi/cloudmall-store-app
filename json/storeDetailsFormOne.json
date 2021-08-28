@@ -1,0 +1,37 @@
+[
+  {
+    "label": "Name of Store",
+    "placeholder": "Cloudmall Stores",
+    "name": "storeName",
+    "type": "input"
+  },
+  {
+    "label": "Email Address of Store",
+    "placeholder": "mystore@cloudmall.com",
+    "name": "storeEmail",
+    "type": "input",
+    "keyboardType": "email-address",
+    "textContentType": "emailAddress"
+  },
+  {
+    "label": "Phone number",
+    "name": "phoneNumber",
+    "type": "input",
+    "textContentType": "telephoneNumber"
+
+  },
+  {
+    "label": "Address of Store",
+    "name": "storeAddress",
+    "type": "input",
+    "textContentType": "fullStreetAddress"
+  },
+  {
+    "name": "storeType",
+    "type": "radio",
+    "fields": [
+      { "name": "instore", "label": "Instore" },
+      { "name": "pickup", "label": "Puckup" }
+    ]
+  }
+]

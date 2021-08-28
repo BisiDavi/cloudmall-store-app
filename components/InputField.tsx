@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from "react";
 import { Input } from "react-native-elements";
-import { StyleSheet, KeyboardTypeOptions } from "react-native";
+import { StyleSheet, KeyboardTypeOptions, Dimensions } from "react-native";
+import { useFonts } from "expo-font";
 import colors from "../utils/colors";
 
 export default function InputField({
@@ -18,11 +19,13 @@ export default function InputField({
     <Input
       {...props}
       label={label}
+      placeholder={props.placeholder}
       inputContainerStyle={[inputStyles.inputContainer, props.styleContainer]}
       labelStyle={[inputStyles.label, props.styleLabel]}
       inputStyle={[inputStyles.input, props.styleInput]}
       keyboardType={keyboardType}
       value={value}
+      placeholderTextColor={colors.neutral4}
       errorMessage={errorMessage}
       onChangeText={onChangeText}
       secureTextEntry={secureTextEntry}
@@ -34,16 +37,20 @@ export default function InputField({
 
 const inputStyles = StyleSheet.create({
   inputContainer: {
-    width: "100%",
+    width: Dimensions.get("window").width * 0.85,
     marginBottom: 0,
+    height: 48,
     borderColor: colors.mallBlue3,
     borderWidth: 1,
     borderRadius: 5,
   },
   input: {
-    height: 30,
+    height: 48,
     padding: 10,
     marginBottom: 0,
+    margin: 0,
+    fontSize: 14,
+    fontFamily:"Roboto", 
   },
   label: {
     color: "black",
@@ -57,7 +64,7 @@ const inputStyles = StyleSheet.create({
 });
 
 interface InputFieldProps {
-  onChangeText?: (e: string | ChangeEvent<any>) => void;
+  onChangeText?: (e: string | ChangeEvent<any>) => void | undefined;
   value?: any;
   label: string;
   keyboardType?: KeyboardTypeOptions;
@@ -68,7 +75,8 @@ interface InputFieldProps {
   styleContainer?: any;
   styleLabel?: any;
   styleInput?: any;
-  onBlur?: (e: string | ChangeEvent<any>) => void;
+  placeholder?: string;
+  onBlur?: (e: string | ChangeEvent<any>) => void | undefined;
   textContentType?:
     | "password"
     | "emailAddress"

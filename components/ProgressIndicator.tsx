@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     borderColor: colors.gray,
     borderWidth: 1,
     margin: 0,
-    backgroundColor: colors.orange,
+    backgroundColor: colors.cloudOrange5,
   },
   notSelected: {
     backgroundColor: "white",

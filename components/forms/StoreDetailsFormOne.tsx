@@ -3,11 +3,12 @@ import { Button } from "react-native-elements";
 import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { StyleSheet, View } from "react-native";
-import InputField from "@components/InputField";
 import { storeDetailsScreenOneSchema } from "@components/forms/StoreDetailsSchema";
 import { useStoreSetupNavigation } from "@hooks/.";
 import axiosInstance from "../../network/axiosInstance";
 import { showToast } from "../../utils";
+import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
+import DisplayFormElements from "../../utils/displayFormElements";
 
 export default function StoreDetailsFormOne({ navigation }: any) {
   const [loading, setLoading] = useState(false);
@@ -19,10 +20,11 @@ export default function StoreDetailsFormOne({ navigation }: any) {
       <Formik
         validationSchema={storeDetailsScreenOneSchema}
         initialValues={{
-          name: "",
+          storeName: "",
           storeEmail: "",
           phoneNumber: "",
-          address: "",
+          storeAddress: "",
+          storeType: "",
         }}
         onSubmit={async (values) => {
           setLoading(true);
@@ -56,43 +58,17 @@ export default function StoreDetailsFormOne({ navigation }: any) {
           isValid,
         }) => (
           <View>
-            <InputField
-              label="Name of Store"
-              onChangeText={handleChange("name")}
-              onBlur={handleBlur("name")}
-              value={values.name}
-              errorMessage={errors.name && touched.name && errors.name}
-            />
-            <InputField
-              label="Email address of store"
-              textContentType="emailAddress"
-              onChangeText={handleChange("storeEmail")}
-              onBlur={handleBlur("storeEmail")}
-              value={values.storeEmail}
-              keyboardType="email-address"
-              errorMessage={
-                errors.storeEmail && touched.storeEmail && errors.storeEmail
-              }
-            />
-            <InputField
-              label="Phone number"
-              textContentType="telephoneNumber"
-              onChangeText={handleChange("phoneNumber")}
-              onBlur={handleBlur("phoneNumber")}
-              value={values.phoneNumber}
-              errorMessage={
-                errors.phoneNumber && touched.phoneNumber && errors.phoneNumber
-              }
-            />
-            <InputField
-              label="Address"
-              styles={{ input: styles.addressField }}
-              textContentType="fullStreetAddress"
-              onChangeText={handleChange("address")}
-              onBlur={handleBlur("address")}
-              value={values.address}
-              errorMessage={errors.address && touched.address && errors.address}
-            />
+            {storeDetailsFormOne.map((formElement, index: number) => (
+              <DisplayFormElements
+                key={index}
+                formElement={formElement}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                values={values}
+                errors={errors}
+                touched={touched}
+              />
+            ))}
             <View style={styles.buttonView}>
               <Button
                 buttonStyle={styles.buttonStyle}

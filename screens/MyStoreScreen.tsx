@@ -22,7 +22,7 @@ type Props = {
 export default function MyStoreScreen({ navigation }: Props) {
   return (
     <View style={styles.container}>
-      <Switch style={styles.switch} color="orange" />
+      <Switch style={styles.switch} color="cloudOrange5" />
       <Image
         PlaceholderContent={<ActivityIndicator size="large" color="#0000ff" />}
         source={pizza}

@@ -1,0 +1,15 @@
+[
+  {
+    "name": "email",
+    "keyboardType": "email-address",
+    "label": "Email",
+    "type": "input"
+  },
+  {
+    "name": "password",
+    "keyboardType": "email-address",
+    "label": "Password",
+    "type": "password",
+    "textContentType": "password"
+  }
+]

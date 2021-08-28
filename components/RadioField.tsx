@@ -8,7 +8,7 @@ export default function RadioField({ content }: RadioFieldProps) {
       {content?.map((item: itemType, index: number) => (
         <View key={index} style={styles.radioField}>
           <Text style={styles.label}>{item.label}</Text>
-          <RadioButton value={item.label} status={item.status} />
+          <RadioButton value={item.label} status="checked" />
         </View>
       ))}
     </View>
@@ -42,6 +42,6 @@ interface RadioFieldProps {
 }
 
 type itemType = {
-  label: string;
-  status?: any;
+  label?: string | undefined;
+  status?: "checked" | "unchecked";
 };

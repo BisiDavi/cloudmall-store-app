@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from "react";
+import { KeyboardTypeOptions } from "react-native";
 import InputField from "@components/InputField";
 import RadioField from "@components/RadioField";
 
@@ -16,7 +17,7 @@ export default function DisplayFormElements({
           onChangeText={props?.handleChange(formElement.name)}
           onBlur={props.handleBlur(formElement.name)}
           value={props.values[formElement.name]}
-          keyboardType="email-address"
+          keyboardType={formElement?.keyboardType}
           errorMessage={
             props.errors[formElement.name] &&
             props.touched[formElement.name] &&
@@ -38,9 +39,9 @@ interface displayFormElementsProps {
     name: string;
     label?: any;
     placeholder?: string;
-    fields?: { name: string; label?: string }[];
+    fields?: { name?: string; label?: string }[];
     type: string;
-    keyboardType?: string;
+    keyboardType?: KeyboardTypeOptions | undefined;
     textContentType?:
       | "password"
       | "emailAddress"

@@ -3,14 +3,14 @@ import { Button } from "react-native-elements";
 import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { StyleSheet, View } from "react-native";
-import { storeDetailsScreenOneSchema } from "@components/forms/StoreDetailsSchema";
 import { useStoreSetupNavigation } from "@hooks/.";
 import axiosInstance from "../../network/axiosInstance";
 import { showToast } from "../../utils";
-import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
 import DisplayFormElements from "../../utils/displayFormElements";
+import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
+import { storeDetailsScreenTwoSchema } from "@components/forms/StoreDetailsSchema";
 
-export default function StoreDetailsFormOne({ navigation }: any) {
+export default function StoreDetailsFormTwo({ navigation }: any) {
   const [loading, setLoading] = useState(false);
   const [storeId, setStoreId] = useState(null);
   const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
@@ -18,13 +18,10 @@ export default function StoreDetailsFormOne({ navigation }: any) {
     <View>
       <Spinner visible={loading} color="blue" />
       <Formik
-        validationSchema={storeDetailsScreenOneSchema}
+        validationSchema={storeDetailsScreenTwoSchema}
         initialValues={{
-          storeName: "",
-          storeEmail: "",
-          phoneNumber: "",
-          storeAddress: "",
           storeType: "",
+          openingDays: "",
         }}
         onSubmit={async (values) => {
           setLoading(true);
@@ -34,9 +31,8 @@ export default function StoreDetailsFormOne({ navigation }: any) {
               const data: any = response.data;
               setLoading(false);
               if (response.status === 200) {
-                setStoreId(data?._id);
                 showToast(`${data.name} stores created`);
-                onBoardingNextScreen(1, false);
+                onBoardingNextScreen(3, false);
                 navigation.navigate("StoreAddressScreen");
               } else {
                 showToast(data);

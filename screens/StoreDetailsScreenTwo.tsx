@@ -19,6 +19,7 @@ import { useStoreSetupNavigation } from "@hooks/.";
 import axiosInstance from "../network/axiosInstance";
 import { storeDetailsScreenTwoSchema } from "@components/forms/StoreDetailsSchema";
 import { showToast } from "../utils/.";
+import ProgressIndicator from "@components/ProgressIndicator";
 
 const radioField = [{ label: "Instore" }, { label: "Pickup" }];
 
@@ -36,6 +37,7 @@ export default function StoreDetailsScreenTwo({
     >
       <ScrollView>
         <View style={styles.container}>
+          <ProgressIndicator selected={1} />
           <View style={styles.typeView}>
             <Text style={styles.storeTypeText}>Type of Store</Text>
             <Image source={infoIcon} style={styles.iconImage} />
@@ -128,7 +130,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 20,
     paddingTop: 0,
-    marginTop: 0,
+    marginTop: 20,
     marginBottom: 10,
   },
   storeTypeText: {

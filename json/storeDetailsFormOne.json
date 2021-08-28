@@ -18,16 +18,20 @@
     "name": "phoneNumber",
     "type": "input",
     "textContentType": "telephoneNumber"
-
   },
   {
     "label": "Address of Store",
     "name": "storeAddress",
     "type": "input",
+    "icon": true,
+    "iconName": "address",
     "textContentType": "fullStreetAddress"
   },
   {
     "name": "storeType",
+    "label": "Type of Store",
+    "icon": true,
+    "iconName": "info",
     "type": "radio",
     "fields": [
       { "name": "instore", "label": "Instore" },

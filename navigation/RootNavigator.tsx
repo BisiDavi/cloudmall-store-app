@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Spinner from "react-native-loading-spinner-overlay";
 import { RootStackParamList } from "../customTypes";
 import rootNavigationContent from "@json/root-navigation.json";
-import { hasTokenExpired,  } from "../utils/.";
+import { hasTokenExpired } from "../utils/.";
 import AuthContext from "../context/AuthContext";
 import { displayScreenComponent } from "../utils/displayScreenComponents";
 import BottomTabNavigator from "./BottomTabNavigator";
@@ -15,8 +15,6 @@ const Stack = createStackNavigator<RootStackParamList>();
 export default function RootNavigator() {
   const { state } = useContext(AuthContext);
   const isSignedIn = hasTokenExpired(state.userToken);
-
-
 
   useEffect(() => {
     if (!isSignedIn) {
@@ -34,7 +32,9 @@ export default function RootNavigator() {
         name={stackContent.name}
         options={{
           headerShown: true,
-          headerTitleAlign: "center",
+          headerTitleAlign: stackContent?.position
+            ? stackContent.position
+            : "center",
           title: stackContent.title,
         }}
         component={displayScreenComponent(stackContent.name)}
@@ -74,4 +74,5 @@ export default function RootNavigator() {
 type displayStackScreenType = {
   name: keyof RootStackParamList;
   title?: string;
+  position: "left";
 };

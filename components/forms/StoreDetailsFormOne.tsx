@@ -5,10 +5,14 @@ import Spinner from "react-native-loading-spinner-overlay";
 import { StyleSheet, View } from "react-native";
 import { storeDetailsScreenOneSchema } from "@components/forms/StoreDetailsSchema";
 import { useStoreSetupNavigation } from "@hooks/.";
+import RadioField from "@components/RadioField";
 import axiosInstance from "../../network/axiosInstance";
 import { showToast } from "../../utils";
 import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
 import DisplayFormElements from "../../utils/displayFormElements";
+
+const radioField = [{ label: "Instore" }, { label: "Pickup" }];
+
 
 export default function StoreDetailsFormOne({ navigation }: any) {
   const [loading, setLoading] = useState(false);
@@ -69,6 +73,7 @@ export default function StoreDetailsFormOne({ navigation }: any) {
                 touched={touched}
               />
             ))}
+            <RadioField content={radioField} />
             <View style={styles.buttonView}>
               <Button
                 buttonStyle={styles.buttonStyle}

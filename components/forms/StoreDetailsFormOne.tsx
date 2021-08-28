@@ -72,8 +72,7 @@ export default function StoreDetailsFormOne({ navigation }: any) {
                 errors={errors}
                 touched={touched}
               />
-            ))}
-            <RadioField content={radioField} />
+            ))}            
             <View style={styles.buttonView}>
               <Button
                 buttonStyle={styles.buttonStyle}

@@ -27,7 +27,9 @@ export default function DisplayFormElements({
       );
     }
     case "radio": {
-      <RadioField content={formElement.fields} />;
+      return (
+        <RadioField content={formElement.fields} onPress={props.handleChange} />
+      );
     }
     default:
       return null;

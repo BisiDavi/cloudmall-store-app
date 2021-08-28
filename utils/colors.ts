@@ -1,7 +1,11 @@
 const colors = {
   gray: "#707070",
+  mallBlue1: "#D6E6FF",
+  mallBlue2: "#488EFE",
   mallBlue3: "#2075FE",
+  mallBlue4: "#0156DF",
   mallBlue5: "#013A93",
+  mallBlue7: "#012F79",
   accentRed: "#CB2A2A",
   neutral4: "#ADADAD",
   neutral6: "#707070",

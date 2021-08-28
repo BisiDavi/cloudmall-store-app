@@ -17,6 +17,7 @@
     "label": "Phone number",
     "name": "phoneNumber",
     "type": "input",
+    "placeholder": "0812345678",
     "textContentType": "telephoneNumber"
   },
   {
@@ -24,6 +25,7 @@
     "name": "storeAddress",
     "type": "input",
     "icon": true,
+    "placeholder": "Mayfair, Ile-Ife",
     "iconName": "address",
     "textContentType": "fullStreetAddress"
   },
@@ -35,7 +37,7 @@
     "type": "radio",
     "fields": [
       { "name": "instore", "label": "Instore" },
-      { "name": "pickup", "label": "Puckup" }
+      { "name": "pickup", "label": "Pickup" }
     ]
   }
 ]

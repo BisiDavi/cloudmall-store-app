@@ -3,12 +3,11 @@ import { Button } from "react-native-elements";
 import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
-import {  storeDetailsScreenOneSchema } from "@components/forms";
 import { useStoreSetupNavigation } from "@hooks/.";
-import axiosInstance from "@network/axiosInstance";
-import { showToast, colors } from "@utils/.";
+import { colors } from "@utils/.";
 import settlementDetails from "@json/settlement-details.json";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
+import { storeSettlementDetailsSchema } from "./StoreDetailsSchema";
 
 export default function SettlementDetailsForm({ navigation }: any) {
   const [loading, setLoading] = useState(false);
@@ -18,34 +17,18 @@ export default function SettlementDetailsForm({ navigation }: any) {
     <View style={styles.form}>
       <Spinner visible={loading} color="blue" />
       <Formik
-        validationSchema={storeDetailsScreenOneSchema}
+        validationSchema={storeSettlementDetailsSchema}
         initialValues={{
-          storeName: "",
-          storeEmail: "",
-          phoneNumber: "",
-          storeAddress: "",
-          storeType: "",
+          settlementPlan: "",
+          bankName: "",
+          accountNumber: "",
+          accountName: "",
         }}
-        onSubmit={async (values) => {
+        onSubmit={(values) => {
+          console.log("values", values);
           setLoading(true);
-          await axiosInstance
-            .post("/store", values)
-            .then((response) => {
-              const data: any = response.data;
-              setLoading(false);
-              if (response.status === 200) {
-                setStoreId(data?._id);
-                showToast(`${data.name} stores created`);
-                onBoardingNextScreen(1, false);
-                navigation.navigate("StoreAddressScreen");
-              } else {
-                showToast(data);
-              }
-            })
-            .catch((error) => {
-              setLoading(false);
-              showToast(error.response.data);
-            });
+          onBoardingNextScreen(4, false);
+          setLoading(false);
         }}
       >
         {({
@@ -71,13 +54,16 @@ export default function SettlementDetailsForm({ navigation }: any) {
             ))}
             <View style={styles.buttonView}>
               <Button
-                buttonStyle={styles.buttonStyle}
+                buttonStyle={styles.skipButtonStyle}
                 onPress={handleSubmit}
+                titleStyle={styles.skipTextStyle}
                 title="Skip"
               />
               <Button
-                buttonStyle={styles.buttonStyle}
+                buttonStyle={styles.nextButtonStyle}
                 onPress={handleSubmit}
+                titleStyle={styles.nextTextStyle}
+                disabled={!isValid}
                 title="Next"
               />
             </View>
@@ -94,14 +80,34 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingTop: 0,
   },
-  buttonStyle: {
-    width: Dimensions.get("window").width * 0.7,
+  nextButtonStyle: {
+    width: Dimensions.get("window").width * 0.3,
     alignItems: "center",
+    color: colors.neutralWhite,
     backgroundColor: colors.mallBlue5,
+    fontFamily: "RobotoBold",
+  },
+  skipButtonStyle: {
+    width: Dimensions.get("window").width * 0.3,
+    alignItems: "center",
+    backgroundColor: "transparent",
+    borderColor: colors.mallBlue5,
+    borderWidth: 1,
+    fontFamily: "RobotoBold",
+  },
+  skipTextStyle: {
+    color: colors.mallBlue5,
+  },
+  nextTextStyle: {
+    color: colors.neutralWhite,
   },
   buttonView: {
     alignItems: "center",
-    marginTop: 20,
+    marginTop: 10,
+    justifyContent: "space-between",
+    flexDirection: "row",
+    padding: 10,
+    paddingTop: 0,
   },
   title: {
     fontSize: 20,

@@ -20,3 +20,10 @@ export const storeDetailsScreenTwoSchema = yup.object().shape({
 export const storeAddressSchema = yup.object().shape({
   storeAddress: yup.string().required("store address is required"),
 });
+
+export const storeSettlementDetailsSchema = yup.object().shape({
+  settlementPlan: yup.string().required("settlement plan is required"),
+  bankName: yup.string().required("bank name  is required"),
+  accountNumber: yup.string().required("account number field is required"),
+  accountName: yup.string().required("account name is required"),
+});

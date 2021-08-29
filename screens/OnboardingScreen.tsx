@@ -6,6 +6,7 @@ import {
   Text,
   ActivityIndicator,
   ImageSourcePropType,
+  Dimensions,
 } from "react-native";
 import { Button, Image } from "react-native-elements";
 import AppIntroSlider from "react-native-app-intro-slider";
@@ -34,21 +35,21 @@ export default function OnboardingScreen({
   const slides: slidesInteface[] = [
     {
       key: 1,
-      title: "Welcome to Cloudmall",
+      title: "Create your store and sell on Cloudmall",
       description: "Shop at your convenience",
       image: pizzaImage,
       backgroundColor: "#E3E3EE;",
     },
     {
       key: 2,
-      title: "Partner your store with Cloudmall",
+      title: "Manage your orders as they come in",
       description: "Earn more with Cloudmall",
       image: shopperImage,
       backgroundColor: "#E3E3EE;",
     },
     {
       key: 3,
-      title: "Track your sales with Cloudmall",
+      title: "Track your finances and performances as you sell.",
       description: "Track daily, weekly, monthly sales",
       image: trackSalesImage,
       backgroundColor: "#E3E3EE;",
@@ -63,7 +64,10 @@ export default function OnboardingScreen({
         <Text style={styles.title}>{item.title}</Text>
         <Image
           source={item.image}
-          style={{ width: 300, height: 250 }}
+          style={{
+            width: Dimensions.get("window").width * 0.8,
+            height: Dimensions.get("window").height * 0.45,
+          }}
           PlaceholderContent={
             <ActivityIndicator size="large" color="#0000ff" />
           }
@@ -82,7 +86,7 @@ export default function OnboardingScreen({
   }
   const renderSkipButton = () => (
     <Button
-      buttonStyle={{ marginTop: 10 }}
+      buttonStyle={{ margin:20,marginTop: 10, }}
       onPress={onSkip}
       type="outline"
       title="Skip"
@@ -113,21 +117,24 @@ export default function OnboardingScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: "center",    
     justifyContent: "center",
   },
   renderItem: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "space-around",
     marginBottom: 100,
+    margin: 30,
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "bold",
-    marginTop: 30,
+    marginTop: 10,
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    fontFamily: "Roboto-Light",
     marginBottom: 0,
-    textAlign: "center",
+    textAlign: "left",
   },
   text: {
     color: "white",
@@ -139,13 +146,15 @@ const styles = StyleSheet.create({
     fontWeight: "normal",
     textAlign: "center",
     marginBottom: 60,
+    marginTop:-20,
   },
   button: {
+    margin:20,
     marginTop: 5,
     marginBottom: 5,
     justifyContent: "center",
     backgroundColor: "blue",
-    padding: 20,
+    padding: 20,    
     height: 45,
     borderRadius: 5,
     flex: 1,

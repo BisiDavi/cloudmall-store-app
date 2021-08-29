@@ -7,10 +7,11 @@ import { Dimensions, StyleSheet, View } from "react-native";
 import { storeDetailsScreenOneSchema } from "@components/forms/StoreDetailsSchema";
 import { useStoreSetupNavigation } from "@hooks/.";
 import axiosInstance from "@network/axiosInstance";
-import { showToast, colors, DisplayFormElements } from "@utils/.";
+import { showToast, colors } from "@utils/.";
 import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
 import { RootState } from "@store/RootReducer";
 import { SetupStoreDetailsSubmittedAction } from "@store/StoreDetailsAction";
+import {DisplayFormElements} from "@components/.";
 
 export default function StoreDetailsFormOne({ navigation }: any) {
   const state = useSelector((state: RootState) => state.storeDetails);

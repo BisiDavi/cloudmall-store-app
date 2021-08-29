@@ -4,9 +4,9 @@ import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { StyleSheet, View } from "react-native";
 import { useStoreSetupNavigation } from "@hooks/.";
-import axiosInstance from "../../network/axiosInstance";
-import { showToast } from "../../utils";
-import DisplayFormElements from "../../utils/displayFormElements";
+import axiosInstance from "@network/axiosInstance";
+import { showToast } from "@utils/.";
+import {DisplayFormElements} from "@components/.";
 import storeDetailsFormTwo from "@json/storeDetailsFormTwo.json";
 import { storeDetailsScreenTwoSchema } from "@components/forms/StoreDetailsSchema";
 

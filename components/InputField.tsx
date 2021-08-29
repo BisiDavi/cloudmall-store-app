@@ -1,7 +1,6 @@
 import React, { ChangeEvent } from "react";
 import { Input } from "react-native-elements";
 import { StyleSheet, KeyboardTypeOptions, Dimensions } from "react-native";
-import { useFonts } from "expo-font";
 import colors from "../utils/colors";
 
 export default function InputField({

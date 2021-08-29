@@ -3,10 +3,10 @@ import { Button } from "react-native-elements";
 import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
-import { storeDetailsScreenOneSchema } from "@components/forms/StoreDetailsSchema";
+import { DisplayFormElements, storeDetailsScreenOneSchema } from "@components/forms";
 import { useStoreSetupNavigation } from "@hooks/.";
-import axiosInstance from "../../network/axiosInstance";
-import { showToast, colors, DisplayFormElements } from "../../utils";
+import axiosInstance from "@network/axiosInstance";
+import { showToast, colors } from "@utils/.";
 import settlementDetails from "@json/settlement-details.json";
 
 export default function SettlementDetailsForm({ navigation }: any) {

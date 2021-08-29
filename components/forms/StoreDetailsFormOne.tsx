@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-native-elements";
+import { useSelector } from "react-redux";
 import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
@@ -8,9 +9,12 @@ import { useStoreSetupNavigation } from "@hooks/.";
 import axiosInstance from "../../network/axiosInstance";
 import { showToast, colors, DisplayFormElements } from "../../utils";
 import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
+import { RootState } from "@store/RootReducer";
 
 export default function StoreDetailsFormOne({ navigation }: any) {
+  const state= useSelector((state: RootState) => state.setupStore);
   const [loading, setLoading] = useState(false);
+  console.log("storeType", state);
   const [storeId, setStoreId] = useState(null);
   const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
   return (

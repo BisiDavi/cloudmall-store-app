@@ -1,10 +1,11 @@
-import { STOREDETAILS_PAGE } from "./constant";
+import { STOREDETAILS_PAGE, STORETYPE_SELECTED } from "./constant";
 import { setupStorePayloadType } from "./SetupStoreAction";
 
 export function SetupStoreReducer(
   state = {
     completed: false,
     formPage: 0,
+    storeType: "",
   },
   action: actionType
 ) {
@@ -18,12 +19,18 @@ export function SetupStoreReducer(
         formPage: payload.page,
       };
     }
+    case STORETYPE_SELECTED: {
+      return {
+        ...state,
+        storeType: payload.storeType,
+      };
+    }
     default:
       return state;
   }
 }
 
 type actionType = {
-  type: "STOREDETAILS_PAGE";
+  type: "STOREDETAILS_PAGE" | "STORETYPE_SELECTED";
   payload: setupStorePayloadType;
 };

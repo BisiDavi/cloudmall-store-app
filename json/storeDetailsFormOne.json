@@ -36,8 +36,8 @@
     "iconName": "infoIcon",
     "type": "radio",
     "fields": [
-      { "name": "instore", "label": "Instore" },
-      { "name": "pickup", "label": "Pickup" }
+      { "name": "storeType", "value": "instore", "label": "Instore" },
+      { "name": "storeType", "value": "pickup", "label": "Pickup" }
     ]
   }
 ]

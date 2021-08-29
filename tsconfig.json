@@ -22,7 +22,8 @@
       "@customTypes/*": ["customTypes/*"],
       "@utils/*": ["utils/*"],
       "@context/*": ["context/*"],
-      "@network/*": ["network/*"]
+      "@network/*": ["network/*"],
+      "@store/*": ["store/*"]
     }
   },
   "include": [

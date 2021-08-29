@@ -1,11 +1,23 @@
-import React from "react";
-import colors from "../utils/colors";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { RadioButton } from "react-native-paper";
 import { Image } from "react-native-elements";
+import { useDispatch } from "react-redux";
+import colors from "../utils/colors";
 import displayAsset from "../utils/displayAsset";
+import { SetupStoreTypeScreenAction } from "store/SetupStoreAction";
 
-export default function RadioField({ content, onPress }: RadioFieldProps) {
+export default function RadioField({ content, error }: RadioFieldProps) {
+  const [checked, setChecked] = useState("");
+  console.log("content radio checked", checked);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (checked.length > 1) {
+      dispatch(SetupStoreTypeScreenAction(checked));
+    }
+  }, [checked]);
+
   return (
     <View style={styles.storeType}>
       <View style={styles.typeView}>
@@ -20,23 +32,26 @@ export default function RadioField({ content, onPress }: RadioFieldProps) {
           <View key={index} style={styles.radioField}>
             <Text style={styles.label}>{item.label}</Text>
             <RadioButton
-              value={item.label}
-              onPress={onPress}
+              value={item.value}
+              onPress={() => setChecked(item.value)}
               uncheckedColor={colors.mallBlue4}
-              status="checked"
+              color={colors.mallBlue5}
+              status={checked === item.value ? "checked" : "unchecked"}
             />
           </View>
         ))}
       </View>
+      <Text style={styles.error}>{error}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   storeType: {
-    alignItems: "center",
+    alignItems: "flex-start",
     display: "flex",
     flexDirection: "column",
+    padding: 10,
   },
   typeView: {
     flexDirection: "row",
@@ -74,6 +89,12 @@ const styles = StyleSheet.create({
     height: 25,
     width: 10,
   },
+  error: {
+    color: "red",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    textAlign: "left",
+  },
 });
 
 interface RadioFieldProps {
@@ -85,10 +106,11 @@ interface RadioFieldProps {
     fields?: itemType[] | undefined;
     iconName?: string | undefined;
   };
-  onPress: any;
+  error: string;
 }
 
 type itemType = {
   label?: any;
   status?: "checked" | "unchecked";
+  value?: any;
 };

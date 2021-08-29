@@ -28,7 +28,16 @@ export default function DisplayFormElements({
       );
     }
     case "radio": {
-      return <RadioField content={formElement} onPress={props.handleChange} />;
+      return (
+        <RadioField
+          content={formElement}
+          error={
+            props.errors[formElement.name] &&
+            props.touched[formElement.name] &&
+            props.errors[formElement.name]
+          }
+        />
+      );
     }
     case "select": {
       return (

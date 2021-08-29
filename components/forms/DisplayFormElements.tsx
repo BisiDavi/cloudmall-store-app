@@ -47,6 +47,11 @@ export default function DisplayFormElements({
           content={formElement}
           onValueChange={props.handleChange(formElement.name)}
           selectedValue={props.values[formElement.name]}
+          error={
+            props.errors[formElement.name] &&
+            props.touched[formElement.name] &&
+            props.errors[formElement.name]
+          }
         />
       );
     }

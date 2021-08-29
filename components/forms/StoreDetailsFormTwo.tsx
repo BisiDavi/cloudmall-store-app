@@ -4,8 +4,6 @@ import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { StyleSheet, View } from "react-native";
 import { useStoreSetupNavigation } from "@hooks/.";
-import axiosInstance from "@network/axiosInstance";
-import { showToast } from "@utils/.";
 import storeDetailsFormTwo from "@json/storeDetailsFormTwo.json";
 import { storeDetailsScreenTwoSchema } from "@components/forms";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
@@ -25,23 +23,8 @@ export default function StoreDetailsFormTwo({ navigation }: any) {
         }}
         onSubmit={async (values) => {
           setLoading(true);
-          await axiosInstance
-            .post("/store", values)
-            .then((response) => {
-              const data: any = response.data;
-              setLoading(false);
-              if (response.status === 200) {
-                showToast(`${data.name} stores created`);
-                onBoardingNextScreen(3, false);
-                navigation.navigate("StoreAddressScreen");
-              } else {
-                showToast(data);
-              }
-            })
-            .catch((error) => {
-              setLoading(false);
-              showToast(error.response.data);
-            });
+          onBoardingNextScreen(3, false);
+          setLoading(false);
         }}
       >
         {({

@@ -8,14 +8,14 @@
   {
     "label": "Store Open days",
     "placeholder": "Monday - Friday",
-    "name": "openDays",
+    "name": "openingDays",
     "options": ["Monday - Friday", "Monday - Saturday", "Monday - Sunday"],
     "type": "select"
   },
   {
     "label": "Store Open Time",
     "placeholder": "8:00 am",
-    "name": "openTime",
+    "name": "storeOpenTime",
     "type": "input"
   }
 ]

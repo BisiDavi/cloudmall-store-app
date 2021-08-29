@@ -7,6 +7,9 @@ export function StoreDetailsReducer(
     phoneNumber: "",
     storeAddress: "",
     storeType: "",
+    storeOwnerName: "",
+    openingDays: "",
+    storeOpenTime: "",
   },
   action: actionType
 ) {
@@ -29,6 +32,9 @@ export function StoreDetailsReducer(
         phoneNumber: payload?.phoneNumber,
         storeAddress: payload?.storeAddress,
         storeType: payload?.storeType,
+        storeOwnerName: payload.storeOwnerName,
+        openingDays: payload.openingDays,
+        storeOpenTime: payload.storeOpenTime,
       };
     }
     default:
@@ -44,5 +50,8 @@ type actionType = {
     phoneNumber: string;
     storeAddress: string;
     storeType: string;
+    storeOwnerName: string;
+    openingDays: string;
+    storeOpenTime: string;
   };
 };

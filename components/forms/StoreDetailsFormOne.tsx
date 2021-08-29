@@ -46,7 +46,7 @@ export default function StoreDetailsFormOne({ navigation }: any) {
                 setStoreId(data?._id);
                 showToast(`${data.storeName} stores created`);
                 onBoardingNextScreen(1, false);
-                navigation.navigate("StoreAddressScreen");
+                navigation.navigate("StoreDetailsScreenTwo");
                 dispatch(SetupStoreDetailsSubmittedAction(values));
               } else {
                 showToast(data);

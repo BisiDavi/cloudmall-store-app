@@ -14,5 +14,5 @@ export const storeDetailsScreenOneSchema = yup.object().shape({
 export const storeDetailsScreenTwoSchema = yup.object().shape({
   storeOwnerName: yup.string().required("store owner name is required"),
   openingDays: yup.string().required("store open days is required"),
-  storeOpenTime: yup.string().required("store open days is required"),
+  storeOpenTime: yup.string().required("store open time is required"),
 });

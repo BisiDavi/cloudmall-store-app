@@ -40,48 +40,46 @@ export default function StoreAddressScreen({
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       enabled={true}
     >
-      <ScrollView>
-        <View style={styles.container}>
-          <MapView
-            style={styles.mapView}
-            initialRegion={{
-              latitude: 7.4905,
-              longitude: 4.5521,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
+      <View style={styles.container}>
+        <MapView
+          style={styles.mapView}
+          initialRegion={{
+            latitude: 7.4905,
+            longitude: 4.5521,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        >
+          <Marker draggable coordinate={cordinate} />
+        </MapView>
+        <View style={styles.inputView}>
+          <Text style={styles.text}>Address of Store</Text>
+          <GooglePlacesAutocomplete
+            placeholder="Choose your location on the map"
+            onPress={googlePlaceAutocomplete}
+            query={{
+              language: "en",
+              key: "",
+              components: "country:nigeria",
             }}
-          >
-            <Marker draggable coordinate={cordinate} />
-          </MapView>
-          <View style={styles.inputView}>
-            <Text>Address of Store</Text>
-            <GooglePlacesAutocomplete
-              placeholder="Choose your location on the map"
-              onPress={googlePlaceAutocomplete}
-              query={{
-                language: "en",
-                key: "",
-                components: "country:nigeria",
-              }}
-              styles={{
-                textInputContainer: {
-                  borderColor: colors.mallBlue3,
-                  borderWidth: 1,
-                  borderRadius: 5,
-                  margin: 10,
-                },
-              }}
+            styles={{
+              textInputContainer: {
+                borderColor: colors.mallBlue3,
+                borderWidth: 1,
+                borderRadius: 5,
+                margin: 10,
+              },
+            }}
+          />
+          <View style={styles.buttonView}>
+            <Button
+              buttonStyle={styles.button}
+              onPress={nextPageHandler}
+              title="Confirm Address"
             />
-            <View style={styles.buttonView}>
-              <Button
-                buttonStyle={styles.button}
-                onPress={nextPageHandler}
-                title="Confirm Address"
-              />
-            </View>
           </View>
         </View>
-      </ScrollView>
+      </View>
     </KeyboardAvoidingView>
   );
 }
@@ -94,23 +92,29 @@ const styles = StyleSheet.create({
   },
   mapView: {
     marginTop: 0,
-    height: deviceHeight * 0.6,
+    height: deviceHeight * 0.55,
     width: deviceWidth,
     backgroundColor: "#C4C4C4",
   },
+  text: {
+    fontSize: 14,
+    fontFamily: "RobotoRegular",
+    marginLeft: 10,
+  },
   inputView: {
     padding: 20,
-    paddingTop:10,
+    paddingTop: 10,
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     width: deviceWidth,
     backgroundColor: "white",
+    height: deviceHeight * 0.3,
   },
   button: {
     display: "flex",
     width: deviceWidth * 0.6,
     backgroundColor: colors.mallBlue5,
-    marginTop: 10,
+    marginTop: 0,
   },
   buttonView: {
     display: "flex",

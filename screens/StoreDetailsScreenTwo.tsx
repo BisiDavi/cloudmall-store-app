@@ -38,8 +38,9 @@ export default function StoreDetailsScreenTwo({
           <Formik
             validationSchema={storeDetailsScreenTwoSchema}
             initialValues={{
-              storeType: "",
+              storeOwnerName: "",
               openingDays: "",
+              storeOpenTime: "",
             }}
             onSubmit={async (values) => {
               setLoading(true);
@@ -73,15 +74,6 @@ export default function StoreDetailsScreenTwo({
             }) => (
               <>
                 <StoreDetailsFormTwo navigation={navigation} />
-                <View style={styles.buttonView}>
-                  {/* <Button
-                    title="Next"
-                    buttonStyle={styles.button}
-                    onPress={() =>
-                      navigation.navigate("StoreDetailsScreenThree")
-                    }
-                  /> */}
-                </View>
               </>
             )}
           </Formik>
@@ -94,7 +86,8 @@ export default function StoreDetailsScreenTwo({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
+    justifyContent: "center",
+    alignItems:"center",
     padding: 20,
   },
   inputField: {

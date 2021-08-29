@@ -35,6 +35,9 @@ export default function RootNavigator() {
           headerTitleAlign: stackContent?.position
             ? stackContent.position
             : "center",
+          headerTitleStyle: {
+            fontFamily: "RobotoBold",
+          },
           title: stackContent.title,
         }}
         component={displayScreenComponent(stackContent.name)}

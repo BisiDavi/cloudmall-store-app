@@ -22,6 +22,7 @@ export default function StoreDetailsFormTwo({ navigation }: any) {
           storeOpenTime: "",
         }}
         onSubmit={async (values) => {
+          console.log("values", values);
           setLoading(true);
           onBoardingNextScreen(3, false);
           setLoading(false);

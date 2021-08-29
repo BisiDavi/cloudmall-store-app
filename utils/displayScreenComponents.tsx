@@ -16,7 +16,7 @@ import StoreDetailsScreenOne from "@screens/StoreDetailsScreenOne";
 import StoreDetailsScreenTwo from "@screens/StoreDetailsScreenTwo";
 import ViewStoreScreen from "@screens/ViewStoreScreen";
 import { RootStackParamList } from "../customTypes";
-import UploadStoreImage from "@screens/UploadStoreImage";
+import UploadStoreImage from "@screens/UploadStoreImageScreen";
 
 export function displayScreenComponent(name: string | RootStackParamList): any {
   switch (name) {

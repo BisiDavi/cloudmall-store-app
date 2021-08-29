@@ -10,6 +10,10 @@ export function StoreDetailsReducer(
     storeOwnerName: "",
     openingDays: "",
     storeOpenTime: "",
+    settlementPlan: "",
+    bankName: "",
+    accountNumber: "",
+    accountName: "",
   },
   action: actionType
 ) {
@@ -35,6 +39,10 @@ export function StoreDetailsReducer(
         storeOwnerName: payload.storeOwnerName,
         openingDays: payload.openingDays,
         storeOpenTime: payload.storeOpenTime,
+        settlementPlan: payload.settlementPlan,
+        bankName: payload.bankName,
+        accountNumber: payload.accountNumber,
+        accountName: payload.accountName,
       };
     }
     default:
@@ -53,5 +61,9 @@ type actionType = {
     storeOwnerName: string;
     openingDays: string;
     storeOpenTime: string;
+    settlementPlan: string;
+    bankName: string;
+    accountNumber: string;
+    accountName: string;
   };
 };

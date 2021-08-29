@@ -7,6 +7,7 @@ import {
   Platform,
   ToastAndroid,
   Dimensions,
+  ScrollView,
 } from "react-native";
 import { Image, Button } from "react-native-elements";
 import * as ImagePicker from "expo-image-picker";
@@ -56,39 +57,41 @@ export default function UploadStoreImage({
   };
   return (
     <>
-      <Spinner visible={loading} color="blue" />
-      <View style={styles.container}>
-        <ProgressIndicator selected={4} />
-        <View style={styles.content}>
-          <Text style={styles.description}>
-            This image will appear as your store front on the user's app
-          </Text>
-          {!image ? (
-            <View style={styles.imageView}>
-              <Image
+      <ScrollView>
+        <Spinner visible={loading} color="blue" />
+        <View style={styles.container}>
+          <ProgressIndicator selected={4} />
+          <View style={styles.content}>
+            <Text style={styles.description}>
+              This image will appear as your store front on the user's app
+            </Text>
+            {!image ? (
+              <View style={styles.imageView}>
+                <Image
+                  onPress={pickImage}
+                  style={styles.uploadIcon}
+                  source={UploadIcon}
+                />
+              </View>
+            ) : (
+              <Image style={styles.image} source={{ uri: image }} />
+            )}
+            <View>
+              <Button
                 onPress={pickImage}
-                style={styles.uploadIcon}
-                source={UploadIcon}
+                buttonStyle={styles.nextButton}
+                title="Upload"
+              />
+              <Button
+                buttonStyle={styles.skipButton}
+                titleStyle={styles.skipText}
+                onPress={() => navigation.navigate("BottomNav")}
+                title="Skip"
               />
             </View>
-          ) : (
-            <Image style={styles.image} source={{ uri: image }} />
-          )}
-          <View>
-            <Button
-              onPress={pickImage}
-              buttonStyle={styles.nextButton}
-              title="Upload"
-            />
-            <Button
-              buttonStyle={styles.skipButton}
-              titleStyle={styles.skipText}
-              onPress={() => navigation.navigate("BottomNav")}
-              title="Skip"
-            />
           </View>
         </View>
-      </View>
+      </ScrollView>
     </>
   );
 }
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     backgroundColor: colors.mallBlue5,
-    width: 300,
+    width: 270,
   },
   imageView: {
     height: Dimensions.get("window").height * 0.35,
@@ -122,6 +125,9 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     borderWidth: 1,
     borderRadius: 5,
+    marginTop: 10,
+    marginBottom: 10,
+    width: 270,
   },
   skipText: {
     color: colors.mallBlue5,
@@ -144,6 +150,7 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 14,
     textAlign: "left",
+    fontFamily: "RobotoRegular",
   },
   content: {
     flexDirection: "column",

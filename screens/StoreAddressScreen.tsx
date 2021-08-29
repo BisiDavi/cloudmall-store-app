@@ -26,9 +26,7 @@ export default function StoreAddressScreen({
       enabled={true}
     >
       <View style={styles.container}>
-        <View style={styles.mapView}>
-          <Map />
-        </View>
+        <Map />
         <View style={styles.inputView}>
           <Text style={styles.text}>Address of Store</Text>
           <GoogleAutoCompleteInput placeholder="Choose your location on the map" />
@@ -51,12 +49,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     padding: 0,
   },
-  mapView: {
-    marginTop: 0,
-    height: deviceHeight * 0.55,
-    width: deviceWidth,
-    backgroundColor: "#C4C4C4",
-  },
   text: {
     fontSize: 14,
     fontFamily: "RobotoRegular",
@@ -67,6 +59,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     display: "flex",
     justifyContent: "flex-start",
+    flexDirection: "column",
     width: deviceWidth,
     backgroundColor: "white",
     height: deviceHeight * 0.3,
@@ -75,10 +68,12 @@ const styles = StyleSheet.create({
     display: "flex",
     width: deviceWidth * 0.6,
     backgroundColor: colors.mallBlue5,
-    marginTop: 0,
   },
   buttonView: {
     display: "flex",
     alignItems: "center",
+    height: deviceHeight * 0.2,
+    justifyContent: "center",
+    marginTop: 30,
   },
 });

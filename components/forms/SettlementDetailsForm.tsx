@@ -4,15 +4,19 @@ import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
 import { useStoreSetupNavigation } from "@hooks/.";
-import { colors } from "@utils/.";
+import { colors, screenNavigate } from "@utils/.";
 import settlementDetails from "@json/settlement-details.json";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
 import { storeSettlementDetailsSchema } from "./StoreDetailsSchema";
 
 export default function SettlementDetailsForm({ navigation }: any) {
   const [loading, setLoading] = useState(false);
-  const [storeId, setStoreId] = useState(null);
   const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
+  
+  function skipHandler(){
+    screenNavigate(4, navigation)
+  }
+
   return (
     <View style={styles.form}>
       <Spinner visible={loading} color="blue" />
@@ -55,7 +59,7 @@ export default function SettlementDetailsForm({ navigation }: any) {
             <View style={styles.buttonView}>
               <Button
                 buttonStyle={styles.skipButtonStyle}
-                onPress={handleSubmit}
+                onPress={skipHandler}
                 titleStyle={styles.skipTextStyle}
                 title="Skip"
               />

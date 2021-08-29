@@ -2,6 +2,7 @@ import React from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { View } from "react-native";
 import { colors } from "@utils/.";
+import { GOOGLE_MAP_API_KEY } from "@env";
 
 const GoogleAutoCompleteInput = ({
   placeholder,
@@ -17,7 +18,7 @@ const GoogleAutoCompleteInput = ({
         onPress={googlePlaceAutocomplete}
         query={{
           language: "en",
-          key: "",
+          key: GOOGLE_MAP_API_KEY,
           components: "country:nigeria",
         }}
         styles={{

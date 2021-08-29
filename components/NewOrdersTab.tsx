@@ -37,7 +37,7 @@ export default function NewOrdersTab() {
           <Avatar avatarStyle={styles.avatar} rounded />
           <ListItem.Content>
             <View style={styles.row}>
-              <Text>{item?.name}</Text> 
+              <Text>{item?.name}</Text>
               <Text>{item?.code}</Text>
             </View>
             <View style={styles.row}>

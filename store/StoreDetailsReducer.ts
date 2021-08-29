@@ -1,5 +1,4 @@
 import { STORETYPE_SELECTED, STOREDETAILS_SUBMITTED } from "./constant";
-import { setupStorePayloadType } from "./SetupStoreAction";
 
 export function StoreDetailsReducer(
   state = {

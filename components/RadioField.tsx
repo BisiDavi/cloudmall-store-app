@@ -3,18 +3,17 @@ import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { RadioButton } from "react-native-paper";
 import { Image } from "react-native-elements";
 import { useDispatch } from "react-redux";
-import colors from "../utils/colors";
-import displayAsset from "../utils/displayAsset";
-import { SetupStoreTypeScreenAction } from "store/SetupStoreAction";
+import { colors, displayAsset } from "@utils/.";
+import { SetupStoreTypeAction } from "@store/StoreDetailsAction";
 
 export default function RadioField({ content, error }: RadioFieldProps) {
   const [checked, setChecked] = useState("");
-  console.log("content radio checked", checked);
+  console.log("content radio checked", checked.length > 1);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (checked.length > 1) {
-      dispatch(SetupStoreTypeScreenAction(checked));
+      dispatch(SetupStoreTypeAction(checked));
     }
   }, [checked]);
 

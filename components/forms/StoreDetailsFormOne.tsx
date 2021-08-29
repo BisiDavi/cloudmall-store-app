@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { Button } from "react-native-elements";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
 import { storeDetailsScreenOneSchema } from "@components/forms/StoreDetailsSchema";
 import { useStoreSetupNavigation } from "@hooks/.";
-import axiosInstance from "../../network/axiosInstance";
-import { showToast, colors, DisplayFormElements } from "../../utils";
+import axiosInstance from "@network/axiosInstance";
+import { showToast, colors, DisplayFormElements } from "@utils/.";
 import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
 import { RootState } from "@store/RootReducer";
+import { SetupStoreDetailsSubmittedAction } from "@store/StoreDetailsAction";
 
 export default function StoreDetailsFormOne({ navigation }: any) {
-  const state= useSelector((state: RootState) => state.setupStore);
+  const state = useSelector((state: RootState) => state.storeDetails);
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   console.log("storeType", state);
   const [storeId, setStoreId] = useState(null);
@@ -27,7 +29,7 @@ export default function StoreDetailsFormOne({ navigation }: any) {
           storeEmail: "",
           phoneNumber: "",
           storeAddress: "",
-          storeType: "",
+          storeType: state?.storeType,
         }}
         onSubmit={async (values) => {
           setLoading(true);
@@ -41,6 +43,7 @@ export default function StoreDetailsFormOne({ navigation }: any) {
                 showToast(`${data.name} stores created`);
                 onBoardingNextScreen(1, false);
                 navigation.navigate("StoreAddressScreen");
+                dispatch(SetupStoreDetailsSubmittedAction(values));
               } else {
                 showToast(data);
               }

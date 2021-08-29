@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { SetupStoreScreenAction } from "store/SetupStoreAction";
-import { RootState } from "../store/RootReducer";
-import screenNavigate from "../utils/screenNavigate";
+import { RootState } from "@store/RootReducer";
+import screenNavigate from "@utils/screenNavigate";
 
 export default function useStoreSetupNavigation(navigation: any) {
   const setupStorestate = useSelector((state: RootState) => state.setupStore);

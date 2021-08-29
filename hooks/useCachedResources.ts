@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Ionicons } from "@expo/vector-icons";
-import { useFonts } from "expo-font";
+import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 
 export default function useCachedResources() {
@@ -11,7 +10,7 @@ export default function useCachedResources() {
       try {
         SplashScreen.preventAutoHideAsync();
 
-        useFonts({
+        await Font.loadAsync({
           "Roboto-Bold": require("../assets/fonts/Roboto-Bold.ttf"),
           "Roboto-Light": require("../assets/fonts/Roboto-Light.ttf"),
           "Roboto-Medium": require("../assets/fonts/Roboto-Medium.ttf"),

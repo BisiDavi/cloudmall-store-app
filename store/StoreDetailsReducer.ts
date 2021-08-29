@@ -12,11 +12,13 @@ export function StoreDetailsReducer(
 ) {
   console.log("state", state);
   const { payload, type } = action;
+  console.log("StoreDetailsReducer payload", payload);
+
   switch (type) {
     case STORETYPE_SELECTED: {
       return {
         ...state,
-        storeType: payload?.storeType,
+        storeType: payload,
       };
     }
     case STOREDETAILS_SUBMITTED: {

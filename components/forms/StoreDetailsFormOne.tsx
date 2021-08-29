@@ -14,10 +14,12 @@ import { SetupStoreDetailsSubmittedAction } from "@store/StoreDetailsAction";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
 
 export default function StoreDetailsFormOne({ navigation }: any) {
-  const state = useSelector((state: RootState) => state.storeDetails);
+  const state: any = useSelector((state: RootState) => state.storeDetails);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   console.log("storeType", state);
+  console.log(" state?.storeType", state?.storeType);
+
   const [storeId, setStoreId] = useState(null);
   const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
   return (
@@ -38,10 +40,11 @@ export default function StoreDetailsFormOne({ navigation }: any) {
             .post("/store", values)
             .then((response) => {
               const data: any = response.data;
+              console.log("data", data);
               setLoading(false);
               if (response.status === 200) {
                 setStoreId(data?._id);
-                showToast(`${data.name} stores created`);
+                showToast(`${data.storeName} stores created`);
                 onBoardingNextScreen(1, false);
                 navigation.navigate("StoreAddressScreen");
                 dispatch(SetupStoreDetailsSubmittedAction(values));

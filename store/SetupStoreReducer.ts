@@ -5,7 +5,6 @@ export function SetupStoreReducer(
   state = {
     completed: false,
     formPage: 0,
-    storeType: "",
   },
   action: actionType
 ) {

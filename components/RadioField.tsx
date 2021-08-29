@@ -8,7 +8,6 @@ import { SetupStoreTypeAction } from "@store/StoreDetailsAction";
 
 export default function RadioField({ content, error }: RadioFieldProps) {
   const [checked, setChecked] = useState("");
-  console.log("content radio checked", checked.length > 1);
   const dispatch = useDispatch();
 
   useEffect(() => {

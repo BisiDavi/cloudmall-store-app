@@ -4,14 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
-import { storeDetailsScreenOneSchema } from "@components/forms/StoreDetailsSchema";
+import { storeDetailsScreenOneSchema } from "@components/forms";
 import { useStoreSetupNavigation } from "@hooks/.";
 import axiosInstance from "@network/axiosInstance";
 import { showToast, colors } from "@utils/.";
 import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
 import { RootState } from "@store/RootReducer";
 import { SetupStoreDetailsSubmittedAction } from "@store/StoreDetailsAction";
-import {DisplayFormElements} from "@components/.";
+import DisplayFormElements from "@components/forms/DisplayFormElements";
 
 export default function StoreDetailsFormOne({ navigation }: any) {
   const state = useSelector((state: RootState) => state.storeDetails);

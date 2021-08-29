@@ -6,13 +6,12 @@ import { StyleSheet, View } from "react-native";
 import { useStoreSetupNavigation } from "@hooks/.";
 import axiosInstance from "@network/axiosInstance";
 import { showToast } from "@utils/.";
-import {DisplayFormElements} from "@components/.";
 import storeDetailsFormTwo from "@json/storeDetailsFormTwo.json";
-import { storeDetailsScreenTwoSchema } from "@components/forms/StoreDetailsSchema";
+import { storeDetailsScreenTwoSchema } from "@components/forms";
+import DisplayFormElements from "@components/forms/DisplayFormElements";
 
 export default function StoreDetailsFormTwo({ navigation }: any) {
   const [loading, setLoading] = useState(false);
-  const [storeId, setStoreId] = useState(null);
   const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
   return (
     <View>

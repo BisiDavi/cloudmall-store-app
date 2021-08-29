@@ -13,7 +13,7 @@ import { Button, Text } from "react-native-elements";
 
 import { RootStackParamList } from "@customTypes/.";
 import { useStoreSetupNavigation } from "@hooks/.";
-import getDeviceDimensions from "../utils/getDeviceDimensions";
+import { getDeviceDimensions, colors } from "@utils/.";
 
 const { deviceHeight, deviceWidth } = getDeviceDimensions();
 
@@ -63,13 +63,22 @@ export default function StoreAddressScreen({
                 key: "",
                 components: "country:nigeria",
               }}
-              styles={styles.input}
+              styles={{
+                textInputContainer: {
+                  borderColor: colors.mallBlue3,
+                  borderWidth: 1,
+                  borderRadius: 5,
+                  margin: 10,
+                },
+              }}
             />
-            <Button
-              buttonStyle={styles.button}
-              onPress={nextPageHandler}
-              title="Confirm Address"
-            />
+            <View style={styles.buttonView}>
+              <Button
+                buttonStyle={styles.button}
+                onPress={nextPageHandler}
+                title="Confirm Address"
+              />
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -91,22 +100,20 @@ const styles = StyleSheet.create({
   },
   inputView: {
     padding: 20,
+    paddingTop:10,
     display: "flex",
     justifyContent: "center",
-    height: deviceHeight * 0.3,
     width: deviceWidth,
     backgroundColor: "white",
   },
-  input: {
-    height: 40,
-    width: deviceWidth,
-    marginTop: 10,
-    marginBottom: 0,
-    borderColor:'blue',
-    backgroundColor:'red'
-  },
   button: {
-    justifyContent: "center",
-    margin: 40,
+    display: "flex",
+    width: deviceWidth * 0.6,
+    backgroundColor: colors.mallBlue5,
+    marginTop: 10,
+  },
+  buttonView: {
+    display: "flex",
+    alignItems: "center",
   },
 });

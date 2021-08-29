@@ -3,6 +3,7 @@ import { KeyboardTypeOptions } from "react-native";
 import InputField from "@components/InputField";
 import RadioField from "@components/RadioField";
 import SelectField from "@components/SelectField";
+import { displayAsset } from "@utils/.";
 
 export default function DisplayFormElements({
   formElement,
@@ -19,6 +20,7 @@ export default function DisplayFormElements({
           onBlur={props?.handleBlur(formElement.name)}
           value={props.values[formElement.name]}
           keyboardType={formElement?.keyboardType}
+          rightIcon={displayAsset(formElement.iconName)}
           errorMessage={
             props.errors[formElement.name] &&
             props.touched[formElement.name] &&
@@ -62,6 +64,7 @@ interface displayFormElementsProps {
     type: string;
     keyboardType?: KeyboardTypeOptions | undefined | any;
     options?: string[] | undefined;
+    iconName?: string;
     textContentType?:
       | "password"
       | "emailAddress"

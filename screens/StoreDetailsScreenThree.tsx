@@ -6,8 +6,7 @@ import * as ImagePicker from "expo-image-picker";
 import { RootStackParamList } from "@customTypes/.";
 import UploadIcon from "@assets/upload.png";
 import Spinner from "react-native-loading-spinner-overlay";
-import axiosInstance from "../network/axiosInstance";
-import colors from "../utils/colors";
+import colors from "@utils/colors";
 
 export default function StoreDetailsScreenThree({
   navigation,
@@ -40,7 +39,6 @@ export default function StoreDetailsScreenThree({
     if (!result.cancelled) {
       console.log("result", result);
       setImage(result.uri);
-      // axiosInstance.post("/store/", { storeImage: image?.uri });
     }
     setLoading(false);
   };

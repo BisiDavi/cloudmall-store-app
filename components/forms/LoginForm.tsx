@@ -8,6 +8,7 @@ import { Button } from "react-native-elements";
 
 import { RootStackParamList } from "../../customTypes";
 import InputField from "@components/InputField";
+import colors from "../../utils/colors";
 import loginSchema from "./LoginSchema";
 import AuthContext from "../../context/AuthContext";
 
@@ -84,13 +85,13 @@ export default function LoginForm({ navigation }: loginFormProps) {
             onPress={handleSubmit}
             title="Login"
             disabled={!isValid}
-            buttonStyle={styles.createAccount}
+            buttonStyle={styles.login}
           />
           <View style={styles.withAccount}>
             <Text>Don't have an account? </Text>
             <Button
               onPress={() => navigation.navigate("SignupScreen")}
-              buttonStyle={styles.login}
+              buttonStyle={styles.signup}
               type="clear"
               title="Sign up"
             />
@@ -129,20 +130,21 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     backgroundColor: "black",
   },
-  createAccount: {
+  login: {
     alignItems: "center",
     marginTop: 20,
     display: "flex",
     marginBottom: 20,
     width: 250,
     justifyContent: "center",
+    backgroundColor: colors.mallBlue5,
   },
   withAccount: {
     alignItems: "center",
     justifyContent: "space-around",
     flexDirection: "row",
   },
-  login: {
+  signup: {
     marginTop: 0,
   },
 });

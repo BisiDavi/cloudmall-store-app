@@ -15,6 +15,7 @@ import pizzaImage from "@assets/pizza.png";
 import shopperImage from "@assets/shopper.jpg";
 import trackSalesImage from "@assets/trackSales.png";
 import { RootStackParamList } from "customTypes";
+import colors from "../utils/colors";
 
 export default function OnboardingScreen({
   navigation,
@@ -86,7 +87,7 @@ export default function OnboardingScreen({
   }
   const renderSkipButton = () => (
     <Button
-      buttonStyle={{ margin:20,marginTop: 10, }}
+      buttonStyle={{ margin: 20, marginTop: 10 }}
       onPress={onSkip}
       type="outline"
       title="Skip"
@@ -117,7 +118,7 @@ export default function OnboardingScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",    
+    alignItems: "center",
     justifyContent: "center",
   },
   renderItem: {
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     justifyContent: "flex-start",
     alignItems: "flex-start",
-    fontFamily: "Roboto-Light",
+    fontFamily: "RobotoLight",
     marginBottom: 0,
     textAlign: "left",
   },
@@ -146,15 +147,15 @@ const styles = StyleSheet.create({
     fontWeight: "normal",
     textAlign: "center",
     marginBottom: 60,
-    marginTop:-20,
+    marginTop: -20,
   },
   button: {
-    margin:20,
+    margin: 20,
     marginTop: 5,
     marginBottom: 5,
     justifyContent: "center",
-    backgroundColor: "blue",
-    padding: 20,    
+    backgroundColor: colors.mallBlue5,
+    padding: 20,
     height: 45,
     borderRadius: 5,
     flex: 1,

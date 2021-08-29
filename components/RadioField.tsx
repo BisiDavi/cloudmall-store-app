@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   iconImage: {
-    height: 20,
+    height: 25,
     width: 10,
   },
 });

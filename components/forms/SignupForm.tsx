@@ -5,6 +5,7 @@ import { Feather } from "@expo/vector-icons";
 import { Formik } from "formik";
 import { StyleSheet, View, Text, ToastAndroid } from "react-native";
 import { Button } from "react-native-elements";
+import colors from "../../utils/colors";
 import Spinner from "react-native-loading-spinner-overlay";
 
 import { RootStackParamList } from "customTypes";
@@ -157,6 +158,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 10,
     width: 250,
+    backgroundColor:colors.mallBlue5
   },
   withAccount: {
     alignItems: "center",

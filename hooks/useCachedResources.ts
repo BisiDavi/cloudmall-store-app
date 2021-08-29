@@ -11,10 +11,14 @@ export default function useCachedResources() {
         SplashScreen.preventAutoHideAsync();
 
         await Font.loadAsync({
-          "RobotoBold": require("../assets/fonts/Roboto-Bold.ttf"),
-          "RobotoLight": require("../assets/fonts/Roboto-Light.ttf"),
-          "RobotoMedium": require("../assets/fonts/Roboto-Medium.ttf"),
-          "RobotoRegular": require("../assets/fonts/Roboto-Regular.ttf"),
+          RobotoBold: require("../assets/fonts/Roboto-Bold.ttf"),
+          RobotoLight: require("../assets/fonts/Roboto-Light.ttf"),
+          RobotoMedium: require("../assets/fonts/Roboto-Medium.ttf"),
+          RobotoRegular: require("../assets/fonts/Roboto-Regular.ttf"),
+          MontserratBold: require("../assets/fonts/Montserrat-Bold.otf"),
+          MontserratLight: require("../assets/fonts/Montserrat-Light.otf"),
+          MontserratMedium: require("../assets/fonts/Montserrat-Medium.otf"),
+          MontserratRegular: require("../assets/fonts/Montserrat-Regular.otf"),
         });
       } catch (error) {
         console.warn(error);

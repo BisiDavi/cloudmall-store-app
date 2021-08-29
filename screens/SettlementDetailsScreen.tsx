@@ -13,7 +13,7 @@ import SettlementDetailsForm from "@components/forms/SettlementDetailsForm";
 
 export default function SettlementDetailsScreen({
   navigation,
-}: StackScreenProps<RootStackParamList, "StoreDetailsScreenOne">) {
+}: StackScreenProps<RootStackParamList, "SettlementDetailsScreen">) {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}

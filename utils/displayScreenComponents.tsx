@@ -8,14 +8,15 @@ import MyStoreScreen from "@screens/MyStoreScreen";
 import OnboardingScreen from "@screens/OnboardingScreen";
 import OrdersScreen from "@screens/OrdersScreen";
 import ProfileScreen from "@screens/ProfileScreen";
+import SettlementDetailsScreen from "@screens/SettlementDetailsScreen";
 import SignupScreen from "@screens/SignupScreen";
 import StatisticsScreen from "@screens/StatisticsScreen";
 import StoreAddressScreen from "@screens/StoreAddressScreen";
 import StoreDetailsScreenOne from "@screens/StoreDetailsScreenOne";
-import StoreDetailsScreenThree from "@screens/StoreDetailsScreenThree";
 import StoreDetailsScreenTwo from "@screens/StoreDetailsScreenTwo";
 import ViewStoreScreen from "@screens/ViewStoreScreen";
 import { RootStackParamList } from "../customTypes";
+import UploadStoreImage from "@screens/UploadStoreImage";
 
 export function displayScreenComponent(name: string | RootStackParamList): any {
   switch (name) {
@@ -43,8 +44,8 @@ export function displayScreenComponent(name: string | RootStackParamList): any {
       return StoreDetailsScreenOne;
     case "StoreDetailsScreenTwo":
       return StoreDetailsScreenTwo;
-    case "StoreDetailsScreenThree":
-      return StoreDetailsScreenThree;
+    case "UploadStoreImage":
+      return UploadStoreImage;
     case "StoreAddressScreen":
       return StoreAddressScreen;
     case "AvailableBalanceScreen":
@@ -53,6 +54,8 @@ export function displayScreenComponent(name: string | RootStackParamList): any {
       return AmountPaidScreen;
     case "StatisticsScreen":
       return StatisticsScreen;
+    case "SettlementDetailsScreen":
+      return SettlementDetailsScreen;
     default:
       return null;
   }

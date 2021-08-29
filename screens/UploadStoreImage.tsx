@@ -8,9 +8,9 @@ import UploadIcon from "@assets/upload.png";
 import Spinner from "react-native-loading-spinner-overlay";
 import colors from "@utils/colors";
 
-export default function StoreDetailsScreenThree({
+export default function UploadStoreImage({
   navigation,
-}: StackScreenProps<RootStackParamList, "StoreDetailsScreenTwo">) {
+}: StackScreenProps<RootStackParamList, "UploadStoreImage">) {
   const [image, setImage] = useState<any>(null);
   const [loading, setLoading] = useState(false);
 
@@ -53,7 +53,7 @@ export default function StoreDetailsScreenThree({
           </Text>
           {!image ? (
             <View style={styles.imageView}>
-              <Image source={UploadIcon}  />
+              <Image source={UploadIcon} />
             </View>
           ) : (
             <Image style={styles.image} source={{ uri: image }} />

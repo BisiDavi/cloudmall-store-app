@@ -2,13 +2,13 @@ import "react-native-gesture-handler";
 import React, { useContext, useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Spinner from "react-native-loading-spinner-overlay";
-import { RootStackParamList } from "../customTypes";
+import { RootStackParamList } from "@customTypes/.";
 import rootNavigationContent from "@json/root-navigation.json";
-import { hasTokenExpired } from "../utils/.";
-import AuthContext from "../context/AuthContext";
-import { displayScreenComponent } from "../utils/displayScreenComponents";
+import { hasTokenExpired } from "@utils/.";
+import AuthContext from "@context/AuthContext";
+import { displayScreenComponent } from "@utils/displayScreenComponents";
 import BottomTabNavigator from "./BottomTabNavigator";
-import { setClientToken } from "../network/axiosInstance";
+import { setClientToken } from "@network/axiosInstance";
 
 const Stack = createStackNavigator<RootStackParamList>();
 

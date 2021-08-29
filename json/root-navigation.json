@@ -16,8 +16,13 @@
       "position": "left"
     },
     {
-      "name": "StoreDetailsScreenThree",
+      "name": "SettlementDetailsScreen",
       "title": "Step 3: Settlement Details",
+      "position": "left"
+    },
+    {
+      "name": "UploadStoreImage",
+      "title": "Upload Store's Image",
       "position": "left"
     },
     {

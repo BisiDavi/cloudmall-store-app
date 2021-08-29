@@ -1,12 +1,6 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  View,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-} from "react-native";
+import React from "react";
+import { StyleSheet, View, KeyboardAvoidingView, Platform } from "react-native";
 import Map from "@components/Map";
 import { Button, Text } from "react-native-elements";
 

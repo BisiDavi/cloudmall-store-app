@@ -9,18 +9,18 @@ const Map = () => {
   const [cordinate, setCoordinate] = useState({
     latitude: 7.4905,
     longitude: 4.5521,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01,
   });
+  console.log("coordinates", cordinate);
   return (
     <MapView
       style={styles.map}
-      initialRegion={{
-        latitude: 7.4905,
-        longitude: 4.5521,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      }}
+      initialRegion={cordinate}
+      showsUserLocation
+      onRegionChangeComplete={(cordinate) => setCoordinate(cordinate)}
     >
-      <Marker draggable coordinate={cordinate} />
+      <Marker draggable coordinate={{ latitude: 7.4905, longitude: 4.5521 }} />
     </MapView>
   );
 };
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     height: deviceHeight * 0.6,
     width: deviceWidth,
     backgroundColor: "#C4C4C4",
+    flex: 1,
   },
 });
 

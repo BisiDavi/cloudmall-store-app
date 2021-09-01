@@ -1,6 +1,12 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import React from "react";
-import { StyleSheet, View, KeyboardAvoidingView, Platform } from "react-native";
+import {
+  StyleSheet,
+  View,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
+} from "react-native";
 import Map from "@components/Map";
 import { Button, Text } from "react-native-elements";
 
@@ -8,6 +14,7 @@ import { RootStackParamList } from "@customTypes/.";
 import { useStoreSetupNavigation } from "@hooks/.";
 import { getDeviceDimensions, colors } from "@utils/.";
 import GoogleAutoCompleteInput from "@components/GoogleAutoCompleteInput";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const { deviceHeight, deviceWidth } = getDeviceDimensions();
 
@@ -25,20 +32,22 @@ export default function StoreAddressScreen({
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       enabled={true}
     >
-      <View style={styles.container}>
-        <Map />
-        <View style={styles.inputView}>
-          <Text style={styles.text}>Address of Store</Text>
-          <GoogleAutoCompleteInput placeholder="Choose your location on the map" />
-          <View style={styles.buttonView}>
-            <Button
-              buttonStyle={styles.button}
-              onPress={nextPageHandler}
-              title="Confirm Address"
-            />
+      <ScrollView>
+        <View style={styles.container}>
+          <Map />
+          <View style={styles.inputView}>
+            <Text style={styles.text}>Address of Store</Text>
+            <GoogleAutoCompleteInput placeholder="Choose your location on the map" />
+            <View style={styles.buttonView}>
+              <Button
+                buttonStyle={styles.button}
+                onPress={nextPageHandler}
+                title="Confirm Address"
+              />
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 }

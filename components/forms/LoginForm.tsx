@@ -12,6 +12,7 @@ import InputField from "@components/InputField";
 import colors from "@utils/colors";
 import loginSchema from "./LoginSchema";
 import AuthContext from "@context/AuthContext";
+import screenNavigate from "@utils/screenNavigate";
 
 type LoginScreenNavigationProps = StackNavigationProp<
   RootStackParamList,
@@ -38,10 +39,14 @@ export default function LoginForm({ navigation }: loginFormProps) {
     <Formik
       validationSchema={loginSchema}
       initialValues={{ email: "", password: "" }}
-      onSubmit={(values) => {
+      onSubmit={async (values) => {
         const { email, password } = values;
         authContext.loginIn(email, password);
-        checkExistingStore();
+        const { availableStores }: any = await checkExistingStore();
+        console.log("availableStores", availableStores);
+        if (availableStores.length > 0) {
+          screenNavigate(4, navigation);
+        }
       }}
     >
       {({

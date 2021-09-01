@@ -9,7 +9,7 @@ import { colors, screenNavigate } from "@utils/.";
 import settlementDetails from "@json/settlement-details.json";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
 import { storeSettlementDetailsSchema } from "./StoreDetailsSchema";
-import { SetupStoreDetailsSubmittedAction } from "@store/StoreDetailsAction";
+import { StoreDetailsSubmittedAction } from "@store/StoreDetailsAction";
 
 export default function SettlementDetailsForm({ navigation }: any) {
   const [loading, setLoading] = useState(false);
@@ -34,7 +34,7 @@ export default function SettlementDetailsForm({ navigation }: any) {
         onSubmit={(values) => {
           console.log("values", values);
           setLoading(true);
-          dispatch(SetupStoreDetailsSubmittedAction(values));
+          dispatch(StoreDetailsSubmittedAction(values));
           setLoading(false);
           onBoardingNextScreen(4, false);
         }}

@@ -8,8 +8,6 @@ export default function useStoreSetupNavigation(navigation: any) {
   const setupStorestate = useSelector((state: RootState) => state.setupStore);
   const dispatch = useDispatch();
 
-  console.log("setupStorestate", setupStorestate);
-
   useEffect(() => {
     if (setupStorestate.formPage !== 0) {
       screenNavigate(setupStorestate.formPage, navigation);

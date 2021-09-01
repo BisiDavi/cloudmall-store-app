@@ -6,9 +6,8 @@ export const storeDetailsScreenOneSchema = yup.object().shape({
     .string()
     .email("store email must be a valid email")
     .required("email address is required"),
-  phoneNumber: yup.string().required("phone number is required"),
+  phoneNumber: yup.string().required("phone number is required").min(11, "number must be eleven digits").max(11, "number must be eleven digits"),
   storeAddress: yup.string().required("store address is required"),
-  storeType: yup.string().required("store type is required"),
 });
 
 export const storeDetailsScreenTwoSchema = yup.object().shape({

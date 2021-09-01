@@ -1,4 +1,4 @@
-import { STOREDETAILS_PAGE, STORETYPE_SELECTED } from "./constant";
+import { STOREDETAILS_PAGE } from "./constant";
 
 export const SetupStoreScreenAction =
   (page: number, status: boolean) => (dispatch: (arg0: argType) => void) => {

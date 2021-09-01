@@ -18,7 +18,8 @@
     "name": "phoneNumber",
     "type": "input",
     "placeholder": "0812345678",
-    "textContentType": "telephoneNumber"
+    "textContentType": "telephoneNumber",
+    "keyboardType": "numeric"
   },
   {
     "label": "Address of Store",

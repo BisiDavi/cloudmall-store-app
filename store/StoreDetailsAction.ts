@@ -1,17 +1,28 @@
-import { STORETYPE_SELECTED, STOREDETAILS_SUBMITTED } from "./constant";
+import {
+  STORETYPE_SELECTED,
+  STOREDETAILS_SUBMITTED,
+  STORE_DETAILS,
+} from "./constant";
 
-export const SetupStoreTypeAction = (payload: any) => (dispatch: any) => {
-    console.log('payload',payload)
+export const StoreDetailsTypeAction = (payload: any) => (dispatch: any) => {
+  console.log("payload", payload);
   dispatch({
     type: STORETYPE_SELECTED,
     payload,
   });
 };
 
+export const StoreDetailsSubmittedAction =
+  (payload: any) => (dispatch: any) => {
+    dispatch({
+      type: STOREDETAILS_SUBMITTED,
+      payload,
+    });
+  };
 
-export const SetupStoreDetailsSubmittedAction = (payload: any) => (dispatch: any) => {
+export const StoreDetailsAction = (payload: any) => (dispatch: any) => {
   dispatch({
-    type: STOREDETAILS_SUBMITTED,
+    type: STORE_DETAILS,
     payload,
   });
 };

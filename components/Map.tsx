@@ -12,7 +12,6 @@ const Map = () => {
     latitudeDelta: 0.01,
     longitudeDelta: 0.01,
   });
-  console.log("coordinates", cordinate);
   return (
     <MapView
       style={styles.map}

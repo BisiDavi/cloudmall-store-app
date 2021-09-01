@@ -5,92 +5,72 @@ import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
 import { storeDetailsScreenOneSchema } from "@components/forms";
-import { useStoreSetupNavigation } from "@hooks/.";
-import axiosInstance from "@network/axiosInstance";
-import { showToast, colors } from "@utils/.";
+import { colors, screenNavigate } from "@utils/.";
 import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
 import { RootState } from "@store/RootReducer";
-import { SetupStoreDetailsSubmittedAction } from "@store/StoreDetailsAction";
+import { StoreDetailsAction } from "@store/StoreDetailsAction";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
 
 export default function StoreDetailsFormOne({ navigation }: any) {
   const state: any = useSelector((state: RootState) => state.storeDetails);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  console.log("storeType", state);
-  console.log(" state?.storeType", state?.storeType);
 
-  const [storeId, setStoreId] = useState(null);
-  const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
+  console.log("form state", state);
+
   return (
-    <View style={styles.form}>
+    <>
       <Spinner visible={loading} color="blue" />
-      <Formik
-        validationSchema={storeDetailsScreenOneSchema}
-        initialValues={{
-          storeName: "",
-          storeEmail: "",
-          phoneNumber: "",
-          storeAddress: "",
-          storeType: state?.storeType,
-        }}
-        onSubmit={async (values) => {
-          setLoading(true);
-          await axiosInstance
-            .post("/store", values)
-            .then((response) => {
-              const data: any = response.data;
-              console.log("data", data);
-              setLoading(false);
-              if (response.status === 200) {
-                setStoreId(data?._id);
-                showToast(`${data.storeName} stores created`);
-                onBoardingNextScreen(1, false);
-                navigation.navigate("StoreDetailsScreenTwo");
-                dispatch(SetupStoreDetailsSubmittedAction(values));
-              } else {
-                showToast(data);
-              }
-            })
-            .catch((error) => {
-              setLoading(false);
-              showToast(error.response.data);
-            });
-        }}
-      >
-        {({
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          values,
-          errors,
-          touched,
-          isValid,
-        }) => (
-          <View>
-            {storeDetailsFormOne.map((formElement, index: number) => (
-              <DisplayFormElements
-                key={index}
-                formElement={formElement}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                values={values}
-                errors={errors}
-                touched={touched}
-              />
-            ))}
-            <View style={styles.buttonView}>
-              <Button
-                buttonStyle={styles.buttonStyle}
-                onPress={handleSubmit}
-                disabled={!isValid}
-                title="Next"
-              />
+      <View style={styles.form}>
+        <Formik
+          validationSchema={storeDetailsScreenOneSchema}
+          initialValues={{
+            storeName: "",
+            storeEmail: "",
+            phoneNumber: "",
+            storeAddress: "",
+          }}
+          onSubmit={(values) => {
+            setLoading(true);
+            dispatch(StoreDetailsAction(values));
+            setLoading(false);
+            screenNavigate(2, navigation);
+          }}
+        >
+          {({
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            values,
+            errors,
+            touched,
+            isValid,
+          }) => (
+            <View>
+              {storeDetailsFormOne.map((formElement, index: number) => (
+                <DisplayFormElements
+                  key={index}
+                  formElement={formElement}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                  values={values}
+                  errors={errors}
+                  touched={touched}
+                />
+              ))}
+              <View style={styles.buttonView}>
+                <Button
+                  buttonStyle={styles.buttonStyle}
+                  onPress={handleSubmit}
+                  disabled={!isValid}
+                  title="Next"
+                />
+              </View>
             </View>
-          </View>
-        )}
-      </Formik>
-    </View>
+          )}
+        </Formik>
+      </View>
+    </>
   );
 }
 

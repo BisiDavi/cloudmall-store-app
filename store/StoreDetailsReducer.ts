@@ -1,7 +1,11 @@
-import { STORETYPE_SELECTED, STOREDETAILS_SUBMITTED } from "./constant";
+import {
+  STORETYPE_SELECTED,
+  STOREDETAILS_SUBMITTED,
+  STORE_DETAILS,
+} from "./constant";
 
 export function StoreDetailsReducer(
-  state = {
+  state = {    
     storeName: "",
     storeEmail: "",
     phoneNumber: "",
@@ -17,15 +21,21 @@ export function StoreDetailsReducer(
   },
   action: actionType
 ) {
-  console.log("state", state);
   const { payload, type } = action;
-  console.log("StoreDetailsReducer payload", payload);
-
   switch (type) {
     case STORETYPE_SELECTED: {
       return {
         ...state,
         storeType: payload,
+      };
+    }
+    case STORE_DETAILS: {
+      return {
+        ...state,
+        storeName: payload?.storeName,
+        storeEmail: payload?.storeEmail,
+        phoneNumber: payload?.phoneNumber,
+        storeAddress: payload?.storeAddress,
       };
     }
     case STOREDETAILS_SUBMITTED: {
@@ -51,7 +61,7 @@ export function StoreDetailsReducer(
 }
 
 type actionType = {
-  type: "STOREDETAILS_SUBMITTED" | "STORETYPE_SELECTED";
+  type: "STOREDETAILS_SUBMITTED" | "STORETYPE_SELECTED" | "STORE_DETAILS";
   payload: {
     storeName: string;
     storeEmail: string;

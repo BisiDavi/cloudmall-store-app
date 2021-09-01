@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import { useReducer } from "react";
 
 export default function useAuthReducer() {
   const [state, dispatch] = useReducer(

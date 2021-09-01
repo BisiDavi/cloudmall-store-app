@@ -14,5 +14,6 @@ export default function StoreSvg() {
           fill="#8F8F8F"
         />
       </svg>`;
-  return <SvgWrapper svg={svg} width="18px"></SvgWrapper>;
+
+  return <SvgWrapper svg={svg} width="18px" />;
 }

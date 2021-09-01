@@ -1,9 +1,9 @@
 import * as React from "react";
 import InfoIcon from "@assets/infoIcon.png";
-import DashboardIcon from "@assets/dashboard.svg";
-import StoresIcon from "@assets/store.svg";
-import ProfileIcon from "@assets/profile.svg";
-import OrdersIcon from "@assets/order.svg";
+import DashboardIcon from "@assets/DashboardSvg";
+import StoresIcon from "@assets/StoreSvg";
+import ProfileIcon from "@assets/ProfileSvg";
+import OrdersIcon from "@assets/OrderSvg";
 
 import AddressIcon from "@assets/icons/AddressIcon";
 

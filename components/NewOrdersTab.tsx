@@ -35,17 +35,12 @@ export default function NewOrdersTab() {
   function toggleModal(item: any) {
     console.log("I am working");
     setVisible(!visible);
-
+    console.log("item toggleModal", item);
     visible && displayModal(item);
   }
 
   function renderItem({ item }: newOrder) {
-    console.log("item", item);
-    return (
-      <View>
-        <OrdersListItem onPress={() => toggleModal(item)} item={item} />
-      </View>
-    );
+    return <OrdersListItem onPress={() => toggleModal(item)} item={item} />;
   }
 
   return (

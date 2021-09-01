@@ -1,5 +1,8 @@
 export default function screenNavigate(page: number, navigation: any) {
   switch (page) {
+    case 0: {
+      return navigation.navigate("StoreDetailsScreenOne");
+    }
     case 1: {
       return navigation.navigate("StoreDetailsScreenTwo");
     }
@@ -12,10 +15,8 @@ export default function screenNavigate(page: number, navigation: any) {
     case 4: {
       return navigation.navigate("BottomNav");
     }
-   
+
     default:
       return null;
   }
 }
-
-

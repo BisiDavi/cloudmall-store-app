@@ -1,5 +1,6 @@
 import "react-native-gesture-handler";
 import React, { useContext, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { createStackNavigator } from "@react-navigation/stack";
 import Spinner from "react-native-loading-spinner-overlay";
 import { RootStackParamList } from "@customTypes/.";
@@ -9,11 +10,15 @@ import AuthContext from "@context/AuthContext";
 import { displayScreenComponent } from "@utils/displayScreenComponents";
 import BottomTabNavigator from "./BottomTabNavigator";
 import { setClientToken } from "@network/axiosInstance";
+import { RootState } from "@store/RootReducer";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 export default function RootNavigator() {
   const { state } = useContext(AuthContext);
+  const { completed } = useSelector(
+    (storeState: RootState) => storeState.setupStore
+  );
   const isSignedIn = hasTokenExpired(state.userToken);
 
   useEffect(() => {
@@ -62,6 +67,8 @@ export default function RootNavigator() {
             )}
             <Stack.Screen name="BottomNav" component={BottomTabNavigator} />
           </>
+        ) : !isSignedIn && completed ? (
+          <Stack.Screen name="BottomNav" component={BottomTabNavigator} />
         ) : (
           <>
             {rootNavigationContent.publicPage.map((item: any, index) =>

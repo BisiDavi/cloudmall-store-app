@@ -6,27 +6,25 @@ import colors from "@utils/colors";
 
 export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
   return (
-    <>
-      <ListItem
-        key={item?.id}
-        style={styles.listItem}
-        onPress={onPress}
-        bottomDivider
-      >
-        <Avatar avatarStyle={styles.avatar} rounded />
-        <ListItem.Content>
-          <View style={styles.row}>
-            <Text>{item?.name}</Text>
-            <Text>{item?.code}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text>{item?.time}</Text>
-            <Image style={styles.clipboard} source={clipboard} />
-            <Text style={styles.status}>{item?.status}</Text>
-          </View>
-        </ListItem.Content>
-      </ListItem>
-    </>
+    <ListItem
+      key={item?.id}
+      style={styles.listItem}
+      onPress={onPress}
+      bottomDivider
+    >
+      <Avatar avatarStyle={styles.avatar} rounded />
+      <ListItem.Content>
+        <View style={styles.row}>
+          <Text>{item?.name}</Text>
+          <Text>{item?.code}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text>{item?.time}</Text>
+          <Image style={styles.clipboard} source={clipboard} />
+          <Text style={styles.status}>{item?.status}</Text>
+        </View>
+      </ListItem.Content>
+    </ListItem>
   );
 }
 

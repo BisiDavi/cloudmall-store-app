@@ -6,14 +6,11 @@ import { Formik } from "formik";
 import { StyleSheet, View, Text } from "react-native";
 import { Button } from "react-native-elements";
 
-import checkExistingStore from "@utils/checkExistingStore";
 import { RootStackParamList } from "@customTypes/.";
 import InputField from "@components/InputField";
 import colors from "@utils/colors";
 import loginSchema from "./LoginSchema";
 import AuthContext from "@context/AuthContext";
-import screenNavigate from "@utils/screenNavigate";
-import axiosInstance from "@network/axiosInstance";
 
 type LoginScreenNavigationProps = StackNavigationProp<
   RootStackParamList,

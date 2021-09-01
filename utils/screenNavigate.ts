@@ -12,9 +12,7 @@ export default function screenNavigate(page: number, navigation: any) {
     case 4: {
       return navigation.navigate("BottomNav");
     }
-    case 5: {
-      return navigation.navigate("BottomNav");
-    }
+   
     default:
       return null;
   }

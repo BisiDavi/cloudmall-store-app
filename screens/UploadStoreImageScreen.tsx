@@ -10,18 +10,29 @@ import {
   ScrollView,
 } from "react-native";
 import { Image, Button } from "react-native-elements";
+import { useDispatch, useSelector } from "react-redux";
 import * as ImagePicker from "expo-image-picker";
+import Spinner from "react-native-loading-spinner-overlay";
+
 import { RootStackParamList } from "@customTypes/.";
 import UploadIcon from "@assets/upload.png";
-import Spinner from "react-native-loading-spinner-overlay";
 import colors from "@utils/colors";
+import { useStoreSetupNavigation } from "@hooks/.";
+import { RootState } from "@store/RootReducer";
 import ProgressIndicator from "@components/ProgressIndicator";
+import axiosInstance from "@network/axiosInstance";
+import showToast from "@utils/showToast";
+import { StoreImageUploadAction } from "@store/StoreDetailsAction";
 
 export default function UploadStoreImage({
   navigation,
 }: StackScreenProps<RootStackParamList, "UploadStoreImage">) {
   const [image, setImage] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const state = useSelector((state: RootState) => state.storeDetails);
+  const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
+  console.log("UploadStoreImage", state);
 
   useEffect(() => {
     const displayAfter2Secs = setTimeout(() => {
@@ -41,6 +52,28 @@ export default function UploadStoreImage({
 
     return () => clearTimeout(displayAfter2Secs);
   }, []);
+
+  async function uploadImage() {
+    image && dispatch(StoreImageUploadAction(image));
+    await axiosInstance
+      .post("/store", state)
+      .then((response) => {
+        const data: any = response.data;
+        console.log("data", data);
+        setLoading(false);
+        if (response.status === 200) {
+          showToast(`${data.storeName} stores created`);
+          onBoardingNextScreen(4, true);
+          navigation.navigate("BottomNav");
+        } else {
+          showToast(data);
+        }
+      })
+      .catch((error) => {
+        setLoading(false);
+        showToast(error.response.data);
+      });
+  }
 
   const pickImage = async () => {
     setLoading(true);
@@ -66,19 +99,22 @@ export default function UploadStoreImage({
               This image will appear as your store front on the user's app
             </Text>
             {!image ? (
-              <View style={styles.imageView}>
-                <Image
-                  onPress={pickImage}
-                  style={styles.uploadIcon}
-                  source={UploadIcon}
-                />
-              </View>
+              <>
+                <View style={styles.imageView}>
+                  <Image
+                    onPress={pickImage}
+                    style={styles.uploadIcon}
+                    source={UploadIcon}
+                  />
+                </View>
+                <Text style={styles.error}>please upload an image</Text>
+              </>
             ) : (
               <Image style={styles.image} source={{ uri: image }} />
             )}
             <View>
               <Button
-                onPress={pickImage}
+                onPress={uploadImage}
                 buttonStyle={styles.nextButton}
                 title="Upload"
               />
@@ -158,5 +194,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 15,
     marginBottom: 10,
+  },
+  error: {
+    color: colors.accentRed,
   },
 });

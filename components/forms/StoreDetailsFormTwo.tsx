@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import { Button } from "react-native-elements";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Dimensions, View } from "react-native";
 import { useStoreSetupNavigation } from "@hooks/.";
 import storeDetailsFormTwo from "@json/storeDetailsFormTwo.json";
 import { storeDetailsScreenTwoSchema } from "@components/forms";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
+import { StoreOwnerAction } from "@store/StoreDetailsAction";
+import { screenNavigate, colors } from "@utils/.";
+import { RootState } from "@store/RootReducer";
 
 export default function StoreDetailsFormTwo({ navigation }: any) {
   const [loading, setLoading] = useState(false);
   const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
+  const dispatch = useDispatch();
+  const state = useSelector((state: RootState) => state.storeDetails);
+  console.log("state", state);
+
   return (
     <View>
       <Spinner visible={loading} color="blue" />
@@ -21,11 +29,13 @@ export default function StoreDetailsFormTwo({ navigation }: any) {
           openingDays: "",
           storeOpenTime: "",
         }}
-        onSubmit={async (values) => {
+        onSubmit={(values) => {
           console.log("values", values);
           setLoading(true);
-          onBoardingNextScreen(3, false);
+          dispatch(StoreOwnerAction(values));
           setLoading(false);
+          onBoardingNextScreen(2, false);
+          screenNavigate(2, navigation);
         }}
       >
         {({
@@ -69,8 +79,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonStyle: {
-    width: 250,
+    width: Dimensions.get("window").width * 0.7,
     alignItems: "center",
+    backgroundColor: colors.mallBlue5,
   },
   buttonView: {
     alignItems: "center",

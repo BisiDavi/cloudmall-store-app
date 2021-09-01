@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 import { Button } from "react-native-elements";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
 import { storeDetailsScreenOneSchema } from "@components/forms";
 import { colors, screenNavigate } from "@utils/.";
 import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
-import { RootState } from "@store/RootReducer";
 import { StoreDetailsAction } from "@store/StoreDetailsAction";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
+import useStoreSetupNavigation from "@hooks/useStoreSetupNavigation";
 
 export default function StoreDetailsFormOne({ navigation }: any) {
-  const state: any = useSelector((state: RootState) => state.storeDetails);
   const dispatch = useDispatch();
+  const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
   const [loading, setLoading] = useState(false);
-
-  console.log("form state", state);
 
   return (
     <>
@@ -34,7 +32,8 @@ export default function StoreDetailsFormOne({ navigation }: any) {
             setLoading(true);
             dispatch(StoreDetailsAction(values));
             setLoading(false);
-            screenNavigate(2, navigation);
+            onBoardingNextScreen(1, false);
+            screenNavigate(1, navigation);
           }}
         >
           {({

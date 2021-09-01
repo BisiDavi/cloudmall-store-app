@@ -2,10 +2,13 @@ import {
   STORETYPE_SELECTED,
   STOREDETAILS_SUBMITTED,
   STORE_DETAILS,
+  STORE_OWNER_DETAILS,
+  STORE_SETTLEMENT_DETAILS,
+  STORE_IMAGE_UPLOAD,
 } from "./constant";
 
 export function StoreDetailsReducer(
-  state = {    
+  state = {
     storeName: "",
     storeEmail: "",
     phoneNumber: "",
@@ -18,10 +21,13 @@ export function StoreDetailsReducer(
     bankName: "",
     accountNumber: "",
     accountName: "",
+    storeImage: "",
   },
   action: actionType
 ) {
   const { payload, type } = action;
+  console.log("StoreDetailsReducer", state);
+
   switch (type) {
     case STORETYPE_SELECTED: {
       return {
@@ -36,6 +42,29 @@ export function StoreDetailsReducer(
         storeEmail: payload?.storeEmail,
         phoneNumber: payload?.phoneNumber,
         storeAddress: payload?.storeAddress,
+      };
+    }
+    case STORE_OWNER_DETAILS: {
+      return {
+        ...state,
+        storeOwnerName: payload.storeOwnerName,
+        openingDays: payload.openingDays,
+        storeOpenTime: payload.storeOpenTime,
+      };
+    }
+    case STORE_IMAGE_UPLOAD: {
+      return {
+        ...state,
+        storeImage: payload.storeImage,
+      };
+    }
+    case STORE_SETTLEMENT_DETAILS: {
+      return {
+        ...state,
+        settlementPlan: payload.settlementPlan,
+        bankName: payload.bankName,
+        accountNumber: payload.accountNumber,
+        accountName: payload.accountName,
       };
     }
     case STOREDETAILS_SUBMITTED: {
@@ -61,7 +90,13 @@ export function StoreDetailsReducer(
 }
 
 type actionType = {
-  type: "STOREDETAILS_SUBMITTED" | "STORETYPE_SELECTED" | "STORE_DETAILS";
+  type:
+    | "STOREDETAILS_SUBMITTED"
+    | "STORETYPE_SELECTED"
+    | "STORE_DETAILS"
+    | "STORE_OWNER_DETAILS"
+    | "STORE_SETTLEMENT_DETAILS"
+    | "STORE_IMAGE_UPLOAD";
   payload: {
     storeName: string;
     storeEmail: string;
@@ -75,5 +110,6 @@ type actionType = {
     bankName: string;
     accountNumber: string;
     accountName: string;
+    storeImage: string;
   };
 };

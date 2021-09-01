@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-native-elements";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
@@ -9,12 +9,15 @@ import { colors, screenNavigate } from "@utils/.";
 import settlementDetails from "@json/settlement-details.json";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
 import { storeSettlementDetailsSchema } from "./StoreDetailsSchema";
-import { StoreDetailsSubmittedAction } from "@store/StoreDetailsAction";
+import { StoreSettlementAction } from "@store/StoreDetailsAction";
+import { RootState } from "@store/RootReducer";
 
 export default function SettlementDetailsForm({ navigation }: any) {
   const [loading, setLoading] = useState(false);
   const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
   const dispatch = useDispatch();
+  const state = useSelector((state: RootState) => state.storeDetails);
+  console.log("SettlementDetailsForm", state);
 
   function skipHandler() {
     screenNavigate(4, navigation);
@@ -34,9 +37,10 @@ export default function SettlementDetailsForm({ navigation }: any) {
         onSubmit={(values) => {
           console.log("values", values);
           setLoading(true);
-          dispatch(StoreDetailsSubmittedAction(values));
+          dispatch(StoreSettlementAction(values));
           setLoading(false);
-          onBoardingNextScreen(4, false);
+          onBoardingNextScreen(3, false);
+          screenNavigate(3, navigation);
         }}
       >
         {({

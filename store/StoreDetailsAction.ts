@@ -2,6 +2,9 @@ import {
   STORETYPE_SELECTED,
   STOREDETAILS_SUBMITTED,
   STORE_DETAILS,
+  STORE_OWNER_DETAILS,
+  STORE_SETTLEMENT_DETAILS,
+  STORE_IMAGE_UPLOAD,
 } from "./constant";
 
 export const StoreDetailsTypeAction = (payload: any) => (dispatch: any) => {
@@ -23,6 +26,27 @@ export const StoreDetailsSubmittedAction =
 export const StoreDetailsAction = (payload: any) => (dispatch: any) => {
   dispatch({
     type: STORE_DETAILS,
+    payload,
+  });
+};
+
+export const StoreOwnerAction = (payload: any) => (dispatch: any) => {
+  dispatch({
+    type: STORE_OWNER_DETAILS,
+    payload,
+  });
+};
+
+export const StoreSettlementAction = (payload: any) => (dispatch: any) => {
+  dispatch({
+    type: STORE_SETTLEMENT_DETAILS,
+    payload,
+  });
+};
+
+export const StoreImageUploadAction = (payload: any) => (dispatch: any) => {
+  dispatch({
+    type: STORE_IMAGE_UPLOAD,
     payload,
   });
 };

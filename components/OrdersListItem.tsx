@@ -1,24 +1,16 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { ListItem, Avatar, Image } from "react-native-elements";
-import AppModal from "@components/AppModal";
 import clipboard from "@assets/clipboard.png";
 import colors from "@utils/colors";
 
-export default function OrdersListItem({ item }: OrdersViewProps) {
-  const [visible, setVisible] = useState(false);
-
-  const toggleModal = (item: any) => {
-    console.log("item", item);
-    return setVisible(!visible);
-  };
-
+export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
   return (
     <>
       <ListItem
         key={item?.id}
         style={styles.listItem}
-        onPress={toggleModal}
+        onPress={onPress}
         bottomDivider
       >
         <Avatar avatarStyle={styles.avatar} rounded />
@@ -34,18 +26,12 @@ export default function OrdersListItem({ item }: OrdersViewProps) {
           </View>
         </ListItem.Content>
       </ListItem>
-      <AppModal
-        style={styles.appModal}
-        visible={visible}
-        toggleOverlay={() => setVisible(!visible)}
-      >
-        <Text>Hello David</Text>
-      </AppModal>
     </>
   );
 }
 
 interface OrdersViewProps {
+  onPress: () => void;
   item: {
     id: number;
     name: string;

@@ -10,6 +10,7 @@ import {
   TabThreeNavigator,
   TabFourNavigator,
 } from "./TabNavigator";
+import displayAsset from "@utils/displayAsset";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -32,7 +33,19 @@ export default function BottomTabNavigator() {
         }}
         component={TabOneNavigator}
       />
-      <BottomTab.Screen name="Dashboard" component={TabTwoNavigator} />
+      <BottomTab.Screen
+        name="Dashboard"
+        options={{
+          tabBarIcon: ({ tintColor }: any) => (
+            <Image
+              source={displayAsset("dashboardIcon")}
+              fadeDuration={0}
+              style={{ width: 25, height: 25, tintColor: tintColor }}
+            />
+          ),
+        }}
+        component={TabTwoNavigator}
+      />
       <BottomTab.Screen
         name="MyStore"
         options={{

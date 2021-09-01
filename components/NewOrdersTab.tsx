@@ -1,5 +1,6 @@
-import React from "react";
-import { View, FlatList } from "react-native";
+import React, { useState } from "react";
+import { View, Text, FlatList, StyleSheet } from "react-native";
+import AppModal from "@components/AppModal";
 import NewOrdersList from "@json/new-order.json";
 import OrdersListItem from "@components/OrdersListItem";
 
@@ -16,10 +17,33 @@ type newOrder = {
 };
 
 export default function NewOrdersTab() {
+  const [visible, setVisible] = useState(false);
+
+  function displayModal(item: any) {
+    return (
+      <AppModal
+        style={styles.appModal}
+        visible={visible}
+        toggleOverlay={() => setVisible(!visible)}
+      >
+        <Text>Hello David</Text>
+        <Text>{item.orders}</Text>
+      </AppModal>
+    );
+  }
+
+  function toggleModal(item: any) {
+    console.log("I am working");
+    setVisible(!visible);
+
+    visible && displayModal(item);
+  }
+
   function renderItem({ item }: newOrder) {
+    console.log("item", item);
     return (
       <View>
-        <OrdersListItem item={item} />
+        <OrdersListItem onPress={() => toggleModal(item)} item={item} />
       </View>
     );
   }
@@ -39,3 +63,9 @@ export default function NewOrdersTab() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  appModal: {
+    flex: 1,
+  },
+});

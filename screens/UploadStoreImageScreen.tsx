@@ -14,24 +14,23 @@ import { useDispatch, useSelector } from "react-redux";
 import * as ImagePicker from "expo-image-picker";
 import Spinner from "react-native-loading-spinner-overlay";
 
+import useStoreSetupNavigation from "@hooks/useStoreSetupNavigation";
 import { RootStackParamList } from "@customTypes/.";
 import UploadIcon from "@assets/upload.png";
 import colors from "@utils/colors";
-import { useStoreSetupNavigation } from "@hooks/.";
 import { RootState } from "@store/RootReducer";
 import ProgressIndicator from "@components/ProgressIndicator";
-import axiosInstance from "@network/axiosInstance";
-import showToast from "@utils/showToast";
 import { StoreImageUploadAction } from "@store/StoreDetailsAction";
+import postStoreRequest from "@utils/postStoreRequest";
 
 export default function UploadStoreImage({
   navigation,
 }: StackScreenProps<RootStackParamList, "UploadStoreImage">) {
   const [image, setImage] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state.storeDetails);
-  const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
   console.log("UploadStoreImage", state);
 
   useEffect(() => {
@@ -53,26 +52,25 @@ export default function UploadStoreImage({
     return () => clearTimeout(displayAfter2Secs);
   }, []);
 
+  async function postToDB() {
+    setLoading(true);
+    await postStoreRequest(state, navigation)
+      .then(() => {
+        setLoading(false);
+        onBoardingNextScreen(4, true);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }
+
   async function uploadImage() {
     image && dispatch(StoreImageUploadAction(image));
-    await axiosInstance
-      .post("/store", state)
-      .then((response) => {
-        const data: any = response.data;
-        console.log("data", data);
-        setLoading(false);
-        if (response.status === 200) {
-          showToast(`${data.storeName} stores created`);
-          onBoardingNextScreen(4, true);
-          navigation.navigate("BottomNav");
-        } else {
-          showToast(data);
-        }
-      })
-      .catch((error) => {
-        setLoading(false);
-        showToast(error.response.data);
-      });
+    image && postToDB();
+  }
+
+  async function skipImage() {
+    postToDB();
   }
 
   const pickImage = async () => {
@@ -90,8 +88,8 @@ export default function UploadStoreImage({
   };
   return (
     <>
+      <Spinner visible={loading} color="blue" />
       <ScrollView>
-        <Spinner visible={loading} color="blue" />
         <View style={styles.container}>
           <ProgressIndicator selected={4} />
           <View style={styles.content}>
@@ -107,7 +105,9 @@ export default function UploadStoreImage({
                     source={UploadIcon}
                   />
                 </View>
-                <Text style={styles.error}>please upload an image</Text>
+                <Text style={styles.error}>
+                  please upload an image, click on the icon above
+                </Text>
               </>
             ) : (
               <Image style={styles.image} source={{ uri: image }} />
@@ -121,7 +121,7 @@ export default function UploadStoreImage({
               <Button
                 buttonStyle={styles.skipButton}
                 titleStyle={styles.skipText}
-                onPress={() => navigation.navigate("BottomNav")}
+                onPress={skipImage}
                 title="Skip"
               />
             </View>
@@ -197,5 +197,7 @@ const styles = StyleSheet.create({
   },
   error: {
     color: colors.accentRed,
+    fontSize: 12,
+    marginBottom: 10,
   },
 });

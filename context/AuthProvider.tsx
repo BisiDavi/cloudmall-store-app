@@ -23,14 +23,14 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
 
   const authContext = useMemo(
     () => ({
-      loginIn: async (email: string, password: string) => {
+      loginIn: async (email: string, password: string, navigation: any) => {
         dispatch({ type: "LOADING" });
         const loginInToken = await loginUser(email, password);
         await saveAuthtoken(loginInToken);
         dispatch({ type: "SIGN_IN", token: loginInToken });
         console.log("loginInToken authContext", loginInToken);
         setClientToken(loginInToken);
-        checkExistingStore();
+        checkExistingStore(navigation, email);
       },
       signOut: () => dispatch({ type: "SIGN_OUT" }),
       signUp: async (email: string, password: string) => {

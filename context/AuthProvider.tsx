@@ -2,7 +2,6 @@ import React, { PropsWithChildren, useState, useMemo, useEffect } from "react";
 import useAuthReducer from "@hooks/useAuthReducer";
 import AuthContext from "./AuthContext";
 import { getAuthtoken, saveAuthtoken, signupUser, loginUser } from "@utils/.";
-import checkExistingStore from "@utils/checkExistingStore";
 
 export default function AuthProvider({ children }: PropsWithChildren<{}>) {
   const { state, dispatch } = useAuthReducer();
@@ -16,7 +15,6 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
 
   useEffect(() => {
     storedToken();
-    checkExistingStore();
     if (authToken !== null) {
       dispatch({ type: "APP_LOAD", token: authToken });
     }

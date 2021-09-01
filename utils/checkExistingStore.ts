@@ -7,6 +7,6 @@ export default async function checkExistingStore() {
       console.log("response", response);
     })
     .catch((error) => {
-      console.error("error", error);
+      console.log("error", error);
     });
 }

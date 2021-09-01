@@ -6,11 +6,9 @@ import { Formik } from "formik";
 import { StyleSheet, View, Text, ToastAndroid } from "react-native";
 import { Button } from "react-native-elements";
 import colors from "../../utils/colors";
-import Spinner from "react-native-loading-spinner-overlay";
 
 import { RootStackParamList } from "customTypes";
 import InputField from "@components/InputField";
-import axiosInstance from "network/axiosInstance";
 import registrationSchema from "./SignupSchema";
 import AuthContext from "../../context/AuthContext";
 

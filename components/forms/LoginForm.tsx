@@ -6,6 +6,7 @@ import { Formik } from "formik";
 import { StyleSheet, View, Text } from "react-native";
 import { Button } from "react-native-elements";
 
+import checkExistingStore from "@utils/checkExistingStore";
 import { RootStackParamList } from "@customTypes/.";
 import InputField from "@components/InputField";
 import colors from "@utils/colors";
@@ -40,6 +41,7 @@ export default function LoginForm({ navigation }: loginFormProps) {
       onSubmit={(values) => {
         const { email, password } = values;
         authContext.loginIn(email, password);
+        checkExistingStore();
       }}
     >
       {({

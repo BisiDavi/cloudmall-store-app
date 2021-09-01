@@ -13,6 +13,7 @@ import colors from "@utils/colors";
 import loginSchema from "./LoginSchema";
 import AuthContext from "@context/AuthContext";
 import screenNavigate from "@utils/screenNavigate";
+import axiosInstance from "@network/axiosInstance";
 
 type LoginScreenNavigationProps = StackNavigationProp<
   RootStackParamList,
@@ -41,12 +42,7 @@ export default function LoginForm({ navigation }: loginFormProps) {
       initialValues={{ email: "", password: "" }}
       onSubmit={async (values) => {
         const { email, password } = values;
-        authContext.loginIn(email, password);
-        const { availableStores }: any = await checkExistingStore();
-        console.log("availableStores", availableStores);
-        if (availableStores.length > 0) {
-          screenNavigate(4, navigation);
-        }
+        authContext.loginIn(email, password);       
       }}
     >
       {({

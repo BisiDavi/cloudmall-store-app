@@ -4,9 +4,9 @@ export default async function checkExistingStore() {
   await axiosInstance
     .get("/store")
     .then((response) => {
-      console.log("response", response.data);
+      console.log("response checkExistingStore", response.data);
     })
     .catch((error) => {
-      console.log("error", error);
+      console.log("error checkExistingStore", error);
     });
 }

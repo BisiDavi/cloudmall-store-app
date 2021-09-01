@@ -37,7 +37,7 @@ export async function loginUser(
     })
     .catch((error) => {
       showToast(error.response.data?.message);
-      console.log("error", error.response.data);
+      console.log("error", error.response?.data);
       token = null;
       return token;
     });

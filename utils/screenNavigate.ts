@@ -17,3 +17,5 @@ export default function screenNavigate(page: number, navigation: any) {
       return null;
   }
 }
+
+

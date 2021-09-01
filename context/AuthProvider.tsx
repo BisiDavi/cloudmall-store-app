@@ -2,6 +2,8 @@ import React, { PropsWithChildren, useState, useMemo, useEffect } from "react";
 import useAuthReducer from "@hooks/useAuthReducer";
 import AuthContext from "./AuthContext";
 import { getAuthtoken, saveAuthtoken, signupUser, loginUser } from "@utils/.";
+import checkExistingStore from "@utils/checkExistingStore";
+import { setClientToken } from "@network/axiosInstance";
 
 export default function AuthProvider({ children }: PropsWithChildren<{}>) {
   const { state, dispatch } = useAuthReducer();
@@ -9,7 +11,6 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
 
   async function storedToken() {
     const token = await getAuthtoken();
-    console.log("token", token);
     setAuthToken(token);
   }
 
@@ -27,6 +28,9 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
         const loginInToken = await loginUser(email, password);
         await saveAuthtoken(loginInToken);
         dispatch({ type: "SIGN_IN", token: loginInToken });
+        console.log("loginInToken authContext", loginInToken);
+        setClientToken(loginInToken);
+        checkExistingStore();
       },
       signOut: () => dispatch({ type: "SIGN_OUT" }),
       signUp: async (email: string, password: string) => {

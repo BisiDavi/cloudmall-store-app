@@ -13,6 +13,7 @@ import {
 import DashboardCard from "@components/DashboardCard";
 import dashboardContent from "@json/dashboard.json";
 import { BottomTabParamList } from "../customTypes";
+import DashboardChart from "@components/DashboardChart";
 
 type DashboardScreenNavigationProps = StackNavigationProp<
   BottomTabParamList,
@@ -60,6 +61,7 @@ export default function DashboardScreen({ navigation }: Props) {
           <View>
             <Text style={styles.categoryText}>Statistics</Text>
             <Text>Performance: Number of orders vs days.</Text>
+            <DashboardChart />
           </View>
         </View>
       </ScrollView>

@@ -1,0 +1,5 @@
+{
+  "name": "dashboard",
+  "options": [{ "name": "Select me", "disabled": true }],
+  "type": "select"
+}

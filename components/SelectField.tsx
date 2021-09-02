@@ -9,11 +9,12 @@ export default function SelectField({ content, ...props }: selectFieldProps) {
       <View style={styles.textView}>
         <Text style={styles.text}>{content.label}</Text>
       </View>
-      <View style={styles.pickerView}>
-        <View style={styles.picker}>
+      <View style={styles.pickerView }>
+        <View style={{ ...props.style, ...styles.picker }}>
           <Picker
             selectedValue={props.selectedValue}
             onValueChange={props.onValueChange}
+            style={props.style}
           >
             {content.options?.map((item: optionType, index: number) => (
               <Picker.Item
@@ -42,9 +43,10 @@ interface selectFieldProps {
     label?: string;
     options?: optionType[];
   };
-  selectedValue: any;
-  onValueChange: any;
-  error: string;
+  selectedValue?: any;
+  onValueChange?: any;
+  error?: string;
+  style?: any;
 }
 
 const styles = StyleSheet.create({
@@ -70,6 +72,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   picker: {
+    // width: Dimensions.get("window").width * 0.85,
     height: 48,
     marginBottom: 0,
     paddingBottom: 0,
@@ -77,7 +80,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     justifyContent: "center",
-    width: Dimensions.get("window").width * 0.85,
   },
   error: {
     color: colors.accentRed,

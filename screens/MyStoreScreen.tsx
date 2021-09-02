@@ -1,11 +1,12 @@
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import * as React from "react";
-import { StyleSheet, View, ActivityIndicator } from "react-native";
+import { StyleSheet, View, ActivityIndicator, Dimensions } from "react-native";
 import { Switch, Image, ListItem } from "react-native-elements";
 import storeContent from "@json/my-store-content.json";
 import { BottomTabParamList } from "../customTypes";
 import pizza from "@assets/pizza.png";
+import colors from "@utils/colors";
 
 type LoginScreenNavigationProps = StackNavigationProp<
   BottomTabParamList,
@@ -38,7 +39,7 @@ export default function MyStoreScreen({ navigation }: Props) {
             <ListItem.Content>
               <ListItem.Title>{item.title}</ListItem.Title>
             </ListItem.Content>
-            <ListItem.Chevron />
+            <ListItem.Chevron iconStyle={styles.iconStyle} />
           </ListItem>
         ))}
       </View>
@@ -51,6 +52,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
+    backgroundColor:colors.neutralWhite
   },
   switch: {
     display: "flex",
@@ -70,7 +72,12 @@ const styles = StyleSheet.create({
   listView: {
     display: "flex",
     flexDirection: "column",
-    width: "100%",
+    width: Dimensions.get("window").width * 0.8,
+    // padding:20
+  },
+  iconStyle: {
+    color: colors.cloudOrange4,
+    fontSize: 20,
   },
 });
 

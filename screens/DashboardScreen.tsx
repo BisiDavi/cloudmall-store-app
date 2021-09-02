@@ -15,6 +15,8 @@ import dashboardContent from "@json/dashboard.json";
 import { BottomTabParamList } from "../customTypes";
 import DashboardChart from "@components/DashboardChart";
 import colors from "@utils/colors";
+import SelectField from "@components/SelectField";
+import selectContent from "@json/dasboard-select.json";
 
 type DashboardScreenNavigationProps = StackNavigationProp<
   BottomTabParamList,
@@ -42,6 +44,7 @@ export default function DashboardScreen({ navigation }: Props) {
     >
       <ScrollView>
         <View style={styles.container}>
+          <SelectField style={styles.selectField} content={selectContent} />
           <View style={styles.dashboardCards}>
             {dashboardContent.card.map((item: dashboardContentType, index) => (
               <View style={styles.category} key={`${item.category}-${index}`}>
@@ -75,9 +78,16 @@ export default function DashboardScreen({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "flex-start",
+    alignItems: "flex-end",
     backgroundColor: colors.neutralWhite,
     padding: 20,
+    paddingTop: 0,
+    position: "relative",
+  },
+  selectField: {
+    width: Dimensions.get("window").width * 0.4,
+    marginTop: 10,
+    marginBottom: 0,
   },
   row: {
     display: "flex",

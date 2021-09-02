@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import bottomTabContent from "@json/bottom-tab-navigation.json";
-import { displayScreenComponent } from "../utils/displayScreenComponents";
+import { displayScreenComponent } from "@utils/displayScreenComponents";
 
 const TabOneStack = createStackNavigator();
 const TabThreeStack = createStackNavigator();

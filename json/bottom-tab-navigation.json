@@ -1,11 +1,11 @@
 {
-  "tabOne": [
-    { "name": "OrderScreen", "title": "Orders" },
+  "tabOne": [{ "name": "OrderScreen", "title": "Orders" }],
+  "tabTwo": [{ "name": "DashboardScreen", "title": "Dashboard" }],
+  "tabThree": [
+    { "name": "MyStoreScreen", "title": "My Store" },
     { "name": "AddProductScreen", "title": "Add a new Product" },
     { "name": "ViewStoreScreen", "title": "Ongbona" },
     { "name": "EditProductScreen", "title": "Edit a new Product" }
   ],
-  "tabTwo": [{ "name": "DashboardScreen", "title": "Dashboard" }],
-  "tabThree": [{ "name": "MyStoreScreen", "title": "My Store" }],
   "tabFour": [{ "name": "ProfileScreen", "title": "Profile" }]
 }

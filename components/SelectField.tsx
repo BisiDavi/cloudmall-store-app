@@ -15,12 +15,13 @@ export default function SelectField({ content, ...props }: selectFieldProps) {
             selectedValue={props.selectedValue}
             onValueChange={props.onValueChange}
           >
-            {content.options?.map((item: string, index: number) => (
+            {content.options?.map((item: optionType, index: number) => (
               <Picker.Item
                 fontFamily="RobotoRegular"
                 key={index}
-                label={item}
-                value={item}
+                label={item.name}
+                value={item.name}
+                enabled={item.disabled}
               />
             ))}
           </Picker>
@@ -31,10 +32,15 @@ export default function SelectField({ content, ...props }: selectFieldProps) {
   );
 }
 
+type optionType = {
+  name: string | undefined;
+  disabled: boolean;
+};
+
 interface selectFieldProps {
   content: {
     label?: string;
-    options?: string[];
+    options?: optionType[];
   };
   selectedValue: any;
   onValueChange: any;
@@ -59,7 +65,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   selectField: {
-    marginBottom:0,
+    marginBottom: 0,
     marginTop: -10,
     justifyContent: "center",
   },

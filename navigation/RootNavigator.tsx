@@ -19,6 +19,7 @@ export default function RootNavigator() {
   const { completed } = useSelector(
     (storeState: RootState) => storeState.setupStore
   );
+  console.log("completed", completed);
   const isSignedIn = hasTokenExpired(state.userToken);
 
   useEffect(() => {

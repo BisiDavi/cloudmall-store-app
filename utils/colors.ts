@@ -8,6 +8,7 @@ const colors = {
   mallBlue7: "#012F79",
   accentRed: "#CB2A2A",
   neutral4: "#ADADAD",
+  neutral5: "#8F8F8F",
   neutral6: "#707070",
   neutralWhite: "#FFFFFF",
   textColor: "#3E4044",

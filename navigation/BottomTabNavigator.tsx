@@ -12,6 +12,7 @@ import {
 } from "./TabNavigator";
 import displayAsset from "@utils/displayAsset";
 import colors from "@utils/colors";
+import DashboardSvg from "@assets/DashboardSvg";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -33,7 +34,10 @@ export default function BottomTabNavigator() {
         name="Dashboard"
         options={{
           tabBarActiveTintColor: colors.accentRed,
-          tabBarIcon: ({ tintColor }: any) => displayAsset("dashboardIcon"),
+          tabBarInactiveTintColor: colors.neutral5,
+          tabBarIcon: ({ tintColor }: any) => (
+            <DashboardSvg color={tintColor} />
+          ),
         }}
         component={TabTwoNavigator}
       />

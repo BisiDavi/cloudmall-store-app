@@ -9,7 +9,12 @@
     "label": "Store Open days",
     "placeholder": "Monday - Friday",
     "name": "openingDays",
-    "options": ["Monday - Friday", "Monday - Saturday", "Monday - Sunday"],
+    "options": [
+      { "name": "Your Open days", "disabled": true },
+      { "name": "Monday - Friday", "disabled": false },
+      { "name": "Monday - Saturday", "disabled": false },
+      { "name": "Monday - Sunday", "disabled": false }
+    ],
     "type": "select"
   },
   {

@@ -2,7 +2,12 @@
   {
     "label": "Settlement plan",
     "type": "select",
-    "options": ["Daily", "Weekly", "Monthly"],
+    "options": [
+      { "name": "select a settlement plan", "disabled": true },
+      { "name": "Daily", "disabled": false },
+      { "name": "Weekly", "disabled": false },
+      { "name": "Monthly", "disabled": false }
+    ],
     "name": "settlementPlan"
   },
   {

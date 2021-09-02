@@ -14,6 +14,7 @@ import DashboardCard from "@components/DashboardCard";
 import dashboardContent from "@json/dashboard.json";
 import { BottomTabParamList } from "../customTypes";
 import DashboardChart from "@components/DashboardChart";
+import colors from "@utils/colors";
 
 type DashboardScreenNavigationProps = StackNavigationProp<
   BottomTabParamList,
@@ -60,7 +61,9 @@ export default function DashboardScreen({ navigation }: Props) {
           </View>
           <View>
             <Text style={styles.categoryText}>Statistics</Text>
-            <Text>Performance: Number of orders vs days.</Text>
+            <Text style={styles.chartTitle}>
+              Performance: Number of orders vs days.
+            </Text>
             <DashboardChart />
           </View>
         </View>
@@ -73,7 +76,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "flex-start",
-    // justifyContent: "center",
+    backgroundColor: colors.neutralWhite,
     padding: 20,
   },
   row: {
@@ -91,6 +94,12 @@ const styles = StyleSheet.create({
   categoryText: {
     fontFamily: "MontserratBold",
     fontSize: 14,
+    lineHeight: 16,
+    marginBottom: 10,
+  },
+  chartTitle: {
+    fontFamily: "RobotoRegular",
+    fontSize: 12,
     lineHeight: 16,
     marginBottom: 10,
   },

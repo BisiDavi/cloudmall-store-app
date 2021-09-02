@@ -60,7 +60,7 @@ export default function RootNavigator() {
     <>
       <Spinner visible={state.isLoading} color="blue" />
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {!isSignedIn ? (
+        {!isSignedIn && !completed ? (
           <>
             {rootNavigationContent.privatePage.map((item: any, index) =>
               displayStackScreen(item, index)

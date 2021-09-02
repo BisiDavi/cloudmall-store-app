@@ -11,6 +11,7 @@ import {
   TabFourNavigator,
 } from "./TabNavigator";
 import displayAsset from "@utils/displayAsset";
+import colors from "@utils/colors";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -23,43 +24,34 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="Orders"
         options={{
-          tabBarIcon: ({ tintColor }: any) => (
-            <Image
-              source={orderIcon}
-              fadeDuration={0}
-              style={{ width: 25, height: 25, tintColor: tintColor }}
-            />
-          ),
+          tabBarActiveTintColor: colors.mallBlue5,
+          tabBarIcon: ({ tintColor }: any) => displayAsset("ordersIcon"),
         }}
         component={TabOneNavigator}
       />
       <BottomTab.Screen
         name="Dashboard"
         options={{
-          tabBarIcon: ({ tintColor }: any) => (
-            <Image
-              source={displayAsset("dashboardIcon")}
-              fadeDuration={0}
-              style={{ width: 25, height: 25, tintColor: tintColor }}
-            />
-          ),
+          tabBarActiveTintColor: colors.accentRed,
+          tabBarIcon: ({ tintColor }: any) => displayAsset("dashboardIcon"),
         }}
         component={TabTwoNavigator}
       />
       <BottomTab.Screen
         name="MyStore"
         options={{
-          tabBarIcon: ({ tintColor }: any) => (
-            <Image
-              source={StoresIcon}
-              fadeDuration={0}
-              style={{ width: 25, height: 25, tintColor: tintColor }}
-            />
-          ),
+          tabBarActiveTintColor: colors.mallBlue5,
+          tabBarIcon: ({ tintColor }: any) => displayAsset("storeIcon"),
         }}
         component={TabThreeNavigator}
       />
-      <BottomTab.Screen name="Profile" component={TabFourNavigator} />
+      <BottomTab.Screen
+        name="Profile"
+        options={{
+          tabBarIcon: ({ red }: any) => displayAsset("profileIcon"),
+        }}
+        component={TabFourNavigator}
+      />
     </BottomTab.Navigator>
   );
 }

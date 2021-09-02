@@ -1,8 +1,5 @@
 import React from "react";
-import { Image } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import StoresIcon from "@assets/stores.png";
-import orderIcon from "@assets/orders.png";
 import { BottomTabParamList } from "../customTypes";
 import {
   TabOneNavigator,
@@ -10,9 +7,11 @@ import {
   TabThreeNavigator,
   TabFourNavigator,
 } from "./TabNavigator";
-import displayAsset from "@utils/displayAsset";
 import colors from "@utils/colors";
 import DashboardSvg from "@assets/DashboardSvg";
+import OrderSvg from "@assets/OrderSvg";
+import StoreSvg from "@assets/StoreSvg";
+import ProfileSvg from "@assets/ProfileSvg";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -26,15 +25,15 @@ export default function BottomTabNavigator() {
         name="Orders"
         options={{
           tabBarActiveTintColor: colors.mallBlue5,
-          tabBarIcon: ({ color }: any) => displayAsset("ordersIcon"),
+          tabBarInactiveTintColor: colors.neutral5,
+          tabBarIcon: ({ color }: any) => <OrderSvg color={color} />,
         }}
         component={TabOneNavigator}
       />
       <BottomTab.Screen
         name="Dashboard"
         options={{
-          tabBarActiveTintColor: colors.accentRed,
-          tabBarInactiveTintColor: colors.neutral5,
+          tabBarActiveTintColor: colors.mallBlue5,
           tabBarIcon: ({ color }: any) => <DashboardSvg color={color} />,
         }}
         component={TabTwoNavigator}
@@ -43,14 +42,15 @@ export default function BottomTabNavigator() {
         name="MyStore"
         options={{
           tabBarActiveTintColor: colors.mallBlue5,
-          tabBarIcon: ({ color }: any) => displayAsset("storeIcon"),
+          tabBarIcon: ({ color }: any) => <StoreSvg color={color} />,
         }}
         component={TabThreeNavigator}
       />
       <BottomTab.Screen
         name="Profile"
         options={{
-          tabBarIcon: ({ red }: any) => displayAsset("profileIcon"),
+          tabBarActiveTintColor: colors.mallBlue5,
+          tabBarIcon: ({ color }: any) => <ProfileSvg color={color} />,
         }}
         component={TabFourNavigator}
       />

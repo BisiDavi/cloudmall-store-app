@@ -1,7 +1,7 @@
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Dimensions } from "react-native";
 import DashboardCard from "@components/DashboardCard";
 import dashboardContent from "@json/dashboard.json";
 import { BottomTabParamList } from "../customTypes";
@@ -27,10 +27,10 @@ type dashboardContentType = {
 export default function DashboardScreen({ navigation }: Props) {
   return (
     <View style={styles.container}>
-      <View>
+      <View style={styles.dashboardCards}>
         {dashboardContent.card.map((item: dashboardContentType, index) => (
-          <View key={`${item.category}-${index}`}>
-            <Text style={styles.category}>{item.category}</Text>
+          <View style={styles.category} key={`${item.category}-${index}`}>
+            <Text style={styles.categoryText}>{item.category}</Text>
             <View style={styles.row}>
               {item.content.map((content, index) => (
                 <DashboardCard
@@ -56,14 +56,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    // justifyContent: "center",
+    padding: 20,
   },
   row: {
     display: "flex",
-    alignItems: "center",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
     flexDirection: "row",
+    margin: 0,
+    width:Dimensions.get("window").width * 0.875
+  },
+  dashboardCards: {
+    display: "flex",
+    alignItems: "flex-start",
+  },
+  categoryText: {
+    fontFamily: "MontserratBold",
+    fontSize: 14,
+    lineHeight: 16,
+    marginBottom:10
   },
   category: {
-    fontWeight: "bold",
+    margin: 0,
+    marginBottom: 30,
+    display: "flex",
+    alignItems: "flex-start",
   },
 });

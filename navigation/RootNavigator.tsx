@@ -2,6 +2,7 @@ import "react-native-gesture-handler";
 import React, { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { createStackNavigator } from "@react-navigation/stack";
+import { useNavigation } from "@react-navigation/native";
 import Spinner from "react-native-loading-spinner-overlay";
 import { RootStackParamList } from "@customTypes/.";
 import rootNavigationContent from "@json/root-navigation.json";
@@ -11,6 +12,8 @@ import { displayScreenComponent } from "@utils/displayScreenComponents";
 import BottomTabNavigator from "./BottomTabNavigator";
 import { setClientToken } from "@network/axiosInstance";
 import { RootState } from "@store/RootReducer";
+import { getsignedUserEmail } from "@utils/hasTokenExpired";
+import checkExistingStore from "@utils/checkExistingStore";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -19,8 +22,18 @@ export default function RootNavigator() {
   const { completed } = useSelector(
     (storeState: RootState) => storeState.setupStore
   );
-  console.log("completed", completed);
+  const navigation = useNavigation();
   const isSignedIn = hasTokenExpired(state.userToken);
+
+  useEffect(() => {
+    if (state.userToken) {
+      const userEmail = getsignedUserEmail(state.userToken);
+      if (userEmail && !isSignedIn) {
+        setClientToken(state.userToken);
+        checkExistingStore(navigation, userEmail);
+      }
+    }
+  }, [state]);
 
   useEffect(() => {
     if (!isSignedIn) {

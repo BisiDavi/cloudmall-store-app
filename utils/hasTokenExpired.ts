@@ -13,3 +13,13 @@ export default function hasTokenExpired(token: string | null) {
   }
   return tokenExpired;
 }
+
+export function getsignedUserEmail(token: string): string {
+  const decoded: decodedType = jwtDecode(token);
+  const userEmail = decoded?.email;
+  return userEmail;
+}
+
+type decodedType = {
+  email: string;
+};

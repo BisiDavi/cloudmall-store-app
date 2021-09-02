@@ -26,7 +26,7 @@ export default function BottomTabNavigator() {
         name="Orders"
         options={{
           tabBarActiveTintColor: colors.mallBlue5,
-          tabBarIcon: ({ tintColor }: any) => displayAsset("ordersIcon"),
+          tabBarIcon: ({ color }: any) => displayAsset("ordersIcon"),
         }}
         component={TabOneNavigator}
       />
@@ -35,9 +35,7 @@ export default function BottomTabNavigator() {
         options={{
           tabBarActiveTintColor: colors.accentRed,
           tabBarInactiveTintColor: colors.neutral5,
-          tabBarIcon: ({ tintColor }: any) => (
-            <DashboardSvg color={tintColor} />
-          ),
+          tabBarIcon: ({ color }: any) => <DashboardSvg color={color} />,
         }}
         component={TabTwoNavigator}
       />
@@ -45,7 +43,7 @@ export default function BottomTabNavigator() {
         name="MyStore"
         options={{
           tabBarActiveTintColor: colors.mallBlue5,
-          tabBarIcon: ({ tintColor }: any) => displayAsset("storeIcon"),
+          tabBarIcon: ({ color }: any) => displayAsset("storeIcon"),
         }}
         component={TabThreeNavigator}
       />

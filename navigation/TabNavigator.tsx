@@ -7,8 +7,6 @@ const TabOneStack = createStackNavigator();
 const TabThreeStack = createStackNavigator();
 const TabFourStack = createStackNavigator();
 
-
-
 export function TabOneNavigator() {
   return (
     <TabOneStack.Navigator

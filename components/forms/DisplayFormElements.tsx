@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from "react";
-import { KeyboardTypeOptions } from "react-native";
+import { Dimensions, KeyboardTypeOptions, StyleSheet } from "react-native";
 import InputField from "@components/InputField";
 import RadioField from "@components/RadioField";
 import SelectField from "@components/SelectField";
@@ -45,6 +45,7 @@ export default function DisplayFormElements({
       return (
         <SelectField
           content={formElement}
+          style={styles.selectField}
           onValueChange={props.handleChange(formElement.name)}
           selectedValue={props.values[formElement.name]}
           error={
@@ -60,6 +61,11 @@ export default function DisplayFormElements({
   }
 }
 
+type optionType = {
+  name: string | undefined;
+  disabled: boolean;
+};
+
 interface displayFormElementsProps {
   formElement: {
     name: string;
@@ -68,7 +74,7 @@ interface displayFormElementsProps {
     fields?: { name?: string; label?: string }[] | undefined;
     type: string;
     keyboardType?: KeyboardTypeOptions | undefined | any;
-    options?: string[] | undefined;
+    options?: optionType[];
     iconName?: string;
     textContentType?:
       | "password"
@@ -84,3 +90,9 @@ interface displayFormElementsProps {
   errors?: any;
   touched?: any;
 }
+
+const styles = StyleSheet.create({
+  selectField: {
+    width: Dimensions.get("window").width * 0.85,
+  },
+});

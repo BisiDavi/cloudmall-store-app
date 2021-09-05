@@ -22,4 +22,5 @@ export type BottomTabParamList = {
   ViewStoreScreen: undefined;
   EditProductScreen: undefined;
   StatisticsScreen: undefined;
+  AddProductScreenMethod: undefined;
 };

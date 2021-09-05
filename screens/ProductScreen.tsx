@@ -1,5 +1,5 @@
 import React from "react";
-import { View, SafeAreaView, ScrollView, Text, Dimensions } from "react-native";
+import { View, SafeAreaView, ScrollView, Text } from "react-native";
 import { ListItem, Switch } from "react-native-elements";
 import productContent from "@json/products.json";
 import { FAB } from "react-native-elements";

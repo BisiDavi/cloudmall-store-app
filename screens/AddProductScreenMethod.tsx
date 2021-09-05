@@ -24,10 +24,14 @@ type Props = {
 const AddProductScreenMethod = ({ navigation }: Props) => {
   return (
     <View style={styles.container}>
-      <View style={styles.methods}>
+      <View style={styles.content}>
         {addProductMethod.map((method, index) => (
-          <View style={styles.method} key={index}>
-            <Text style={styles.text}>{method}</Text>
+          <View key={index} style={styles.methods}>
+            {method.content.map((item, index) => (
+              <View style={styles.method} key={index}>
+                <Text style={styles.text}>{item.name}</Text>
+              </View>
+            ))}
           </View>
         ))}
       </View>
@@ -41,16 +45,21 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     padding: 10,
+    width: Dimensions.get("window").width,
+  },
+  content: {
+    alignItems: "flex-start",
   },
   methods: {
-    flexWrap: "wrap",
-    justifyContent: "flex-start",
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
+    width: Dimensions.get("window").width * 0.95,
   },
   method: {
     height: 120,
     width: 120,
-    alignItems: "center",
+    // alignItems: "center",
     display: "flex",
     justifyContent: "center",
     borderWidth: 1,

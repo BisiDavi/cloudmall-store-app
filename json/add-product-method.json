@@ -1,7 +1,15 @@
 [
-  "Food Product",
-  "Isbn Product",
-  "Fresh Food Product",
-  "Scan to Upload",
-  "Upload Via API"
+  {
+    "content": [
+      { "name": "Food Product", "link": "" },
+      { "name": "Isbn Product", "link": "" }
+    ]
+  },
+  {
+    "content": [
+      { "name": "Fresh Food Product", "link": "" },
+      { "name": "Scan to Upload", "link": "" }
+    ]
+  },
+  { "content": [{ "name": "Upload Via API", "link": "" }] }
 ]

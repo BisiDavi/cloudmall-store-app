@@ -7,6 +7,7 @@ const colors = {
   mallBlue5: "#013A93",
   mallBlue7: "#012F79",
   accentRed: "#CB2A2A",
+  neutral3: "rgba(0, 0, 0, 0.2)",
   neutral4: "#ADADAD",
   neutral5: "#8F8F8F",
   neutral6: "#707070",

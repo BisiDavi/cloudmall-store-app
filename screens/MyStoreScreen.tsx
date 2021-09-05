@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { View, ScrollView, StyleSheet, Text, Dimensions } from "react-native";
@@ -24,30 +24,55 @@ type product = {
   meal: string;
 };
 
-type productType = "staple" | "swallow";
+interface productType {
+  product: "staple" | "swallow";
+}
 
-function displayListView(type: productType) {
-  return productContent[type].map((product: product, index: number) => (
-    <ListItem key={index}>
+function ListView({ item }: any) {
+  const [toggle, setToggle] = useState(false);
+
+  return (
+    <ListItem bottomDivider style={styles.listItem}>
       <ListItem.Content>
         <View style={styles.listViewContent}>
-          <Text>{product.meal}</Text>
-          <Text>Edit</Text>
-          <Switch color="cloudOrange5" />
+          <Text style={styles.meal}>{item.meal}</Text>
+          <Text style={styles.edit}>Edit</Text>
+          <Switch
+            value={toggle}
+            onValueChange={() => setToggle(!toggle)}
+            style={styles.switch}
+            color={colors.cloudOrange5}
+          />
         </View>
       </ListItem.Content>
     </ListItem>
-  ));
+  );
+}
+
+function ProductListView({ product }: productType) {
+  return (
+    <>
+      {productContent[product].map((item, index) => (
+        <ListView item={item} key={index} />
+      ))}
+    </>
+  );
 }
 
 export default function MyStoreScreen({ navigation }: Props) {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Text style={styles.category}>Staple Food</Text>
-        {displayListView("staple")}
-        <Text style={styles.category}>Swallow</Text>
-        {displayListView("swallow")}
+        <View style={styles.productView}>
+          <View style={styles.textView}>
+            <Text style={styles.category}>Staple Food</Text>
+          </View>
+          <ProductListView product="staple" />
+          <View style={styles.textView}>
+            <Text style={styles.category}>Swallow</Text>
+          </View>
+          <ProductListView product="swallow" />
+        </View>
       </ScrollView>
       <View style={styles.fabView}>
         <FAB
@@ -67,20 +92,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     backgroundColor: colors.neutralWhite,
-    padding: 10,
+    flexDirection: "column",
+    width: Dimensions.get("window").width,
+  },
+  meal: {
+    width: 100,
+  },
+  edit: {
+    color: colors.mallBlue5,
   },
   switch: {
     display: "flex",
-    alignItems: "flex-end",
-    margin: 10,
-    justifyContent: "flex-end",
-    position: "absolute",
-    right: 10,
-    zIndex: 100,
+  },
+  listItem: {
+    width: Dimensions.get("window").width,
   },
   listViewContent: {
-    display: "flex",
-    alignItems: "center",
+    alignItems: "flex-start",
     flexDirection: "row",
     justifyContent: "space-between",
     width: Dimensions.get("window").width * 0.9,
@@ -91,19 +119,34 @@ const styles = StyleSheet.create({
   fab: {
     borderRadius: 100,
     borderWidth: 0,
-    height: 70,
-    width: 70,
+    height: 60,
+    width: 60,
+    padding: 0,
     backgroundColor: colors.mallBlue3,
+  },
+  productView: {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
   },
   category: {
     color: colors.mallBlue5,
+    padding: 15,
+  },
+  textView: {
+    height: 50,
+    width: Dimensions.get("window").width,
+    borderWidth: 1,
+    borderBottomColor: colors.neutral3,
+    borderLeftColor:"transparent",
+    borderTopColor:"transparent",
+    borderRightColor:"transparent"
+
   },
   fabStyle: {
     fontSize: 40,
-    padding: 0,
     marginTop: -5,
+    width: 40,
   },
 });

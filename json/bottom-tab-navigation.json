@@ -7,10 +7,11 @@
     { "name": "StatisticsScreen", "title": "Statistics" }
   ],
   "tabThree": [
-    { "name": "MyStoreScreen", "title": "My Product" },
+    { "name": "ProductScreen", "title": "My Product" },
     { "name": "AddProductScreen", "title": "Add a new Product" },
     { "name": "ViewStoreScreen", "title": "Ongbona" },
-    { "name": "EditProductScreen", "title": "Edit a new Product" }
+    { "name": "EditProductScreen", "title": "Edit a new Product" },
+    { "name": "AddProductScreenMethod", "title": "Add a Product" }
   ],
   "tabFour": [{ "name": "ProfileScreen", "title": "Profile" }]
 }

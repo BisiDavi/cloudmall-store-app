@@ -4,7 +4,7 @@ import AvailableBalanceScreen from "@screens/AvailableBalanceScreen";
 import DashboardScreen from "@screens/DashboardScreen";
 import EditProductScreen from "@screens/EditProductScreen";
 import LoginScreen from "@screens/LoginScreen";
-import MyStoreScreen from "@screens/MyStoreScreen";
+import MyStoreScreen from "@screens/ProductScreen";
 import OnboardingScreen from "@screens/OnboardingScreen";
 import OrdersScreen from "@screens/OrdersScreen";
 import ProfileScreen from "@screens/ProfileScreen";
@@ -17,6 +17,8 @@ import StoreDetailsScreenTwo from "@screens/StoreDetailsScreenTwo";
 import ViewStoreScreen from "@screens/ViewStoreScreen";
 import { RootStackParamList } from "../customTypes";
 import UploadStoreImage from "@screens/UploadStoreImageScreen";
+import ProductScreen from "@screens/ProductScreen";
+import AddProductScreenMethod from "@screens/AddProductScreenMethod";
 
 export function displayScreenComponent(name: string | RootStackParamList): any {
   switch (name) {
@@ -30,8 +32,8 @@ export function displayScreenComponent(name: string | RootStackParamList): any {
       return EditProductScreen;
     case "DashboardScreen":
       return DashboardScreen;
-    case "MyStoreScreen":
-      return MyStoreScreen;
+    case "ProductScreen":
+      return ProductScreen;
     case "ProfileScreen":
       return ProfileScreen;
     case "OnboardingScreen":
@@ -56,6 +58,8 @@ export function displayScreenComponent(name: string | RootStackParamList): any {
       return StatisticsScreen;
     case "SettlementDetailsScreen":
       return SettlementDetailsScreen;
+    case "AddProductScreenMethod":
+      return AddProductScreenMethod;
     default:
       return null;
   }

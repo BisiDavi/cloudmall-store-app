@@ -32,6 +32,7 @@
     },
     { "name": "AvailableBalanceScreen", "title": "Available Balance" },
     { "name": "AmountPaidScreen", "title": "Total Revenue" },
-    { "name": "StatisticsScreen", "title": "Statistics" }
+    { "name": "StatisticsScreen", "title": "Statistics" },
+    { "name": "AddProductScreenMethod", "title": "Add a Product" }
   ]
 }

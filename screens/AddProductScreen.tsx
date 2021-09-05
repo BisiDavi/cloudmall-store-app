@@ -1,6 +1,6 @@
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
-import { Switch, Image, Button } from "react-native-elements";
+import { Image, Button } from "react-native-elements";
 import addproductContent from "@json/add-product.json";
 import pizza from "@assets/pizza.png";
 import InputField from "@components/InputField";
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   productImage: {
     height: 150,
     width: 200,
-    marginBottom:20
+    marginBottom: 20,
   },
   button: {
     justifyContent: "center",

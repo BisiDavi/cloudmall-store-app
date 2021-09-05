@@ -1,15 +1,15 @@
 [
   {
     "content": [
-      { "name": "Food Product", "link": "" },
-      { "name": "Isbn Product", "link": "" }
+      { "name": "Food Product", "link": "FoodCategoryScreen" },
+      { "name": "Isbn Product", "link": "FoodCategoryScreen" }
     ]
   },
   {
     "content": [
-      { "name": "Fresh Food Product", "link": "" },
-      { "name": "Scan to Upload", "link": "" }
+      { "name": "Fresh Food Product", "link": "FoodCategoryScreen" },
+      { "name": "Scan to Upload", "link": "FoodCategoryScreen" }
     ]
   },
-  { "content": [{ "name": "Upload Via API", "link": "" }] }
+  { "content": [{ "name": "Upload Via API", "link": "FoodCategoryScreen" }] }
 ]

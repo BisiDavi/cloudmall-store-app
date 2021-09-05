@@ -19,6 +19,7 @@ import { RootStackParamList } from "../customTypes";
 import UploadStoreImage from "@screens/UploadStoreImageScreen";
 import ProductScreen from "@screens/ProductScreen";
 import AddProductScreenMethod from "@screens/AddProductScreenMethod";
+import FoodCategoryScreen from "@screens/FoodCategoryScreen";
 
 export function displayScreenComponent(name: string | RootStackParamList): any {
   switch (name) {
@@ -60,6 +61,8 @@ export function displayScreenComponent(name: string | RootStackParamList): any {
       return SettlementDetailsScreen;
     case "AddProductScreenMethod":
       return AddProductScreenMethod;
+    case "FoodCategoryScreen":
+      return FoodCategoryScreen;
     default:
       return null;
   }

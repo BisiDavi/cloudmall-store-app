@@ -1,10 +1,16 @@
 import React from "react";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Dimensions } from "react-native";
 import { BottomTabParamList } from "@customTypes/.";
 import addProductMethod from "@json/add-product-method.json";
 import colors from "@utils/colors";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
+type item = {
+  name: string;
+  link: any;
+};
 
 type StoreScreeenNavigationProps = StackNavigationProp<
   BottomTabParamList,
@@ -23,19 +29,26 @@ type Props = {
 
 const AddProductScreenMethod = ({ navigation }: Props) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        {addProductMethod.map((method, index) => (
-          <View key={index} style={styles.methods}>
-            {method.content.map((item, index) => (
-              <View style={styles.method} key={index}>
-                <Text style={styles.text}>{item.name}</Text>
-              </View>
-            ))}
-          </View>
-        ))}
+    <ScrollView>
+      <View style={styles.container}>
+        <View style={styles.content}>
+          {addProductMethod.map((method, index) => (
+            <View key={index} style={styles.methods}>
+              {method.content.map((item: item, index) => (
+                <TouchableOpacity
+                  onPress={() => navigation.navigate(item.link)}
+                  key={index}
+                >
+                  <View style={styles.method}>
+                    <Text style={styles.text}>{item.name}</Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </View>
+          ))}
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -59,7 +72,6 @@ const styles = StyleSheet.create({
   method: {
     height: 120,
     width: 120,
-    // alignItems: "center",
     display: "flex",
     justifyContent: "center",
     borderWidth: 1,

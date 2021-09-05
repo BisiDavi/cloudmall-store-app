@@ -23,4 +23,5 @@ export type BottomTabParamList = {
   EditProductScreen: undefined;
   StatisticsScreen: undefined;
   AddProductScreenMethod: undefined;
+  FoodCategoryScreen: undefined;
 };

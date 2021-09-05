@@ -46,7 +46,7 @@ export default function StoreDetailsFormOne({ navigation }: any) {
             isValid,
           }) => (
             <View>
-              {storeDetailsFormOne.map((formElement, index: number) => (
+              {storeDetailsFormOne.map((formElement, index) => (
                 <DisplayFormElements
                   key={index}
                   formElement={formElement}

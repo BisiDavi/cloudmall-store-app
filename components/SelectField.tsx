@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import colors from "@utils/colors";
 
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   picker: {
-    // width: Dimensions.get("window").width * 0.85,
     height: 48,
     marginBottom: 0,
     paddingBottom: 0,

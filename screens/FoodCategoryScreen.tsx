@@ -21,11 +21,19 @@ type Props = {
   navigation: FoodCategoryScreenNavigationProps;
 };
 
+type item = {
+  name: string;
+  link: any;
+};
+
 const FoodCategoryScreen = ({ navigation }: Props) => {
   return (
     <View style={styles.container}>
-      {foodCategoryContent.map((item, index) => (
-        <TouchableOpacity key={index}>
+      {foodCategoryContent.map((item: item, index) => (
+        <TouchableOpacity
+          onPress={() => navigation.navigate(item.link)}
+          key={index}
+        >
           <View style={styles.category}>
             <Text style={styles.categoryText}>{item.name}</Text>
           </View>
@@ -46,9 +54,10 @@ const styles = StyleSheet.create({
     borderColor: colors.mallBlue2,
     borderRadius: 7,
     margin: 15,
+    justifyContent: "center",
   },
   categoryText: {
-    paddingLeft: 20,
+    paddingLeft: 30,
     color: colors.mallBlue5,
     fontFamily: "MontserratBold",
     fontSize: 18,

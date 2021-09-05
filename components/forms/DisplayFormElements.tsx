@@ -63,7 +63,7 @@ export default function DisplayFormElements({
 
 type optionType = {
   name: string | undefined;
-  disabled: boolean;
+  enabled: boolean;
 };
 
 interface displayFormElementsProps {

@@ -1,4 +1,4 @@
 [
-  { "name": "Main Food", "link": "" },
-  { "name": "Extras", "link": "" }
+  { "name": "Main Food", "link": "AddProductScreen" },
+  { "name": "Extras", "link": "AddProductScreen" }
 ]

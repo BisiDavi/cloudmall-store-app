@@ -3,13 +3,12 @@ import { StyleSheet, View } from "react-native";
 import { Image, Button } from "react-native-elements";
 import addproductContent from "@json/add-product.json";
 import pizza from "@assets/pizza.png";
-import InputField from "@components/InputField";
+import DisplayFormElements from "@components/forms/DisplayFormElements";
 import { Formik } from "formik";
 import addProductSchema from "@components/forms/AddProductSchema";
 
 export default function AddProductScreen() {
   const productContent: productType[] = addproductContent;
-  const productValues = ["AddNewProduct", "EditAProduct", "ViewStore"];
   return (
     <View style={styles.container}>
       <Image style={styles.productImage} source={pizza} />
@@ -17,7 +16,6 @@ export default function AddProductScreen() {
         validationSchema={addProductSchema}
         initialValues={{ productName: "", productAmount: "", productSize: "" }}
         onSubmit={(values: any) => {
-          // const { productName, productAmount, productSize } = values;
           console.log("values", values);
         }}
       >
@@ -31,17 +29,15 @@ export default function AddProductScreen() {
           isValid,
         }) => (
           <View>
-            {productContent.map((item, index) => (
-              <InputField
-                onChangeText={handleChange(item.name)}
-                onBlur={handleBlur(item.name)}
-                value={values[item.name]}
-                styleInput={styles.input}
-                styleContainer={styles.inputContainer}
-                styleLabel={styles.inputLabel}
-                errorMessage={errors[item.name] && touched[item.name]}
+            {productContent.map((formElement, index) => (
+              <DisplayFormElements
                 key={index}
-                label={item.label}
+                formElement={formElement}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                values={values}
+                errors={errors}
+                touched={touched}
               />
             ))}
             <Button
@@ -94,4 +90,5 @@ const styles = StyleSheet.create({
 type productType = {
   label: string;
   name: string;
+  type: string;
 };

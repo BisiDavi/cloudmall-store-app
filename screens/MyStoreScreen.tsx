@@ -1,47 +1,62 @@
+import React from "react";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import * as React from "react";
-import { StyleSheet, View, ActivityIndicator, Dimensions } from "react-native";
-import { Switch, Image, ListItem } from "react-native-elements";
-import storeContent from "@json/my-store-content.json";
-import { BottomTabParamList } from "../customTypes";
-import pizza from "@assets/pizza.png";
+import { View, ScrollView, StyleSheet, Text, Dimensions } from "react-native";
+import { ListItem, Switch } from "react-native-elements";
+import productContent from "@json/products.json";
+import { FAB } from "react-native-elements";
+import { BottomTabParamList } from "@customTypes/.";
 import colors from "@utils/colors";
 
-type LoginScreenNavigationProps = StackNavigationProp<
+type StoreScreeenNavigationProps = StackNavigationProp<
   BottomTabParamList,
-  "MyProducts"
+  "Products"
 >;
 
-type LoginScreenRouteProps = RouteProp<BottomTabParamList, "MyProducts">;
+type StoreScreeenRouteProps = RouteProp<BottomTabParamList, "Products">;
 
 type Props = {
-  route: LoginScreenRouteProps;
-  navigation: LoginScreenNavigationProps;
+  route: StoreScreeenRouteProps;
+  navigation: StoreScreeenNavigationProps;
 };
+
+type product = {
+  meal: string;
+};
+
+type productType = "staple" | "swallow";
+
+function displayListView(type: productType) {
+  return productContent[type].map((product: product, index: number) => (
+    <ListItem key={index}>
+      <ListItem.Content>
+        <View style={styles.listViewContent}>
+          <Text>{product.meal}</Text>
+          <Text>Edit</Text>
+          <Switch color="cloudOrange5" />
+        </View>
+      </ListItem.Content>
+    </ListItem>
+  ));
+}
 
 export default function MyStoreScreen({ navigation }: Props) {
   return (
     <View style={styles.container}>
-      <Switch style={styles.switch} color="cloudOrange5" />
-      <Image
-        PlaceholderContent={<ActivityIndicator size="large" color="#0000ff" />}
-        source={pizza}
-        style={styles.storeImage}
-      />
-      <View style={styles.listView}>
-        {storeContent.map((item: any, index) => (
-          <ListItem
-            key={index}
-            onPress={() => navigation.navigate(item.link)}
-            bottomDivider
-          >
-            <ListItem.Content>
-              <ListItem.Title>{item.title}</ListItem.Title>
-            </ListItem.Content>
-            <ListItem.Chevron iconStyle={styles.iconStyle} />
-          </ListItem>
-        ))}
+      <ScrollView>
+        <Text style={styles.category}>Staple Food</Text>
+        {displayListView("staple")}
+        <Text style={styles.category}>Swallow</Text>
+        {displayListView("swallow")}
+      </ScrollView>
+      <View style={styles.fabView}>
+        <FAB
+          color={colors.mallBlue3}
+          title="+"
+          buttonStyle={styles.fab}
+          titleStyle={styles.fabStyle}
+          placement="right"
+        />
       </View>
     </View>
   );
@@ -50,9 +65,9 @@ export default function MyStoreScreen({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "flex-start",
-    backgroundColor:colors.neutralWhite
+    backgroundColor: colors.neutralWhite,
+    padding: 10,
   },
   switch: {
     display: "flex",
@@ -63,25 +78,32 @@ const styles = StyleSheet.create({
     right: 10,
     zIndex: 100,
   },
-  storeImage: {
-    marginTop: 50,
-    height: 200,
-    width: 300,
-    margin: 20,
-  },
-  listView: {
+  listViewContent: {
     display: "flex",
-    flexDirection: "column",
-    width: Dimensions.get("window").width * 0.8,
-    // padding:20
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: Dimensions.get("window").width * 0.9,
   },
-  iconStyle: {
-    color: colors.cloudOrange4,
-    fontSize: 20,
+  fabView: {
+    height: 70,
+  },
+  fab: {
+    borderRadius: 100,
+    borderWidth: 0,
+    height: 70,
+    width: 70,
+    backgroundColor: colors.mallBlue3,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  category: {
+    color: colors.mallBlue5,
+  },
+  fabStyle: {
+    fontSize: 40,
+    padding: 0,
+    marginTop: -5,
   },
 });
-
-type storeType = {
-  title: string;
-  link: string;
-};

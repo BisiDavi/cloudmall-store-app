@@ -39,7 +39,7 @@ export default function BottomTabNavigator() {
         component={TabTwoNavigator}
       />
       <BottomTab.Screen
-        name="My Products"
+        name="Products"
         options={{
           tabBarActiveTintColor: colors.mallBlue5,
           tabBarIcon: ({ color }: any) => <StoreSvg color={color} />,

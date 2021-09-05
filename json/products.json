@@ -1,0 +1,16 @@
+{
+  "staple": [
+    { "meal": "Jollof Rice" },
+    { "meal": "Rice and Beans" },
+    { "meal": "Jollof Rice" },
+    { "meal": "Jollof Rice" },
+    { "meal": "Jollof Rice" },
+    { "meal": "Jollof Rice" }
+  ],
+  "swallow": [
+    { "meal": "Amala" },
+    { "meal": "Pounded Yam" },
+    { "meal": "Fufu" },
+    { "meal": "Semovita" }
+  ]
+}

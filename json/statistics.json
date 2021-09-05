@@ -1,0 +1,10 @@
+[
+  { "date": "August 1", "orders": "25 Orders" },
+  { "date": "August 2", "orders": "35 Orders" },
+  { "date": "August 3", "orders": "45 Orders" },
+  { "date": "August 4", "orders": "55 Orders" },
+  { "date": "August 5", "orders": "65 Orders" },
+  { "date": "August 6", "orders": "75 Orders" },
+  { "date": "August 7", "orders": "85 Orders" },
+  { "date": "August 8", "orders": "95 Orders" }
+]

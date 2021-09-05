@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { StyleSheet, View, Text, FlatList } from "react-native";
+import { StyleSheet, View, Text, FlatList, Dimensions } from "react-native";
 import { ListItem } from "react-native-elements";
 import amountPaidContent from "@json/amount-paid.json";
 
@@ -8,12 +8,14 @@ export default function AmountPaidScreen() {
     return (
       <ListItem key={item?.id} bottomDivider>
         <ListItem.Content>
-          <View style={styles.row}>
-            <Text>{item.price}</Text>
-            <Text>{item.duration}</Text>
-          </View>
-          <View style={styles.row}>
-            <Text>{item.method}</Text>
+          <View style={styles.amountPaid}>
+            <View style={styles.column1}>
+              <Text>{item.price}</Text>
+            </View>
+            <View style={styles.column2}>
+              <Text>{item.method}</Text>
+              <Text>{item.duration}</Text>
+            </View>
           </View>
         </ListItem.Content>
       </ListItem>
@@ -36,13 +38,30 @@ export default function AmountPaidScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: "center",
     justifyContent: "center",
   },
   row: {
     display: "flex",
     alignItems: "center",
     flexDirection: "row",
+  },
+  amountPaid: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    width: Dimensions.get("window").width * 0.9,
+  },
+  column1: {
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  column2: {
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+    flexDirection: "column",
   },
   category: {
     fontWeight: "bold",

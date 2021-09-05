@@ -7,7 +7,7 @@
     { "name": "StatisticsScreen", "title": "Statistics" }
   ],
   "tabThree": [
-    { "name": "MyStoreScreen", "title": "My Store" },
+    { "name": "MyStoreScreen", "title": "My Product" },
     { "name": "AddProductScreen", "title": "Add a new Product" },
     { "name": "ViewStoreScreen", "title": "Ongbona" },
     { "name": "EditProductScreen", "title": "Edit a new Product" }

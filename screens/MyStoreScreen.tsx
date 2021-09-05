@@ -10,10 +10,10 @@ import colors from "@utils/colors";
 
 type LoginScreenNavigationProps = StackNavigationProp<
   BottomTabParamList,
-  "MyStore"
+  "MyProducts"
 >;
 
-type LoginScreenRouteProps = RouteProp<BottomTabParamList, "MyStore">;
+type LoginScreenRouteProps = RouteProp<BottomTabParamList, "MyProducts">;
 
 type Props = {
   route: LoginScreenRouteProps;

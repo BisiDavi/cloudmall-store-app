@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Text,
+  TouchableOpacity,
   Platform,
   Dimensions,
 } from "react-native";
@@ -65,7 +66,11 @@ export default function DashboardScreen({ navigation }: Props) {
             <Text style={styles.chartTitle}>
               Performance: Number of orders vs days.
             </Text>
-            <DashboardChart />
+            <TouchableOpacity
+              onPress={() => navigation.navigate("StatisticsScreen")}
+            >
+              <DashboardChart />
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>

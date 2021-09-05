@@ -1,6 +1,11 @@
 {
   "tabOne": [{ "name": "OrderScreen", "title": "Orders" }],
-  "tabTwo": [{ "name": "DashboardScreen", "title": "Dashboard" }],
+  "tabTwo": [
+    { "name": "DashboardScreen", "title": "Dashboard" },
+    { "name": "AvailableBalanceScreen", "title": "Available Balance" },
+    { "name": "AmountPaidScreen", "title": "Amount Paid" },
+    { "name": "StatisticsScreen", "title": "Statistics" }
+  ],
   "tabThree": [
     { "name": "MyStoreScreen", "title": "My Store" },
     { "name": "AddProductScreen", "title": "Add a new Product" },

@@ -31,7 +31,7 @@
       "position": "left"
     },
     { "name": "AvailableBalanceScreen", "title": "Available Balance" },
-    { "name": "AmountPaidScreen", "title": "Amount Paid" },
+    { "name": "AmountPaidScreen", "title": "Total Revenue" },
     { "name": "StatisticsScreen", "title": "Statistics" }
   ]
 }

@@ -22,7 +22,7 @@ export default function SelectField({ content, ...props }: selectFieldProps) {
                 key={index}
                 label={item.name}
                 value={item.name}
-                enabled={item.disabled}
+                enabled={item.enabled}
               />
             ))}
           </Picker>
@@ -35,7 +35,7 @@ export default function SelectField({ content, ...props }: selectFieldProps) {
 
 type optionType = {
   name: string | undefined;
-  disabled: boolean;
+  enabled: boolean;
 };
 
 interface selectFieldProps {

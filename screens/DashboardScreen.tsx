@@ -32,8 +32,7 @@ type Props = {
 
 type dashboardContentType = {
   category: string;
-  link: string;
-  content: { title: string; amount: string }[];
+  content: { title: string; amount: string; link?: string | undefined }[];
 };
 
 export default function DashboardScreen({ navigation }: Props) {
@@ -53,7 +52,6 @@ export default function DashboardScreen({ navigation }: Props) {
                   {item.content.map((content, index) => (
                     <DashboardCard
                       key={index}
-                      link={item.link}
                       navigation={navigation}
                       content={content}
                     />
@@ -86,8 +84,9 @@ const styles = StyleSheet.create({
   },
   selectField: {
     width: Dimensions.get("window").width * 0.4,
-    marginTop: 10,
+    marginTop: 0,
     marginBottom: 0,
+    padding: 0,
   },
   row: {
     display: "flex",

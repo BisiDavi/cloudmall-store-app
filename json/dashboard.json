@@ -2,27 +2,27 @@
   "card": [
     {
       "category": "Balance",
-      "link": "AvailableBalanceScreen",
       "content": [
         {
           "title": "Available balance",
-          "amount": "100,000 Naira"
+          "amount": "100,000 Naira",
+          "link": "AvailableBalanceScreen"
         },
         {
-          "title": "Amount Paid",
-          "amount": "90,000 Naira"
+          "title": "Total Revenue",
+          "amount": "90,000 Naira",
+          "link": "AmountPaidScreen"
         }
       ]
     },
     {
       "category": "Orders",
-      "link": "AmountPaidScreen",
       "content": [
         {
-          "title": "Number of Orders",
+          "title": "Total Number",
           "amount": "250"
         },
-        { "title": "Number of Orders", "amount": "250" }
+        { "title": "Today Number", "amount": "250" }
       ]
     }
   ],

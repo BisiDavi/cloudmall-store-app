@@ -1,25 +1,31 @@
 import React from "react";
 import { Card } from "react-native-elements";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  Dimensions,
+} from "react-native";
 
 export default function DashboardCard({
   content,
   navigation,
-  link,
 }: DashboardCardProps) {
   return (
     <View style={styles.dashboardCard}>
-      <Text
-        onPress={() => {
-          navigation.navigate(link);
-        }}
-        style={styles.title}
-      >
-        {content.title}
-      </Text>
-      <Card containerStyle={styles.card}>
-        <Text style={styles.cardText}>{content.amount}</Text>
-      </Card>
+      <Text style={styles.title}>{content.title}</Text>
+      {content.link ? (
+        <TouchableOpacity onPress={() => navigation.navigate(content.link)}>
+          <Card containerStyle={styles.card}>
+            <Text style={styles.cardText}>{content.amount}</Text>
+          </Card>
+        </TouchableOpacity>
+      ) : (
+        <Card containerStyle={styles.card}>
+          <Text style={styles.cardText}>{content.amount}</Text>
+        </Card>
+      )}
     </View>
   );
 }
@@ -60,7 +66,7 @@ interface DashboardCardProps {
   content: {
     title: string;
     amount: string;
+    link?: string | undefined;
   };
-  link: string;
   navigation: any;
 }

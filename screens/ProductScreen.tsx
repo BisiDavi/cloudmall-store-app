@@ -7,6 +7,7 @@ import productContent from "@json/products.json";
 import { FAB } from "react-native-elements";
 import { BottomTabParamList } from "@customTypes/.";
 import colors from "@utils/colors";
+import Fab from "@components/Fab";
 
 type ProductScreenNavigationProps = StackNavigationProp<
   BottomTabParamList,
@@ -71,14 +72,7 @@ export default function ProductScreen({ navigation }: Props) {
         </View>
       </ScrollView>
       <View style={styles.fabView}>
-        <FAB
-          color={colors.mallBlue3}
-          title="+"
-          onPress={() => navigation.navigate("AddProductScreenMethod")}
-          buttonStyle={styles.fab}
-          titleStyle={styles.fabStyle}
-          placement="right"
-        />
+        <Fab onPress={() => navigation.navigate("AddProductScreenMethod")} />
       </View>
     </View>
   );
@@ -113,14 +107,6 @@ const styles = StyleSheet.create({
   fabView: {
     height: 70,
   },
-  fab: {
-    borderRadius: 100,
-    borderWidth: 0,
-    height: 60,
-    width: 60,
-    padding: 0,
-    backgroundColor: colors.mallBlue3,
-  },
   productView: {
     display: "flex",
     flexDirection: "column",
@@ -139,10 +125,5 @@ const styles = StyleSheet.create({
     borderLeftColor: "transparent",
     borderTopColor: "transparent",
     borderRightColor: "transparent",
-  },
-  fabStyle: {
-    fontSize: 40,
-    marginTop: -5,
-    width: 40,
   },
 });

@@ -4,8 +4,11 @@ import { Dimensions } from "react-native";
 
 import colors from "../utils/colors";
 
-export default function ProgressIndicator({ selected }: ProgressIndicator) {
-  const numberofIndicators = new Array(4).fill("");
+export default function ProgressIndicator({
+  selected,
+  total = 4,
+}: ProgressIndicator) {
+  const numberofIndicators = new Array(total).fill("");
 
   return (
     <View style={styles.progressIndicator}>
@@ -44,4 +47,5 @@ const styles = StyleSheet.create({
 
 interface ProgressIndicator {
   selected: number;
+  total?: number;
 }

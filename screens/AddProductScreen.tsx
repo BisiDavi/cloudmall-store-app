@@ -1,16 +1,22 @@
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
-import { Image, Button } from "react-native-elements";
+import { StyleSheet, View, Text } from "react-native";
+import { Image, Button, FAB } from "react-native-elements";
 import addproductContent from "@json/add-product.json";
 import pizza from "@assets/pizza.png";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
 import { Formik } from "formik";
 import addProductSchema from "@components/forms/AddProductSchema";
+import ProgressIndicator from "@components/ProgressIndicator";
 
 export default function AddProductScreen() {
   const productContent: productType[] = addproductContent;
   return (
     <View style={styles.container}>
+      <ProgressIndicator selected={1} total={2} />
+      <View>
+        <FAB />
+        <Text>Upload Product Picture</Text>
+      </View>
       <Image style={styles.productImage} source={pizza} />
       <Formik
         validationSchema={addProductSchema}

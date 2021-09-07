@@ -9,7 +9,7 @@ export default function SelectField({ content, ...props }: selectFieldProps) {
       <View style={styles.textView}>
         <Text style={styles.text}>{content.label}</Text>
       </View>
-      <View style={styles.pickerView }>
+      <View style={styles.pickerView}>
         <View style={{ ...props.style, ...styles.picker }}>
           <Picker
             selectedValue={props.selectedValue}

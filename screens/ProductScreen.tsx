@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { View, ScrollView, StyleSheet, Text, Dimensions } from "react-native";
-import { ListItem, Switch } from "react-native-elements";
+import { ListItem, Switch, Image } from "react-native-elements";
 import productContent from "@json/products.json";
-import { FAB } from "react-native-elements";
 import { BottomTabParamList } from "@customTypes/.";
 import colors from "@utils/colors";
 import Fab from "@components/Fab";
+import displayAsset from "@utils/displayAsset";
+import EditIcon from "@assets/editIcon.png";
 
 type ProductScreenNavigationProps = StackNavigationProp<
   BottomTabParamList,
@@ -33,7 +34,9 @@ function ListView({ item }: any) {
       <ListItem.Content>
         <View style={styles.listViewContent}>
           <Text style={styles.meal}>{item.meal}</Text>
-          <Text style={styles.edit}>Edit</Text>
+          <Text style={styles.edit}>
+            <Image source={displayAsset("editIcon")} style={styles.editIcon} />
+          </Text>
           <Switch
             value={toggle}
             onValueChange={() => setToggle(!toggle)}
@@ -94,6 +97,10 @@ const styles = StyleSheet.create({
   },
   switch: {
     display: "flex",
+  },
+  editIcon: {
+    height: 15,
+    width: 15,
   },
   listItem: {
     width: Dimensions.get("window").width,

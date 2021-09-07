@@ -22,7 +22,7 @@ export default function StatisticsScreen() {
     return (
       <ListItem key={item.date} bottomDivider>
         <ListItem.Content>
-          <View>
+          <View style={styles.content}>
             <Text>{item.date}</Text>
             <Text>{item.orders}</Text>
           </View>
@@ -49,19 +49,30 @@ export default function StatisticsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: "center",
     justifyContent: "flex-start",
+    // padding: 20,
+    paddingTop: 0,
+  },
+  performanceText: {
+    marginLeft: 20,
   },
   row: {
     display: "flex",
     alignItems: "center",
     flexDirection: "row",
   },
+  content: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+  },
   chartTitle: {
     fontFamily: "RobotoRegular",
-    fontSize: 12,
+    fontSize: 16,
     lineHeight: 16,
     marginBottom: 10,
+    marginLeft: 25,
   },
   category: {
     fontWeight: "bold",

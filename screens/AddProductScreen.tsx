@@ -1,62 +1,29 @@
 import * as React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Image, Button, FAB } from "react-native-elements";
+import { Formik } from "formik";
 import addproductContent from "@json/add-product.json";
 import pizza from "@assets/pizza.png";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
-import { Formik } from "formik";
 import addProductSchema from "@components/forms/AddProductSchema";
 import ProgressIndicator from "@components/ProgressIndicator";
+import { ScrollView } from "react-native-gesture-handler";
+import AddNewProductForm from "@components/forms/AddNewProductForm";
 
 export default function AddProductScreen() {
   const productContent: productType[] = addproductContent;
   return (
-    <View style={styles.container}>
-      <ProgressIndicator selected={1} total={2} />
-      <View>
-        <FAB />
-        <Text>Upload Product Picture</Text>
+    <ScrollView>
+      <View style={styles.container}>
+        <ProgressIndicator selected={1} total={2} />
+        <View>
+          <FAB />
+          <Text>Upload Product Picture</Text>
+        </View>
+        <Image style={styles.productImage} source={pizza} />
+        <AddNewProductForm />
       </View>
-      <Image style={styles.productImage} source={pizza} />
-      <Formik
-        validationSchema={addProductSchema}
-        initialValues={{ productName: "", productAmount: "", productSize: "" }}
-        onSubmit={(values: any) => {
-          console.log("values", values);
-        }}
-      >
-        {({
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          values,
-          errors,
-          touched,
-          isValid,
-        }) => (
-          <View>
-            {productContent.map((formElement, index) => (
-              <DisplayFormElements
-                key={index}
-                formElement={formElement}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                values={values}
-                errors={errors}
-                touched={touched}
-              />
-            ))}
-            <Button
-              disabled={!isValid}
-              title="Add Product"
-              type="solid"
-              onPress={handleSubmit}
-              buttonStyle={styles.button}
-            />
-          </View>
-        )}
-      </Formik>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -71,13 +38,6 @@ const styles = StyleSheet.create({
     height: 150,
     width: 200,
     marginBottom: 20,
-  },
-  button: {
-    justifyContent: "center",
-    alignItems: "center",
-    display: "flex",
-    marginLeft: 30,
-    marginRight: 30,
   },
   inputLabel: {
     padding: 0,

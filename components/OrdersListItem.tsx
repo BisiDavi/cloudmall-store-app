@@ -5,6 +5,12 @@ import clipboard from "@assets/clipboard.png";
 import colors from "@utils/colors";
 
 export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
+  const statusStyle =
+    item.status === "New"
+      ? styles.new
+      : item.status === "Pending"
+      ? styles.pending
+      : styles.completed;
   return (
     <ListItem
       key={item?.id}
@@ -21,7 +27,9 @@ export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
         <View style={styles.row}>
           <Text>{item?.time}</Text>
           <Image style={styles.clipboard} source={clipboard} />
-          <Text style={styles.status}>{item?.status}</Text>
+          <Text style={{ ...styles.status, ...statusStyle }}>
+            {item?.status}
+          </Text>
         </View>
       </ListItem.Content>
     </ListItem>
@@ -40,6 +48,16 @@ interface OrdersViewProps {
 }
 
 const styles = StyleSheet.create({
+  completed: {
+    backgroundColor: colors.mallBlue5,
+  },
+  pending: {
+    backgroundColor: colors.cloudOrange5,
+  },
+
+  new: {
+    backgroundColor: colors.accentRed,
+  },
   listItem: {
     flexDirection: "row",
     alignItems: "center",
@@ -62,7 +80,6 @@ const styles = StyleSheet.create({
     width: 100,
   },
   status: {
-    backgroundColor: colors.cloudOrange5,
     padding: 5,
     paddingLeft: 8,
     paddingRight: 8,

@@ -29,7 +29,6 @@ type Props = {
 
 export default function AddProductScreen({ navigation }: Props) {
   const [productImage, setProductImage] = useState(false);
-  const productContent: productType[] = addproductContent;
 
   return (
     <ScrollView>

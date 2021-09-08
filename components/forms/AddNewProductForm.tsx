@@ -10,12 +10,14 @@ import colors from "@utils/colors";
 export default function AddNewProductForm({ navigation: { goBack } }: any) {
   return (
     <Formik
-      validationSchema={addNewProductSchema}
       initialValues={{
         productName: "",
-        productAmount: "",
-        productSize: "",
+        productCategory: "",
+        productDescription: "",
+        productPrice: "",
+        quantity: "",
       }}
+      validationSchema={addNewProductSchema}
       onSubmit={(values: any) => {
         console.log("values", values);
       }}
@@ -83,13 +85,12 @@ const styles = StyleSheet.create({
     color: colors.mallBlue5,
   },
   buttonGroup: {
-    //   display:"flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     width: "92%",
     margin: 10,
-    marginTop: 0,
+    marginTop: 10,
   },
 });
 

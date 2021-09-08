@@ -12,7 +12,8 @@
     { "name": "ViewStoreScreen", "title": "Ongbona" },
     { "name": "EditProductScreen", "title": "Edit a new Product" },
     { "name": "AddProductScreenMethod", "title": "Add a Product" },
-    { "name": "FoodCategoryScreen", "title": "Food Category" }
+    { "name": "FoodCategoryScreen", "title": "Food Category" },
+    { "name": "AddExtraScreen", "title": "Add an Extra" }
   ],
   "tabFour": [{ "name": "ProfileScreen", "title": "Profile" }]
 }

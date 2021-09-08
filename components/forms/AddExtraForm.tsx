@@ -4,7 +4,7 @@ import addExtraSchema from "@components/forms/addExtraSchema";
 import { View, StyleSheet } from "react-native";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
 import { Button } from "react-native-elements";
-import formContent from "@json/isbnProduct.json";
+import formContent from "@json/add-extra.json";
 import colors from "@utils/colors";
 
 export default function AddExtraForm({ navigation: { goBack } }: any) {
@@ -28,18 +28,20 @@ export default function AddExtraForm({ navigation: { goBack } }: any) {
         touched,
         isValid,
       }) => (
-        <View>
-          {formContent.map((formElement, index) => (
-            <DisplayFormElements
-              key={index}
-              formElement={formElement}
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              values={values}
-              errors={errors}
-              touched={touched}
-            />
-          ))}
+        <View style={styles.formContainer}>
+          <View style={styles.formInputs}>
+            {formContent.map((formElement, index) => (
+              <DisplayFormElements
+                key={index}
+                formElement={formElement}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                values={values}
+                errors={errors}
+                touched={touched}
+              />
+            ))}
+          </View>
           <View style={styles.buttonGroup}>
             <Button
               title="Back"
@@ -62,6 +64,15 @@ export default function AddExtraForm({ navigation: { goBack } }: any) {
   );
 }
 const styles = StyleSheet.create({
+  formContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    padding:10
+  },
+  formInputs: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
   nextButton: {
     justifyContent: "center",
     alignItems: "center",
@@ -85,8 +96,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    width: "92%",
+    width: "90%",
     margin: 10,
-    marginTop: 0,
+    marginTop: 10,
   },
 });

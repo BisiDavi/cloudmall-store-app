@@ -24,4 +24,5 @@ export type BottomTabParamList = {
   StatisticsScreen: undefined;
   AddProductScreenMethod: undefined;
   FoodCategoryScreen: undefined;
+  ProductWithISBN: undefined;
 };

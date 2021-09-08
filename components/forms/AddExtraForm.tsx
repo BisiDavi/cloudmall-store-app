@@ -1,23 +1,19 @@
 import React from "react";
 import { Formik } from "formik";
-import addProductSchema from "@components/forms/AddProductSchema";
+import addExtraSchema from "@components/forms/addExtraSchema";
 import { View, StyleSheet, Text } from "react-native";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
 import { Button } from "react-native-elements";
 import formContent from "@json/isbnProduct.json";
 import colors from "@utils/colors";
 
-export default function ProdutWithISBNForm({ navigation: { goBack } }: any) {
+export default function AddExtraForm({ navigation: { goBack } }: any) {
   return (
     <Formik
-      validationSchema={addProductSchema}
+      validationSchema={addExtraSchema}
       initialValues={{
-        ISBN: "",
-        productName: "",
-        productCategory: "",
-        productDescription: "",
+        extraName: "",
         productPrice: "",
-        quantity: "",
       }}
       onSubmit={(values: any) => {
         console.log("values", values);

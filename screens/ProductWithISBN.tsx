@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { StackNavigationProp } from "@react-navigation/stack";
 import { RouteProp } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { BottomTabParamList } from "@customTypes/.";
 import { Image } from "react-native-elements";
 import addproductContent from "@json/add-product.json";
@@ -12,34 +12,28 @@ import AddNewProductForm from "@components/forms/AddNewProductForm";
 import Fab from "@components/Fab";
 import colors from "@utils/colors";
 
-type AddProductScreenNavigationProps = StackNavigationProp<
+type ProductWithISBNNavigationProps = StackNavigationProp<
   BottomTabParamList,
-  "AddProductScreen"
+  "ProductWithISBN"
 >;
 
-type AddProductScreenRouteProps = RouteProp<
+type ProductWithISBNRouteProps = RouteProp<
   BottomTabParamList,
-  "AddProductScreen"
+  "ProductWithISBN"
 >;
 
 type Props = {
-  route: AddProductScreenRouteProps;
-  navigation: AddProductScreenNavigationProps;
+  route: ProductWithISBNRouteProps;
+  navigation: ProductWithISBNNavigationProps;
 };
 
-export default function AddProductScreen({ navigation }: Props) {
+export default function ProductWithISBN({ navigation }: Props) {
   const [productImage, setProductImage] = useState(false);
   const productContent: productType[] = addproductContent;
 
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Text style={styles.title}>Step 1: Product Details</Text>
-        <ProgressIndicator
-          style={styles.progressIndicator}
-          selected={1}
-          total={2}
-        />
         <View style={styles.uploadProductImage}>
           <View style={styles.FabView}>
             <View style={styles.fabContainer}>
@@ -65,19 +59,6 @@ const styles = StyleSheet.create({
     height: 150,
     width: 200,
     marginBottom: 20,
-  },
-  progressIndicator: {
-    margin: 5,
-    marginLeft: 0,
-    marginBottom: 20,
-  },
-  title: {
-    fontFamily: "MontserratBold",
-    fontSize: 16,
-    marginTop: 0,
-    margin: 10,
-    marginLeft: 0,
-    textAlign: "center",
   },
   uploadProductImage: {
     justifyContent: "center",

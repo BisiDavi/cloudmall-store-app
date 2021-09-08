@@ -1,0 +1,23 @@
+[
+  {
+    "label": "Person's Name",
+    "name": "personName",
+    "type": "input"
+  },
+  {
+    "label": "Phone",
+    "name": "phone",
+    "type": "input",
+    "keyboardType": "numeric"
+  },
+  {
+    "label": "Address",
+    "name": "address",
+    "type": "input"
+  },
+  {
+    "label": "Additional Description",
+    "name": "additionalDescription",
+    "type": "input"
+  }
+]

@@ -1,6 +1,7 @@
 import React from "react";
 import ProgressIndicator from "@components/ProgressIndicator";
 import { View, Text, StyleSheet } from "react-native";
+import AddProductOtherDetailsForm from "@components/forms/AddProductOtherDetailsForm";
 
 export default function AddProductOtherDetails() {
   return (

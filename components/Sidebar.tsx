@@ -4,13 +4,20 @@ import { View, Text, StyleSheet } from "react-native";
 import sidebarContent from "@json/sidebar.json";
 
 const Sidebar = () => {
+  function navigationHandler(link: any) {
+    console.log("link", link);
+  }
   return (
     <View>
       <Avatar avatarStyle={styles.avatar} rounded />
       <Text>Muhammad</Text>
       <View style={styles.listView}>
         {sidebarContent.map((sidebarLink, index) => (
-          <ListItem key={index} onPress={onPress} bottomDivider>
+          <ListItem
+            key={index}
+            onPress={() => navigationHandler(sidebarLink.link)}
+            bottomDivider
+          >
             <ListItem.Content>
               <Text>{sidebarLink.name}</Text>
             </ListItem.Content>

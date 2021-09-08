@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Availability Duration",
+    "group": true,
+    "groupItem": [
+      { "placeholder": "from", "type": "input", "name": "From" },
+      { "placeholder": "To", "type": "input", "name": "To" }
+    ]
+  },
+  {
+    "label": "Promo Name",
+    "name": "promoName",
+    "type": "input"
+  },
+  {
+    "label": "Discount Percent",
+    "name": "discountPercent",
+    "type": "input"
+  },
+  {
+    "label": "Promo Duration",
+    "name": "promoDuration",
+    "group": true,
+    "groupItem": [
+      { "placeholder": "from", "type": "input", "name": "From" },
+      { "placeholder": "To", "type": "input", "name": "To" }
+    ]
+  }
+]

@@ -1,4 +1,5 @@
 import React from "react";
+import { CheckBox } from "react-native-elements";
 import { Formik } from "formik";
 import { View, StyleSheet, Text } from "react-native";
 import { Button } from "react-native-elements";
@@ -7,7 +8,25 @@ import colors from "@utils/colors";
 const AddProductOtherDetailsForm = ({ navigation: { goBack } }: any) => {
   return (
     <View>
-      <Text></Text>
+      <View>
+        <Text>Main Extras</Text>
+        <View style={styles.checkboxView}>
+          <CheckBox />
+          <CheckBox />
+          <CheckBox />
+        </View>
+      </View>
+      <View>
+        <Text>Secondary Extras</Text>
+        <View style={styles.checkboxView}>
+          <CheckBox />
+          <CheckBox />
+          <CheckBox />
+        </View>
+      </View>
+      <View>
+        <Text style={styles.promoTagText}>Add Promo Tag</Text>
+      </View>
       <View style={styles.buttonGroup}>
         <Button
           title="Back"
@@ -18,7 +37,7 @@ const AddProductOtherDetailsForm = ({ navigation: { goBack } }: any) => {
         />
         <Button
           // disabled={!isValid}
-          title="Next"
+          title="Submit"
           type="solid"
           // onPress={handleSubmit}
           buttonStyle={styles.nextButton}
@@ -29,6 +48,7 @@ const AddProductOtherDetailsForm = ({ navigation: { goBack } }: any) => {
 };
 
 const styles = StyleSheet.create({
+  checkboxView: {},
   nextButton: {
     justifyContent: "center",
     alignItems: "center",
@@ -47,6 +67,7 @@ const styles = StyleSheet.create({
   backButtonTitle: {
     color: colors.mallBlue5,
   },
+  promoTagText: {},
   buttonGroup: {
     //   display:"flex",
     flexDirection: "row",

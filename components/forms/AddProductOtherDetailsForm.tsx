@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { CheckBox } from "react-native-elements";
 import { Formik } from "formik";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Button } from "react-native-elements";
 import colors from "@utils/colors";
+import PromoTagForm from "./PromoTagForm";
 
 const AddProductOtherDetailsForm = ({ navigation: { goBack } }: any) => {
+  const [showPromoTag, setShowPromoTag] = useState(false);
+
+  function promoTagFormHandler() {
+    setShowPromoTag(!showPromoTag);
+  }
   return (
     <View>
       <View>
@@ -25,8 +31,11 @@ const AddProductOtherDetailsForm = ({ navigation: { goBack } }: any) => {
         </View>
       </View>
       <View>
-        <Text style={styles.promoTagText}>Add Promo Tag</Text>
+        <TouchableOpacity onPress={promoTagFormHandler}>
+          <Text style={styles.promoTagText}>Add Promo Tag</Text>
+        </TouchableOpacity>
       </View>
+      {showPromoTag && <PromoTagForm />}
       <View style={styles.buttonGroup}>
         <Button
           title="Back"

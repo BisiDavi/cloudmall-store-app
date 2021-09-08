@@ -21,6 +21,7 @@ import ProductScreen from "@screens/ProductScreen";
 import AddProductScreenMethod from "@screens/AddProductScreenMethod";
 import FoodCategoryScreen from "@screens/FoodCategoryScreen";
 import AddExtraScreen from "@screens/AddExtraScreen";
+import AddProductOtherDetailsScreen from "@screens/AddProductOtherDetailsScreen";
 
 export function displayScreenComponent(name: string | RootStackParamList): any {
   switch (name) {
@@ -66,6 +67,8 @@ export function displayScreenComponent(name: string | RootStackParamList): any {
       return FoodCategoryScreen;
     case "AddExtraScreen":
       return AddExtraScreen;
+    case "AddProductOtherDetailsScreen":
+      return AddProductOtherDetailsScreen;
     default:
       return null;
   }

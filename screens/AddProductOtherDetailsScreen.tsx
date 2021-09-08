@@ -1,9 +1,27 @@
 import React from "react";
+import { RouteProp } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import ProgressIndicator from "@components/ProgressIndicator";
 import { View, Text, StyleSheet } from "react-native";
 import AddProductOtherDetailsForm from "@components/forms/AddProductOtherDetailsForm";
+import { BottomTabParamList } from "../customTypes";
 
-export default function AddProductOtherDetails() {
+type AddProductOtherDetailsScreenNavigationProps = StackNavigationProp<
+  BottomTabParamList,
+  "AddProductOtherDetailsScreen"
+>;
+
+type AddProductOtherDetailsScreenRouteProps = RouteProp<
+  BottomTabParamList,
+  "AddProductOtherDetailsScreen"
+>;
+
+type Props = {
+  route?: AddProductOtherDetailsScreenRouteProps;
+  navigation: AddProductOtherDetailsScreenNavigationProps;
+};
+
+export default function AddProductOtherDetailsScreen({ navigation }: Props) {
   return (
     <View>
       <Text style={styles.title}>Step 2: Other Details</Text>

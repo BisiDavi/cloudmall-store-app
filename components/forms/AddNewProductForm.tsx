@@ -7,7 +7,13 @@ import { Button } from "react-native-elements";
 import addproductContent from "@json/add-product.json";
 import colors from "@utils/colors";
 
-export default function AddNewProductForm({ navigation: { goBack } }: any) {
+export default function AddNewProductForm({ navigation }: any) {
+  function navigationHandler() {
+    navigation.navigate("AddProductOtherDetailsScreen");
+  }
+  function goBack() {
+    navigation.goBack();
+  }
   return (
     <Formik
       initialValues={{
@@ -17,7 +23,7 @@ export default function AddNewProductForm({ navigation: { goBack } }: any) {
         productPrice: "",
         quantity: "",
       }}
-      validationSchema={addNewProductSchema}
+      // validationSchema={addNewProductSchema}
       onSubmit={(values: any) => {
         console.log("values", values);
       }}
@@ -48,14 +54,14 @@ export default function AddNewProductForm({ navigation: { goBack } }: any) {
               title="Back"
               type="solid"
               titleStyle={styles.backButtonTitle}
-              onPress={() => goBack()}
+              onPress={goBack}
               buttonStyle={styles.backButton}
             />
             <Button
               disabled={!isValid}
               title="Next"
               type="solid"
-              onPress={handleSubmit}
+              onPress={navigationHandler}
               buttonStyle={styles.nextButton}
             />
           </View>
@@ -93,9 +99,3 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
-
-type productType = {
-  label: string;
-  name: string;
-  type: string;
-};

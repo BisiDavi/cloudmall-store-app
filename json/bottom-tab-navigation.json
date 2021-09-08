@@ -13,7 +13,8 @@
     { "name": "EditProductScreen", "title": "Edit a new Product" },
     { "name": "AddProductScreenMethod", "title": "Add a Product" },
     { "name": "FoodCategoryScreen", "title": "Food Category" },
-    { "name": "AddExtraScreen", "title": "Add an Extra" }
+    { "name": "AddExtraScreen", "title": "Add an Extra" },
+    { "name": "AddProductOtherDetailsScreen", "title": "Add a new Product" }
   ],
   "tabFour": [{ "name": "ProfileScreen", "title": "Profile" }]
 }

@@ -1,27 +1,36 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { Image, Button, FAB } from "react-native-elements";
-import { Formik } from "formik";
+import { Image, FAB } from "react-native-elements";
 import addproductContent from "@json/add-product.json";
 import pizza from "@assets/pizza.png";
-import DisplayFormElements from "@components/forms/DisplayFormElements";
-import addProductSchema from "@components/forms/AddProductSchema";
 import ProgressIndicator from "@components/ProgressIndicator";
 import { ScrollView } from "react-native-gesture-handler";
 import AddNewProductForm from "@components/forms/AddNewProductForm";
+import Fab from "@components/Fab";
+import colors from "@utils/colors";
 
-export default function AddProductScreen() {
+export default function AddProductScreen({ navigation }: any) {
+  const [productImage, setProductImage] = useState(false);
   const productContent: productType[] = addproductContent;
   return (
     <ScrollView>
       <View style={styles.container}>
-        <ProgressIndicator selected={1} total={2} />
-        <View>
-          <FAB />
-          <Text>Upload Product Picture</Text>
+        <Text style={styles.title}>Step 1: Product Details</Text>
+        <ProgressIndicator
+          style={styles.progressIndicator}
+          selected={1}
+          total={2}
+        />
+        <View style={styles.uploadProductImage}>
+          <View style={styles.FabView}>
+            <View style={styles.fabContainer}>
+              <Fab onPress={() => {}} />
+            </View>
+            <Text>Upload Product Picture</Text>
+          </View>
         </View>
-        <Image style={styles.productImage} source={pizza} />
-        <AddNewProductForm />
+        {productImage && <Image style={styles.productImage} source={pizza} />}
+        <AddNewProductForm navigation={navigation} />
       </View>
     </ScrollView>
   );
@@ -30,14 +39,48 @@ export default function AddProductScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "flex-start",
-    padding: 20,
+    padding: 15,
   },
   productImage: {
     height: 150,
     width: 200,
     marginBottom: 20,
+  },
+  progressIndicator: {
+    margin: 5,
+    marginLeft: 0,
+    marginBottom: 20,
+  },
+  title: {
+    fontFamily: "MontserratBold",
+    fontSize: 16,
+    marginTop: 0,
+    margin: 10,
+    marginLeft: 0,
+    textAlign: "center",
+  },
+  uploadProductImage: {
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 20,
+  },
+  fabContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    height: 50,
+    width: 70,
+    marginTop:30
+  },
+  FabView: {
+    height: 160,
+    width: 160,
+    backgroundColor: colors.neutral3,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 5,
   },
   inputLabel: {
     padding: 0,

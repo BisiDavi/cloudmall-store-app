@@ -1,0 +1,26 @@
+[
+  {
+    "name": "My Store",
+    "link": "MyStore"
+  },
+  {
+    "name": "My Products",
+    "link": "Products"
+  },
+  {
+    "name": "Confirm a Rider",
+    "link": "confirmRider"
+  },
+  {
+    "name": "Settings",
+    "link": "settings"
+  },
+  {
+    "name": "Help",
+    "link": "help"
+  },
+  {
+    "name": "Logout",
+    "link": "Logout"
+  }
+]

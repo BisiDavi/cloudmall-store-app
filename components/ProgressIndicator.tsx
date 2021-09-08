@@ -7,11 +7,12 @@ import colors from "../utils/colors";
 export default function ProgressIndicator({
   selected,
   total = 4,
+  style,
 }: ProgressIndicator) {
   const numberofIndicators = new Array(total).fill("");
 
   return (
-    <View style={styles.progressIndicator}>
+    <View style={{ ...styles.progressIndicator, ...style }}>
       {numberofIndicators.map((_, index) => {
         const indicatorStyle =
           index < selected ? styles.selected : styles.notSelected;
@@ -48,4 +49,5 @@ const styles = StyleSheet.create({
 interface ProgressIndicator {
   selected: number;
   total?: number;
+  style?: any;
 }

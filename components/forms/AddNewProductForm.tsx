@@ -5,8 +5,9 @@ import { View, StyleSheet } from "react-native";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
 import { Button } from "react-native-elements";
 import addproductContent from "@json/add-product.json";
+import colors from "@utils/colors";
 
-export default function AddNewProductForm() {
+export default function AddNewProductForm({ navigation: { goBack } }: any) {
   return (
     <Formik
       validationSchema={addProductSchema}
@@ -40,13 +41,22 @@ export default function AddNewProductForm() {
               touched={touched}
             />
           ))}
-          <Button
-            disabled={!isValid}
-            title="Add Product"
-            type="solid"
-            onPress={handleSubmit}
-            buttonStyle={styles.button}
-          />
+          <View style={styles.buttonGroup}>
+            <Button
+              title="Back"
+              type="solid"
+              titleStyle={styles.backButtonTitle}
+              onPress={() => goBack()}
+              buttonStyle={styles.backButton}
+            />
+            <Button
+              disabled={!isValid}
+              title="Next"
+              type="solid"
+              onPress={handleSubmit}
+              buttonStyle={styles.nextButton}
+            />
+          </View>
         </View>
       )}
     </Formik>
@@ -54,12 +64,32 @@ export default function AddNewProductForm() {
 }
 
 const styles = StyleSheet.create({
-  button: {
+  nextButton: {
     justifyContent: "center",
     alignItems: "center",
     display: "flex",
-    marginLeft: 30,
-    marginRight: 30,
+    width: 100,
+    borderRadius: 10,
+    backgroundColor: colors.mallBlue5,
+  },
+  backButton: {
+    borderWidth: 1,
+    borderColor: colors.mallBlue5,
+    backgroundColor: "transparent",
+    width: 100,
+    borderRadius: 10,
+  },
+  backButtonTitle: {
+    color: colors.mallBlue5,
+  },
+  buttonGroup: {
+    //   display:"flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "92%",
+    margin: 10,
+    marginTop: 0,
   },
 });
 

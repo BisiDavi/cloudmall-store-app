@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     height: 60,
     width: 60,
     padding: 0,
-    backgroundColor: colors.mallBlue3,
+    backgroundColor: colors.mallBlue5,
   },
   fabStyle: {
     fontSize: 40,

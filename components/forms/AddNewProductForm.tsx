@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
-import addProductSchema from "@components/forms/AddProductSchema";
+import addNewProductSchema from "@components/forms/AddNewProductSchema";
 import { View, StyleSheet } from "react-native";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
 import { Button } from "react-native-elements";
@@ -10,7 +10,7 @@ import colors from "@utils/colors";
 export default function AddNewProductForm({ navigation: { goBack } }: any) {
   return (
     <Formik
-      validationSchema={addProductSchema}
+      validationSchema={addNewProductSchema}
       initialValues={{
         productName: "",
         productAmount: "",

@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import addExtraSchema from "@components/forms/addExtraSchema";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
 import { Button } from "react-native-elements";
 import formContent from "@json/isbnProduct.json";

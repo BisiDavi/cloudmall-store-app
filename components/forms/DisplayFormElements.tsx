@@ -4,6 +4,7 @@ import InputField from "@components/InputField";
 import RadioField from "@components/RadioField";
 import SelectField from "@components/SelectField";
 import { displayAsset } from "@utils/.";
+import InputGroup from "@components/InputGroup";
 
 export default function DisplayFormElements({
   formElement,
@@ -56,6 +57,20 @@ export default function DisplayFormElements({
         />
       );
     }
+    case "input-group": {
+      return (
+        <InputGroup
+          inputGroup={formElement}
+          onChangeText={props?.handleChange(formElement.name)}
+          onBlur={props?.handleBlur(formElement.name)}
+          errorMessage={
+            props.errors[formElement.name] &&
+            props.touched[formElement.name] &&
+            props.errors[formElement.name]
+          }
+        />
+      );
+    }
     default:
       return null;
   }
@@ -76,6 +91,7 @@ interface displayFormElementsProps {
     keyboardType?: KeyboardTypeOptions | undefined | any;
     options?: optionType[];
     iconName?: string;
+    inputs?: { placeholder: string; name: string; type: string }[];
     textContentType?:
       | "password"
       | "emailAddress"

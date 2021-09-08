@@ -67,7 +67,7 @@ const inputStyles = StyleSheet.create({
 interface InputFieldProps {
   onChangeText?: (e: string | ChangeEvent<any>) => void | undefined;
   value?: any;
-  label: string;
+  label?: string;
   keyboardType?: KeyboardTypeOptions;
   secureTextEntry?: boolean;
   styles?: any;

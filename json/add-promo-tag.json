@@ -1,8 +1,9 @@
 [
   {
     "label": "Availability Duration",
-    "group": true,
-    "groupItem": [
+    "name": "availabiltyDuration",
+    "type": "input-group",
+    "inputs": [
       { "placeholder": "from", "type": "input", "name": "From" },
       { "placeholder": "To", "type": "input", "name": "To" }
     ]
@@ -20,8 +21,8 @@
   {
     "label": "Promo Duration",
     "name": "promoDuration",
-    "group": true,
-    "groupItem": [
+    "type": "input-group",
+    "inputs": [
       { "placeholder": "from", "type": "input", "name": "From" },
       { "placeholder": "To", "type": "input", "name": "To" }
     ]

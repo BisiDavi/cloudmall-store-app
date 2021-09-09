@@ -2,6 +2,7 @@ import React from "react";
 import { ListItem, Avatar, Image } from "react-native-elements";
 import { View, Text, StyleSheet } from "react-native";
 import sidebarContent from "@json/sidebar.json";
+import colors from "@utils/colors";
 
 const Sidebar = () => {
   function navigationHandler(link: any) {
@@ -19,7 +20,7 @@ const Sidebar = () => {
             bottomDivider
           >
             <ListItem.Content>
-              <Text>{sidebarLink.name}</Text>
+              <Text style={styles.sidebarText}>{sidebarLink.name}</Text>
             </ListItem.Content>
           </ListItem>
         ))}
@@ -33,5 +34,8 @@ const styles = StyleSheet.create({
     width: 50,
   },
   listView: {},
+  sidebarText: {
+    color: "black",
+  },
 });
 export default Sidebar;

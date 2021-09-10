@@ -57,14 +57,14 @@ export default function BottomTabNavigator() {
         }}
         component={TabThreeNavigator}
       /> */}
-      {/* <BottomTab.Screen
+      <BottomTab.Screen
         name="Profile"
         options={{
           tabBarActiveTintColor: colors.mallBlue5,
           tabBarIcon: ({ color }: any) => <ProfileSvg color={color} />,
         }}
         component={TabFourNavigator}
-      /> */}
+      />
     </BottomTab.Navigator>
   );
 }

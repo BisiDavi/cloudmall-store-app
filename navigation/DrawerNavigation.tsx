@@ -10,7 +10,7 @@ export default function DrawerNavigation() {
 
   return (
     <Drawer.Navigator>
-      {drawerJson.map((drawer, item) => (
+      {drawerJson.map((drawer: any, item) => (
         <Drawer.Screen
           key={item}
           title={drawer.name}
@@ -21,3 +21,8 @@ export default function DrawerNavigation() {
     </Drawer.Navigator>
   );
 }
+
+type drawer = {
+  name: string;
+  link: keyof DrawerStackParamList;
+};

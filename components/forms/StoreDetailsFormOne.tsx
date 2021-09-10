@@ -27,6 +27,7 @@ export default function StoreDetailsFormOne({ navigation }: any) {
             storeEmail: "",
             phoneNumber: "",
             storeAddress: "",
+            storeCategory: "",
           }}
           onSubmit={(values) => {
             setLoading(true);

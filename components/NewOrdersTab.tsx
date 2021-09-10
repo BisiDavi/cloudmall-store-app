@@ -10,6 +10,7 @@ type ordersList = {
   code: string;
   time: string;
   status: string;
+  image: string;
 };
 
 type newOrder = {
@@ -17,30 +18,8 @@ type newOrder = {
 };
 
 export default function NewOrdersTab() {
-  const [visible, setVisible] = useState(false);
-
-  function displayModal(item: any) {
-    return (
-      <AppModal
-        style={styles.appModal}
-        visible={visible}
-        toggleOverlay={() => setVisible(!visible)}
-      >
-        <Text>Hello David</Text>
-        <Text>{item.orders}</Text>
-      </AppModal>
-    );
-  }
-
-  function toggleModal(item: any) {
-    console.log("I am working");
-    setVisible(!visible);
-    console.log("item toggleModal", item);
-    visible && displayModal(item);
-  }
-
   function renderItem({ item }: newOrder) {
-    return <OrdersListItem onPress={() => toggleModal(item)} item={item} />;
+    return <OrdersListItem item={item} />;
   }
 
   return (

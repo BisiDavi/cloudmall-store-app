@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { View, FlatList } from "react-native";
 import CompletedOrdersList from "@json/completed-order.json";
 import OrdersListItem from "@components/OrdersListItem";
@@ -9,6 +9,7 @@ type ordersList = {
   code: string;
   time: string;
   status: string;
+  image: string;
 };
 
 type completedOrders = {
@@ -16,16 +17,9 @@ type completedOrders = {
 };
 
 export default function CompletedOrdersTab() {
-  const completedOrders = useCallback(function renderItem({
-    item,
-  }: completedOrders) {
-    return (
-      <View>
-        <OrdersListItem item={item} />
-      </View>
-    );
-  },
-  []);
+  const completedOrders = function renderItem({ item }: completedOrders) {
+    return <OrdersListItem item={item} />;
+  };
 
   return (
     <View>

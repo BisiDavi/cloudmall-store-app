@@ -14,7 +14,7 @@ export default async function checkExistingStore(
       );
       console.log("currentUserStore", currentUserStore);
       if (currentUserStore.length > 0) {
-        screenNavigate(4, navigation);
+        screenNavigate(5, navigation);
       }
     })
     .catch((error) => {

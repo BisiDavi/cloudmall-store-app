@@ -19,11 +19,7 @@ export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
       onPress={onPress}
       bottomDivider
     >
-      <Avatar
-        source={displayAsset(item.name)}
-        avatarStyle={styles.avatar}
-        rounded
-      />
+      <Image source={displayAsset(item.image)} style={styles.avatar} />
       <ListItem.Content>
         <View style={styles.row}>
           <Text>{item?.name}</Text>
@@ -49,6 +45,7 @@ interface OrdersViewProps {
     code: string;
     time: string;
     status: string;
+    image: string;
   };
 }
 
@@ -81,8 +78,9 @@ const styles = StyleSheet.create({
   },
   avatar: {
     height: 50,
-    backgroundColor: "#C4C4C4",
-    width: 100,
+    width: 50,
+    borderRadius: 100,
+    margin: 5,
   },
   status: {
     padding: 5,

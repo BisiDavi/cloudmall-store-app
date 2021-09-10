@@ -20,10 +20,19 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       screenOptions={{
-        headerShown: false,        
+        headerShown: false,
       }}
       initialRouteName="Orders"
     >
+      <BottomTab.Screen
+        name="Dashboard"
+        options={{
+          tabBarActiveTintColor: colors.mallBlue5,
+          tabBarIcon: ({ color }: any) => <DashboardSvg color={color} />,
+        }}
+        component={TabTwoNavigator}
+      />
+      
       <BottomTab.Screen
         name="Orders"
         options={{
@@ -33,30 +42,23 @@ export default function BottomTabNavigator() {
         }}
         component={TabOneNavigator}
       />
-      <BottomTab.Screen
-        name="Dashboard"
-        options={{
-          tabBarActiveTintColor: colors.mallBlue5,
-          tabBarIcon: ({ color }: any) => <DashboardSvg color={color} />,
-        }}
-        component={TabTwoNavigator}
-      />
-      <BottomTab.Screen
+
+      {/* <BottomTab.Screen
         name="Products"
         options={{
           tabBarActiveTintColor: colors.mallBlue5,
           tabBarIcon: ({ color }: any) => <StoreSvg color={color} />,
         }}
         component={TabThreeNavigator}
-      />
-      <BottomTab.Screen
+      /> */}
+      {/* <BottomTab.Screen
         name="Profile"
         options={{
           tabBarActiveTintColor: colors.mallBlue5,
           tabBarIcon: ({ color }: any) => <ProfileSvg color={color} />,
         }}
         component={TabFourNavigator}
-      />
+      /> */}
     </BottomTab.Navigator>
   );
 }

@@ -29,7 +29,11 @@ export type BottomTabParamList = {
   AddProductOtherDetailsScreen: undefined;
 };
 
-
 export type DrawerStackParamList = {
-  
-}
+  MyStoreScreen: undefined;
+  ProductScreen: undefined;
+  ConfirmRiderScreen: undefined;
+  SettingsScreen: undefined;
+  HelpScreen: undefined;
+  LogoutScreen: undefined;
+};

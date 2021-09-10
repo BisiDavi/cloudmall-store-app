@@ -13,7 +13,8 @@ export default function DrawerNavigation() {
       {drawerJson.map((drawer, item) => (
         <Drawer.Screen
           key={item}
-          name={drawer.name}
+          title={drawer.name}
+          name={drawer.link}
           component={displayScreenComponent(drawer.link)}
         />
       ))}

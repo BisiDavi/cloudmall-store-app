@@ -1,0 +1,9 @@
+[
+  { "title": "About Ongbonna", "name": "about" },
+  { "title": "Owner's Information", "name": "ownerInformation" },
+  { "title": "Settlement", "name": "settlement" },
+  { "title": "Settings", "name": "settings" },
+  { "title": "Contact us", "name": "contactus" },
+  { "title": "Terms and Conditions", "name": "termsAndCondition" },
+  { "title": "Sign out", "name": "signOut" }
+]

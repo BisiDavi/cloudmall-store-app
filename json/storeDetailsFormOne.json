@@ -47,23 +47,35 @@
     "type": "switch",
     "fields": [
       { "name": "weekDays", "label": "Week Days" },
-      { "name": "saturday", "Label": "Saturday" },
-      { "name": "sunday", "Label": "Sunday" }
+      { "name": "saturday", "label": "Saturday" },
+      { "name": "sunday", "label": "Sunday" }
     ]
   },
   {
     "name": "openTime",
-    "type": "input-group",
+    "type": "select-group",
     "fields": [
       {
         "name": "opensAt",
-        "placeholder": "Opens at",
-        "options": ["24 hours", "7:00 am", "8:00 am", "9:00 am", "10:00 am"]
+        "options": [
+          { "name": "Opens at", "enabled": false },
+          { "name": "24 hours", "enabled": true },
+          { "name": "7:00 am", "enabled": true },
+          { "name": "8:00 am", "enabled": true },
+          { "name": "9:00 am", "enabled": true },
+          { "name": "10:00 am", "enabled": true }
+        ]
       },
       {
         "name": "closesAt",
         "placeholder": "Closes at",
-        "options": ["7:00 pm", "8:00 pm", "9:00 pm", "10:00 pm"]
+        "options": [
+          { "name": "Closes at", "enabled": false },
+          { "name": "7:00 pm", "enabled": true },
+          { "name": "8:00 pm", "enabled": true },
+          { "name": "9:00 pm", "enabled": true },
+          { "name": "10:00 pm", "enabled": true }
+        ]
       }
     ]
   }

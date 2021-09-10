@@ -1,20 +1,10 @@
+import colors from "@utils/colors";
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Switch } from "react-native-elements";
 
 interface SwitchViewProps {
   label: string;
-}
-
-function SwitchView({ label }: SwitchViewProps) {
-  const [open, setOpen] = useState(false);
-  return (
-    <View>
-      <Text>{label}</Text>
-      <Switch value={open} onValueChange={() => setOpen(!open)} />
-      <Text>{open ? "Open" : "Close"}</Text>
-    </View>
-  );
 }
 
 interface SwitchFieldsProps {
@@ -25,15 +15,49 @@ interface SwitchFieldsProps {
   };
 }
 
+function SwitchView({ label }: SwitchViewProps) {
+  const [open, setOpen] = useState(false);
+  return (
+    <View style={styles.switchView}>
+      <Text style={styles.switchText}>{label}</Text>
+      <Switch
+        color={colors.mallBlue5}
+        value={open}
+        onValueChange={() => setOpen(!open)}
+      />
+      <Text style={styles.switchText}>{open ? "Open" : "Close"}</Text>
+    </View>
+  );
+}
+
 export default function SwitchFields({ content }: SwitchFieldsProps) {
   return (
-    <View>
-      <Text>{content.label}</Text>
+    <View style={styles.SwitchFields}>
+      <Text style={styles.label}>{content.label}</Text>
       {content.fields.map((item, index) => (
-        <View key={index}>
-          <SwitchView label={item.label} key={index} />
-        </View>
+        <SwitchView label={item.label} key={index} />
       ))}
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  switchView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    margin: 10,
+  },
+  SwitchFields: {
+    margin: 10,
+  },
+  label: {
+    fontFamily: "RobotoRegular",
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  switchText: {
+    fontFamily: "RobotoRegular",
+    fontSize: 17,
+    lineHeight: 20,
+  },
+});

@@ -6,9 +6,11 @@ import colors from "@utils/colors";
 export default function SelectField({ content, ...props }: selectFieldProps) {
   return (
     <View style={styles.selectField}>
-      <View style={styles.textView}>
-        <Text style={styles.text}>{content.label}</Text>
-      </View>
+      {content.label && (
+        <View style={styles.textView}>
+          <Text style={styles.text}>{content.label}</Text>
+        </View>
+      )}
       <View style={styles.pickerView}>
         <View style={{ ...props.style, ...styles.picker }}>
           <Picker

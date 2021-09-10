@@ -5,6 +5,8 @@ import RadioField from "@components/RadioField";
 import SelectField from "@components/SelectField";
 import { displayAsset } from "@utils/.";
 import InputGroup from "@components/InputGroup";
+import SwitchFields from "@components/SwitchFields";
+import SelectGroup from "@components/SelectGroup";
 
 export default function DisplayFormElements({
   formElement,
@@ -70,6 +72,12 @@ export default function DisplayFormElements({
           }
         />
       );
+    }
+    case "switch": {
+      return <SwitchFields content={formElement} />;
+    }
+    case "select-group": {
+      return <SelectGroup content={formElement} />;
     }
     default:
       return null;

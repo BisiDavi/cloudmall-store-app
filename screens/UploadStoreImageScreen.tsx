@@ -33,25 +33,6 @@ export default function UploadStoreImage({
   const state = useSelector((state: RootState) => state.storeDetails);
   console.log("UploadStoreImage", state);
 
-  useEffect(() => {
-    const displayAfter2Secs = setTimeout(() => {
-      (async () => {
-        if (Platform.OS !== "web") {
-          const { status } =
-            await ImagePicker.requestMediaLibraryPermissionsAsync();
-          if (status !== "granted") {
-            ToastAndroid.show(
-              "Sorry we need your permission to upload stores image.",
-              ToastAndroid.LONG
-            );
-          }
-        }
-      })();
-    }, 2000);
-
-    return () => clearTimeout(displayAfter2Secs);
-  }, []);
-
   async function postToDB() {
     setLoading(true);
     await postStoreRequest(state, navigation)

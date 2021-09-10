@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
 import { BottomTabParamList } from "../customTypes";
@@ -13,10 +13,16 @@ import DashboardSvg from "@assets/DashboardSvg";
 import OrderSvg from "@assets/OrderSvg";
 import StoreSvg from "@assets/StoreSvg";
 import ProfileSvg from "@assets/ProfileSvg";
+import WelcomeModal from "@components/WelcomeModal";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    <WelcomeModal visible={showModal} onToggle={setShowModal} />;
+  }, []);
   return (
     <BottomTab.Navigator
       screenOptions={{
@@ -32,7 +38,7 @@ export default function BottomTabNavigator() {
         }}
         component={TabTwoNavigator}
       />
-      
+
       <BottomTab.Screen
         name="Orders"
         options={{

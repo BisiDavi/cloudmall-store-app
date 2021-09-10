@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import { StyleSheet, View } from "react-native";
-import { Overlay } from "react-native-elements";
+import Modal from "react-native-modal";
 
 export default function AppModal({
   children,
@@ -10,13 +10,9 @@ export default function AppModal({
 }: PropsWithChildren<AppModalProps>) {
   return (
     <View>
-      <Overlay
-        style={style}
-        isVisible={visible}
-        onBackdropPress={toggleOverlay}
-      >
+      <Modal style={style} isVisible={visible}>
         {children}
-      </Overlay>
+      </Modal>
     </View>
   );
 }

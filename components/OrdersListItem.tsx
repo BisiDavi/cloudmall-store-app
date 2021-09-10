@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { ListItem, Avatar, Image } from "react-native-elements";
 import clipboard from "@assets/clipboard.png";
 import colors from "@utils/colors";
+import displayAsset from "@utils/displayAsset";
 
 export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
   const statusStyle =
@@ -18,7 +19,11 @@ export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
       onPress={onPress}
       bottomDivider
     >
-      <Avatar avatarStyle={styles.avatar} rounded />
+      <Avatar
+        source={displayAsset(item.name)}
+        avatarStyle={styles.avatar}
+        rounded
+      />
       <ListItem.Content>
         <View style={styles.row}>
           <Text>{item?.name}</Text>

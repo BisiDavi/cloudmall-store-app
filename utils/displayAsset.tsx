@@ -5,6 +5,7 @@ import MenuIcon from "@assets/menuIcon.png";
 import NotificationIcon from "@assets/notificationIcon.png";
 import AddressIcon from "@assets/icons/AddressIcon";
 import JollofRice from "@assets/jollofRice.png";
+import Spaghetti from "@assets/spaghetti.png";
 
 export default function displayAsset(assetName: string | undefined) {
   switch (assetName) {
@@ -25,6 +26,9 @@ export default function displayAsset(assetName: string | undefined) {
     }
     case "jollofRice": {
       return JollofRice;
+    }
+    case "spaghetti": {
+      return Spaghetti;
     }
     default:
       return null;

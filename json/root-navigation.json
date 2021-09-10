@@ -1,8 +1,12 @@
 {
   "publicPage": [
     { "name": "OnboardingScreen" },
-    { "name": "SignupScreen", "title": "Signup" },
-    { "name": "LoginScreen", "title": "Login" }
+    {
+      "name": "SignupScreen",
+      "position": "left",
+      "title": "Create an Account"
+    },
+    { "name": "LoginScreen", "position": "left", "title": "Welcome Back" }
   ],
   "privatePage": [
     {

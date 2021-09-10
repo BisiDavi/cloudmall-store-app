@@ -7,7 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import Spinner from "react-native-loading-spinner-overlay";
 import { RootStackParamList } from "@customTypes/.";
 import rootNavigationContent from "@json/root-navigation.json";
-import { hasTokenExpired } from "@utils/.";
+import { hasTokenExpired, colors } from "@utils/.";
 import AuthContext from "@context/AuthContext";
 import { displayScreenComponent } from "@utils/displayScreenComponents";
 import BottomTabNavigator from "./BottomTabNavigator";
@@ -56,7 +56,10 @@ export default function RootNavigator() {
             ? stackContent.position
             : "center",
           headerTitleStyle: {
-            fontFamily: "RobotoBold",
+            fontFamily: "MontserratBold",
+            color: colors.cloudOrange5,
+            fontSize: 18,
+            lineHeight: 28,
           },
           title: stackContent.title,
         }}

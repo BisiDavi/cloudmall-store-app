@@ -40,5 +40,31 @@
       { "name": "storeType", "value": "instore", "label": "Instore" },
       { "name": "storeType", "value": "pickup", "label": "Pickup" }
     ]
+  },
+  {
+    "name": "openDays",
+    "label": "Open Days",
+    "type": "switch",
+    "fields": [
+      { "name": "weekDays", "label": "Week Days" },
+      { "name": "saturday", "Label": "Saturday" },
+      { "name": "sunday", "Label": "Sunday" }
+    ]
+  },
+  {
+    "name": "openTime",
+    "type": "input-group",
+    "fields": [
+      {
+        "name": "opensAt",
+        "placeholder": "Opens at",
+        "options": ["24 hours", "7:00 am", "8:00 am", "9:00 am", "10:00 am"]
+      },
+      {
+        "name": "closesAt",
+        "placeholder": "Closes at",
+        "options": ["7:00 pm", "8:00 pm", "9:00 pm", "10:00 pm"]
+      }
+    ]
   }
 ]

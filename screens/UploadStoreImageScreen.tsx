@@ -1,14 +1,6 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  Platform,
-  ToastAndroid,
-  Dimensions,
-  ScrollView,
-} from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View, Text, Dimensions, ScrollView } from "react-native";
 import { Image, Button } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import * as ImagePicker from "expo-image-picker";
@@ -23,9 +15,9 @@ import ProgressIndicator from "@components/ProgressIndicator";
 import { StoreImageUploadAction } from "@store/StoreDetailsAction";
 import postStoreRequest from "@utils/postStoreRequest";
 
-export default function UploadStoreImage({
+export default function UploadStoreImageScreen({
   navigation,
-}: StackScreenProps<RootStackParamList, "UploadStoreImage">) {
+}: StackScreenProps<RootStackParamList, "UploadStoreImageScreen">) {
   const [image, setImage] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
@@ -38,7 +30,7 @@ export default function UploadStoreImage({
     await postStoreRequest(state, navigation)
       .then(() => {
         setLoading(false);
-        onBoardingNextScreen(4, true);
+        onBoardingNextScreen(5, true);
       })
       .catch(() => {
         setLoading(false);

@@ -10,9 +10,12 @@ export default function screenNavigate(page: number, navigation: any) {
       return navigation.navigate("SettlementDetailsScreen");
     }
     case 3: {
-      return navigation.navigate("UploadStoreImage");
+      return navigation.navigate("UploadStoreLogoScreen");
     }
     case 4: {
+      return navigation.navigate("UploadStoreImageScreen");
+    }
+    case 5: {
       return navigation.navigate("BottomNav");
     }
 

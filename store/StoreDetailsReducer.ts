@@ -5,6 +5,7 @@ import {
   STORE_OWNER_DETAILS,
   STORE_SETTLEMENT_DETAILS,
   STORE_IMAGE_UPLOAD,
+  STORE_LOGO_UPLOAD,
 } from "./constant";
 
 export function StoreDetailsReducer(
@@ -21,6 +22,7 @@ export function StoreDetailsReducer(
     bankName: "",
     accountNumber: "",
     accountName: "",
+    storeLogo: "",
     storeImage: "",
   },
   action: actionType
@@ -56,6 +58,12 @@ export function StoreDetailsReducer(
       return {
         ...state,
         storeImage: payload.storeImage,
+      };
+    }
+    case STORE_LOGO_UPLOAD: {
+      return {
+        ...state,
+        storeLogo: payload.storeLogo,
       };
     }
     case STORE_SETTLEMENT_DETAILS: {
@@ -96,7 +104,8 @@ type actionType = {
     | "STORE_DETAILS"
     | "STORE_OWNER_DETAILS"
     | "STORE_SETTLEMENT_DETAILS"
-    | "STORE_IMAGE_UPLOAD";
+    | "STORE_IMAGE_UPLOAD"
+    | "STORE_LOGO_UPLOAD";
   payload: {
     storeName: string;
     storeEmail: string;
@@ -111,5 +120,6 @@ type actionType = {
     accountNumber: string;
     accountName: string;
     storeImage: string;
+    storeLogo: string;
   };
 };

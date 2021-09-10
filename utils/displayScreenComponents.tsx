@@ -15,12 +15,13 @@ import StoreDetailsScreenOne from "@screens/StoreDetailsScreenOne";
 import StoreDetailsScreenTwo from "@screens/StoreDetailsScreenTwo";
 import ViewStoreScreen from "@screens/ViewStoreScreen";
 import { RootStackParamList } from "../customTypes";
-import UploadStoreImage from "@screens/UploadStoreImageScreen";
 import ProductScreen from "@screens/ProductScreen";
 import AddProductScreenMethod from "@screens/AddProductScreenMethod";
 import FoodCategoryScreen from "@screens/FoodCategoryScreen";
 import AddExtraScreen from "@screens/AddExtraScreen";
 import AddProductOtherDetailsScreen from "@screens/AddProductOtherDetailsScreen";
+import UploadStoreLogoScreen from "@screens/UploadStoreLogoScreen";
+import UploadStoreImageScreen from "@screens/UploadStoreImageScreen";
 
 export function displayScreenComponent(name: string | RootStackParamList): any {
   switch (name) {
@@ -48,8 +49,8 @@ export function displayScreenComponent(name: string | RootStackParamList): any {
       return StoreDetailsScreenOne;
     case "StoreDetailsScreenTwo":
       return StoreDetailsScreenTwo;
-    case "UploadStoreImage":
-      return UploadStoreImage;
+    case "UploadStoreImageScreen":
+      return UploadStoreImageScreen;
     case "StoreAddressScreen":
       return StoreAddressScreen;
     case "AvailableBalanceScreen":
@@ -68,6 +69,8 @@ export function displayScreenComponent(name: string | RootStackParamList): any {
       return AddExtraScreen;
     case "AddProductOtherDetailsScreen":
       return AddProductOtherDetailsScreen;
+    case "UploadStoreLogoScreen":
+      return UploadStoreLogoScreen;
     default:
       return null;
   }

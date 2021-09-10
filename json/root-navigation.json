@@ -25,7 +25,12 @@
       "position": "left"
     },
     {
-      "name": "UploadStoreImage",
+      "name": "UploadStoreLogoScreen",
+      "title": "Upload Store's Logo",
+      "position": "left"
+    },
+    {
+      "name": "UploadStoreImageScreen",
       "title": "Upload Store's Image",
       "position": "left"
     },

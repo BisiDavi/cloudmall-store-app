@@ -23,15 +23,15 @@ import ProgressIndicator from "@components/ProgressIndicator";
 import { StoreImageUploadAction } from "@store/StoreDetailsAction";
 import postStoreRequest from "@utils/postStoreRequest";
 
-export default function UploadStoreLogo({
+export default function UploadStoreLogoScreen({
   navigation,
-}: StackScreenProps<RootStackParamList, "UploadStoreLogo">) {
+}: StackScreenProps<RootStackParamList, "UploadStoreLogoScreen">) {
   const [logo, setImage] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state.storeDetails);
-  console.log("UploadStoreImage", state);
+  console.log("UploadStoreLogo", state);
 
   useEffect(() => {
     const displayAfter2Secs = setTimeout(() => {
@@ -106,7 +106,7 @@ export default function UploadStoreLogo({
                   />
                 </View>
                 <Text style={styles.error}>
-                  please upload an image, click on the icon above
+                  please upload your logo, click on the icon above
                 </Text>
               </>
             ) : (

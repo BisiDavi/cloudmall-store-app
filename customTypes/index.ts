@@ -5,13 +5,13 @@ export type RootStackParamList = {
   StoreDetailsScreenOne: undefined;
   StoreDetailsScreenTwo: undefined;
   StoreAddressScreen: undefined;
-  UploadStoreImage: undefined;
+  UploadStoreImageScreen: undefined;
+  UploadStoreLogoScreen: undefined;
   LoginScreen: undefined;
   AvailableBalanceScreen: undefined;
   AmountPaidScreen: undefined;
   StatisticsScreen: undefined;
   SettlementDetailsScreen: undefined;
-  UploadStoreLogo: undefined
 };
 
 export type BottomTabParamList = {

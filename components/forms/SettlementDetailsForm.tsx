@@ -20,7 +20,7 @@ export default function SettlementDetailsForm({ navigation }: any) {
   console.log("SettlementDetailsForm", state);
 
   function skipHandler() {
-    screenNavigate(4, navigation);
+    screenNavigate(3, navigation);
   }
 
   return (

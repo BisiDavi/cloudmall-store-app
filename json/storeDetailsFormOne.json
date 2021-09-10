@@ -31,6 +31,20 @@
     "textContentType": "fullStreetAddress"
   },
   {
+    "label": "Store Category",
+    "type": "select",
+    "options": [
+      { "name": "Restaurant", "enabled": true },
+      { "name": "Super Market", "enabled": true },
+      { "name": "Raw food", "enabled": true },
+      { "name": "Pharmacy", "enabled": true },
+      { "name": "Drinks", "enabled": true },
+      { "name": "Finger food", "enabled": true },
+      { "name": "Pet food", "enabled": true }
+    ],
+    "name": "storeCategory"
+  },
+  {
     "name": "storeType",
     "label": "Type of Store",
     "icon": true,
@@ -57,8 +71,8 @@
     "fields": [
       {
         "name": "opensAt",
+        "label": "Opens At",
         "options": [
-          { "name": "Opens at", "enabled": false },
           { "name": "24 hours", "enabled": true },
           { "name": "7:00 am", "enabled": true },
           { "name": "8:00 am", "enabled": true },
@@ -68,9 +82,8 @@
       },
       {
         "name": "closesAt",
-        "placeholder": "Closes at",
+        "label": "Closes At",
         "options": [
-          { "name": "Closes at", "enabled": false },
           { "name": "7:00 pm", "enabled": true },
           { "name": "8:00 pm", "enabled": true },
           { "name": "9:00 pm", "enabled": true },

@@ -21,6 +21,8 @@ const styles = StyleSheet.create({
   },
   select: {
     width: 130,
+    borderWidth: 0,
+    borderBottomWidth: 1,
   },
 });
 

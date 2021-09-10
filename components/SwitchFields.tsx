@@ -48,12 +48,14 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   SwitchFields: {
+    marginTop: 0,
     margin: 10,
   },
   label: {
     fontFamily: "RobotoRegular",
     fontSize: 14,
     lineHeight: 20,
+    marginBottom:10
   },
   switchText: {
     fontFamily: "RobotoRegular",

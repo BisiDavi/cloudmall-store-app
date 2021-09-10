@@ -11,6 +11,7 @@ export type RootStackParamList = {
   AmountPaidScreen: undefined;
   StatisticsScreen: undefined;
   SettlementDetailsScreen: undefined;
+  UploadStoreLogo: undefined
 };
 
 export type BottomTabParamList = {

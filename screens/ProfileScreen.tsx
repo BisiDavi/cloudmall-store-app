@@ -4,6 +4,7 @@ import { ListItem, Avatar, Image } from "react-native-elements";
 import { Button, Overlay } from "react-native-elements";
 import profileJson from "@json/profile.json";
 import { SafeAreaView } from "react-native-safe-area-context";
+import JollofRice from "@assets/jollofRice.png";
 
 export default function ProfileScreen() {
   const [visible, setVisible] = useState(false);
@@ -14,8 +15,13 @@ export default function ProfileScreen() {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <Image source={} />
+      <View style={styles.profileDetails}>
+        <Image style={styles.profileImage} source={JollofRice} />
+        <View>
+          <Text>Ongbonna</Text>
+          <Text>Store ID: 11</Text>
+        </View>
+        <Button title="In review" />
       </View>
       <View>
         {profileJson.map((profile, index) => (
@@ -37,5 +43,12 @@ const styles = StyleSheet.create({
   },
   profileText: {
     color: "black",
+  },
+  profileImage: {
+    height: 50,
+    width: 50,
+  },
+  profileDetails: {
+    flexDirection: "row",
   },
 });

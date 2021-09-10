@@ -1,0 +1,27 @@
+[
+  {
+    "food": "Jollof Rice",
+    "quantity": 2,
+    "price": 100
+  },
+  {
+    "food": "Beans",
+    "quantity": 1,
+    "price": 100
+  },
+  {
+    "food": "Plantain",
+    "quantity": 1,
+    "price": 100
+  },
+  {
+    "food": "Chicken lap",
+    "quantity": 1,
+    "price": 800
+  },
+  {
+    "food": "Disposable pack",
+    "quantity": 1,
+    "price": 100
+  }
+]

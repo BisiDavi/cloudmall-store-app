@@ -1,5 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { StyleSheet } from "react-native";
 import { BottomTabParamList } from "../customTypes";
 import {
   TabOneNavigator,
@@ -18,7 +19,9 @@ const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
-      screenOptions={{ headerShown: false }}
+      screenOptions={{
+        headerShown: false,        
+      }}
       initialRouteName="Orders"
     >
       <BottomTab.Screen
@@ -57,3 +60,16 @@ export default function BottomTabNavigator() {
     </BottomTab.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  menu: {
+    height: 20,
+    width: 20,
+    marginLeft: 20,
+  },
+  notificationIcon: {
+    marginRight: 20,
+    height: 20,
+    width: 20,
+  },
+});

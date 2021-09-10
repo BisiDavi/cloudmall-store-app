@@ -1,6 +1,7 @@
- import "react-native-gesture-handler";
+import "react-native-gesture-handler";
 import React, { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 import Spinner from "react-native-loading-spinner-overlay";
@@ -73,27 +74,42 @@ export default function RootNavigator() {
   return (
     <>
       <Spinner visible={state.isLoading} color="blue" />
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
         {!isSignedIn && !completed ? (
-          <>
+          <Stack.Group>
             {rootNavigationContent.privatePage.map((item: any, index) =>
               displayStackScreen(item, index)
             )}
             <Stack.Screen name="BottomNav" component={BottomTabNavigator} />
-          </>
+          </Stack.Group>
         ) : !isSignedIn && completed ? (
           <Stack.Screen name="BottomNav" component={BottomTabNavigator} />
         ) : (
-          <>
-            {rootNavigationContent.publicPage.map((item: any, index) =>
-              displayStackScreen(item, index)
-            )}
-          </>
+          rootNavigationContent.publicPage.map((item: any, index) =>
+            displayStackScreen(item, index)
+          )
         )}
       </Stack.Navigator>
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  menu: {
+    height: 20,
+    width: 20,
+    marginLeft: 20,
+  },
+  notificationIcon: {
+    marginRight: 20,
+    height: 20,
+    width: 20,
+  },
+});
 
 type displayStackScreenType = {
   name: keyof RootStackParamList;

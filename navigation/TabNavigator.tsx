@@ -2,6 +2,9 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import bottomTabContent from "@json/bottom-tab-navigation.json";
 import { displayScreenComponent } from "@utils/displayScreenComponents";
+import { StyleSheet } from "react-native";
+import displayAsset from "@utils/displayAsset";
+import { Image } from "react-native-elements";
 
 const TabOneStack = createStackNavigator();
 const TabThreeStack = createStackNavigator();
@@ -19,8 +22,21 @@ export function TabOneNavigator() {
           options={{
             headerTitleStyle: {
               fontSize: 16,
+              textAlign: "left",
             },
             title: tab.title,
+            headerLeft: () => (
+              <Image
+                style={styles.menu}
+                source={displayAsset("menuIcon")}
+              />
+            ),
+            headerRight: () => (
+              <Image
+                style={styles.notificationIcon}
+                source={displayAsset("notificationIcon")}
+              />
+            ),
           }}
           component={displayScreenComponent(tab.name)}
         />
@@ -87,3 +103,16 @@ export function TabFourNavigator() {
     </TabFourStack.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  menu: {
+    height: 20,
+    width: 20,
+    marginLeft: 20,
+  },
+  notificationIcon: {
+    marginRight: 20,
+    height: 20,
+    width: 20,
+  },
+});

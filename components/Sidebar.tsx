@@ -1,4 +1,4 @@
-import React from "react";
+ import React from "react";
 import { ListItem, Avatar, Image } from "react-native-elements";
 import { View, Text, StyleSheet } from "react-native";
 import sidebarContent from "@json/sidebar.json";

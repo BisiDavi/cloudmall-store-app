@@ -1,0 +1,26 @@
+[
+  {
+    "name": "My Store",
+    "link": "MyStoreScreen"
+  },
+  {
+    "name": "My Products",
+    "link": "ProductScreen"
+  },
+  {
+    "name": "Confirm a Rider",
+    "link": "ConfirmRiderScreen"
+  },
+  {
+    "name": "Settings",
+    "link": "SettingsScreen"
+  },
+  {
+    "name": "Help",
+    "link": "HelpScreen"
+  },
+  {
+    "name": "Logout",
+    "link": "LogoutScreen"
+  }
+]

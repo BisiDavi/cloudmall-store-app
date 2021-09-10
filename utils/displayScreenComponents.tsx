@@ -4,7 +4,6 @@ import AvailableBalanceScreen from "@screens/AvailableBalanceScreen";
 import DashboardScreen from "@screens/DashboardScreen";
 import EditProductScreen from "@screens/EditProductScreen";
 import LoginScreen from "@screens/LoginScreen";
-import MyStoreScreen from "@screens/ProductScreen";
 import OnboardingScreen from "@screens/OnboardingScreen";
 import OrdersScreen from "@screens/OrdersScreen";
 import ProfileScreen from "@screens/ProfileScreen";

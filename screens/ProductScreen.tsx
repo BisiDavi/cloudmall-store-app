@@ -8,7 +8,6 @@ import { BottomTabParamList } from "@customTypes/.";
 import colors from "@utils/colors";
 import Fab from "@components/Fab";
 import displayAsset from "@utils/displayAsset";
-import EditIcon from "@assets/editIcon.png";
 
 type ProductScreenNavigationProps = StackNavigationProp<
   BottomTabParamList,

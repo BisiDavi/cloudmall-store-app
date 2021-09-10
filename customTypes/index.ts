@@ -28,3 +28,8 @@ export type BottomTabParamList = {
   AddExtraScreen: undefined;
   AddProductOtherDetailsScreen: undefined;
 };
+
+
+export type DrawerStackParamList = {
+  
+}

@@ -1,5 +1,5 @@
  import React from "react";
-import { ListItem, Avatar, Image } from "react-native-elements";
+import { ListItem, Avatar } from "react-native-elements";
 import { View, Text, StyleSheet } from "react-native";
 import sidebarContent from "@json/sidebar.json";
 import colors from "@utils/colors";

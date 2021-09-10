@@ -4,6 +4,7 @@ import EditIcon from "@assets/editIcon.png";
 import MenuIcon from "@assets/menuIcon.png";
 import NotificationIcon from "@assets/notificationIcon.png";
 import AddressIcon from "@assets/icons/AddressIcon";
+import JollofRice from "@assets/jollofRice.png";
 
 export default function displayAsset(assetName: string | undefined) {
   switch (assetName) {
@@ -21,6 +22,9 @@ export default function displayAsset(assetName: string | undefined) {
     }
     case "notificationIcon": {
       return NotificationIcon;
+    }
+    case "jollofRice": {
+      return JollofRice;
     }
     default:
       return null;

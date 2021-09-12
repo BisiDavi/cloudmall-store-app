@@ -22,7 +22,7 @@ function publicStackScreen(
             key={`${stackContent.name}-${index}`}
             name={stackContent.name}
             options={{
-                headerShown: true,
+                headerShown: stackContent.title ? true : false,
                 headerTitleAlign: stackContent?.position
                     ? stackContent.position
                     : "center",
@@ -40,6 +40,19 @@ function publicStackScreen(
         <PublicStack.Screen
             key={`${stackContent.name}-${index}`}
             name={stackContent.name}
+            options={{
+                headerShown: stackContent.title ? true : false,
+                headerTitleAlign: stackContent?.position
+                    ? stackContent.position
+                    : "center",
+                headerTitleStyle: {
+                    fontFamily: "MontserratBold",
+                    color: colors.cloudOrange5,
+                    fontSize: 18,
+                    lineHeight: 28,
+                },
+                title: stackContent.title,
+            }}
             component={displayScreenComponent(stackContent.name)}
         />
     );

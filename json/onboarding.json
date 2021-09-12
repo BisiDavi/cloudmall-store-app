@@ -1,0 +1,17 @@
+[
+    {
+        "key": 1,
+        "title": "Create your store and sell on Cloudmall",
+        "image": "pizzaImage"
+    },
+    {
+        "key": 2,
+        "title": "Manage your orders as they come in",
+        "image": "shopperImage"
+    },
+    {
+        "key": 3,
+        "title": "Track your finances and performances as you sell.",
+        "image": "trackSalesImage"
+    }
+]

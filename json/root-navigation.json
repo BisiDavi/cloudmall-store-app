@@ -22,9 +22,7 @@
             "name": "SettlementDetailsScreen"
         },
         {
-            "name": "UploadStoreLogoScreen",
-            "title": "Upload Store's Logo",
-            "position": "left"
+            "name": "UploadStoreLogoScreen"
         },
         {
             "name": "UploadStoreImageScreen",

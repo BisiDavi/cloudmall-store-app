@@ -15,12 +15,13 @@ export function StoreDetailsReducer(
         phone: "",
         address: "",
         category: "",
-        storeType: "",
-        storeOwnerName: "",
-        openingDays: "",
-        storeOpenTime: "",
+        type: "",
+        ownerName: "",
+        openDays: "",
+        openTime: "",
         settlementPlan: "",
         bankName: "",
+        bankCode: "",
         accountNumber: "",
         accountName: "",
         storeLogo: "",
@@ -51,9 +52,9 @@ export function StoreDetailsReducer(
         case STORE_OWNER_DETAILS: {
             return {
                 ...state,
-                storeOwnerName: payload.storeOwnerName,
-                openingDays: payload.openingDays,
-                storeOpenTime: payload.storeOpenTime,
+                storeOwnerName: payload.ownerName,
+                openingDays: payload.openDays,
+                storeOpenTime: payload.openTime,
             };
         }
         case STORE_IMAGE_UPLOAD: {
@@ -73,6 +74,7 @@ export function StoreDetailsReducer(
                 ...state,
                 settlementPlan: payload.settlementPlan,
                 bankName: payload.bankName,
+                bankCode: payload.bankCode,
                 accountNumber: payload.accountNumber,
                 accountName: payload.accountName,
             };
@@ -85,10 +87,11 @@ export function StoreDetailsReducer(
                 phone: payload.phone,
                 address: payload.address,
                 category: payload.category,
-                storeType: payload?.storeType,
-                storeOwnerName: payload.storeOwnerName,
-                openingDays: payload.openingDays,
-                storeOpenTime: payload.storeOpenTime,
+                storeType: payload?.type,
+                bankCode: payload.bankCode,
+                storeOwnerName: payload.ownerName,
+                openingDays: payload.openDays,
+                storeOpenTime: payload.openTime,
                 settlementPlan: payload.settlementPlan,
                 bankName: payload.bankName,
                 accountNumber: payload.accountNumber,
@@ -114,13 +117,14 @@ type actionType = {
         email: string;
         phone: string;
         address: string;
-        storeType: string;
+        type: string;
         category: string;
-        storeOwnerName: string;
-        openingDays: string;
-        storeOpenTime: string;
+        ownerName: string;
+        openDays: string;
+        openTime: string;
         settlementPlan: string;
         bankName: string;
+        bankCode: string;
         accountNumber: string;
         accountName: string;
         storeImage: string;

@@ -1,26 +1,26 @@
 [
-  {
-    "label": "Name of Owner (CEO, Store Owner, etc)",
-    "placeholder": "Daniel Joe",
-    "name": "storeOwnerName",
-    "type": "input"
-  },
-  {
-    "label": "Store Open days",
-    "placeholder": "Monday - Friday",
-    "name": "openingDays",
-    "options": [
-      { "name": "Your Open days", "enabled": false },
-      { "name": "Monday - Friday", "enabled": true },
-      { "name": "Monday - Saturday", "enabled": true },
-      { "name": "Monday - Sunday", "enabled": true }
-    ],
-    "type": "select"
-  },
-  {
-    "label": "Store Open Time",
-    "placeholder": "8:00 am",
-    "name": "storeOpenTime",
-    "type": "input"
-  }
+    {
+        "label": "Name of Owner (CEO, Store Owner, etc)",
+        "placeholder": "Daniel Joe",
+        "name": "ownerName",
+        "type": "input"
+    },
+    {
+        "label": "Store Open days",
+        "placeholder": "Monday - Friday",
+        "name": "openDays",
+        "options": [
+            { "name": "Your Open days", "enabled": false },
+            { "name": "Monday - Friday", "enabled": true },
+            { "name": "Monday - Saturday", "enabled": true },
+            { "name": "Monday - Sunday", "enabled": true }
+        ],
+        "type": "select"
+    },
+    {
+        "label": "Store Open Time",
+        "placeholder": "8:00 am",
+        "name": "openTime",
+        "type": "input"
+    }
 ]

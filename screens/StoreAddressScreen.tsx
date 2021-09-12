@@ -12,7 +12,6 @@ import Map from "@components/Map";
 import { Button, Text } from "react-native-elements";
 
 import { RootStackParamList } from "@customTypes/.";
-import { useStoreSetupNavigation } from "@hooks/.";
 import { getDeviceDimensions, colors } from "@utils/.";
 import GoogleAutoCompleteInput from "@components/GoogleAutoCompleteInput";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -22,10 +21,7 @@ const { deviceHeight, deviceWidth } = getDeviceDimensions();
 export default function StoreAddressScreen({
     navigation,
 }: StackScreenProps<RootStackParamList, "StoreAddressScreen">) {
-    const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
-
     function nextPageHandler() {
-        onBoardingNextScreen(2, false);
         navigation.navigate("StoreDetailsScreenTwo");
     }
     return (
@@ -37,12 +33,12 @@ export default function StoreAddressScreen({
                 <ScrollView>
                     <View style={styles.container}>
                         <View style={styles.textView}>
-                            <Text style={styles.title}>Stores Address</Text>
+                            <Text style={styles.title}>Stores Details</Text>
                         </View>
                         <Map />
                         <View style={styles.inputView}>
                             <Text style={styles.text}>Address of Store</Text>
-                            <GoogleAutoCompleteInput placeholder="Choose your location on the map" />
+                            {/*<GoogleAutoCompleteInput placeholder="Choose your location on the map" />*/}
                             <View style={styles.buttonView}>
                                 <Button
                                     buttonStyle={styles.button}

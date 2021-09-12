@@ -25,9 +25,9 @@ export default function StoreDetailsFormTwo({ navigation }: any) {
       <Formik
         validationSchema={storeDetailsScreenTwoSchema}
         initialValues={{
-          storeOwnerName: "",
-          openingDays: "",
-          storeOpenTime: "",
+          ownerName: "",
+          openDays: "",
+          openTime: "",
         }}
         onSubmit={(values) => {
           console.log("values", values);

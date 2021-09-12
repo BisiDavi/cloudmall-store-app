@@ -13,7 +13,7 @@ type Props = {
     navigation: ConfirmPaymentNavigationProps;
 };
 
-export default function ConfirmPayment({ navigation }: any) {
+export default function ConfirmPayment({ navigation }: Props) {
     function nextScreen() {
         navigation.navigate("PaymentApprovedScreen");
     }
@@ -25,3 +25,4 @@ export default function ConfirmPayment({ navigation }: any) {
         </View>
     );
 }
+

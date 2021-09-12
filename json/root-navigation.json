@@ -1,47 +1,47 @@
 {
-  "publicPage": [
-    { "name": "OnboardingScreen" },
-    {
-      "name": "SignupScreen",
-      "position": "left",
-      "title": "Create an Account"
-    },
-    { "name": "LoginScreen", "position": "left", "title": "Welcome Back" }
-  ],
-  "privatePage": [
-    {
-      "name": "StoreDetailsScreenOne",
-      "title": "Step:1 Store Details",
-      "position": "left"
-    },
-    {
-      "name": "StoreDetailsScreenTwo",
-      "title": "Step 2: Owner Details",
-      "position": "left"
-    },
-    {
-      "name": "SettlementDetailsScreen",
-      "title": "Step 3: Settlement Details",
-      "position": "left"
-    },
-    {
-      "name": "UploadStoreLogoScreen",
-      "title": "Upload Store's Logo",
-      "position": "left"
-    },
-    {
-      "name": "UploadStoreImageScreen",
-      "title": "Upload Store's Image",
-      "position": "left"
-    },
-    {
-      "name": "StoreAddressScreen",
-      "title": "Store Address",
-      "position": "left"
-    },
-    { "name": "AvailableBalanceScreen", "title": "Available Balance" },
-    { "name": "AmountPaidScreen", "title": "Total Revenue" },
-    { "name": "StatisticsScreen", "title": "Statistics" },
-    { "name": "AddProductScreenMethod", "title": "Add a Product" }
-  ]
+    "authPage": [
+        {
+            "name": "SignupScreen",
+            "position": "left",
+            "title": "Create an Account"
+        },
+        { "name": "LoginScreen", "position": "left", "title": "Welcome Back" }
+    ],
+    "publicPage": [{ "name": "OnboardingScreen" }],
+    "privatePage": [
+        {
+            "name": "StoreDetailsScreenOne",
+            "title": "Step:1 Store Details",
+            "position": "left"
+        },
+        {
+            "name": "StoreDetailsScreenTwo",
+            "title": "Step 2: Owner Details",
+            "position": "left"
+        },
+        {
+            "name": "SettlementDetailsScreen",
+            "title": "Step 3: Settlement Details",
+            "position": "left"
+        },
+        {
+            "name": "UploadStoreLogoScreen",
+            "title": "Upload Store's Logo",
+            "position": "left"
+        },
+        {
+            "name": "UploadStoreImageScreen",
+            "title": "Upload Store's Image",
+            "position": "left"
+        },
+        {
+            "name": "StoreAddressScreen",
+            "title": "Store Address",
+            "position": "left"
+        },
+        { "name": "AvailableBalanceScreen", "title": "Available Balance" },
+        { "name": "AmountPaidScreen", "title": "Total Revenue" },
+        { "name": "StatisticsScreen", "title": "Statistics" },
+        { "name": "AddProductScreenMethod", "title": "Add a Product" }
+    ]
 }

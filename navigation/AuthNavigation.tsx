@@ -6,10 +6,10 @@ import displayStackScreen from "@utils/displayStackScreen";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-export default function PublicNavigation() {
+export default function AuthNavigation() {
     return (
         <Stack.Navigator>
-            {rootNavigationContent.publicPage.map((item: any, index) =>
+            {rootNavigationContent.authPage.map((item: any, index) =>
                 displayStackScreen(item, index),
             )}
         </Stack.Navigator>

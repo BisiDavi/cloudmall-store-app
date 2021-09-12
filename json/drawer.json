@@ -1,37 +1,30 @@
 [
     {
         "name": "Orders",
-        "link": "BottomTab",
-        "showHeader": false
+        "link": "BottomTab"
     },
     {
         "name": "My Store",
-        "link": "MyStoreScreen",
-        "showHeader": true
+        "link": "MyStoreScreen"
     },
     {
         "name": "My Products",
-        "link": "ProductScreen",
-        "showHeader": true
+        "link": "ProductScreen"
     },
     {
         "name": "Confirm a Rider",
-        "link": "ConfirmRiderScreen",
-        "showHeader": true
+        "link": "ConfirmRiderScreen"
     },
     {
         "name": "Settings",
-        "link": "SettingsScreen",
-        "showHeader": true
+        "link": "SettingsScreen"
     },
     {
         "name": "Help",
-        "link": "HelpScreen",
-        "showHeader": true
+        "link": "HelpScreen"
     },
     {
         "name": "Logout",
-        "link": "LogoutScreen",
-        "showHeader": true
+        "link": "LogoutScreen"
     }
 ]

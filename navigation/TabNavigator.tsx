@@ -2,32 +2,16 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import bottomTabContent from "@json/bottom-tab-navigation.json";
 import { displayScreenComponent } from "@utils/displayScreenComponents";
-import { StyleSheet } from "react-native";
-import displayAsset from "@utils/displayAsset";
-import { Image } from "react-native-elements";
 
 const TabOneStack = createStackNavigator();
-const TabThreeStack = createStackNavigator();
 const TabFourStack = createStackNavigator();
 
 export function TabOneNavigator() {
     return (
         <TabOneStack.Navigator
             screenOptions={{
-                headerShown: true,
                 headerTitleAlign: "center",
-                headerLeft: () => (
-                    <Image
-                        style={styles.menu}
-                        source={displayAsset("menuIcon")}
-                    />
-                ),
-                headerRight: () => (
-                    <Image
-                        style={styles.notificationIcon}
-                        source={displayAsset("notificationIcon")}
-                    />
-                ),
+                headerShown: false,
             }}
         >
             {bottomTabContent.tabOne.map((tab, index) => (
@@ -55,18 +39,6 @@ export function TabTwoNavigator() {
         <TabTwoStack.Navigator
             screenOptions={{
                 headerShown: false,
-                headerLeft: () => (
-                    <Image
-                        style={styles.menu}
-                        source={displayAsset("menuIcon")}
-                    />
-                ),
-                headerRight: () => (
-                    <Image
-                        style={styles.notificationIcon}
-                        source={displayAsset("notificationIcon")}
-                    />
-                ),
             }}
         >
             {bottomTabContent.tabTwo.map((tab, index) => (
@@ -74,7 +46,6 @@ export function TabTwoNavigator() {
                     name={tab.name}
                     key={index}
                     options={{
-                        headerShown: true,
                         headerTitleAlign: "center",
                         title: tab.title,
                     }}
@@ -90,18 +61,6 @@ export function TabFourNavigator() {
         <TabFourStack.Navigator
             screenOptions={{
                 headerShown: false,
-                headerLeft: () => (
-                    <Image
-                        style={styles.menu}
-                        source={displayAsset("menuIcon")}
-                    />
-                ),
-                headerRight: () => (
-                    <Image
-                        style={styles.notificationIcon}
-                        source={displayAsset("notificationIcon")}
-                    />
-                ),
             }}
         >
             {bottomTabContent.tabFour.map((tab, index) => (
@@ -109,7 +68,6 @@ export function TabFourNavigator() {
                     name={tab.name}
                     key={index}
                     options={{
-                        headerShown: true,
                         headerTitleAlign: "center",
                         title: tab.title,
                     }}
@@ -119,16 +77,3 @@ export function TabFourNavigator() {
         </TabFourStack.Navigator>
     );
 }
-
-const styles = StyleSheet.create({
-    menu: {
-        height: 20,
-        width: 20,
-        marginLeft: 20,
-    },
-    notificationIcon: {
-        marginRight: 20,
-        height: 20,
-        width: 20,
-    },
-});

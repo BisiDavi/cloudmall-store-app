@@ -28,18 +28,6 @@ export default function BottomTabNavigator() {
         <BottomTab.Navigator
             screenOptions={{
                 headerShown: false,
-                headerLeft: () => (
-                    <Image
-                        style={styles.menu}
-                        source={displayAsset("menuIcon")}
-                    />
-                ),
-                headerRight: () => (
-                    <Image
-                        style={styles.notificationIcon}
-                        source={displayAsset("notificationIcon")}
-                    />
-                ),
             }}
             initialRouteName="Orders"
         >

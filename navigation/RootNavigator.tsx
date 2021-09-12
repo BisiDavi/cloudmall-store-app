@@ -1,20 +1,17 @@
-import "react-native-gesture-handler";
 import React, { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { createStackNavigator } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 import Spinner from "react-native-loading-spinner-overlay";
-import { RootStackParamList } from "@customTypes/.";
-import { hasTokenExpired } from "@utils/.";
 import AuthContext from "@context/AuthContext";
 import { setClientToken } from "@network/axiosInstance";
 import { RootState } from "@store/RootReducer";
-import { getsignedUserEmail } from "@utils/hasTokenExpired";
-import checkExistingStore from "@utils/checkExistingStore";
+import {
+    getsignedUserEmail,
+    hasTokenExpired,
+    checkExistingStore,
+} from "@utils/.";
 import DrawerNavigation from "./DrawerNavigation";
 import PublicNavigation from "./PublicNavigation";
-
-const Stack = createStackNavigator<RootStackParamList>();
 
 export default function RootNavigator() {
     const { state } = useContext(AuthContext);

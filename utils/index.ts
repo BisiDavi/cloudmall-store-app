@@ -8,3 +8,5 @@ export { default as getDeviceDimensions } from "./getDeviceDimensions";
 export { signupUser, loginUser } from "./authRequest";
 export { default as displayScreenComponent } from "./displayScreenComponents";
 export { default as HeaderIcon } from "./headerIcon";
+export { default as checkExistingStore } from "./checkExistingStore";
+export { getsignedUserEmail } from "./hasTokenExpired";

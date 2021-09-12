@@ -1,95 +1,95 @@
 [
-  {
-    "label": "Name of Store",
-    "placeholder": "Cloudmall Stores",
-    "name": "storeName",
-    "type": "input"
-  },
-  {
-    "label": "Email Address of Store",
-    "placeholder": "mystore@cloudmall.com",
-    "name": "storeEmail",
-    "type": "input",
-    "keyboardType": "email-address",
-    "textContentType": "emailAddress"
-  },
-  {
-    "label": "Phone number",
-    "name": "phoneNumber",
-    "type": "input",
-    "placeholder": "0812345678",
-    "textContentType": "telephoneNumber",
-    "keyboardType": "numeric"
-  },
-  {
-    "label": "Address of Store",
-    "name": "storeAddress",
-    "type": "input",
-    "icon": true,
-    "placeholder": "Mayfair, Ile-Ife",
-    "iconName": "address",
-    "textContentType": "fullStreetAddress"
-  },
-  {
-    "label": "Store Category",
-    "type": "select",
-    "options": [
-      { "name": "Restaurant", "enabled": true },
-      { "name": "Super Market", "enabled": true },
-      { "name": "Raw food", "enabled": true },
-      { "name": "Pharmacy", "enabled": true },
-      { "name": "Drinks", "enabled": true },
-      { "name": "Finger food", "enabled": true },
-      { "name": "Pet food", "enabled": true }
-    ],
-    "name": "storeCategory"
-  },
-  {
-    "name": "storeType",
-    "label": "Type of Store",
-    "icon": true,
-    "iconName": "infoIcon",
-    "type": "radio",
-    "fields": [
-      { "name": "storeType", "value": "instore", "label": "Instore" },
-      { "name": "storeType", "value": "pickup", "label": "Pickup" }
-    ]
-  },
-  {
-    "name": "openDays",
-    "label": "Open Days",
-    "type": "switch",
-    "fields": [
-      { "name": "weekDays", "label": "Week Days" },
-      { "name": "saturday", "label": "Saturday" },
-      { "name": "sunday", "label": "Sunday" }
-    ]
-  },
-  {
-    "name": "openTime",
-    "type": "select-group",
-    "fields": [
-      {
-        "name": "opensAt",
-        "label": "Opens At",
+    {
+        "label": "Name of Store",
+        "placeholder": "Cloudmall Stores",
+        "name": "name",
+        "type": "input"
+    },
+    {
+        "label": "Email Address of Store",
+        "placeholder": "mystore@cloudmall.com",
+        "name": "email",
+        "type": "input",
+        "keyboardType": "email-address",
+        "textContentType": "emailAddress"
+    },
+    {
+        "label": "Phone number",
+        "name": "phone",
+        "type": "input",
+        "placeholder": "0812345678",
+        "textContentType": "telephoneNumber",
+        "keyboardType": "numeric"
+    },
+    {
+        "label": "Address of Store",
+        "name": "address",
+        "type": "input",
+        "icon": true,
+        "placeholder": "Mayfair, Ile-Ife",
+        "iconName": "address",
+        "textContentType": "fullStreetAddress"
+    },
+    {
+        "label": "Store Category",
+        "type": "select",
         "options": [
-          { "name": "24 hours", "enabled": true },
-          { "name": "7:00 am", "enabled": true },
-          { "name": "8:00 am", "enabled": true },
-          { "name": "9:00 am", "enabled": true },
-          { "name": "10:00 am", "enabled": true }
+            { "name": "Restaurant", "enabled": true },
+            { "name": "Super Market", "enabled": true },
+            { "name": "Raw food", "enabled": true },
+            { "name": "Pharmacy", "enabled": true },
+            { "name": "Drinks", "enabled": true },
+            { "name": "Finger food", "enabled": true },
+            { "name": "Pet food", "enabled": true }
+        ],
+        "name": "category"
+    },
+    {
+        "name": "type",
+        "label": "Type of Store",
+        "icon": true,
+        "iconName": "infoIcon",
+        "type": "radio",
+        "fields": [
+            { "name": "type", "value": "IN STORE", "label": "Instore" },
+            { "name": "type", "value": "PICK UP", "label": "Pickup" }
         ]
-      },
-      {
-        "name": "closesAt",
-        "label": "Closes At",
-        "options": [
-          { "name": "7:00 pm", "enabled": true },
-          { "name": "8:00 pm", "enabled": true },
-          { "name": "9:00 pm", "enabled": true },
-          { "name": "10:00 pm", "enabled": true }
+    },
+    {
+        "name": "openDays",
+        "label": "Open Days",
+        "type": "switch",
+        "fields": [
+            { "name": "weekDays", "label": "Week Days" },
+            { "name": "saturday", "label": "Saturday" },
+            { "name": "sunday", "label": "Sunday" }
         ]
-      }
-    ]
-  }
+    },
+    {
+        "name": "openTime",
+        "type": "select-group",
+        "fields": [
+            {
+                "name": "opensAt",
+                "label": "Opens At",
+                "options": [
+                    { "name": "24 hours", "enabled": true },
+                    { "name": "7:00 am", "enabled": true },
+                    { "name": "8:00 am", "enabled": true },
+                    { "name": "9:00 am", "enabled": true },
+                    { "name": "10:00 am", "enabled": true }
+                ]
+            },
+            {
+                "name": "closesAt",
+                "label": "Closes At",
+                "options": [
+                    { "name": "7:00 pm", "enabled": true },
+                    { "name": "8:00 pm", "enabled": true },
+                    { "name": "9:00 pm", "enabled": true },
+                    { "name": "10:00 pm", "enabled": true }
+                ]
+            }
+        ]
+    }
 ]

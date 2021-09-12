@@ -23,11 +23,11 @@ export default function StoreDetailsFormOne({ navigation }: any) {
         <Formik
           validationSchema={storeDetailsScreenOneSchema}
           initialValues={{
-            storeName: "",
-            storeEmail: "",
-            phoneNumber: "",
-            storeAddress: "",
-            storeCategory: "",
+            name: "",
+            email: "",
+            phone: "",
+            address: "",
+            category: "",
           }}
           onSubmit={(values) => {
             setLoading(true);

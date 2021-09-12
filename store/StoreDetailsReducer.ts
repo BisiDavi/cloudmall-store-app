@@ -10,10 +10,11 @@ import {
 
 export function StoreDetailsReducer(
     state = {
-        storeName: "",
-        storeEmail: "",
-        phoneNumber: "",
-        storeAddress: "",
+        name: "",
+        email: "",
+        phone: "",
+        address: "",
+        category: "",
         storeType: "",
         storeOwnerName: "",
         openingDays: "",
@@ -40,10 +41,11 @@ export function StoreDetailsReducer(
         case STORE_DETAILS: {
             return {
                 ...state,
-                storeName: payload?.storeName,
-                storeEmail: payload?.storeEmail,
-                phoneNumber: payload?.phoneNumber,
-                storeAddress: payload?.storeAddress,
+                name: payload.name,
+                email: payload.email,
+                phone: payload.phone,
+                address: payload.address,
+                category: payload.category,
             };
         }
         case STORE_OWNER_DETAILS: {
@@ -78,10 +80,11 @@ export function StoreDetailsReducer(
         case STOREDETAILS_SUBMITTED: {
             return {
                 ...state,
-                storeName: payload?.storeName,
-                storeEmail: payload?.storeEmail,
-                phoneNumber: payload?.phoneNumber,
-                storeAddress: payload?.storeAddress,
+                name: payload.name,
+                email: payload.email,
+                phone: payload.phone,
+                address: payload.address,
+                category: payload.category,
                 storeType: payload?.storeType,
                 storeOwnerName: payload.storeOwnerName,
                 openingDays: payload.openingDays,
@@ -107,11 +110,12 @@ type actionType = {
         | "STORE_IMAGE_UPLOAD"
         | "STORE_LOGO_UPLOAD";
     payload: {
-        storeName: string;
-        storeEmail: string;
-        phoneNumber: string;
-        storeAddress: string;
+        name: string;
+        email: string;
+        phone: string;
+        address: string;
         storeType: string;
+        category: string;
         storeOwnerName: string;
         openingDays: string;
         storeOpenTime: string;

@@ -1,5 +1,7 @@
 {
-    "authPage": [
+   
+    "publicPage": [
+        { "name": "OnboardingScreen" },
         {
             "name": "SignupScreen",
             "position": "left",
@@ -7,7 +9,6 @@
         },
         { "name": "LoginScreen", "position": "left", "title": "Welcome Back" }
     ],
-    "publicPage": [{ "name": "OnboardingScreen" }],
     "privatePage": [
         {
             "name": "StoreDetailsScreenOne",

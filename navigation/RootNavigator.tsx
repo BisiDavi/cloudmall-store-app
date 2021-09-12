@@ -40,10 +40,17 @@ export default function RootNavigator() {
     return (
         <>
             <Spinner visible={state.isLoading} color="blue" />
-            {!isSignedIn && completed ? (
+            {!isSignedIn && !completed ? (
+                <>
+                    <PublicNavigation />
+                    <DrawerNavigation />
+                </>
+            ) : !isSignedIn && completed ? (
                 <DrawerNavigation />
             ) : (
-                <PublicNavigation />
+                <>
+                    <PublicNavigation />
+                </>
             )}
         </>
     );

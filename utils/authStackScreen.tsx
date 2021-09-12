@@ -1,8 +1,7 @@
 import React from "react";
-import rootNavigationContent from "@json/root-navigation.json";
-import { createStackNavigator } from "@react-navigation/stack";
 import { RootStackParamList } from "@customTypes/.";
-import { displayScreenComponent, colors } from "@utils/.";
+import { createStackNavigator } from "@react-navigation/stack";
+import { colors, displayScreenComponent } from "@utils/.";
 
 type displayStackScreenType = {
     name: keyof RootStackParamList;
@@ -10,14 +9,14 @@ type displayStackScreenType = {
     position: "left";
 };
 
-const PublicStack = createStackNavigator<RootStackParamList>();
+const AuthStack = createStackNavigator<RootStackParamList>();
 
-function publicStackScreen(
+export default function authStackScreen(
     stackContent: displayStackScreenType,
     index: number,
 ) {
     return stackContent.title ? (
-        <PublicStack.Screen
+        <AuthStack.Screen
             key={`${stackContent.name}-${index}`}
             name={stackContent.name}
             options={{
@@ -36,20 +35,10 @@ function publicStackScreen(
             component={displayScreenComponent(stackContent.name)}
         />
     ) : (
-        <PublicStack.Screen
+        <AuthStack.Screen
             key={`${stackContent.name}-${index}`}
             name={stackContent.name}
             component={displayScreenComponent(stackContent.name)}
         />
-    );
-}
-
-export default function PublicNavigation() {
-    return (
-        <PublicStack.Navigator>
-            {rootNavigationContent.publicPage.map((item: any, index) =>
-                publicStackScreen(item, index),
-            )}
-        </PublicStack.Navigator>
     );
 }

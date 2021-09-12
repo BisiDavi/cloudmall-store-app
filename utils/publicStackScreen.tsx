@@ -11,7 +11,7 @@ type displayStackScreenType = {
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-export default function displayStackScreen(
+export default function publicStackScreen(
     stackContent: displayStackScreenType,
     index: number,
 ) {

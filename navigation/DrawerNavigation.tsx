@@ -17,6 +17,11 @@ export default function DrawerNavigation() {
             drawerContent={(props) => <ProfileIcon {...props} />}
             screenOptions={{
                 headerShown: false,
+                drawerActiveTintColor: "white",
+                drawerLabelStyle: {
+                    fontFamily: "RobotoBold",
+                    fontSize: 16,
+                },
                 headerRight: () => (
                     <Image
                         style={styles.notificationIcon}

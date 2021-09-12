@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Button } from "react-native-elements";
 
-export default function FailedPaymentSreen() {
+export default function FailedPaymentScreen() {
   return (
     <View>
       <Text>Failed Payment</Text>

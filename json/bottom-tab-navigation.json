@@ -6,5 +6,9 @@
         { "name": "AmountPaidScreen", "title": "Amount Paid" },
         { "name": "StatisticsScreen", "title": "Statistics" }
     ],
-    "tabThree": [{ "name": "ProfileScreen", "title": "Profile" }]
+    "tabThree": [
+        { "name": "ConfirmPayment", "title": "Payment" },
+        { "name": "PaymentApprovedScreen" },
+        { "name": "FailedPaymentSreen" }
+    ]
 }

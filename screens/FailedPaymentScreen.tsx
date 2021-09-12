@@ -16,7 +16,7 @@ type Props = {
 
 export default function FailedPaymentScreen({ navigation }: Props) {
     function nextScreen() {
-        navigation.navigate("bottomTab");
+        navigation.navigate("OrderScreen");
     }
     return (
         <View style={styles.container}>

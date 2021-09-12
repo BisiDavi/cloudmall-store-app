@@ -4,7 +4,6 @@ import { StyleSheet } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { DrawerStackParamList } from "@customTypes/.";
 import drawerJson from "@json/drawer.json";
-import { displayScreenComponent } from "@utils/displayScreenComponents";
 import displayAsset from "@utils/displayAsset";
 import displayNavigators from "@utils/displayNavigators";
 import ProfileIcon from "@components/ProfileIcon";

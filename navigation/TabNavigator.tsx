@@ -55,7 +55,7 @@ export function TabTwoNavigator({ navigation }: any) {
     return (
         <TabTwoStack.Navigator
             screenOptions={{
-                headerShown: false,
+                headerShown: true,
                 headerPressColor: colors.mallBlue5,
                 headerTintColor: colors.cloudOrange5,
                 headerLeft: (props) => (

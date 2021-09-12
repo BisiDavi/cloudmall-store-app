@@ -8,15 +8,14 @@ export default function DrawerNavigation() {
     const Drawer = createDrawerNavigator<DrawerStackParamList>();
 
     return (
-        <Drawer.Navigator
-            screenOptions={{
-                headerShown: false,
-            }}
-        >
+        <Drawer.Navigator>
             {drawerJson.map((drawer: drawer, item) => (
                 <Drawer.Screen
                     key={item}
                     name={drawer.name}
+                    options={{
+                        headerShown: drawer.showHeader,
+                    }}
                     component={displayScreenComponent(drawer.link)}
                 />
             ))}
@@ -27,4 +26,5 @@ export default function DrawerNavigation() {
 type drawer = {
     name: any;
     link: keyof DrawerStackParamList | string;
+    showHeader: boolean;
 };

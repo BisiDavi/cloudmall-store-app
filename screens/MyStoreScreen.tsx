@@ -5,21 +5,21 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { DrawerStackParamList } from "@customTypes/.";
 
 type MyStoreScreenNavigationProps = StackNavigationProp<
-  DrawerStackParamList,
-  "MyStoreScreen"
+    DrawerStackParamList,
+    "MyStoreScreen"
 >;
 
 type MyStoreScreenRouteProps = RouteProp<DrawerStackParamList, "MyStoreScreen">;
 
 type Props = {
-  route: MyStoreScreenRouteProps;
-  navigation: MyStoreScreenNavigationProps;
+    route: MyStoreScreenRouteProps;
+    navigation: MyStoreScreenNavigationProps;
 };
 
 export default function MyStoreScreen({ navigation }: Props) {
-  return (
-    <View>
-      <Text>My Store Screen</Text>
-    </View>
-  );
+    return (
+        <View>
+            <Text>My Store Screen</Text>
+        </View>
+	);
 }

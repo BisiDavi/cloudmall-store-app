@@ -10,7 +10,6 @@ import {
 import colors from "@utils/colors";
 import DashboardSvg from "@assets/DashboardSvg";
 import OrderSvg from "@assets/OrderSvg";
-import StoreSvg from "@assets/StoreSvg";
 import ProfileSvg from "@assets/ProfileSvg";
 import WelcomeModal from "@components/WelcomeModal";
 import displayAsset from "@utils/displayAsset";

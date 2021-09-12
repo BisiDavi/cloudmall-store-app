@@ -19,66 +19,66 @@ import DrawerNavigation from "./DrawerNavigation";
 const Stack = createStackNavigator<RootStackParamList>();
 
 export default function RootNavigator() {
-  const { state } = useContext(AuthContext);
-  const { completed } = useSelector(
-    (storeState: RootState) => storeState.setupStore
-  );
-  const navigation = useNavigation();
-  const isSignedIn = hasTokenExpired(state.userToken);
-
-  useEffect(() => {
-    if (state.userToken) {
-      const userEmail = getsignedUserEmail(state.userToken);
-      if (userEmail && !isSignedIn) {
-        setClientToken(state.userToken);
-        checkExistingStore(navigation, userEmail);
-      }
-    }
-  }, [state]);
-
-  useEffect(() => {
-    if (!isSignedIn) {
-      setClientToken(state.userToken);
-    }
-  }, [isSignedIn]);
-
-  function displayStackScreen(
-    stackContent: displayStackScreenType,
-    index: number
-  ) {
-    return stackContent.title ? (
-      <Stack.Screen
-        key={`${stackContent.name}-${index}`}
-        name={stackContent.name}
-        options={{
-          headerShown: true,
-          headerTitleAlign: stackContent?.position
-            ? stackContent.position
-            : "center",
-          headerTitleStyle: {
-            fontFamily: "MontserratBold",
-            color: colors.cloudOrange5,
-            fontSize: 18,
-            lineHeight: 28,
-          },
-          title: stackContent.title,
-        }}
-        component={displayScreenComponent(stackContent.name)}
-      />
-    ) : (
-      <Stack.Screen
-        key={`${stackContent.name}-${index}`}
-        name={stackContent.name}
-        component={displayScreenComponent(stackContent.name)}
-      />
+    const { state } = useContext(AuthContext);
+    const { completed } = useSelector(
+        (storeState: RootState) => storeState.setupStore,
     );
-  }
+    const navigation = useNavigation();
+    const isSignedIn = hasTokenExpired(state.userToken);
 
-  return (
-    <>
-      <Spinner visible={state.isLoading} color="blue" />
-      <DrawerNavigation />
-      {/* {!isSignedIn && !completed ? (
+    useEffect(() => {
+        if (state.userToken) {
+            const userEmail = getsignedUserEmail(state.userToken);
+            if (userEmail && !isSignedIn) {
+                setClientToken(state.userToken);
+                checkExistingStore(navigation, userEmail);
+            }
+        }
+    }, [state]);
+
+    useEffect(() => {
+        if (!isSignedIn) {
+            setClientToken(state.userToken);
+        }
+    }, [isSignedIn]);
+
+    function displayStackScreen(
+        stackContent: displayStackScreenType,
+        index: number,
+    ) {
+        return stackContent.title ? (
+            <Stack.Screen
+                key={`${stackContent.name}-${index}`}
+                name={stackContent.name}
+                options={{
+                    headerShown: true,
+                    headerTitleAlign: stackContent?.position
+                        ? stackContent.position
+                        : "center",
+                    headerTitleStyle: {
+                        fontFamily: "MontserratBold",
+                        color: colors.cloudOrange5,
+                        fontSize: 18,
+                        lineHeight: 28,
+                    },
+                    title: stackContent.title,
+                }}
+                component={displayScreenComponent(stackContent.name)}
+            />
+        ) : (
+            <Stack.Screen
+                key={`${stackContent.name}-${index}`}
+                name={stackContent.name}
+                component={displayScreenComponent(stackContent.name)}
+            />
+        );
+    }
+
+    return (
+        <>
+            <Spinner visible={state.isLoading} color="blue" />
+            <DrawerNavigation />
+            {/* {!isSignedIn && !completed ? (
         <>
           {rootNavigationContent.privatePage.map((item: any, index) =>
             displayStackScreen(item, index)
@@ -92,25 +92,25 @@ export default function RootNavigator() {
           displayStackScreen(item, index)
         )
       )} */}
-    </>
-  );
+        </>
+    );
 }
 
 const styles = StyleSheet.create({
-  menu: {
-    height: 20,
-    width: 20,
-    marginLeft: 20,
-  },
-  notificationIcon: {
-    marginRight: 20,
-    height: 20,
-    width: 20,
-  },
+    menu: {
+        height: 20,
+        width: 20,
+        marginLeft: 20,
+    },
+    notificationIcon: {
+        marginRight: 20,
+        height: 20,
+        width: 20,
+    },
 });
 
 type displayStackScreenType = {
-  name: keyof RootStackParamList;
-  title?: string;
-  position: "left";
+    name: keyof RootStackParamList;
+    title?: string;
+    position: "left";
 };

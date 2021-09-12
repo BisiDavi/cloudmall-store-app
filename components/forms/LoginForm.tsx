@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
         display: "flex",
         marginBottom: 20,
         width: 250,
+        borderRadius: 8,
         justifyContent: "center",
         backgroundColor: colors.mallBlue5,
     },

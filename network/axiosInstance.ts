@@ -1,12 +1,12 @@
 import axios from "axios";
-import { API_BASE_URL } from "@env";
+import { CLOUDMALL_BASE_API } from "@env";
 
 const axiosInstance = axios.create({
-  baseURL: API_BASE_URL,
+    baseURL: CLOUDMALL_BASE_API,
 });
 
 export const setClientToken = (token: any) => {
-  axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 };
 
 export default axiosInstance;

@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
     },
     textView: {
         margin: 30,
-				marginTop:20,
-        marginBottom: 10,
+        marginTop: 20,
+        marginBottom: 0,
     },
     text: {
         fontFamily: "RobotoRegular",

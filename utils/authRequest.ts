@@ -7,7 +7,7 @@ export async function signupUser(
 ): Promise<string | undefined> {
   let token;
   await axiosInstance
-    .post("/register", { email, password })
+    .post("/api/store/register", { email, password })
     .then((response) => {
       showToast(response?.data.message);
       token = response.data.token;
@@ -28,7 +28,7 @@ export async function loginUser(
   console.log("email", email, "password", password);
   let token;
   await axiosInstance
-    .post("/login", { email, password })
+    .post("/api/store/login", { email, password })
     .then((response) => {
       console.log("response", response.data.token);
       showToast(response?.data.message);

@@ -10,23 +10,16 @@
     "storeDetails": [
         {
             "name": "StoreDetailsScreenOne",
-            "title": "Step:1 Store Details",
             "position": "left"
         },
         {
-            "name": "StoreAddressScreen",
-            "title": "Store Address",
-            "position": "left"
+            "name": "StoreAddressScreen"
         },
         {
-            "name": "StoreDetailsScreenTwo",
-            "title": "Step 2: Owner Details",
-            "position": "left"
+            "name": "StoreDetailsScreenTwo"
         },
         {
-            "name": "SettlementDetailsScreen",
-            "title": "Step 3: Settlement Details",
-            "position": "left"
+            "name": "SettlementDetailsScreen"
         },
         {
             "name": "UploadStoreLogoScreen",

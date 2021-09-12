@@ -1,10 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import bottomTabContent from "@json/bottom-tab-navigation.json";
-import { displayScreenComponent } from "@utils/displayScreenComponents";
+import { displayScreenComponent, colors, HeaderIcon } from "@utils/.";
 import { StyleSheet } from "react-native";
-import HeaderIcon from "@utils/headerIcon";
-import colors from "@utils/colors";
 
 const TabOneStack = createStackNavigator();
 const TabTwoStack = createStackNavigator();
@@ -79,7 +77,7 @@ export function TabTwoNavigator({ navigation }: any) {
                     name={tab.name}
                     key={index}
                     options={{
-                       headerTitleAlign: "left",
+                        headerTitleAlign: "left",
                         title: tab.title,
                     }}
                     component={displayScreenComponent(tab.name)}
@@ -117,7 +115,7 @@ export function TabThreeNavigator({ navigation }: any) {
                     name={tab.name}
                     key={index}
                     options={{
-                       headerTitleAlign: "left",
+                        headerTitleAlign: "left",
                         title: tab.title,
                     }}
                     component={displayScreenComponent(tab.name)}

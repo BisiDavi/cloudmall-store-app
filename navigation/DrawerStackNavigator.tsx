@@ -1,20 +1,13 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import drawerStackJson from "@json/drawer-stack.json";
-import { displayScreenComponent } from "@utils/displayScreenComponents";
-import HeaderIcon from "@utils/headerIcon";
-import colors from "@utils/colors";
+import { displayScreenComponent, colors, HeaderIcon } from "@utils/.";
 
 const DrawerStackOne = createStackNavigator();
 const DrawerStackTwo = createStackNavigator();
 const DrawerStackThree = createStackNavigator();
 const DrawerStackFour = createStackNavigator();
 const DrawerStackFive = createStackNavigator();
-
-type stackType = {
-    name: string;
-    title: string;
-};
 
 export function DrawerOneStackNavigator({ navigation }: any) {
     return (

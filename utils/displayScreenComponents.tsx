@@ -26,13 +26,14 @@ import MyStoreScreen from "@screens/MyStoreScreen";
 import ConfirmRiderScreen from "@screens/ConfirmRiderScreen";
 import SettingsScreen from "@screens/SettingsScreen";
 import HelpScreen from "@screens/HelpScreen";
-import BottomTabNavigator from "@navigation/BottomTabNavigator";
 import RequestARiderScreen from "@screens/RequestARiderScreen";
 import ConfirmPayment from "@screens/ConfirmPaymentScreen";
 import PaymentApprovedScreen from "@screens/PaymentApprovedScreen";
 import FailedPaymentScreen from "@screens/FailedPaymentScreen";
 
-export function displayScreenComponent(name: string | RootStackParamList): any {
+export default function displayScreenComponent(
+    name: string | RootStackParamList,
+): any {
     switch (name) {
         case "OrderScreen":
             return OrdersScreen;

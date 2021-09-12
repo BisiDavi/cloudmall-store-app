@@ -6,13 +6,17 @@ import { DrawerStackParamList } from "@customTypes/.";
 import drawerJson from "@json/drawer.json";
 import { displayScreenComponent } from "@utils/displayScreenComponents";
 import displayAsset from "@utils/displayAsset";
+import displayNavigators from "@utils/displayNavigators";
 
 export default function DrawerNavigation() {
     const Drawer = createDrawerNavigator<DrawerStackParamList>();
 
+    //const showDrawer = ()
+
     return (
         <Drawer.Navigator
             screenOptions={{
+                headerShown: false,
                 headerRight: () => (
                     <Image
                         style={styles.notificationIcon}
@@ -21,16 +25,18 @@ export default function DrawerNavigation() {
                 ),
             }}
         >
-            {drawerJson.map((drawer: drawer, item) => (
-                <Drawer.Screen
-                    key={item}
-                    name={drawer.name}
-                    options={{
-                        headerShown: true,
-                    }}
-                    component={displayScreenComponent(drawer.link)}
-                />
-            ))}
+            {drawerJson.map((drawer: drawer, item) => {
+                const displayDrawer = drawer.stack
+                    ? displayNavigators(drawer.stack)
+                    : displayScreenComponent(drawer.link);
+                return (
+                    <Drawer.Screen
+                        key={item}
+                        name={drawer.name}
+                        component={displayDrawer}
+                    />
+                );
+            })}
         </Drawer.Navigator>
     );
 }
@@ -38,6 +44,7 @@ export default function DrawerNavigation() {
 type drawer = {
     name: any;
     link: keyof DrawerStackParamList | string;
+    stack?: string;
 };
 
 const styles = StyleSheet.create({

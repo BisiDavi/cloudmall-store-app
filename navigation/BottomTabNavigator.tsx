@@ -12,8 +12,6 @@ import DashboardSvg from "@assets/DashboardSvg";
 import OrderSvg from "@assets/OrderSvg";
 import ProfileSvg from "@assets/ProfileSvg";
 import WelcomeModal from "@components/WelcomeModal";
-import displayAsset from "@utils/displayAsset";
-import { Image } from "react-native-elements";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 

@@ -3,32 +3,31 @@ import { createStackNavigator } from "@react-navigation/stack";
 import bottomTabContent from "@json/bottom-tab-navigation.json";
 import { displayScreenComponent } from "@utils/displayScreenComponents";
 import { StyleSheet } from "react-native";
-import displayAsset from "@utils/displayAsset";
-import { Image } from "react-native-elements";
+import HeaderIcon from "@utils/headerIcon";
 
 const TabOneStack = createStackNavigator();
+const TabTwoStack = createStackNavigator();
 const TabThreeStack = createStackNavigator();
-const TabFourStack = createStackNavigator();
 
-export function TabOneNavigator() {
+export function TabOneNavigator({ navigation }: any) {
     return (
         <TabOneStack.Navigator
             screenOptions={{
-                headerShown: false,
-                headerTitleAlign: "center",
+                headerShown: true,
                 headerLeft: () => (
-                    <Image
-                        style={styles.menu}
-                        onPress={() => {}}
-                        source={displayAsset("menuIcon")}
-                    />
-                ),
-                headerRight: () => (
-                    <Image
-                        style={styles.notificationIcon}
-                        source={displayAsset("notificationIcon")}
-                    />
-                ),
+									<HeaderIcon
+											onPress={navigation}
+											icon="menuIcon"
+											position="left"
+									/>
+							),
+							headerRight: () => (
+									<HeaderIcon
+											onPress={navigation}
+											icon="notificationIcon"
+											position="right"
+									/>
+							),
             }}
         >
             {bottomTabContent.tabOne.map((tab, index) => (
@@ -36,6 +35,7 @@ export function TabOneNavigator() {
                     name={tab.name}
                     key={index}
                     options={{
+                        headerTitleAlign: "center",
                         headerTitleStyle: {
                             fontSize: 16,
                             textAlign: "left",
@@ -49,13 +49,25 @@ export function TabOneNavigator() {
     );
 }
 
-const TabTwoStack = createStackNavigator();
-
-export function TabTwoNavigator() {
+export function TabTwoNavigator({ navigation }: any) {
     return (
         <TabTwoStack.Navigator
             screenOptions={{
                 headerShown: false,
+                headerLeft: () => (
+                    <HeaderIcon
+                        onPress={navigation}
+                        icon="menuIcon"
+                        position="left"
+                    />
+                ),
+                headerRight: () => (
+                    <HeaderIcon
+                        onPress={navigation}
+                        icon="notificationIcon"
+                        position="right"
+                    />
+                ),
             }}
         >
             {bottomTabContent.tabTwo.map((tab, index) => (
@@ -73,15 +85,29 @@ export function TabTwoNavigator() {
     );
 }
 
-export function TabFourNavigator() {
+export function TabThreeNavigator({ navigation }: any) {
     return (
-        <TabFourStack.Navigator
+        <TabThreeStack.Navigator
             screenOptions={{
-                headerShown: false,
+                headerShown: true,
+                headerLeft: () => (
+                    <HeaderIcon
+                        onPress={navigation}
+                        icon="menuIcon"
+                        position="left"
+                    />
+                ),
+                headerRight: () => (
+                    <HeaderIcon
+                        onPress={navigation}
+                        icon="notificationIcon"
+                        position="right"
+                    />
+                ),
             }}
         >
-            {bottomTabContent.tabFour.map((tab, index) => (
-                <TabFourStack.Screen
+            {bottomTabContent.tabThree.map((tab, index) => (
+                <TabThreeStack.Screen
                     name={tab.name}
                     key={index}
                     options={{
@@ -91,7 +117,7 @@ export function TabFourNavigator() {
                     component={displayScreenComponent(tab.name)}
                 />
             ))}
-        </TabFourStack.Navigator>
+        </TabThreeStack.Navigator>
     );
 }
 

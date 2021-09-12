@@ -1,7 +1,7 @@
 {
     "orders": [{ "name": "OrderScreen", "title": "Orders" }],
     "myStore": [
-			{ "name": "ViewStoreScreen", "title": "Ongbona" },
+        { "name": "ViewStoreScreen", "title": "Ongbona" },
         { "name": "DashboardScreen", "title": "Dashboard" },
         { "name": "AvailableBalanceScreen", "title": "Available Balance" },
         { "name": "AmountPaidScreen", "title": "Amount Paid" },
@@ -16,7 +16,10 @@
         { "name": "AddExtraScreen", "title": "Add an Extra" },
         { "name": "AddProductOtherDetailsScreen", "title": "Add a new Product" }
     ],
-    "confirmRider": [{ "name": "ProfileScreen", "title": "Profile" }],
-    "settings": [{ "name": "ProfileScreen", "title": "Profile" }],
-    "help": [{ "name": "ProfileScreen", "title": "Profile" }]
+    "confirmRider": [
+        { "name": "ConfirmRiderScreen", "title": "ConfirmRiderScreen" }
+    ],
+    "settings": [{ "name": "SettingsScreen", "title": "Settings" }],
+    "help": [{ "name": "HelpScreen", "title": "Help" }]
+
 }

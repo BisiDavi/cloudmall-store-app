@@ -11,8 +11,6 @@ import displayNavigators from "@utils/displayNavigators";
 export default function DrawerNavigation() {
     const Drawer = createDrawerNavigator<DrawerStackParamList>();
 
-    //const showDrawer = ()
-
     return (
         <Drawer.Navigator
             screenOptions={{
@@ -26,7 +24,7 @@ export default function DrawerNavigation() {
             }}
         >
             {drawerJson.map((drawer: drawer, item) => {
-                const displayDrawer = drawer.stack
+                const displayDrawer = drawer?.stack
                     ? displayNavigators(drawer.stack)
                     : displayScreenComponent(drawer.link);
                 return (

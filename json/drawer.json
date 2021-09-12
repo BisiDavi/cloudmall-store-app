@@ -25,7 +25,8 @@
     },
     {
         "name": "Help",
-        "link": "HelpScreen"
+        "link": "HelpScreen",
+        "stack": "help"
     },
     {
         "name": "Logout",

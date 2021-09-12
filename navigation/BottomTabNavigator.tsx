@@ -1,27 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
 import { BottomTabParamList } from "../customTypes";
 import {
     TabOneNavigator,
     TabTwoNavigator,
-    TabFourNavigator,
+    TabThreeNavigator,
 } from "./TabNavigator";
 import colors from "@utils/colors";
 import DashboardSvg from "@assets/DashboardSvg";
 import OrderSvg from "@assets/OrderSvg";
 import ProfileSvg from "@assets/ProfileSvg";
-import WelcomeModal from "@components/WelcomeModal";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
-    const [showModal, setShowModal] = useState(false);
-
-    // useEffect(() => {
-    //   <WelcomeModal visible={showModal} onToggle={setShowModal} />;
-    // }, []);
-
     return (
         <BottomTab.Navigator
             screenOptions={{
@@ -33,6 +26,7 @@ export default function BottomTabNavigator() {
                 name="Dashboard"
                 options={{
                     tabBarActiveTintColor: colors.mallBlue5,
+                    tabBarInactiveTintColor: colors.neutral5,
                     tabBarIcon: ({ color }: any) => (
                         <DashboardSvg color={color} />
                     ),
@@ -54,11 +48,12 @@ export default function BottomTabNavigator() {
                 name="Profile"
                 options={{
                     tabBarActiveTintColor: colors.mallBlue5,
+                    tabBarInactiveTintColor: colors.neutral5,
                     tabBarIcon: ({ color }: any) => (
                         <ProfileSvg color={color} />
                     ),
                 }}
-                component={TabFourNavigator}
+                component={TabThreeNavigator}
             />
         </BottomTab.Navigator>
     );

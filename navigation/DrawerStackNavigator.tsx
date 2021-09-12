@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import drawerStackJson from "@json/drawer-stack.json";
 import { displayScreenComponent } from "@utils/displayScreenComponents";
@@ -11,7 +10,7 @@ const DrawerStackThree = createStackNavigator();
 const DrawerStackFour = createStackNavigator();
 const DrawerStackFive = createStackNavigator();
 
-export function DrawerOneStackNavigator() {
+export function DrawerOneStackNavigator({ navigation }: any) {
     return (
         <DrawerStackOne.Navigator>
             {drawerStackJson.myStore.map((stack) => (
@@ -20,6 +19,20 @@ export function DrawerOneStackNavigator() {
                     key={stack.name}
                     options={{
                         title: stack.title,
+                        headerLeft: () => (
+                            <HeaderIcon
+                                onPress={navigation}
+                                icon="menuIcon"
+                                position="left"
+                            />
+                        ),
+                        headerRight: (props) => (
+                            <HeaderIcon
+                                onPress={props}
+                                icon="notificationIcon"
+                                position="right"
+                            />
+                        ),
                     }}
                     component={displayScreenComponent(stack.name)}
                 />
@@ -38,7 +51,7 @@ export function DrawerTwoStackNavigator({ navigation }: any) {
                     options={{
                         headerShown: true,
                         title: stack.title,
-                        headerLeft: (props) => (
+                        headerLeft: () => (
                             <HeaderIcon
                                 onPress={navigation}
                                 icon="menuIcon"
@@ -60,55 +73,97 @@ export function DrawerTwoStackNavigator({ navigation }: any) {
     );
 }
 
-export function DrawerThreeStackNavigator() {
+export function DrawerThreeStackNavigator({ navigation }: any) {
     return (
         <DrawerStackThree.Navigator>
             {drawerStackJson.confirmRider.map((stack) => (
                 <DrawerStackThree.Screen
                     name={stack.name}
                     key={stack.name}
+                    options={{
+                        headerShown: true,
+                        title: stack.title,
+                        headerLeft: () => (
+                            <HeaderIcon
+                                onPress={navigation}
+                                icon="menuIcon"
+                                position="left"
+                            />
+                        ),
+                        headerRight: (props) => (
+                            <HeaderIcon
+                                onPress={props}
+                                icon="notificationIcon"
+                                position="right"
+                            />
+                        ),
+                    }}
                     component={displayScreenComponent(stack.name)}
                 />
             ))}
         </DrawerStackThree.Navigator>
     );
 }
-export function DrawerFourStackNavigator() {
+export function DrawerFourStackNavigator({ navigation }: any) {
     return (
         <DrawerStackFour.Navigator>
             {drawerStackJson.settings.map((stack) => (
                 <DrawerStackFour.Screen
                     name={stack.name}
                     key={stack.name}
+                    options={{
+                        headerShown: true,
+                        title: stack.title,
+                        headerLeft: () => (
+                            <HeaderIcon
+                                onPress={navigation}
+                                icon="menuIcon"
+                                position="left"
+                            />
+                        ),
+                        headerRight: (props) => (
+                            <HeaderIcon
+                                onPress={props}
+                                icon="notificationIcon"
+                                position="right"
+                            />
+                        ),
+                    }}
                     component={displayScreenComponent(stack.name)}
                 />
             ))}
         </DrawerStackFour.Navigator>
     );
 }
-export function DrawerFiveStackNavigator() {
+
+export function DrawerFiveStackNavigator({ navigation }: any) {
     return (
         <DrawerStackFive.Navigator>
             {drawerStackJson.help.map((stack) => (
-                <DrawerStackFive.Screen
+                <DrawerStackFour.Screen
                     name={stack.name}
                     key={stack.name}
+                    options={{
+                        headerShown: true,
+                        title: stack.title,
+                        headerLeft: () => (
+                            <HeaderIcon
+                                onPress={navigation}
+                                icon="menuIcon"
+                                position="left"
+                            />
+                        ),
+                        headerRight: (props) => (
+                            <HeaderIcon
+                                onPress={props}
+                                icon="notificationIcon"
+                                position="right"
+                            />
+                        ),
+                    }}
                     component={displayScreenComponent(stack.name)}
                 />
             ))}
         </DrawerStackFive.Navigator>
     );
 }
-
-const styles = StyleSheet.create({
-    menu: {
-        height: 20,
-        width: 20,
-        marginLeft: 20,
-    },
-    notificationIcon: {
-        marginRight: 20,
-        height: 20,
-        width: 20,
-    },
-});

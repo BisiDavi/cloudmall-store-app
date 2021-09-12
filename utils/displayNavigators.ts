@@ -1,9 +1,9 @@
 import {
-    DrawerFiveStackNavigator,
-    DrawerFourStackNavigator,
     DrawerOneStackNavigator,
-    DrawerThreeStackNavigator,
     DrawerTwoStackNavigator,
+    DrawerThreeStackNavigator,
+    DrawerFourStackNavigator,
+    DrawerFiveStackNavigator,
 } from "@navigation/DrawerStackNavigator";
 
 export default function displayNavigators(navigator: string) {
@@ -16,15 +16,14 @@ export default function displayNavigators(navigator: string) {
             return DrawerTwoStackNavigator;
         }
 
-        case "products": {
+        case "confirmRider": {
             return DrawerThreeStackNavigator;
         }
 
-        case "confirmRider": {
+        case "settings": {
             return DrawerFourStackNavigator;
         }
-
-        case "settings": {
+        case "help": {
             return DrawerFiveStackNavigator;
         }
         default:

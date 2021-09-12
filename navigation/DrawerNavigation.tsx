@@ -7,6 +7,7 @@ import drawerJson from "@json/drawer.json";
 import displayAsset from "@utils/displayAsset";
 import displayNavigators from "@utils/displayNavigators";
 import ProfileIcon from "@components/ProfileIcon";
+import colors from "@utils/colors";
 
 export default function DrawerNavigation() {
     const Drawer = createDrawerNavigator<DrawerStackParamList>();
@@ -16,7 +17,8 @@ export default function DrawerNavigation() {
             drawerContent={(props) => <ProfileIcon {...props} />}
             screenOptions={{
                 headerShown: false,
-                drawerActiveTintColor: "white",
+                drawerActiveTintColor: colors.mallBlue5,
+                drawerInactiveTintColor: "black",
                 drawerLabelStyle: {
                     fontFamily: "RobotoBold",
                     fontSize: 16,

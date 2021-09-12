@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         width: 50,
     },
     userName: {
-        color: colors.neutralWhite,
+        color: colors.mallBlue5,
         fontFamily: "RobotoBold",
         fontSize: 16,
     },
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     drawerItem: {
         fontFamily: "RobotoBold",
         fontSize: 16,
+        color: "black",
     },
     profileIconView: {
         alignItems: "center",
@@ -58,6 +59,6 @@ const styles = StyleSheet.create({
         color: colors.neutralWhite,
     },
     drawerScrollView: {
-        backgroundColor: colors.mallBlue4,
+        backgroundColor: colors.neutralWhite,
     },
 });

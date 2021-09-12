@@ -1,8 +1,9 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import bottomTabContent from "@json/bottom-tab-navigation.json";
-import { displayScreenComponent, colors, HeaderIcon } from "@utils/.";
+import { colors, HeaderIcon } from "@utils/.";
 import { StyleSheet } from "react-native";
+import displayScreenComponent from "@utils/displayScreenComponents";
 
 const TabOneStack = createStackNavigator();
 const TabTwoStack = createStackNavigator();

@@ -7,10 +7,15 @@
         },
         { "name": "LoginScreen", "position": "left" }
     ],
-    "privatePage": [
+    "storeDetails": [
         {
             "name": "StoreDetailsScreenOne",
             "title": "Step:1 Store Details",
+            "position": "left"
+        },
+        {
+            "name": "StoreAddressScreen",
+            "title": "Store Address",
             "position": "left"
         },
         {
@@ -32,15 +37,6 @@
             "name": "UploadStoreImageScreen",
             "title": "Upload Store's Image",
             "position": "left"
-        },
-        {
-            "name": "StoreAddressScreen",
-            "title": "Store Address",
-            "position": "left"
-        },
-        { "name": "AvailableBalanceScreen", "title": "Available Balance" },
-        { "name": "AmountPaidScreen", "title": "Total Revenue" },
-        { "name": "StatisticsScreen", "title": "Statistics" },
-        { "name": "AddProductScreenMethod", "title": "Add a Product" }
+        }
     ]
 }

@@ -11,14 +11,14 @@ type displayStackScreenType = {
     position: "left";
 };
 
-const PublicStack = createStackNavigator<RootStackParamList>();
+const StoreDetailstack = createStackNavigator<RootStackParamList>();
 
-function publicStackScreen(
+function storeDetailScreen(
     stackContent: displayStackScreenType,
     index: number,
 ) {
     return stackContent.title ? (
-        <PublicStack.Screen
+        <StoreDetailstack.Screen
             key={`${stackContent.name}-${index}`}
             name={stackContent.name}
             options={{
@@ -37,7 +37,7 @@ function publicStackScreen(
             component={displayScreenComponent(stackContent.name)}
         />
     ) : (
-        <PublicStack.Screen
+        <StoreDetailstack.Screen
             key={`${stackContent.name}-${index}`}
             name={stackContent.name}
             options={{
@@ -58,13 +58,12 @@ function publicStackScreen(
     );
 }
 
-export default function PublicNavigation() {
+export default function StoreDetailsNavigation() {
     return (
-        <PublicStack.Navigator>
-            {rootNavigationContent.publicPage.map((item: any, index) =>
-                publicStackScreen(item, index),
+        <StoreDetailstack.Navigator>
+            {rootNavigationContent.storeDetails.map((item: any, index) =>
+                storeDetailScreen(item, index),
             )}
-        </PublicStack.Navigator>
+        </StoreDetailstack.Navigator>
     );
 }
-

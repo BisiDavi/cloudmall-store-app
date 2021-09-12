@@ -12,6 +12,7 @@ import {
 } from "@utils/.";
 import DrawerNavigation from "./DrawerNavigation";
 import PublicNavigation from "./PublicNavigation";
+import StoreDetailsNavigation from "./StoreDetailsNavigation";
 
 export default function RootNavigator() {
     const { state } = useContext(AuthContext);
@@ -42,8 +43,7 @@ export default function RootNavigator() {
             <Spinner visible={state.isLoading} color="blue" />
             {!isSignedIn && !completed ? (
                 <>
-                    <PublicNavigation />
-                    <DrawerNavigation />
+                    <StoreDetailsNavigation />
                 </>
             ) : !isSignedIn && completed ? (
                 <DrawerNavigation />

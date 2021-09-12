@@ -90,8 +90,6 @@ export function displayScreenComponent(name: string | RootStackParamList): any {
             return HelpScreen;
         case "RequestARiderScreen":
             return RequestARiderScreen;
-        case "BottomTab":
-            return BottomTabNavigator;
         case "ConfirmPayment":
             return ConfirmPayment;
         case "PaymentApprovedScreen":

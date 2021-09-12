@@ -11,6 +11,11 @@ const DrawerStackThree = createStackNavigator();
 const DrawerStackFour = createStackNavigator();
 const DrawerStackFive = createStackNavigator();
 
+type stackType = {
+    name: string;
+    title: string;
+};
+
 export function DrawerOneStackNavigator({ navigation }: any) {
     return (
         <DrawerStackOne.Navigator>

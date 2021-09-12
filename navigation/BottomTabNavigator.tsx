@@ -45,7 +45,7 @@ export default function BottomTabNavigator() {
             />
 
             <BottomTab.Screen
-                name="Profile"
+                name="Payment"
                 options={{
                     tabBarActiveTintColor: colors.mallBlue5,
                     tabBarInactiveTintColor: colors.neutral5,

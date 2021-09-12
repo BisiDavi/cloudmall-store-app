@@ -31,9 +31,7 @@ export default function DrawerNavigation() {
             }}
         >
             {drawerJson.map((drawer: drawer, item) => {
-                const displayDrawer = drawer?.stack
-                    ? displayNavigators(drawer.stack)
-                    : displayScreenComponent(drawer.link);
+                const displayDrawer: any = displayNavigators(drawer.stack);
                 return (
                     <Drawer.Screen
                         key={item}
@@ -48,8 +46,7 @@ export default function DrawerNavigation() {
 
 type drawer = {
     name: any;
-    link: keyof DrawerStackParamList | string;
-    stack?: string;
+    stack: keyof DrawerStackParamList | string;
 };
 
 const styles = StyleSheet.create({

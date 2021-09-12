@@ -7,8 +7,8 @@
         { "name": "StatisticsScreen", "title": "Statistics" }
     ],
     "tabThree": [
-        { "name": "ConfirmPayment", "title": "Payment" },
+        { "name": "ConfirmPayment", "title": "Confirm Payment" },
         { "name": "PaymentApprovedScreen" },
-        { "name": "FailedPaymentSreen" }
+        { "name": "FailedPaymentScreen" }
     ]
 }

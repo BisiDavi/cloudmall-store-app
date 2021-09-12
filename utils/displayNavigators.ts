@@ -1,3 +1,4 @@
+import BottomTabNavigator from "@navigation/BottomTabNavigator";
 import {
     DrawerOneStackNavigator,
     DrawerTwoStackNavigator,
@@ -25,6 +26,9 @@ export default function displayNavigators(navigator: string) {
         }
         case "help": {
             return DrawerFiveStackNavigator;
+        }
+        case "bottomTab": {
+            return BottomTabNavigator
         }
         default:
             return null;

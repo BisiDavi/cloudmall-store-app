@@ -1,31 +1,26 @@
 [
     {
         "name": "My Orders",
-        "link": "BottomTab"
+        "stack": "bottomTab"
     },
     {
         "name": "My Store",
-        "link": "MyStoreScreen",
         "stack": "myStore"
     },
     {
         "name": "My Products",
-        "link": "ProductScreen",
         "stack": "products"
     },
     {
         "name": "Request a Rider",
-        "link": "ConfirmRiderScreen",
         "stack": "confirmRider"
     },
     {
         "name": "Settings",
-        "link": "SettingsScreen",
         "stack": "settings"
     },
     {
         "name": "Help",
-        "link": "HelpScreen",
         "stack": "help"
     }
 ]

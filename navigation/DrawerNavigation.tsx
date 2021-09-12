@@ -7,12 +7,14 @@ import drawerJson from "@json/drawer.json";
 import { displayScreenComponent } from "@utils/displayScreenComponents";
 import displayAsset from "@utils/displayAsset";
 import displayNavigators from "@utils/displayNavigators";
+import ProfileIcon from "@components/ProfileIcon";
 
 export default function DrawerNavigation() {
     const Drawer = createDrawerNavigator<DrawerStackParamList>();
 
     return (
         <Drawer.Navigator
+            drawerContent={(props) => <ProfileIcon {...props} />}
             screenOptions={{
                 headerShown: false,
                 headerRight: () => (

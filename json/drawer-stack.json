@@ -17,9 +17,8 @@
         { "name": "AddProductOtherDetailsScreen", "title": "Add a new Product" }
     ],
     "confirmRider": [
-        { "name": "ConfirmRiderScreen", "title": "ConfirmRiderScreen" }
+        { "name": "RequestARiderScreen", "title": "Request a Rider" }
     ],
     "settings": [{ "name": "SettingsScreen", "title": "Settings" }],
     "help": [{ "name": "HelpScreen", "title": "Help" }]
-
 }

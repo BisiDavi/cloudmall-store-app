@@ -2,17 +2,20 @@ import React from "react";
 import displayAsset from "@utils/displayAsset";
 import { StyleSheet } from "react-native";
 import { Image } from "react-native-elements";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import MenuSvg from "@assets/MenuSvg";
+import NotificationSvg from "@assets/NotificationSvg";
 
 interface HeaderIconProps {
-    icon: string;
     position: "left" | "right";
     onPress: any;
+    attributes?: any;
 }
 
 export default function HeaderIcon({
-    icon,
     position,
     onPress,
+    attributes,
 }: HeaderIconProps) {
     const positionStyle = position === "left" ? styles.left : styles.right;
 
@@ -20,16 +23,21 @@ export default function HeaderIcon({
         onPress.openDrawer();
     }
     function notificationHandler() {
-        console.log("notification drawer");
+        console.log("props", attributes);
     }
+    const color = attributes ? attributes.pressColor : "blue";
+    const Icon =
+        position === "left" ? (
+            <MenuSvg color={color} />
+        ) : (
+            <NotificationSvg color={attributes?.pressColor} />
+        );
     const onPressHandler =
         position === "left" ? toggleDrawer : notificationHandler;
     return (
-        <Image
-            style={{ ...styles.icon, ...positionStyle }}
-            onPress={onPressHandler}
-            source={displayAsset(icon)}
-        />
+        <TouchableOpacity style={positionStyle} onPress={onPressHandler}>
+            {Icon}
+        </TouchableOpacity>
     );
 }
 

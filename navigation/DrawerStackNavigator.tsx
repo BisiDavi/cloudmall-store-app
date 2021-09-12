@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import drawerStackJson from "@json/drawer-stack.json";
 import { displayScreenComponent } from "@utils/displayScreenComponents";
 import HeaderIcon from "@utils/headerIcon";
+import colors from "@utils/colors";
 
 const DrawerStackOne = createStackNavigator();
 const DrawerStackTwo = createStackNavigator();
@@ -18,18 +19,20 @@ export function DrawerOneStackNavigator({ navigation }: any) {
                     name={stack.name}
                     key={stack.name}
                     options={{
+                        headerPressColor: colors.mallBlue5,
+                        headerTintColor: colors.cloudOrange5,
                         title: stack.title,
-                        headerLeft: () => (
+                        headerLeft: (props) => (
                             <HeaderIcon
+                                attributes={props}
                                 onPress={navigation}
-                                icon="menuIcon"
                                 position="left"
                             />
                         ),
                         headerRight: (props) => (
                             <HeaderIcon
-                                onPress={props}
-                                icon="notificationIcon"
+                                attributes={props}
+                                onPress={navigation}
                                 position="right"
                             />
                         ),
@@ -51,17 +54,19 @@ export function DrawerTwoStackNavigator({ navigation }: any) {
                     options={{
                         headerShown: true,
                         title: stack.title,
-                        headerLeft: () => (
+                        headerPressColor: colors.mallBlue5,
+                        headerTintColor: colors.cloudOrange5,
+                        headerLeft: (props) => (
                             <HeaderIcon
+                                attributes={props}
                                 onPress={navigation}
-                                icon="menuIcon"
                                 position="left"
                             />
                         ),
                         headerRight: (props) => (
                             <HeaderIcon
-                                onPress={props}
-                                icon="notificationIcon"
+                                attributes={props}
+                                onPress={navigation}
                                 position="right"
                             />
                         ),
@@ -83,17 +88,19 @@ export function DrawerThreeStackNavigator({ navigation }: any) {
                     options={{
                         headerShown: true,
                         title: stack.title,
-                        headerLeft: () => (
+                        headerPressColor: colors.mallBlue5,
+                        headerTintColor: colors.cloudOrange5,
+                        headerLeft: (props) => (
                             <HeaderIcon
+                                attributes={props}
                                 onPress={navigation}
-                                icon="menuIcon"
                                 position="left"
                             />
                         ),
                         headerRight: (props) => (
                             <HeaderIcon
-                                onPress={props}
-                                icon="notificationIcon"
+                                attributes={props}
+                                onPress={navigation}
                                 position="right"
                             />
                         ),
@@ -114,17 +121,19 @@ export function DrawerFourStackNavigator({ navigation }: any) {
                     options={{
                         headerShown: true,
                         title: stack.title,
-                        headerLeft: () => (
+                        headerPressColor: colors.mallBlue5,
+                        headerTintColor: colors.cloudOrange5,
+                        headerLeft: (props) => (
                             <HeaderIcon
+                                attributes={props}
                                 onPress={navigation}
-                                icon="menuIcon"
                                 position="left"
                             />
                         ),
                         headerRight: (props) => (
                             <HeaderIcon
-                                onPress={props}
-                                icon="notificationIcon"
+                                onPress={navigation}
+                                attributes={props}
                                 position="right"
                             />
                         ),
@@ -146,17 +155,19 @@ export function DrawerFiveStackNavigator({ navigation }: any) {
                     options={{
                         headerShown: true,
                         title: stack.title,
-                        headerLeft: () => (
+                        headerPressColor: colors.mallBlue5,
+                        headerTintColor: colors.cloudOrange5,
+                        headerLeft: (props) => (
                             <HeaderIcon
+                                attributes={props}
                                 onPress={navigation}
-                                icon="menuIcon"
                                 position="left"
                             />
                         ),
                         headerRight: (props) => (
                             <HeaderIcon
-                                onPress={props}
-                                icon="notificationIcon"
+                                attributes={props}
+                                onPress={navigation}
                                 position="right"
                             />
                         ),

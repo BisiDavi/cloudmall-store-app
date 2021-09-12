@@ -14,7 +14,7 @@
         "stack": "products"
     },
     {
-        "name": "Confirm a Rider",
+        "name": "Request a Rider",
         "link": "ConfirmRiderScreen",
         "stack": "confirmRider"
     },
@@ -27,9 +27,5 @@
         "name": "Help",
         "link": "HelpScreen",
         "stack": "help"
-    },
-    {
-        "name": "Logout",
-        "link": "LogoutScreen"
     }
 ]

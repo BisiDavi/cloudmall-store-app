@@ -4,6 +4,7 @@ import bottomTabContent from "@json/bottom-tab-navigation.json";
 import { displayScreenComponent } from "@utils/displayScreenComponents";
 import { StyleSheet } from "react-native";
 import HeaderIcon from "@utils/headerIcon";
+import colors from "@utils/colors";
 
 const TabOneStack = createStackNavigator();
 const TabTwoStack = createStackNavigator();
@@ -14,20 +15,22 @@ export function TabOneNavigator({ navigation }: any) {
         <TabOneStack.Navigator
             screenOptions={{
                 headerShown: true,
-                headerLeft: () => (
-									<HeaderIcon
-											onPress={navigation}
-											icon="menuIcon"
-											position="left"
-									/>
-							),
-							headerRight: () => (
-									<HeaderIcon
-											onPress={navigation}
-											icon="notificationIcon"
-											position="right"
-									/>
-							),
+                headerPressColor: colors.mallBlue5,
+                headerTintColor: colors.cloudOrange5,
+                headerLeft: (props) => (
+                    <HeaderIcon
+                        attributes={props}
+                        onPress={navigation}
+                        position="left"
+                    />
+                ),
+                headerRight: (props) => (
+                    <HeaderIcon
+                        attributes={props}
+                        onPress={navigation}
+                        position="right"
+                    />
+                ),
             }}
         >
             {bottomTabContent.tabOne.map((tab, index) => (
@@ -35,10 +38,9 @@ export function TabOneNavigator({ navigation }: any) {
                     name={tab.name}
                     key={index}
                     options={{
-                        headerTitleAlign: "center",
+                        headerTitleAlign: "left",
                         headerTitleStyle: {
-                            fontSize: 16,
-                            textAlign: "left",
+                            fontSize: 18,
                         },
                         title: tab.title,
                     }}
@@ -54,17 +56,19 @@ export function TabTwoNavigator({ navigation }: any) {
         <TabTwoStack.Navigator
             screenOptions={{
                 headerShown: false,
-                headerLeft: () => (
+                headerPressColor: colors.mallBlue5,
+                headerTintColor: colors.cloudOrange5,
+                headerLeft: (props) => (
                     <HeaderIcon
+                        attributes={props}
                         onPress={navigation}
-                        icon="menuIcon"
                         position="left"
                     />
                 ),
-                headerRight: () => (
+                headerRight: (props) => (
                     <HeaderIcon
+                        attributes={props}
                         onPress={navigation}
-                        icon="notificationIcon"
                         position="right"
                     />
                 ),
@@ -75,7 +79,7 @@ export function TabTwoNavigator({ navigation }: any) {
                     name={tab.name}
                     key={index}
                     options={{
-                        headerTitleAlign: "center",
+                       headerTitleAlign: "left",
                         title: tab.title,
                     }}
                     component={displayScreenComponent(tab.name)}
@@ -90,17 +94,19 @@ export function TabThreeNavigator({ navigation }: any) {
         <TabThreeStack.Navigator
             screenOptions={{
                 headerShown: true,
-                headerLeft: () => (
+                headerPressColor: colors.mallBlue5,
+                headerTintColor: colors.cloudOrange5,
+                headerLeft: (props) => (
                     <HeaderIcon
+                        attributes={props}
                         onPress={navigation}
-                        icon="menuIcon"
                         position="left"
                     />
                 ),
-                headerRight: () => (
+                headerRight: (props) => (
                     <HeaderIcon
+                        attributes={props}
                         onPress={navigation}
-                        icon="notificationIcon"
                         position="right"
                     />
                 ),
@@ -111,7 +117,7 @@ export function TabThreeNavigator({ navigation }: any) {
                     name={tab.name}
                     key={index}
                     options={{
-                        headerTitleAlign: "center",
+                       headerTitleAlign: "left",
                         title: tab.title,
                     }}
                     component={displayScreenComponent(tab.name)}

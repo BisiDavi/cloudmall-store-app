@@ -6,10 +6,13 @@ import {
     ScrollView,
     Platform,
     View,
+    Text,
 } from "react-native";
 
 import { RootStackParamList } from "../customTypes";
 import LoginForm from "@components/forms/LoginForm";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { colors } from "@utils/.";
 
 type LoginScreenNavigationProps = StackNavigationProp<
     RootStackParamList,
@@ -27,9 +30,14 @@ export default function LoginScreen({ navigation }: Props) {
             enabled={true}
         >
             <ScrollView>
-                <View style={styles.container}>
-                    <LoginForm navigation={navigation} />
-                </View>
+                <SafeAreaView>
+                    <View style={styles.container}>
+                        <View style={styles.textView}>
+                            <Text style={styles.title}>Welcome Back</Text>
+                        </View>
+                        <LoginForm navigation={navigation} />
+                    </View>
+                </SafeAreaView>
             </ScrollView>
         </KeyboardAvoidingView>
     );
@@ -41,6 +49,21 @@ const styles = StyleSheet.create({
         width: "100%",
         flexDirection: "column",
         justifyContent: "space-around",
-        alignItems: "center",
+    },
+    title: {
+        color: colors.cloudOrange5,
+        fontFamily: "MontserratBold",
+        fontSize: 18,
+        lineHeight: 28,
+    },
+    textView: {
+        margin: 30,
+        marginTop: 20,
+        marginBottom: 0,
+    },
+    text: {
+        fontFamily: "RobotoRegular",
+        fontSize: 14,
+        lineHeight: 20,
     },
 });

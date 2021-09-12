@@ -77,37 +77,16 @@ export default function RootNavigator() {
     return (
         <>
             <Spinner visible={state.isLoading} color="blue" />
-            <DrawerNavigation />
-            {/* {!isSignedIn && !completed ? (
-        <>
-          {rootNavigationContent.privatePage.map((item: any, index) =>
-            displayStackScreen(item, index)
-          )}
-          <BottomTabNavigator />
-        </>
-      ) : !isSignedIn && completed ? (
-        <BottomTabNavigator />
-      ) : (
-        rootNavigationContent.publicPage.map((item: any, index) =>
-          displayStackScreen(item, index)
-        )
-      )} */}
+            {!isSignedIn && completed ? (
+                <DrawerNavigation />
+            ) : (
+                rootNavigationContent.publicPage.map((item: any, index) =>
+                    displayStackScreen(item, index),
+                )
+            )}
         </>
     );
 }
-
-const styles = StyleSheet.create({
-    menu: {
-        height: 20,
-        width: 20,
-        marginLeft: 20,
-    },
-    notificationIcon: {
-        marginRight: 20,
-        height: 20,
-        width: 20,
-    },
-});
 
 type displayStackScreenType = {
     name: keyof RootStackParamList;

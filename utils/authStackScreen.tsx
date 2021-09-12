@@ -1,7 +1,8 @@
 import React from "react";
 import { RootStackParamList } from "@customTypes/.";
 import { createStackNavigator } from "@react-navigation/stack";
-import { colors, displayScreenComponent } from "@utils/.";
+import { colors } from "@utils/.";
+import displayScreenComponent from "./displayScreenComponents";
 
 type displayStackScreenType = {
     name: keyof RootStackParamList;

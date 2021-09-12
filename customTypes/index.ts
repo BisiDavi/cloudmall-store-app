@@ -37,4 +37,8 @@ export type DrawerStackParamList = {
     HelpScreen: undefined;
     LogoutScreen: undefined;
     AddProductScreenMethod: undefined;
+    FailedPaymentScreen: undefined;
+    bottomTab: undefined;
+    PaymentApprovedScreen: undefined;
+    ConfirmPaymentScreen: undefined;
 };

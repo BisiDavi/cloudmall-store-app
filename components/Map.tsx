@@ -14,7 +14,7 @@ type mapType = {
 
 const Map = () => {
 	useEffect(() => {
-		navigator.geolocation.
+		//navigator.geolocation.
 	}, [])
     const [cordinate, setCoordinate] = useState<mapType>({
         latitude: 7.4905,

@@ -14,19 +14,31 @@ import OrderSvg from "@assets/OrderSvg";
 import StoreSvg from "@assets/StoreSvg";
 import ProfileSvg from "@assets/ProfileSvg";
 import WelcomeModal from "@components/WelcomeModal";
+import displayAsset from "@utils/displayAsset";
+import { Image } from "react-native-elements";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
   const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    <WelcomeModal visible={showModal} onToggle={setShowModal} />;
-  }, []);
+  // useEffect(() => {
+  //   <WelcomeModal visible={showModal} onToggle={setShowModal} />;
+  // }, []);
+
   return (
     <BottomTab.Navigator
       screenOptions={{
         headerShown: false,
+        headerLeft: () => (
+          <Image style={styles.menu} source={displayAsset("menuIcon")} />
+        ),
+        headerRight: () => (
+          <Image
+            style={styles.notificationIcon}
+            source={displayAsset("notificationIcon")}
+          />
+        ),
       }}
       initialRouteName="Orders"
     >

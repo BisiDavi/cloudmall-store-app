@@ -4,17 +4,17 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { View, ScrollView, StyleSheet, Text, Dimensions } from "react-native";
 import { ListItem, Switch, Image } from "react-native-elements";
 import productContent from "@json/products.json";
-import { BottomTabParamList } from "@customTypes/.";
+import { DrawerStackParamList } from "@customTypes/.";
 import colors from "@utils/colors";
 import Fab from "@components/Fab";
 import displayAsset from "@utils/displayAsset";
 
 type ProductScreenNavigationProps = StackNavigationProp<
-  BottomTabParamList,
-  "Products"
+  DrawerStackParamList,
+  "ProductScreen"
 >;
 
-type ProductScreenRouteProps = RouteProp<BottomTabParamList, "Products">;
+type ProductScreenRouteProps = RouteProp<DrawerStackParamList, "ProductScreen">;
 
 type Props = {
   route: ProductScreenRouteProps;

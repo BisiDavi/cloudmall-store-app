@@ -22,6 +22,12 @@ import AddExtraScreen from "@screens/AddExtraScreen";
 import AddProductOtherDetailsScreen from "@screens/AddProductOtherDetailsScreen";
 import UploadStoreLogoScreen from "@screens/UploadStoreLogoScreen";
 import UploadStoreImageScreen from "@screens/UploadStoreImageScreen";
+import MyStoreScreen from "@screens/MyStoreScreen";
+import ConfirmRiderScreen from "@screens/ConfirmRiderScreen";
+import SettingsScreen from "@screens/SettingsScreen";
+import HelpScreen from "@screens/HelpScreen";
+import LogoutScreen from "@screens/LogoutScreen";
+import BottomTabNavigator from "@navigation/BottomTabNavigator";
 
 export function displayScreenComponent(name: string | RootStackParamList): any {
   switch (name) {
@@ -71,6 +77,18 @@ export function displayScreenComponent(name: string | RootStackParamList): any {
       return AddProductOtherDetailsScreen;
     case "UploadStoreLogoScreen":
       return UploadStoreLogoScreen;
+    case "MyStoreScreen":
+      return MyStoreScreen;
+    case "ConfirmRiderScreen":
+      return ConfirmRiderScreen;
+    case "SettingsScreen":
+      return SettingsScreen;
+    case "HelpScreen":
+      return HelpScreen;
+    case "LogoutScreen":
+      return LogoutScreen;
+    case "BottomTab":
+      return BottomTabNavigator;
     default:
       return null;
   }

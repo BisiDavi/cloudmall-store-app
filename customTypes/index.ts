@@ -23,7 +23,6 @@ export type BottomTabParamList = {
   ViewStoreScreen: undefined;
   EditProductScreen: undefined;
   StatisticsScreen: undefined;
-  AddProductScreenMethod: undefined;
   FoodCategoryScreen: undefined;
   ProductWithISBN: undefined;
   AddExtraScreen: undefined;
@@ -37,4 +36,5 @@ export type DrawerStackParamList = {
   SettingsScreen: undefined;
   HelpScreen: undefined;
   LogoutScreen: undefined;
+  AddProductScreenMethod: undefined;
 };

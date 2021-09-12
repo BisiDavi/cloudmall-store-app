@@ -1,4 +1,4 @@
- import React from "react";
+import React from "react";
 import { ListItem, Avatar } from "react-native-elements";
 import { View, Text, StyleSheet } from "react-native";
 import sidebarContent from "@json/sidebar.json";
@@ -10,8 +10,10 @@ const Sidebar = () => {
   }
   return (
     <View>
-      <Avatar avatarStyle={styles.avatar} rounded />
-      <Text>Muhammad</Text>
+      <View>
+        <Avatar avatarStyle={styles.avatar} rounded />
+        <Text>Muhammad</Text>
+      </View>
       <View style={styles.listView}>
         {sidebarContent.map((sidebarLink, index) => (
           <ListItem

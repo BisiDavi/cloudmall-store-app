@@ -8,7 +8,7 @@ export { default as StoreDetailsScreenThree } from "@screens/UploadStoreImageScr
 export { default as AddProductScreen } from "@screens/AddProductScreen";
 
 export { default as DashboardScreen } from "@screens/DashboardScreen";
-export { default as MyStoreScreen } from "@screens/ProductScreen";
+export { default as ProductScreen } from "@screens/ProductScreen";
 export { default as OrdersScreen } from "@screens/OrdersScreen";
 export { default as ProfileScreen } from "@screens/ProfileScreen";
 export { default as ViewStoreScreen } from "@screens/ViewStoreScreen";

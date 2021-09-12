@@ -1,5 +1,9 @@
 [
   {
+    "name": "Orders",
+    "link": "BottomTab"
+  },
+  {
     "name": "My Store",
     "link": "MyStoreScreen"
   },

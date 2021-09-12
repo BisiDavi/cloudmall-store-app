@@ -13,7 +13,19 @@ const TabFourStack = createStackNavigator();
 export function TabOneNavigator() {
   return (
     <TabOneStack.Navigator
-      screenOptions={{ headerShown: true, headerTitleAlign: "center" }}
+      screenOptions={{
+        headerShown: true,
+        headerTitleAlign: "center",
+        headerLeft: () => (
+          <Image style={styles.menu} source={displayAsset("menuIcon")} />
+        ),
+        headerRight: () => (
+          <Image
+            style={styles.notificationIcon}
+            source={displayAsset("notificationIcon")}
+          />
+        ),
+      }}
     >
       {bottomTabContent.tabOne.map((tab, index) => (
         <TabOneStack.Screen
@@ -25,18 +37,6 @@ export function TabOneNavigator() {
               textAlign: "left",
             },
             title: tab.title,
-            headerLeft: () => (
-              <Image
-                style={styles.menu}
-                source={displayAsset("menuIcon")}
-              />
-            ),
-            headerRight: () => (
-              <Image
-                style={styles.notificationIcon}
-                source={displayAsset("notificationIcon")}
-              />
-            ),
           }}
           component={displayScreenComponent(tab.name)}
         />
@@ -49,7 +49,20 @@ const TabTwoStack = createStackNavigator();
 
 export function TabTwoNavigator() {
   return (
-    <TabTwoStack.Navigator screenOptions={{ headerShown: false }}>
+    <TabTwoStack.Navigator
+      screenOptions={{
+        headerShown: false,
+        headerLeft: () => (
+          <Image style={styles.menu} source={displayAsset("menuIcon")} />
+        ),
+        headerRight: () => (
+          <Image
+            style={styles.notificationIcon}
+            source={displayAsset("notificationIcon")}
+          />
+        ),
+      }}
+    >
       {bottomTabContent.tabTwo.map((tab, index) => (
         <TabTwoStack.Screen
           name={tab.name}

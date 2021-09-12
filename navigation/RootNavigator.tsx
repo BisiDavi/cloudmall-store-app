@@ -10,11 +10,11 @@ import rootNavigationContent from "@json/root-navigation.json";
 import { hasTokenExpired, colors } from "@utils/.";
 import AuthContext from "@context/AuthContext";
 import { displayScreenComponent } from "@utils/displayScreenComponents";
-import BottomTabNavigator from "./BottomTabNavigator";
 import { setClientToken } from "@network/axiosInstance";
 import { RootState } from "@store/RootReducer";
 import { getsignedUserEmail } from "@utils/hasTokenExpired";
 import checkExistingStore from "@utils/checkExistingStore";
+import DrawerNavigation from "./DrawerNavigation";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -77,26 +77,21 @@ export default function RootNavigator() {
   return (
     <>
       <Spinner visible={state.isLoading} color="blue" />
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        {!isSignedIn && !completed ? (
-          <Stack.Group>
-            {rootNavigationContent.privatePage.map((item: any, index) =>
-              displayStackScreen(item, index)
-            )}
-            <Stack.Screen name="BottomNav" component={BottomTabNavigator} />
-          </Stack.Group>
-        ) : !isSignedIn && completed ? (
-          <Stack.Screen name="BottomNav" component={BottomTabNavigator} />
-        ) : (
-          rootNavigationContent.publicPage.map((item: any, index) =>
+      <DrawerNavigation />
+      {/* {!isSignedIn && !completed ? (
+        <>
+          {rootNavigationContent.privatePage.map((item: any, index) =>
             displayStackScreen(item, index)
-          )
-        )}
-      </Stack.Navigator>
+          )}
+          <BottomTabNavigator />
+        </>
+      ) : !isSignedIn && completed ? (
+        <BottomTabNavigator />
+      ) : (
+        rootNavigationContent.publicPage.map((item: any, index) =>
+          displayStackScreen(item, index)
+        )
+      )} */}
     </>
   );
 }

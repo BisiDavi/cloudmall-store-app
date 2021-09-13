@@ -16,7 +16,6 @@ type locationStatusType = {
 
 const Map = () => {
     const locationStatus: locationStatusType | any = useCurrentLocation();
-    console.log("locationStatus", locationStatus);
 
     const [cordinate, setCoordinate] = useState<any>({
         latitude: 0,
@@ -27,15 +26,14 @@ const Map = () => {
 
     useEffect(() => {
         if (locationStatus !== "Waiting.." || null) {
+            const parsedLocationStatus = JSON.parse(locationStatus);
             setCoordinate({
                 ...cordinate,
-                latitude: locationStatus.coords.latitude,
-                longitude: locationStatus.coords.longitude,
+                latitude: parsedLocationStatus.coords.latitude,
+                longitude: parsedLocationStatus.coords.longitude,
             });
         }
-    }, []);
-
-    console.log("cordinate", cordinate);
+    }, [locationStatus]);
 
     return (
         <>
@@ -58,7 +56,10 @@ const Map = () => {
                                 latitude: e.nativeEvent.coordinate,
                             });
                         }}
-                        coordinate={{ latitude: 7.4905, longitude: 4.5521 }}
+                        coordinate={{
+                            latitude: cordinate.latitude,
+                            longitude: cordinate.longitude,
+                        }}
                     />
                 </MapView>
             ) : (

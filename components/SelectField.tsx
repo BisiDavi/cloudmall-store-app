@@ -5,7 +5,7 @@ import colors from "@utils/colors";
 
 export default function SelectField({ content, ...props }: selectFieldProps) {
     function getPickerValue(item: any) {
-        const pickerValue = props.value ? item[content.value] : item.name;
+        const pickerValue = content.value ? item[content.value] : item.name;
         return pickerValue;
     }
     return (

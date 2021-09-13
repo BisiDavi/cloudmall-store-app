@@ -6,6 +6,7 @@ import {
     KeyboardAvoidingView,
     ScrollView,
     Platform,
+		FlatList,
     Dimensions,
 } from "react-native";
 import Map from "@components/Map";
@@ -33,7 +34,7 @@ export default function StoreAddressScreen({
                 <ScrollView>
                     <View style={styles.container}>
                         <View style={styles.textView}>
-                            <Text style={styles.title}>Stores Details</Text>
+                            <Text style={styles.title}>Stores Address</Text>
                         </View>
                         <Map />
                         <View style={styles.inputView}>

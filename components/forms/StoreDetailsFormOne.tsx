@@ -20,12 +20,9 @@ export default function StoreDetailsFormOne({ navigation }: any) {
 
     storeDetailsFormOne[4].options = storeCategory;
 
-    console.log("storeCategoryState", storeCategory);
-
     useEffect(() => {
         getStoreCategoriesRequest()
             .then((response) => {
-                console.log("category", response.data);
                 setStoreCategory(response.data.data);
             })
             .catch((error) => console.log("error", error?.response.data));

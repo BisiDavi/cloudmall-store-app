@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MapView, { LatLng, Marker, Region } from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 import { StyleSheet } from "react-native";
 import getDeviceDimensions from "@utils/getDeviceDimensions";
 import useCurrentLocation from "@hooks/useCurrentLocation";

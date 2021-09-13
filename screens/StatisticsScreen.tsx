@@ -3,7 +3,6 @@ import { StyleSheet, View, FlatList, Text } from "react-native";
 import { ListItem } from "react-native-elements";
 import DashboardChart from "@components/DashboardChart";
 import ordersStatisticsJson from "@json/statistics.json";
-import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 function StatisticsChart() {

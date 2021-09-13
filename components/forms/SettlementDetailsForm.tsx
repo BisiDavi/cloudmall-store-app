@@ -9,7 +9,7 @@ import { colors, screenNavigate } from "@utils/.";
 import settlementDetails from "@json/settlement-details.json";
 import DisplayFormElements from "@components/forms/DisplayFormElements";
 import { storeSettlementDetailsSchema } from "./StoreDetailsSchema";
-import { StoreSettlementAction } from "@store/StoreDetailsAction";
+import { StoreSettlementAction } from "@store/actions/StoreDetailsAction";
 import { RootState } from "@store/RootReducer";
 
 export default function SettlementDetailsForm({ navigation }: any) {

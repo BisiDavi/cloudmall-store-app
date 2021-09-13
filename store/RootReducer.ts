@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import { SetupStoreReducer } from "./SetupStoreReducer";
-import { StoreDetailsReducer } from "./StoreDetailsReducer";
+import { SetupStoreReducer } from "./reducers/SetupStoreReducer";
+import { StoreDetailsReducer } from "./reducers/StoreDetailsReducer";
 
 export const RootReducer = combineReducers({
   setupStore: SetupStoreReducer,

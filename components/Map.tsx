@@ -39,7 +39,7 @@ const Map = () => {
 
     return (
         <>
-            {locationStatus === "Waiting.." ? (
+            {locationStatus !== "Waiting.." ? (
                 <MapView
                     style={styles.map}
                     initialRegion={cordinate}

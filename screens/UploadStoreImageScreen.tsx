@@ -13,7 +13,7 @@ import UploadIcon from "@assets/upload.png";
 import colors from "@utils/colors";
 import { RootState } from "@store/RootReducer";
 import ProgressIndicator from "@components/ProgressIndicator";
-import { StoreImageUploadAction } from "@store/StoreDetailsAction";
+import { StoreImageUploadAction } from "@store/actions/StoreDetailsAction";
 import postStoreRequest from "@utils/postStoreRequest";
 
 export default function UploadStoreImageScreen({

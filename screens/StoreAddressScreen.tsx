@@ -6,7 +6,7 @@ import {
     KeyboardAvoidingView,
     ScrollView,
     Platform,
-		FlatList,
+    FlatList,
     Dimensions,
 } from "react-native";
 import Map from "@components/Map";
@@ -36,10 +36,10 @@ export default function StoreAddressScreen({
                         <View style={styles.textView}>
                             <Text style={styles.title}>Stores Address</Text>
                         </View>
-											<Map />
+                        <Map />
                         <View style={styles.inputView}>
                             <Text style={styles.text}>Address of Store</Text>
-                            {/*<GoogleAutoCompleteInput placeholder="Choose your location on the map" />*/}
+                            <GoogleAutoCompleteInput placeholder="Choose your location on the map" />
                             <View style={styles.buttonView}>
                                 <Button
                                     buttonStyle={styles.button}

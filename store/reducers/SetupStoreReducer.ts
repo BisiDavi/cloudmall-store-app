@@ -1,5 +1,5 @@
-import { STOREDETAILS_PAGE } from "./constant";
-import { setupStorePayloadType } from "./SetupStoreAction";
+import { STOREDETAILS_PAGE } from "../constant";
+import { setupStorePayloadType } from "../actions/SetupStoreAction";
 
 export function SetupStoreReducer(
   state = {

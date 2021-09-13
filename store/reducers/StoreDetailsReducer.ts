@@ -6,7 +6,7 @@ import {
     STORE_SETTLEMENT_DETAILS,
     STORE_IMAGE_UPLOAD,
     STORE_LOGO_UPLOAD,
-} from "./constant";
+} from "../constant";
 
 export function StoreDetailsReducer(
     state = {

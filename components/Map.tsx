@@ -4,6 +4,8 @@ import { StyleSheet, View } from "react-native";
 import getDeviceDimensions from "@utils/getDeviceDimensions";
 import useCurrentLocation from "@hooks/useCurrentLocation";
 import LoadingActivityIndicator from "./LoadingActivityIndicator";
+import { useDispatch } from "react-redux";
+import { GetUserCoordinateAction } from "@store/actions/UserCoordinateAction";
 
 const { deviceHeight, deviceWidth } = getDeviceDimensions();
 
@@ -16,7 +18,7 @@ type locationStatusType = {
 
 const Map = () => {
     const locationStatus: locationStatusType | any = useCurrentLocation();
-
+    const dispatch = useDispatch();
     const [cordinate, setCoordinate] = useState<any>({
         latitude: 0,
         longitude: 0,
@@ -27,6 +29,7 @@ const Map = () => {
     useEffect(() => {
         if (locationStatus !== "Waiting.." || null) {
             const parsedLocationStatus = JSON.parse(locationStatus);
+            dispatch(GetUserCoordinateAction(cordinate));
             setCoordinate({
                 ...cordinate,
                 latitude: parsedLocationStatus.coords.latitude,

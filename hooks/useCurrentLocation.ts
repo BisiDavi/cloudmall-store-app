@@ -3,6 +3,11 @@ import * as Location from "expo-location";
 
 type locationType = null | Location.LocationObject;
 type errorMsgType = null | string;
+type coordsType = {
+    latitude: string;
+    longitude: string;
+};
+type locationStatusType = { coords: coordsType } | string | undefined;
 
 export default function useCurrentLocation() {
     const [location, setLocation] = useState<locationType>(null);
@@ -24,12 +29,12 @@ export default function useCurrentLocation() {
 
     console.log("location", location);
 
-    let locationStatus = "Waiting..";
+    let locationStatus: locationStatusType = "Waiting..";
     if (errorMsg) {
         locationStatus = errorMsg;
     } else if (location) {
         locationStatus = JSON.stringify(location);
     }
 
-    return { locationStatus };
+    return locationStatus;
 }

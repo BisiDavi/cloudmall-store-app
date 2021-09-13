@@ -33,15 +33,8 @@
     {
         "label": "Store Category",
         "type": "select",
-        "options": [
-            { "name": "Restaurant", "enabled": true },
-            { "name": "Super Market", "enabled": true },
-            { "name": "Raw food", "enabled": true },
-            { "name": "Pharmacy", "enabled": true },
-            { "name": "Drinks", "enabled": true },
-            { "name": "Finger food", "enabled": true },
-            { "name": "Pet food", "enabled": true }
-        ],
+        "options": [],
+				"value":"_id",
         "name": "category"
     },
     {
@@ -73,21 +66,21 @@
                 "name": "opensAt",
                 "label": "Opens At",
                 "options": [
-                    { "name": "24 hours", "enabled": true },
-                    { "name": "7:00 am", "enabled": true },
-                    { "name": "8:00 am", "enabled": true },
-                    { "name": "9:00 am", "enabled": true },
-                    { "name": "10:00 am", "enabled": true }
+                    { "name": "24 hours" },
+                    { "name": "7:00 am" },
+                    { "name": "8:00 am" },
+                    { "name": "9:00 am" },
+                    { "name": "10:00 am" }
                 ]
             },
             {
                 "name": "closesAt",
                 "label": "Closes At",
                 "options": [
-                    { "name": "7:00 pm", "enabled": true },
-                    { "name": "8:00 pm", "enabled": true },
-                    { "name": "9:00 pm", "enabled": true },
-                    { "name": "10:00 pm", "enabled": true }
+                    { "name": "7:00 pm" },
+                    { "name": "8:00 pm" },
+                    { "name": "9:00 pm" },
+                    { "name": "10:00 pm" }
                 ]
             }
         ]

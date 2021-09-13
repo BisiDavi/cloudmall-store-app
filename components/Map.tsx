@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MapView, { Marker } from "react-native-maps";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import getDeviceDimensions from "@utils/getDeviceDimensions";
 import useCurrentLocation from "@hooks/useCurrentLocation";
 import LoadingActivityIndicator from "./LoadingActivityIndicator";
@@ -62,7 +62,9 @@ const Map = () => {
                     />
                 </MapView>
             ) : (
-                <LoadingActivityIndicator />
+                <View style={styles.loadingView}>
+                    <LoadingActivityIndicator />
+                </View>
             )}
         </>
     );
@@ -74,6 +76,9 @@ const styles = StyleSheet.create({
         width: deviceWidth,
         backgroundColor: "#C4C4C4",
         flex: 1,
+    },
+    loadingView: {
+        height: deviceHeight * 0.6,
     },
 });
 

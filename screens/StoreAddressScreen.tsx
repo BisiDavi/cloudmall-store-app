@@ -36,7 +36,7 @@ export default function StoreAddressScreen({
                         <View style={styles.textView}>
                             <Text style={styles.title}>Stores Address</Text>
                         </View>
-                        <Map />
+											<Map />
                         <View style={styles.inputView}>
                             <Text style={styles.text}>Address of Store</Text>
                             {/*<GoogleAutoCompleteInput placeholder="Choose your location on the map" />*/}

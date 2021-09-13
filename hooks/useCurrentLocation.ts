@@ -22,7 +22,10 @@ export default function useCurrentLocation() {
             }
 
             let location: Location.LocationObject =
-                await Location.getCurrentPositionAsync({});
+                await Location.getCurrentPositionAsync({
+                    accuracy: Location.Accuracy.Lowest,
+                });
+
             setLocation(location);
         })();
     }, []);

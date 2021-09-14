@@ -50,13 +50,12 @@ interface selectFieldProps {
     content: {
         label?: string;
         options: any;
-        value: string;
+        value?: string;
     };
     selectedValue?: any;
     onValueChange?: any;
     error?: string;
     style?: any;
-    value?: string;
 }
 
 const styles = StyleSheet.create({

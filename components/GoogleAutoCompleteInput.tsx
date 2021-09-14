@@ -8,7 +8,7 @@ import { RootState } from "@store/RootReducer";
 const GoogleAutoCompleteInput = ({
     placeholder,
 }: GoogleAutoCompleteInputProps) => {
-    const { latitude, longtitude } = useSelector(
+    const { latitude, longitude } = useSelector(
         (state: RootState) => state.coordinates,
     );
     function googlePlaceAutocomplete(data: any, details: any = null) {
@@ -17,13 +17,14 @@ const GoogleAutoCompleteInput = ({
     }
     const currentLocation = {
         description: "currentLocation",
-        geometry: { location: { lat: latitude, lng: longtitude } },
+        geometry: { location: { lat: latitude, lng: longitude } },
     };
     return (
         <GooglePlacesAutocomplete
             placeholder={placeholder}
             onPress={googlePlaceAutocomplete}
             currentLocation={true}
+            fetchDetails={true}
             currentLocationLabel="Your current location"
             predefinedPlaces={[currentLocation]}
             query={{
@@ -36,8 +37,9 @@ const GoogleAutoCompleteInput = ({
                     borderColor: colors.mallBlue3,
                     borderWidth: 1,
                     borderRadius: 5,
-                    height: 48,
+                    //height: 38,
                     margin: 10,
+                    marginBottom: 0,
                 },
             }}
         />

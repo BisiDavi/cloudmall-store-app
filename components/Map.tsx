@@ -29,7 +29,11 @@ const Map = () => {
     useEffect(() => {
         if (locationStatus !== "Waiting.." || null) {
             const parsedLocationStatus = JSON.parse(locationStatus);
-            dispatch(GetUserCoordinateAction(cordinate));
+            console.log(
+                "parsedLocationStatus.coords",
+                parsedLocationStatus.coords,
+            );
+            dispatch(GetUserCoordinateAction(parsedLocationStatus.coords));
             setCoordinate({
                 ...cordinate,
                 latitude: parsedLocationStatus.coords.latitude,

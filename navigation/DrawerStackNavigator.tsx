@@ -1,7 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import drawerStackJson from "@json/drawer-stack.json";
-import { displayScreenComponent, colors, HeaderIcon } from "@utils/.";
+import { colors, HeaderIcon } from "@utils/.";
+import displayScreenComponent from "@utils/displayScreenComponents";
 
 const DrawerStackOne = createStackNavigator();
 const DrawerStackTwo = createStackNavigator();

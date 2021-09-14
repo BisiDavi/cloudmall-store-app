@@ -4,7 +4,6 @@ import {
     StyleSheet,
     View,
     KeyboardAvoidingView,
-    ScrollView,
     Platform,
     FlatList,
     Dimensions,
@@ -19,6 +18,30 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const { deviceHeight, deviceWidth } = getDeviceDimensions();
 
+function MapView() {
+    return (
+        <View style={styles.mapView}>
+            <Map />
+        </View>
+    );
+}
+
+function RenderGoogleInput(nextPageHandler: () => void) {
+    return (
+        <View style={styles.renderGoogleInputView}>
+            <Text style={styles.text}>Address of Store</Text>
+            <GoogleAutoCompleteInput placeholder="Choose your location on the map" />
+            <View style={styles.buttonView}>
+                <Button
+                    buttonStyle={styles.button}
+                    onPress={nextPageHandler}
+                    title="Confirm Address"
+                />
+            </View>
+        </View>
+    );
+}
+
 export default function StoreAddressScreen({
     navigation,
 }: StackScreenProps<RootStackParamList, "StoreAddressScreen">) {
@@ -26,39 +49,42 @@ export default function StoreAddressScreen({
         navigation.navigate("StoreDetailsScreenTwo");
     }
     return (
-        <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            enabled={true}
-        >
-            <SafeAreaView>
-                <ScrollView>
-                    <View style={styles.container}>
-                        <View style={styles.textView}>
-                            <Text style={styles.title}>Stores Address</Text>
-                        </View>
-                        <Map />
-                        <View style={styles.inputView}>
-                            <Text style={styles.text}>Address of Store</Text>
-                            <GoogleAutoCompleteInput placeholder="Choose your location on the map" />
-                            <View style={styles.buttonView}>
-                                <Button
-                                    buttonStyle={styles.button}
-                                    onPress={nextPageHandler}
-                                    title="Confirm Address"
-                                />
-                            </View>
-                        </View>
+        <SafeAreaView style={styles.safeView}>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+                enabled={true}
+                style={styles.safeView}
+            >
+                <View style={styles.container}>
+                    <View style={styles.textView}>
+                        <Text style={styles.title}>Stores Address</Text>
                     </View>
-                </ScrollView>
-            </SafeAreaView>
-        </KeyboardAvoidingView>
+                    <FlatList
+                        style={styles.safeView}
+                        data={null}
+                        keyboardShouldPersistTaps={"always"}
+                        ListHeaderComponent={<MapView />}
+                        ListFooterComponent={RenderGoogleInput(nextPageHandler)}
+                        renderItem={null}
+                        ListFooterComponentStyle={styles.footerComponentStyle}
+                    />
+                </View>
+            </KeyboardAvoidingView>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
+    safeView: {
+        flex: 1,
+    },
+    scrollView: {
+        justifyContent: "center",
+    },
     container: {
         flex: 1,
         justifyContent: "flex-start",
+        flexDirection: "column",
         backgroundColor: colors.neutralWhite,
         padding: 0,
     },
@@ -67,18 +93,23 @@ const styles = StyleSheet.create({
         fontFamily: "RobotoRegular",
         marginLeft: 10,
     },
+    mapView: {
+        height: deviceHeight * 0.5,
+        width: deviceWidth,
+        backgroundColor: colors.neutral3,
+        flexDirection: "column",
+        alignItems: "center",
+    },
     inputView: {
         padding: 20,
         paddingTop: 10,
-        display: "flex",
+        paddingBottom: 0,
         justifyContent: "flex-start",
         flexDirection: "column",
         width: deviceWidth,
         backgroundColor: "white",
-        height: deviceHeight * 0.3,
     },
     button: {
-        display: "flex",
         width: deviceWidth * 0.6,
         backgroundColor: colors.mallBlue5,
     },
@@ -87,7 +118,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         height: deviceHeight * 0.2,
         justifyContent: "center",
-        marginTop: 30,
+        marginTop: 0,
     },
     title: {
         color: colors.cloudOrange5,
@@ -102,5 +133,13 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         backgroundColor: colors.neutralWhite,
         width: Dimensions.get("window").width,
+    },
+    footerComponentStyle: {
+        padding: 20,
+        justifyContent: "flex-start",
+    },
+    renderGoogleInputView: {
+        flexDirection: "column",
+        justifyContent: "flex-start",
     },
 });

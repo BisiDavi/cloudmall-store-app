@@ -40,9 +40,7 @@ export default function StoreDetailsFormOne({ navigation }: any) {
                         phone: "",
                         address: "",
                         category: "",
-                        weekdays: "",
-                        saturday: "",
-                        sunday: "",
+                        
                     }}
                     onSubmit={(values) => {
                         setLoading(true);
@@ -73,6 +71,7 @@ export default function StoreDetailsFormOne({ navigation }: any) {
                                     touched={touched}
                                 />
                             ))}
+                            {console.log("formik values", values)}
                             <View style={styles.buttonView}>
                                 <Button
                                     buttonStyle={styles.buttonStyle}

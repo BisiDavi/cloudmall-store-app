@@ -75,18 +75,7 @@ function FormElements(props: displayFormElementsProps) {
             return <SwitchFields content={formElement} />;
         }
         case "switch&Time": {
-            return (
-                <SwitchfieldTimefield
-                    content={formElement}
-                    onValueChange={props.handleChange(formElement.name)}
-                    selectedValue={props.values[formElement.name]}
-                    error={
-                        props.errors[formElement.name] &&
-                        props.touched[formElement.name] &&
-                        props.errors[formElement.name]
-                    }
-                />
-            );
+            return <SwitchfieldTimefield content={formElement} />;
         }
         default:
             return null;

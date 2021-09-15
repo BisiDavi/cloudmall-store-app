@@ -12,7 +12,7 @@ type TimeAndSwitchFieldType = {
     time: [{ name: string; label: string; options: { name: string }[] }];
 };
 interface TimeAndSwitchField {
-    content: TimeAndSwitchFieldType;
+    field: TimeAndSwitchFieldType;
 }
 
 interface SwitchFieldsProps {
@@ -21,39 +21,74 @@ interface SwitchFieldsProps {
         label?: string;
         fields?: TimeAndSwitchFieldType[];
     };
-    onValueChange: () => void;
-    selectedValue: () => void;
-    error: any;
 }
 
-function TimeAndSwitchField({ content }: TimeAndSwitchField) {
+type stateType = {
+    weekDays: { opensAt: string; closesAt: string } | boolean;
+    saturday: { opensAt: string; closesAt: string } | boolean;
+    sunday: { opensAt: string; closesAt: string } | boolean;
+};
+
+function TimeAndSwitchField(props: TimeAndSwitchField) {
+    const { field } = props;
     const [open, setOpen] = useState(false);
+    const [openDays, setOpenDays] = useState<stateType>({
+        weekDays: { opensAt: "", closesAt: "" },
+        saturday: { opensAt: "", closesAt: "" },
+        sunday: { opensAt: "", closesAt: "" },
+    });
+
+    function handleSelect(switchName: string) {
+        console.log("field.switch.label", field.switch.name);
+        console.log("switchName", switchName);
+        console.log(" ");
+
+        setOpenDays((prevState) => {
+            return {
+                ...prevState,
+                [field.switch.name]: { opensAt: switchName, closesAt: "" },
+            };
+        });
+        console.log("openDays", openDays);
+    }
     const textColor = open ? styles.open : styles.close;
+
+    function handleSwitchChange() {
+        setOpen((prevState) => !prevState);
+    }
+
     return (
         <View>
             <View style={styles.switchView}>
-                <Text style={styles.switchText}>{content.switch.label}</Text>
+                <Text style={styles.switchText}>{field.switch.label}</Text>
                 <Switch
                     color={colors.mallBlue5}
                     value={open}
-                    onValueChange={() => setOpen(!open)}
+                    onValueChange={handleSwitchChange}
                 />
                 <Text style={{ ...textColor, ...styles.switchText }}>
                     {open ? "Open" : "Close"}
                 </Text>
             </View>
-            {open && <SelectGroup content={content.time} />}
+            {open && (
+                <SelectGroup
+                    durationName={field.switch.name}
+                    selectField={field?.time}
+                    {...props}
+                />
+            )}
         </View>
     );
 }
 
 export default function SwitchfieldTimefield(props: SwitchFieldsProps) {
-    const { content, onValueChange, selectedValue, error } = props;
+    const { content } = props;
+
     return (
         <View style={styles.SwitchFields}>
             <Text style={styles.label}>{content.label}</Text>
             {content.fields?.map((item, index) => (
-                <TimeAndSwitchField content={item} key={index} />
+                <TimeAndSwitchField key={index} field={item} {...props} />
             ))}
         </View>
     );

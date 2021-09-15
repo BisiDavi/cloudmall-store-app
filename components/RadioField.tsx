@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { RadioButton } from "react-native-paper";
-import { Image } from "react-native-elements";
 import { useDispatch } from "react-redux";
 import { colors, displayAsset } from "@utils/.";
 import { StoreDetailsTypeAction } from "@store/actions/StoreDetailsAction";
@@ -18,10 +17,7 @@ export default function RadioField({ content, error }: RadioFieldProps) {
         <View style={styles.storeType}>
             <View style={styles.typeView}>
                 <Text style={styles.storeTypeText}>{content.label}</Text>
-                <Image
-                    source={displayAsset(content?.iconName)}
-                    style={styles.iconImage}
-                />
+                {displayAsset(content.iconName)}
             </View>
             <View style={styles.radioFields}>
                 {content.fields?.map((item: itemType, index: number) => (

@@ -62,7 +62,8 @@ export default function StoreAddressScreen({
                     <FlatList
                         style={styles.safeView}
                         data={null}
-                        keyboardShouldPersistTaps={"always"}
+                        removeClippedSubviews={false}
+                        keyboardShouldPersistTaps={"handled"}
                         ListHeaderComponent={<MapView />}
                         ListFooterComponent={RenderGoogleInput(nextPageHandler)}
                         renderItem={null}
@@ -77,6 +78,7 @@ export default function StoreAddressScreen({
 const styles = StyleSheet.create({
     safeView: {
         flex: 1,
+        height: "100%",
     },
     scrollView: {
         justifyContent: "center",
@@ -94,7 +96,6 @@ const styles = StyleSheet.create({
         marginLeft: 10,
     },
     mapView: {
-        height: deviceHeight * 0.5,
         width: deviceWidth,
         backgroundColor: colors.neutral3,
         flexDirection: "column",

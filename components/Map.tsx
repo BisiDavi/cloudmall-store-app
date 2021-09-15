@@ -4,8 +4,9 @@ import { StyleSheet, View } from "react-native";
 import getDeviceDimensions from "@utils/getDeviceDimensions";
 import useCurrentLocation from "@hooks/useCurrentLocation";
 import LoadingActivityIndicator from "./LoadingActivityIndicator";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { GetUserCoordinateAction } from "@store/actions/UserCoordinateAction";
+import { RootState } from "@store/RootReducer";
 
 const { deviceHeight, deviceWidth } = getDeviceDimensions();
 
@@ -18,13 +19,19 @@ type locationStatusType = {
 
 const Map = () => {
     const locationStatus: locationStatusType | any = useCurrentLocation();
+    const { longitude, latitude } = useSelector(
+        (state: RootState) => state.coordinates,
+    );
+
     const dispatch = useDispatch();
-    const [cordinate, setCoordinate] = useState<any>({
-        latitude: 0,
-        longitude: 0,
+    const [coordinate, setCoordinate] = useState<any>({
+        latitude: latitude,
+        longitude: longitude,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
     });
+
+    console.log("user coordinate", coordinate);
 
     useEffect(() => {
         if (locationStatus !== "Waiting.." || null) {
@@ -35,7 +42,7 @@ const Map = () => {
             );
             dispatch(GetUserCoordinateAction(parsedLocationStatus.coords));
             setCoordinate({
-                ...cordinate,
+                ...coordinate,
                 latitude: parsedLocationStatus.coords.latitude,
                 longitude: parsedLocationStatus.coords.longitude,
             });
@@ -44,28 +51,27 @@ const Map = () => {
 
     return (
         <>
-            {locationStatus !== "Waiting.." ? (
+            {locationStatus !== "Waiting.." || coordinate.latitude !== 0 ? (
                 <MapView
                     style={styles.map}
-                    initialRegion={cordinate}
+                    initialRegion={coordinate}
                     showsUserLocation
-                    onRegionChangeComplete={(cordinate) => {
-                        console.log("cordinate", cordinate);
-                        setCoordinate({ ...cordinate });
-                    }}
+                    onRegionChangeComplete={(coordinate) =>
+                        setCoordinate({ ...coordinate })
+                    }
                 >
                     <Marker
                         draggable
                         onDragEnd={(e) => {
                             console.log("onDragEnd", e.nativeEvent.coordinate);
                             setCoordinate({
-                                ...cordinate,
+                                ...coordinate,
                                 latitude: e.nativeEvent.coordinate,
                             });
                         }}
                         coordinate={{
-                            latitude: cordinate.latitude,
-                            longitude: cordinate.longitude,
+                            latitude: coordinate.latitude,
+                            longitude: coordinate.longitude,
                         }}
                     />
                 </MapView>
@@ -80,10 +86,11 @@ const Map = () => {
 
 const styles = StyleSheet.create({
     map: {
-        height: deviceHeight * 0.6,
         width: deviceWidth,
         backgroundColor: "#C4C4C4",
         flex: 1,
+        height: deviceHeight * 0.5,
+
     },
     loadingView: {
         height: deviceHeight * 0.6,

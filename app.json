@@ -1,43 +1,44 @@
 {
-  "expo": {
-    "name": "cloudmallStore",
-    "slug": "cloudmall-Store",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "scheme": "cloudmall-stores-app",
-    "userInterfaceStyle": "automatic",
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": ["**/**/*"],
-    "ios": {
-      "bundleIdentifier": "cloudmall.stores.app",
-      "buildNumber": "1.0.0",
-      "supportsTablet": true,
-      "splash": {
-        "image": "./assets/ios/splash@3x.png",
-        "resizeMode": "cover"
-      }
-    },
-    "android": {
-      "package": "cloudmall.stores.app",
-      "versionCode": 1,
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
-      "splash": {
-        "hdpi": "./assets/android/drawable-hdpi/splash.png",
-        "mdpi": "./assets/android/drawable-mdpi/splash.png",
-        "xhdpi": "./assets/android/drawable-xhdpi/splash.png",
-        "xxhdpi": "./assets/android/drawable-xxhdpi/splash.png",
-        "xxxhdpi": "./assets/android/drawable-xxxhdpi/splash.png",
-        "resizeMode": "cover"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "expo": {
+        "name": "cloudmallStore",
+        "slug": "cloudmall-Store",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/icon.png",
+        "scheme": "cloudmall-stores-app",
+        "userInterfaceStyle": "automatic",
+        "updates": {
+            "fallbackToCacheTimeout": 0
+        },
+        "assetBundlePatterns": ["**/**/*"],
+        "ios": {
+            "bundleIdentifier": "cloudmall.stores.app",
+            "buildNumber": "1.0.0",
+            "supportsTablet": true,
+            "splash": {
+                "image": "./assets/ios/splash@3x.png",
+                "resizeMode": "cover"
+            }
+        },
+        "android": {
+            "package": "cloudmall.stores.app",
+            "versionCode": 1,
+            "permissions": ["ACCESS_BACKGROUND_LOCATION"],
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon.png",
+                "backgroundColor": "#FFFFFF"
+            },
+            "splash": {
+                "hdpi": "./assets/android/drawable-hdpi/splash.png",
+                "mdpi": "./assets/android/drawable-mdpi/splash.png",
+                "xhdpi": "./assets/android/drawable-xhdpi/splash.png",
+                "xxhdpi": "./assets/android/drawable-xxhdpi/splash.png",
+                "xxxhdpi": "./assets/android/drawable-xxxhdpi/splash.png",
+                "resizeMode": "cover"
+            }
+        },
+        "web": {
+            "favicon": "./assets/favicon.png"
+        }
     }
-  }
 }

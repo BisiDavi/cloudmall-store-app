@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
@@ -11,10 +11,12 @@ import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import { storeSettlementDetailsSchema } from "./StoreDetailsSchema";
 import { StoreSettlementAction } from "@store/actions/StoreDetailsAction";
 import { RootState } from "@store/RootReducer";
+import { getBanksRequest } from "@network/getRequest";
 
 export default function SettlementDetailsForm({ navigation }: any) {
     const [loading, setLoading] = useState(false);
-    const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
+    const { onBoardingNextScreen } = useStoreSetupNavigation();
+    const [banks, setBanks] = useState([]);
     const dispatch = useDispatch();
     const state = useSelector((state: RootState) => state.storeDetails);
     console.log("SettlementDetailsForm", state);
@@ -22,6 +24,23 @@ export default function SettlementDetailsForm({ navigation }: any) {
     function skipHandler() {
         return screenNavigate(3, navigation);
     }
+
+    settlementDetails[1].options = banks;
+
+    console.log("settlementDetails banks", banks);
+
+    useEffect(() => {
+        getBanksRequest()
+            .then((response) => {
+                console.log(
+                    "settlementDetails response.data.data",
+                    response.data.data,
+                );
+
+                setBanks(response.data.data);
+            })
+            .catch((error) => console.log("error", error.response.data));
+    }, []);
 
     return (
         <View style={styles.form}>

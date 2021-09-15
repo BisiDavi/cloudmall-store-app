@@ -16,12 +16,12 @@ export default function SettlementDetailsScreen({
     navigation,
 }: StackScreenProps<RootStackParamList, "SettlementDetailsScreen">) {
     return (
-        <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            enabled={true}
-            style={styles.view}
-        >
-            <SafeAreaView style={styles.view}>
+        <SafeAreaView style={styles.view}>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+                enabled={true}
+                style={styles.view}
+            >
                 <ScrollView style={styles.view}>
                     <View style={styles.container}>
                         <ProgressIndicator
@@ -31,8 +31,8 @@ export default function SettlementDetailsScreen({
                         <SettlementDetailsForm navigation={navigation} />
                     </View>
                 </ScrollView>
-            </SafeAreaView>
-        </KeyboardAvoidingView>
+            </KeyboardAvoidingView>
+        </SafeAreaView>
     );
 }
 

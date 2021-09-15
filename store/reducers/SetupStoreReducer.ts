@@ -9,7 +9,7 @@ export function SetupStoreReducer(
     action: actionType,
 ) {
     const { payload, type } = action;
-    console.log("SetupStoreReducer", SetupStoreReducer);
+    console.log("SetupStoreReducer state", state);
     switch (type) {
         case STOREDETAILS_PAGE: {
             return {

@@ -7,7 +7,7 @@
     },
     {
         "label": "Phone Number*",
-        "placeholder": "yourr phone number",
+        "placeholder": "your phone number",
         "name": "ownerPhone",
         "type": "input",
         "keyboardType": "numeric"

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MapView, { Marker } from "react-native-maps";
 import { StyleSheet, View } from "react-native";
+import * as Location from "expo-location";
 import getDeviceDimensions from "@utils/getDeviceDimensions";
 import useCurrentLocation from "@hooks/useCurrentLocation";
 import LoadingActivityIndicator from "./LoadingActivityIndicator";
@@ -22,7 +23,7 @@ const Map = () => {
     const { longitude, latitude } = useSelector(
         (state: RootState) => state.coordinates,
     );
-
+    Location.installWebGeolocationPolyfill();
     const dispatch = useDispatch();
     const [coordinate, setCoordinate] = useState<any>({
         latitude: latitude,
@@ -55,7 +56,7 @@ const Map = () => {
                 <MapView
                     style={styles.map}
                     initialRegion={coordinate}
-                    showsUserLocation
+                    showsUserLocation={true}
                     onRegionChangeComplete={(coordinate) =>
                         setCoordinate({ ...coordinate })
                     }
@@ -90,7 +91,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#C4C4C4",
         flex: 1,
         height: deviceHeight * 0.5,
-
     },
     loadingView: {
         height: deviceHeight * 0.6,

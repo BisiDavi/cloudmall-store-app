@@ -3,6 +3,7 @@ import { GET_USER_COORDINATES } from "@store/constant";
 type payloadType = {
     latitude: number;
     longitude: number;
+    landmark?: string;
 };
 
 type dispatchType = {
@@ -18,6 +19,7 @@ export const GetUserCoordinateAction =
             payload: {
                 latitude: payload.latitude,
                 longitude: payload.longitude,
+                landmark: payload?.landmark,
             },
         });
     };

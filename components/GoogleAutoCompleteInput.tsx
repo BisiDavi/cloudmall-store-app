@@ -1,48 +1,58 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { useSelector } from "react-redux";
-import * as Location from "expo-location";
+import { useDispatch } from "react-redux";
 import { colors } from "@utils/.";
 import { GOOGLE_MAP_API_KEY } from "@env";
-import { RootState } from "@store/RootReducer";
+import { GetUserCoordinateAction } from "@store/actions/UserCoordinateAction";
 
 const GoogleAutoCompleteInput = ({
     placeholder,
 }: GoogleAutoCompleteInputProps) => {
-    const [position, setPosition] = useState(null);
-    const { latitude, longitude } = useSelector(
-        (state: RootState) => state.coordinates,
-    );
-    Location.installWebGeolocationPolyfill();
-
-    useEffect(() => {
-        window.navigator.geolocation.getCurrentPosition(setPosition);
-    }, []);
-
+    const dispatch = useDispatch();
     function googlePlaceAutocomplete(data: any, details: any = null) {
-        console.log("data", data);
-        console.log("details", details);
+        console.log("data GoogleAutoCompleteInput", data);
+        console.log("details GoogleAutoCompleteInput", details);
+        console.log(
+            "location GoogleAutoCompleteInput",
+            JSON.stringify(details.geometry.location),
+        );
+        const { lat, lng } = details.geometry.location;
+        dispatch(
+            GetUserCoordinateAction({
+                latitude: lat,
+                longitude: lng,
+                landmark: data?.description,
+            }),
+        );
     }
-    const currentLocation = {
-        description: "currentLocation",
-        geometry: { location: { lat: latitude, lng: longitude } },
-    };
+
     return (
         <GooglePlacesAutocomplete
             placeholder={placeholder}
             onPress={googlePlaceAutocomplete}
-            currentLocation={true}
             fetchDetails={true}
-            currentLocationLabel="Your current location"
-            predefinedPlaces={[currentLocation]}
+            keyboardShouldPersistTaps={"handled"}
+            listUnderlayColor={"blue"}
+            minLength={1}
+            listViewDisplayed={"auto"}
+            predefinedPlacesAlwaysVisible={true}
+            filterReverseGeocodingByTypes={[
+                "locality",
+                "administrative_area_level_3",
+            ]}
+            GooglePlacesDetailsQuery={{
+                fields: "geometry",
+            }}
+            nearbyPlacesAPI="GooglePlacesSearch"
             query={{
                 language: "en",
                 key: GOOGLE_MAP_API_KEY,
-                components: "country:nigeria",
+                components: "country:ng",
             }}
             onFail={(error) =>
                 console.error("GoogleAutoCompleteInput error", error)
             }
+            debounce={200}
             styles={{
                 textInputContainer: {
                     borderColor: colors.mallBlue3,
@@ -50,6 +60,18 @@ const GoogleAutoCompleteInput = ({
                     borderRadius: 5,
                     margin: 10,
                     marginBottom: 0,
+                },
+                listView: {
+                    borderWidth: 1,
+                    borderColor: "#ddd",
+                    backgroundColor: "#fff",
+                    marginHorizontal: 20,
+                    elevation: 5,
+                    shadowColor: "#000",
+                    shadowOpacity: 0.1,
+                    shadowOffset: { x: 0, y: 0 },
+                    shadowRadius: 15,
+                    marginTop: 10,
                 },
             }}
         />

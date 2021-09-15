@@ -87,7 +87,7 @@ export default function DisplayFormElements({
 interface displayFormElementsProps {
     formElement: {
         name: string;
-        label: any;
+        label?: any;
         placeholder?: string;
         fields?: any;
         type: string;

@@ -62,13 +62,17 @@
                             { "name": "7:00 am" },
                             { "name": "8:00 am" },
                             { "name": "9:00 am" },
-                            { "name": "10:00 am" }
+                            { "name": "10:00 am" },
+                            { "name": "11:00 am" },
+                            { "name": "12:00 noon" }
                         ]
                     },
                     {
                         "name": "closesAt",
                         "label": "Closes At",
                         "options": [
+                            { "name": "5:00 pm" },
+                            { "name": "6:00 pm" },
                             { "name": "7:00 pm" },
                             { "name": "8:00 pm" },
                             { "name": "9:00 pm" },
@@ -88,13 +92,17 @@
                             { "name": "7:00 am" },
                             { "name": "8:00 am" },
                             { "name": "9:00 am" },
-                            { "name": "10:00 am" }
+                            { "name": "10:00 am" },
+                            { "name": "11:00 am" },
+                            { "name": "12:00 noon" }
                         ]
                     },
                     {
                         "name": "closesAt",
                         "label": "Closes At",
                         "options": [
+                            { "name": "5:00 pm" },
+                            { "name": "6:00 pm" },
                             { "name": "7:00 pm" },
                             { "name": "8:00 pm" },
                             { "name": "9:00 pm" },
@@ -114,56 +122,23 @@
                             { "name": "7:00 am" },
                             { "name": "8:00 am" },
                             { "name": "9:00 am" },
-                            { "name": "10:00 am" }
+                            { "name": "10:00 am" },
+                            { "name": "11:00 am" },
+                            { "name": "12:00 noon" }
                         ]
                     },
                     {
                         "name": "closesAt",
                         "label": "Closes At",
                         "options": [
+                            { "name": "5:00 pm" },
+                            { "name": "6:00 pm" },
                             { "name": "7:00 pm" },
                             { "name": "8:00 pm" },
                             { "name": "9:00 pm" },
                             { "name": "10:00 pm" }
                         ]
                     }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "openDays",
-        "label": "Open Days",
-        "type": "switch",
-        "fields": [
-            { "name": "weekDays", "label": "Week Days" },
-            { "name": "saturday", "label": "Saturday" },
-            { "name": "sunday", "label": "Sunday" }
-        ]
-    },
-    {
-        "name": "openTime",
-        "type": "select-group",
-        "fields": [
-            {
-                "name": "opensAt",
-                "label": "Opens At",
-                "options": [
-                    { "name": "24 hours" },
-                    { "name": "7:00 am" },
-                    { "name": "8:00 am" },
-                    { "name": "9:00 am" },
-                    { "name": "10:00 am" }
-                ]
-            },
-            {
-                "name": "closesAt",
-                "label": "Closes At",
-                "options": [
-                    { "name": "7:00 pm" },
-                    { "name": "8:00 pm" },
-                    { "name": "9:00 pm" },
-                    { "name": "10:00 pm" }
                 ]
             }
         ]

@@ -7,7 +7,7 @@ import { StyleSheet, Dimensions, View } from "react-native";
 import { useStoreSetupNavigation } from "@hooks/.";
 import storeDetailsFormTwo from "@json/storeDetailsFormTwo.json";
 import { storeDetailsScreenTwoSchema } from "@components/forms";
-import DisplayFormElements from "@components/forms/DisplayFormElements";
+import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import { StoreOwnerAction } from "@store/actions/StoreDetailsAction";
 import { screenNavigate, colors } from "@utils/.";
 import { RootState } from "@store/RootReducer";

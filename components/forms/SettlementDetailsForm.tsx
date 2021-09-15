@@ -7,7 +7,7 @@ import { Dimensions, StyleSheet, View } from "react-native";
 import { useStoreSetupNavigation } from "@hooks/.";
 import { colors, screenNavigate } from "@utils/.";
 import settlementDetails from "@json/settlement-details.json";
-import DisplayFormElements from "@components/forms/DisplayFormElements";
+import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import { storeSettlementDetailsSchema } from "./StoreDetailsSchema";
 import { StoreSettlementAction } from "@store/actions/StoreDetailsAction";
 import { RootState } from "@store/RootReducer";

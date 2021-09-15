@@ -25,6 +25,7 @@ interface SwitchFieldsProps {
 
 function TimeAndSwitchField({ content }: TimeAndSwitchField) {
     const [open, setOpen] = useState(false);
+    const textColor = open ? styles.open : styles.close;
     return (
         <View>
             <View style={styles.switchView}>
@@ -34,9 +35,11 @@ function TimeAndSwitchField({ content }: TimeAndSwitchField) {
                     value={open}
                     onValueChange={() => setOpen(!open)}
                 />
-                <Text style={styles.switchText}>{open ? "Open" : "Close"}</Text>
+                <Text style={{ ...textColor, ...styles.switchText }}>
+                    {open ? "Open" : "Close"}
+                </Text>
             </View>
-            <SelectGroup content={content.time} />
+            {open && <SelectGroup content={content.time} />}
         </View>
     );
 }
@@ -57,6 +60,12 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         margin: 10,
+    },
+    open: {
+        color: "green",
+    },
+    close: {
+        color: colors.accentRed,
     },
     SwitchFields: {
         marginTop: 0,

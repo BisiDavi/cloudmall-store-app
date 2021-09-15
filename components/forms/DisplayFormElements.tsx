@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { memo, ChangeEvent } from "react";
 import { Dimensions, KeyboardTypeOptions, StyleSheet } from "react-native";
 import InputField from "@components/InputField";
 import RadioField from "@components/RadioField";
@@ -6,12 +6,10 @@ import SelectField from "@components/SelectField";
 import { displayAsset } from "@utils/.";
 import InputGroup from "@components/InputGroup";
 import SwitchFields from "@components/SwitchFields";
-import SelectGroup from "@components/SelectGroup";
+import SwitchfieldTimefield from "./SwitchfieldTimefield";
 
-export default function DisplayFormElements({
-    formElement,
-    ...props
-}: displayFormElementsProps) {
+function FormElements({ ...props }: displayFormElementsProps) {
+    const { formElement } = props;
     switch (formElement.type) {
         case "input": {
             return (
@@ -76,8 +74,19 @@ export default function DisplayFormElements({
         case "switch": {
             return <SwitchFields content={formElement} />;
         }
-        case "select-group": {
-            return <SelectGroup content={formElement} />;
+        case "switch&Time": {
+            return (
+                <SwitchfieldTimefield
+                    content={formElement}
+                    onValueChange={props.handleChange(formElement.name)}
+                    selectedValue={props.values[formElement.name]}
+                    error={
+                        props.errors[formElement.name] &&
+                        props.touched[formElement.name] &&
+                        props.errors[formElement.name]
+                    }
+                />
+            );
         }
         default:
             return null;
@@ -115,3 +124,7 @@ const styles = StyleSheet.create({
         width: Dimensions.get("window").width * 0.85,
     },
 });
+
+export const DisplayFormElements = memo((props: displayFormElementsProps) => (
+    <FormElements {...props} />
+));

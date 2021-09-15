@@ -8,7 +8,7 @@ import { storeDetailsScreenOneSchema } from "@components/forms";
 import { colors, screenNavigate } from "@utils/.";
 import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
 import { StoreDetailsAction } from "@store/actions/StoreDetailsAction";
-import DisplayFormElements from "@components/forms/DisplayFormElements";
+import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import useStoreSetupNavigation from "@hooks/useStoreSetupNavigation";
 import { getStoreCategoriesRequest } from "@network/getRequest";
 
@@ -40,6 +40,9 @@ export default function StoreDetailsFormOne({ navigation }: any) {
                         phone: "",
                         address: "",
                         category: "",
+                        weekdays: "",
+                        saturday: "",
+                        sunday: "",
                     }}
                     onSubmit={(values) => {
                         setLoading(true);

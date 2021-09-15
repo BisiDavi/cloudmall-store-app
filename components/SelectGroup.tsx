@@ -10,6 +10,8 @@ export default function SelectGroup({ content }: SelectGroupProps) {
                     style={styles.select}
                     key={index}
                     content={field}
+                    //onValueChange={}
+                    //selectedValue={}
                 />
             ))}
         </View>

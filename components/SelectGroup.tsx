@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Picker } from "@react-native-picker/picker";
-import colors from "@utils/colors";
+import { View, StyleSheet } from "react-native";
+import SelectField from "./SelectField";
 
 type stateType = {
     weekDays: { opensAt: string; closesAt: string } | boolean;
@@ -11,10 +10,6 @@ type stateType = {
 
 export default function SelectGroup(props: SelectGroupProps) {
     const { selectField, durationName } = props;
-    function getPickerValue(item: any) {
-        const pickerValue = item.value ? item.value : item.name;
-        return pickerValue;
-    }
     const [openDays, setOpenDays] = useState<stateType>({
         weekDays: { opensAt: "", closesAt: "" },
         saturday: { opensAt: "", closesAt: "" },
@@ -29,7 +24,7 @@ export default function SelectGroup(props: SelectGroupProps) {
 
         console.log(" ");
 
-        setOpenDays((prevState) => {
+        setOpenDays((prevState: any) => {
             return {
                 ...prevState,
                 [durationName]: {
@@ -38,48 +33,22 @@ export default function SelectGroup(props: SelectGroupProps) {
                 },
             };
         });
-        console.log("openDays", openDays);
-    }
+			}
+			console.log("openDays", openDays);
 
     return (
         <View style={styles.selectGroup}>
-            {selectField.map((field, index) => {
-                return (
-                    <View key={index} style={styles.selectField}>
-                        {field.label && (
-                            <View style={styles.textView}>
-                                <Text style={styles.text}>{field.label}</Text>
-                            </View>
-                        )}
-                        <View style={styles.pickerView}>
-                            <View style={styles.picker}>
-                                <Picker
-                                    selectedValue={openDays}
-                                    onValueChange={(value) => {
-                                        handleSelect(
-                                            durationName,
-                                            field.name,
-                                            value,
-                                        );
-                                    }}
-                                >
-                                    {field.options.map(
-                                        (item: { name: string }) => (
-                                            <Picker.Item
-                                                fontFamily="RobotoRegular"
-                                                key={item.name}
-                                                label={item.name}
-                                                value={getPickerValue(item)}
-                                            />
-                                        ),
-                                    )}
-                                </Picker>
-                            </View>
-                        </View>
-                        {/*<Text style={styles.error}>{error}</Text>*/}
-                    </View>
-                );
-            })}
+            {selectField.map((field, index) => (
+                <SelectField
+                    content={field}
+                    key={index}
+                    selectedValue={openDays}
+                    onValueChange={(value: string) =>
+                        handleSelect(durationName, field.name, value)
+                    }
+                    style={styles.select}
+                />
+            ))}
         </View>
     );
 }
@@ -95,46 +64,6 @@ const styles = StyleSheet.create({
         width: 130,
         borderWidth: 0,
         borderBottomWidth: 1,
-    },
-    text: {
-        margin: 10,
-        fontWeight: "500",
-        fontSize: 14,
-        textAlign: "left",
-        fontFamily: "RobotoRegular",
-    },
-    textView: {
-        alignItems: "flex-start",
-        display: "flex",
-        justifyContent: "flex-start",
-    },
-    pickerView: {
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    selectField: {
-        marginBottom: 0,
-        marginTop: -10,
-        justifyContent: "center",
-    },
-    picker: {
-        height: 48,
-        marginBottom: 0,
-        paddingBottom: 0,
-        borderColor: colors.mallBlue3,
-        borderWidth: 1,
-        borderRadius: 5,
-        width: 125,
-        justifyContent: "center",
-    },
-    error: {
-        color: colors.accentRed,
-        margin: 5,
-        marginLeft: 15,
-        marginBottom: 0,
-        fontFamily: "RobotoRegular",
-        fontSize: 12,
-        fontWeight: "600",
     },
 });
 

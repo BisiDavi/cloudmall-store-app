@@ -11,7 +11,7 @@ interface SwitchFieldsProps {
     content: {
         name: string;
         label?: string;
-        fields: [{ name: string; label: string }];
+        fields?: [{ name: string; label: string }];
     };
 }
 
@@ -34,7 +34,7 @@ export default function SwitchFields({ content }: SwitchFieldsProps) {
     return (
         <View style={styles.SwitchFields}>
             <Text style={styles.label}>{content.label}</Text>
-            {content.fields.map((item, index) => (
+            {content.fields?.map((item, index) => (
                 <SwitchView label={item.label} key={index} />
             ))}
         </View>

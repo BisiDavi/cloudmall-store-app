@@ -1,24 +1,24 @@
 import * as yup from "yup";
 
 export const storeDetailsScreenOneSchema = yup.object().shape({
-  storeName: yup.string().required("store name is required"),
-  storeEmail: yup
+  name: yup.string().required("store name is required"),
+  email: yup
     .string()
     .email("store email must be a valid email")
     .required("email address is required"),
-  phoneNumber: yup
+  phone: yup
     .string()
     .required("phone number is required")
     .min(11, "number must be eleven digits")
     .max(11, "number must be eleven digits"),
-  storeAddress: yup.string().required("store address is required"),
-  storeCategory: yup.string().required("store category is required"),
+  address: yup.string().required("store address is required"),
+  category: yup.string().required("store category is required"),
 });
 
 export const storeDetailsScreenTwoSchema = yup.object().shape({
-  storeOwnerName: yup.string().required("store owner name is required"),
-  openingDays: yup.string().required("store open days is required"),
-  storeOpenTime: yup.string().required("store open time is required"),
+  ownerName: yup.string().required("store owner name is required"),
+  openDays: yup.string().required("store open days is required"),
+  openTime: yup.string().required("store open time is required"),
 });
 
 export const storeAddressSchema = yup.object().shape({

@@ -49,7 +49,7 @@ export default function SelectField({ content, ...props }: selectFieldProps) {
 interface selectFieldProps {
     content: {
         label?: string;
-        options: any;
+        options?: any;
         value?: string;
     };
     selectedValue?: any;

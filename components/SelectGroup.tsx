@@ -5,7 +5,7 @@ import SelectField from "./SelectField";
 export default function SelectGroup({ content }: SelectGroupProps) {
     return (
         <View style={styles.selectGroup}>
-            {content.fields.map((field, index) => (
+            {content.fields?.map((field, index) => (
                 <SelectField
                     style={styles.select}
                     key={index}
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 
 interface SelectGroupProps {
     content: {
-        fields: [
+        fields?: [
             {
                 name: string;
                 options: { name: string }[];

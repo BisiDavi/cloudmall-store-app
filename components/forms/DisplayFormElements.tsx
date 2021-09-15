@@ -89,10 +89,10 @@ interface displayFormElementsProps {
         name: string;
         label: any;
         placeholder?: string;
-        fields: any;
+        fields?: any;
         type: string;
         keyboardType?: KeyboardTypeOptions | undefined | any;
-        options: any;
+        options?: any;
         iconName?: string;
         inputs?: { placeholder: string; name: string; type: string }[];
         textContentType?:
@@ -105,7 +105,7 @@ interface displayFormElementsProps {
     };
     handleChange: (e: string | ChangeEvent<any>) => any;
     handleBlur: (e: string | ChangeEvent<any>) => any;
-    values: any;
+    values?: any;
     errors?: any;
     touched?: any;
 }

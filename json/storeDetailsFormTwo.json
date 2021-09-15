@@ -1,26 +1,22 @@
 [
     {
-        "label": "Name of Owner (CEO, Store Owner, etc)",
+        "label": "Name of Owner (CEO, Store Owner, etc)*",
         "placeholder": "Daniel Joe",
         "name": "ownerName",
         "type": "input"
     },
     {
-        "label": "Store Open days",
-        "placeholder": "Monday - Friday",
-        "name": "openDays",
-        "options": [
-            { "name": "Your Open days", "enabled": false },
-            { "name": "Monday - Friday", "enabled": true },
-            { "name": "Monday - Saturday", "enabled": true },
-            { "name": "Monday - Sunday", "enabled": true }
-        ],
-        "type": "select"
+        "label": "Phone Number*",
+        "placeholder": "yourr phone number",
+        "name": "ownerPhone",
+        "type": "input",
+        "keyboardType": "numeric"
     },
     {
-        "label": "Store Open Time",
-        "placeholder": "8:00 am",
-        "name": "openTime",
+        "label": "Owner Email",
+        "placeholder": "your email",
+        "name": "ownerEmail",
+        "keyboardType": "email-address",
         "type": "input"
     }
 ]

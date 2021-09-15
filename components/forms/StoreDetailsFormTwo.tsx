@@ -9,12 +9,12 @@ import storeDetailsFormTwo from "@json/storeDetailsFormTwo.json";
 import { storeDetailsScreenTwoSchema } from "@components/forms";
 import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import { StoreOwnerAction } from "@store/actions/StoreDetailsAction";
-import { screenNavigate, colors } from "@utils/.";
+import { colors } from "@utils/.";
 import { RootState } from "@store/RootReducer";
 
 export default function StoreDetailsFormTwo({ navigation }: any) {
     const [loading, setLoading] = useState(false);
-    const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
+    const { onBoardingNextScreen } = useStoreSetupNavigation();
     const dispatch = useDispatch();
     const state = useSelector((state: RootState) => state.storeDetails);
     console.log("state", state);
@@ -26,16 +26,15 @@ export default function StoreDetailsFormTwo({ navigation }: any) {
                 validationSchema={storeDetailsScreenTwoSchema}
                 initialValues={{
                     ownerName: "",
-                    openDays: "",
-                    openTime: "",
+                    ownerPhone: "",
+                    ownerEmail: "",
                 }}
                 onSubmit={(values) => {
                     console.log("values", values);
                     setLoading(true);
                     dispatch(StoreOwnerAction(values));
                     setLoading(false);
-                    onBoardingNextScreen(2, false);
-                    screenNavigate(2, navigation);
+                    onBoardingNextScreen(3, false);
                 }}
             >
                 {({

@@ -1,5 +1,4 @@
 import * as React from "react";
-import InfoIcon from "@assets/infoIcon.png";
 import EditIcon from "@assets/editIcon.png";
 import MenuIcon from "@assets/menuIcon.png";
 import NotificationIcon from "@assets/notificationIcon.png";
@@ -11,10 +10,13 @@ import trackSalesImage from "@assets/trackSales.png";
 import MapSvg from "@assets/MapSvg";
 import InfoSvg from "@assets/InfoSvg";
 
-export default function displayAsset(assetName: string | undefined) {
+export default function displayAsset(
+    assetName: string | undefined,
+    toggleModal?: () => void,
+) {
     switch (assetName) {
         case "infoIcon": {
-            return <InfoSvg />;
+            return <InfoSvg showModal={toggleModal} />;
         }
         case "address": {
             return <MapSvg />;

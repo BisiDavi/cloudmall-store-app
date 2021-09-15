@@ -5,20 +5,26 @@ import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
 import { storeDetailsScreenOneSchema } from "@components/forms";
-import { colors, screenNavigate } from "@utils/.";
+import { colors } from "@utils/.";
 import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
 import { StoreDetailsAction } from "@store/actions/StoreDetailsAction";
 import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import useStoreSetupNavigation from "@hooks/useStoreSetupNavigation";
 import { getStoreCategoriesRequest } from "@network/getRequest";
+import StoreTypeInfoModal from "@components/StoreTypeInfoModal";
 
-export default function StoreDetailsFormOne({ navigation }: any) {
+export default function StoreDetailsFormOne() {
     const dispatch = useDispatch();
-    const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
+    const { onBoardingNextScreen } = useStoreSetupNavigation();
     const [loading, setLoading] = useState(false);
+    const [infoModal, setInfoModal] = useState(false);
     const [storeCategory, setStoreCategory] = useState([]);
 
     storeDetailsFormOne[4].options = storeCategory;
+
+    function toggleModal() {
+        return setInfoModal(!infoModal);
+    }
 
     useEffect(() => {
         getStoreCategoriesRequest()
@@ -31,6 +37,7 @@ export default function StoreDetailsFormOne({ navigation }: any) {
     return (
         <>
             <Spinner visible={loading} color="blue" />
+            <StoreTypeInfoModal modal={infoModal} toggleModal={toggleModal} />
             <View style={styles.form}>
                 <Formik
                     validationSchema={storeDetailsScreenOneSchema}
@@ -40,14 +47,12 @@ export default function StoreDetailsFormOne({ navigation }: any) {
                         phone: "",
                         address: "",
                         category: "",
-                        
                     }}
                     onSubmit={(values) => {
                         setLoading(true);
                         dispatch(StoreDetailsAction(values));
                         setLoading(false);
                         onBoardingNextScreen(1, false);
-                        screenNavigate(1, navigation);
                     }}
                 >
                     {({
@@ -69,6 +74,7 @@ export default function StoreDetailsFormOne({ navigation }: any) {
                                     values={values}
                                     errors={errors}
                                     touched={touched}
+                                    toggleModal={toggleModal}
                                 />
                             ))}
                             {console.log("formik values", values)}

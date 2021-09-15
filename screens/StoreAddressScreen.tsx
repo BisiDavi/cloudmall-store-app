@@ -1,5 +1,6 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import {
     StyleSheet,
     View,
@@ -15,6 +16,8 @@ import { RootStackParamList } from "@customTypes/.";
 import { getDeviceDimensions, colors } from "@utils/.";
 import GoogleAutoCompleteInput from "@components/GoogleAutoCompleteInput";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { RootState } from "@store/RootReducer";
+import useStoreSetupNavigation from "@hooks/useStoreSetupNavigation";
 
 const { deviceHeight, deviceWidth } = getDeviceDimensions();
 
@@ -26,15 +29,15 @@ function MapView() {
     );
 }
 
-function RenderGoogleInput(nextPageHandler: () => void) {
+function RenderGoogleInput(nextPage: () => void) {
     return (
         <View style={styles.renderGoogleInputView}>
             <Text style={styles.text}>Address of Store</Text>
             <GoogleAutoCompleteInput placeholder="Choose your location on the map" />
             <View style={styles.buttonView}>
                 <Button
+                    onPress={nextPage}
                     buttonStyle={styles.button}
-                    onPress={nextPageHandler}
                     title="Confirm Address"
                 />
             </View>
@@ -45,9 +48,24 @@ function RenderGoogleInput(nextPageHandler: () => void) {
 export default function StoreAddressScreen({
     navigation,
 }: StackScreenProps<RootStackParamList, "StoreAddressScreen">) {
-    function nextPageHandler() {
-        navigation.navigate("StoreDetailsScreenTwo");
+    const { latitude, longitude } = useSelector(
+        (state: RootState) => state.storeDetails,
+    );
+    const { onBoardingNextScreen } = useStoreSetupNavigation();
+
+    useEffect(() => {
+        console.log("latitude", latitude);
+        if (latitude !== null || longitude !== null) {
+            onBoardingNextScreen(2, false);
+        }
+    }, [latitude, longitude]);
+
+    function nextPage() {
+        if (latitude || longitude) {
+            onBoardingNextScreen(2, false);
+        }
     }
+
     return (
         <SafeAreaView style={styles.safeView}>
             <KeyboardAvoidingView
@@ -65,7 +83,7 @@ export default function StoreAddressScreen({
                         removeClippedSubviews={false}
                         keyboardShouldPersistTaps={"handled"}
                         ListHeaderComponent={<MapView />}
-                        ListFooterComponent={RenderGoogleInput(nextPageHandler)}
+                        ListFooterComponent={RenderGoogleInput(nextPage)}
                         renderItem={null}
                         ListFooterComponentStyle={styles.footerComponentStyle}
                     />

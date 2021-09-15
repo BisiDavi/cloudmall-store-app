@@ -1,27 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { useDispatch } from "react-redux";
 import { colors } from "@utils/.";
 import { GOOGLE_MAP_API_KEY } from "@env";
 import { GetUserCoordinateAction } from "@store/actions/UserCoordinateAction";
+import { StoreAddressCoordinatesAction } from "@store/actions/StoreDetailsAction";
 
 const GoogleAutoCompleteInput = ({
     placeholder,
 }: GoogleAutoCompleteInputProps) => {
     const dispatch = useDispatch();
+
     function googlePlaceAutocomplete(data: any, details: any = null) {
-        console.log("data GoogleAutoCompleteInput", data);
-        console.log("details GoogleAutoCompleteInput", details);
-        console.log(
-            "location GoogleAutoCompleteInput",
-            JSON.stringify(details.geometry.location),
-        );
         const { lat, lng } = details.geometry.location;
+        dispatch(
+            StoreAddressCoordinatesAction({
+                latitude: lat,
+                longitude: lng,
+            }),
+        );
         dispatch(
             GetUserCoordinateAction({
                 latitude: lat,
                 longitude: lng,
-                landmark: data?.description,
             }),
         );
     }

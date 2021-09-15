@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { SetupStoreScreenAction } from "@store/actions/SetupStoreAction";
 import { RootState } from "@store/RootReducer";
 import screenNavigate from "@utils/screenNavigate";
+import { useNavigation } from "@react-navigation/core";
 
-export default function useStoreSetupNavigation(navigation: any) {
+export default function useStoreSetupNavigation() {
     const setupStorestate = useSelector((state: RootState) => state.setupStore);
     const dispatch = useDispatch();
+    const navigation = useNavigation();
 
     useEffect(() => {
         if (setupStorestate.formPage !== 0) {

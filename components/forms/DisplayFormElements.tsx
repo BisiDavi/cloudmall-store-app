@@ -9,7 +9,7 @@ import SwitchFields from "@components/SwitchFields";
 import SwitchfieldTimefield from "./SwitchfieldTimefield";
 
 function FormElements(props: displayFormElementsProps) {
-    const { formElement } = props;
+    const { formElement, toggleModal } = props;
     switch (formElement.type) {
         case "input": {
             return (
@@ -34,6 +34,7 @@ function FormElements(props: displayFormElementsProps) {
             return (
                 <RadioField
                     content={formElement}
+                    toggleModal={toggleModal}
                     error={
                         props.errors[formElement.name] &&
                         props.touched[formElement.name] &&
@@ -106,6 +107,7 @@ interface displayFormElementsProps {
     values?: any;
     errors?: any;
     touched?: any;
+    toggleModal?: () => void;
 }
 
 const styles = StyleSheet.create({

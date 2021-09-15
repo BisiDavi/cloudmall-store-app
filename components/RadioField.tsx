@@ -5,7 +5,11 @@ import { useDispatch } from "react-redux";
 import { colors, displayAsset } from "@utils/.";
 import { StoreDetailsTypeAction } from "@store/actions/StoreDetailsAction";
 
-export default function RadioField({ content, error }: RadioFieldProps) {
+export default function RadioField({
+    content,
+    toggleModal,
+    error,
+}: RadioFieldProps) {
     const [checked, setChecked] = useState("");
     const dispatch = useDispatch();
 
@@ -17,7 +21,7 @@ export default function RadioField({ content, error }: RadioFieldProps) {
         <View style={styles.storeType}>
             <View style={styles.typeView}>
                 <Text style={styles.storeTypeText}>{content.label}</Text>
-                {displayAsset(content.iconName)}
+                {displayAsset(content.iconName, toggleModal)}
             </View>
             <View style={styles.radioFields}>
                 {content.fields?.map((item: itemType, index: number) => (
@@ -101,6 +105,7 @@ interface RadioFieldProps {
         iconName?: string | undefined;
     };
     error: string;
+    toggleModal?: () => void;
 }
 
 type itemType = {

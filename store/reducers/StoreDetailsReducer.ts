@@ -6,17 +6,22 @@ import {
     STORE_SETTLEMENT_DETAILS,
     STORE_IMAGE_UPLOAD,
     STORE_LOGO_UPLOAD,
+    STORE_ADDRESS_COORDINATES,
 } from "../constant";
 
 export function StoreDetailsReducer(
-    state = {
+    state: StoreDetailsType = {
         name: "",
         email: "",
         phone: "",
         address: "",
         category: "",
         type: "",
+        latitude: null,
+        longitude: null,
         ownerName: "",
+        ownerPhone: "",
+        ownerEmail: "",
         openDays: "",
         openTime: "",
         settlementPlan: "",
@@ -30,7 +35,7 @@ export function StoreDetailsReducer(
     action: actionType,
 ) {
     const { payload, type } = action;
-    //console.log("StoreDetailsReducer", state);
+    console.log("StoreDetailsReducer", state);
 
     switch (type) {
         case STORETYPE_SELECTED: {
@@ -55,6 +60,13 @@ export function StoreDetailsReducer(
                 storeOwnerName: payload.ownerName,
                 openingDays: payload.openDays,
                 storeOpenTime: payload.openTime,
+            };
+        }
+        case STORE_ADDRESS_COORDINATES: {
+            return {
+                ...state,
+                latitude: payload.latitude,
+                longitude: payload.longitude,
             };
         }
         case STORE_IMAGE_UPLOAD: {
@@ -111,23 +123,30 @@ type actionType = {
         | "STORE_OWNER_DETAILS"
         | "STORE_SETTLEMENT_DETAILS"
         | "STORE_IMAGE_UPLOAD"
-        | "STORE_LOGO_UPLOAD";
-    payload: {
-        name: string;
-        email: string;
-        phone: string;
-        address: string;
-        type: string;
-        category: string;
-        ownerName: string;
-        openDays: string;
-        openTime: string;
-        settlementPlan: string;
-        bankName: string;
-        bankCode: string;
-        accountNumber: string;
-        accountName: string;
-        storeImage: string;
-        storeLogo: string;
-    };
+        | "STORE_LOGO_UPLOAD"
+        | "STORE_ADDRESS_COORDINATES";
+    payload: StoreDetailsType;
+};
+
+type StoreDetailsType = {
+    name: string;
+    email: string;
+    phone: string;
+    address: string;
+    type: string;
+    category: string;
+    ownerName: string;
+    ownerPhone: string;
+    ownerEmail: string;
+    openDays: string;
+    openTime: string;
+    latitude: number | null;
+    longitude: number | null;
+    settlementPlan: string;
+    bankName: string;
+    bankCode: string;
+    accountNumber: string;
+    accountName: string;
+    storeImage: string;
+    storeLogo: string;
 };

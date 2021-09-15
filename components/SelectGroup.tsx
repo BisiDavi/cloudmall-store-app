@@ -16,10 +16,8 @@ export default function SelectGroup(props: SelectGroupProps) {
         sunday: { opensAt: "", closesAt: "" },
     });
 
-    function handleSelect(switchName: string, field: any, value: any) {
+    function handleSelect(field: any, value: any) {
         console.log("field.switch.label", field);
-        console.log("switchName", switchName);
-        console.log("props.durationLabel", durationName);
         console.log("handleSelect value", value);
 
         console.log(" ");
@@ -33,8 +31,8 @@ export default function SelectGroup(props: SelectGroupProps) {
                 },
             };
         });
-			}
-			console.log("openDays", openDays);
+    }
+    console.log("openDays", openDays);
 
     return (
         <View style={styles.selectGroup}>
@@ -44,7 +42,7 @@ export default function SelectGroup(props: SelectGroupProps) {
                     key={index}
                     selectedValue={openDays}
                     onValueChange={(value: string) =>
-                        handleSelect(durationName, field.name, value)
+                        handleSelect(field.name, value)
                     }
                     style={styles.select}
                 />

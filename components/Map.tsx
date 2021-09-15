@@ -32,15 +32,9 @@ const Map = () => {
         longitudeDelta: 0.0421,
     });
 
-    console.log("user coordinate", coordinate);
-
     useEffect(() => {
         if (locationStatus !== "Waiting.." || null) {
             const parsedLocationStatus = JSON.parse(locationStatus);
-            console.log(
-                "parsedLocationStatus.coords",
-                parsedLocationStatus.coords,
-            );
             dispatch(GetUserCoordinateAction(parsedLocationStatus.coords));
             setCoordinate({
                 ...coordinate,

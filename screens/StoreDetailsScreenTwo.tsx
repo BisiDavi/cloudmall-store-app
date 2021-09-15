@@ -10,18 +10,14 @@ import {
 } from "react-native";
 
 import { RootStackParamList } from "@customTypes/.";
-import { useStoreSetupNavigation } from "@hooks/.";
 import ProgressIndicator from "@components/ProgressIndicator";
 import StoreDetailsFormTwo from "@components/forms/StoreDetailsFormTwo";
 import { colors } from "@utils/.";
-
-const radioField = [{ label: "Instore" }, { label: "Pickup" }];
 
 export default function StoreDetailsScreenTwo({
     navigation,
 }: StackScreenProps<RootStackParamList, "StoreDetailsScreenTwo">) {
     const [loading, setLoading] = useState(false);
-    const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
 
     return (
         <KeyboardAvoidingView

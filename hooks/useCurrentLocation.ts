@@ -30,8 +30,6 @@ export default function useCurrentLocation() {
         })();
     }, []);
 
-    console.log("location", location);
-
     let locationStatus: locationStatusType = "Waiting..";
     if (errorMsg) {
         locationStatus = errorMsg;

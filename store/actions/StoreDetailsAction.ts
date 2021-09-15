@@ -5,6 +5,7 @@ import {
     STORE_OWNER_DETAILS,
     STORE_SETTLEMENT_DETAILS,
     STORE_IMAGE_UPLOAD,
+		STORE_ADDRESS_COORDINATES,
 } from "../constant";
 
 export const StoreDetailsTypeAction = (payload: any) => (dispatch: any) => {
@@ -50,3 +51,12 @@ export const StoreImageUploadAction = (payload: any) => (dispatch: any) => {
         payload,
     });
 };
+
+
+export const StoreAddressCoordinatesAction =
+    (payload: any) => (dispatch: any) => {
+        dispatch({
+            type: STORE_ADDRESS_COORDINATES,
+            payload,
+        });
+    };

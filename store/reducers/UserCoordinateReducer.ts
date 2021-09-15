@@ -4,7 +4,6 @@ type actionType = {
     payload: {
         latitude: number;
         longitude: number;
-        landmark?: string | null;
     };
     type: "GET_USER_COORDINATES";
 };
@@ -31,7 +30,6 @@ export default function UserCoordinateReducer(
                 ...state,
                 latitude: payload.latitude,
                 longitude: payload.longitude,
-                landmark: payload?.landmark,
             };
         }
         default:

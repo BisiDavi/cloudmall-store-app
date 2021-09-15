@@ -21,6 +21,7 @@
         "type": "input",
         "placeholder": "Your account number",
         "name": "accountNumber",
+				"textContentType": "telephoneNumber",
         "keyboardType": "numeric"
     },
     {

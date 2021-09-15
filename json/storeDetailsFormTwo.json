@@ -17,6 +17,7 @@
         "placeholder": "your email",
         "name": "ownerEmail",
         "keyboardType": "email-address",
+        "textContentType": "emailAddress",
         "type": "input"
     }
 ]

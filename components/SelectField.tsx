@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import colors from "@utils/colors";
+import { ActivityIndicator } from "react-native-paper";
 
 export default function SelectField({ content, ...props }: selectFieldProps) {
     function getPickerValue(item: any) {
@@ -34,9 +35,11 @@ export default function SelectField({ content, ...props }: selectFieldProps) {
                         ) : (
                             <Picker.Item
                                 fontFamily="RobotoRegular"
-                                label="Loading ..."
-                                value="loading"
-                            />
+                                //label="Loading ..."
+                                //value="loading"
+                            >
+                                <ActivityIndicator />
+                            </Picker.Item>
                         )}
                     </Picker>
                 </View>

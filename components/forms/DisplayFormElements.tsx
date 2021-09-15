@@ -8,7 +8,7 @@ import InputGroup from "@components/InputGroup";
 import SwitchFields from "@components/SwitchFields";
 import SwitchfieldTimefield from "./SwitchfieldTimefield";
 
-function FormElements({ ...props }: displayFormElementsProps) {
+function FormElements(props: displayFormElementsProps) {
     const { formElement } = props;
     switch (formElement.type) {
         case "input": {

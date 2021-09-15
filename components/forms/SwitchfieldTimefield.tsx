@@ -21,6 +21,9 @@ interface SwitchFieldsProps {
         label?: string;
         fields?: TimeAndSwitchFieldType[];
     };
+    onValueChange: () => void;
+    selectedValue: () => void;
+    error: any;
 }
 
 function TimeAndSwitchField({ content }: TimeAndSwitchField) {
@@ -44,7 +47,8 @@ function TimeAndSwitchField({ content }: TimeAndSwitchField) {
     );
 }
 
-export default function SwitchfieldTimefield({ content }: SwitchFieldsProps) {
+export default function SwitchfieldTimefield(props: SwitchFieldsProps) {
+    const { content, onValueChange, selectedValue, error } = props;
     return (
         <View style={styles.SwitchFields}>
             <Text style={styles.label}>{content.label}</Text>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Image } from "react-native-elements";
+import { useSelector } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
 import {
     DrawerContentScrollView,
@@ -9,8 +10,10 @@ import {
 import JollofRice from "@assets/jollofRice.png";
 import colors from "@utils/colors";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { RootState } from "@store/RootReducer";
 
 export default function ProfileIcon(props: any) {
+    const { name } = useSelector((state: RootState) => state.storeDetails);
     function navigateToProfile() {
         props.navigation.navigate("ProfileScreen");
     }
@@ -19,7 +22,7 @@ export default function ProfileIcon(props: any) {
             <TouchableOpacity onPress={navigateToProfile}>
                 <View style={styles.profileIconView}>
                     <Image source={JollofRice} style={styles.avatar} />
-                    <Text style={styles.userName}>Muhammad</Text>
+                    <Text style={styles.userName}>{name}</Text>
                 </View>
             </TouchableOpacity>
             <DrawerItemList {...props} />

@@ -32,7 +32,9 @@
         "label": "State *",
         "name": "state",
         "type": "select",
-        "options": []
+        "options": [],
+        "value": "_id"
+
     },
     {
         "label": "Store Category *",

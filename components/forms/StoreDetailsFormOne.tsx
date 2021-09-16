@@ -10,7 +10,10 @@ import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
 import { StoreDetailsAction } from "@store/actions/StoreDetailsAction";
 import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import useStoreSetupNavigation from "@hooks/useStoreSetupNavigation";
-import { getStoreCategoriesRequest } from "@network/getRequest";
+import {
+    getAvailableState,
+    getStoreCategoriesRequest,
+} from "@network/getRequest";
 import StoreTypeInfoModal from "@components/StoreTypeInfoModal";
 
 export default function StoreDetailsFormOne() {
@@ -19,6 +22,9 @@ export default function StoreDetailsFormOne() {
     const [loading, setLoading] = useState(false);
     const [infoModal, setInfoModal] = useState(false);
     const [storeCategory, setStoreCategory] = useState([]);
+    const [availableStates, setAvailableState] = useState([]);
+
+    storeDetailsFormOne[4].options = availableStates;
 
     storeDetailsFormOne[5].options = storeCategory;
 
@@ -30,6 +36,12 @@ export default function StoreDetailsFormOne() {
         getStoreCategoriesRequest()
             .then((response) => {
                 setStoreCategory(response.data.data);
+            })
+            .catch((error) => console.log("error", error?.response.data));
+
+        getAvailableState()
+            .then((response) => {
+                setAvailableState(response.data.data);
             })
             .catch((error) => console.log("error", error?.response.data));
     }, []);

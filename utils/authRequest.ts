@@ -9,7 +9,6 @@ export async function signupUser(
     await axiosInstance
         .post("/api/store/register", { email, password })
         .then((response) => {
-            console.log("response", response.data.message);
             showToast(response.data.message);
             token = response.data.token;
             return token;
@@ -17,8 +16,7 @@ export async function signupUser(
         .catch((error) => {
             console.log("response", error.response.data.message);
             if (error.response.data.message === "Registration unsuccessful.") {
-                let message =
-                    "email doesn't exist please use a valid email";
+                let message = "email doesn't exist please use a valid email";
                 showToast(message);
             } else {
                 showToast(error.response.data.message);
@@ -38,8 +36,6 @@ export async function loginUser(
     await axiosInstance
         .post("/api/store/login", { email, password })
         .then((response) => {
-            console.log("response", response);
-            console.log("response", response.data.token);
             showToast(response?.data.message);
             token = response.data.token;
             return token;

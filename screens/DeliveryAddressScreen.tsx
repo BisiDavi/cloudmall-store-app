@@ -17,7 +17,6 @@ import { getDeviceDimensions, colors } from "@utils/.";
 import GoogleAutoCompleteInput from "@components/GoogleAutoCompleteInput";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { RootState } from "@store/RootReducer";
-import useStoreSetupNavigation from "@hooks/useStoreSetupNavigation";
 
 const { deviceHeight, deviceWidth } = getDeviceDimensions();
 
@@ -51,18 +50,15 @@ export default function DeliveryAddressScreen({
     const { latitude, longitude } = useSelector(
         (state: RootState) => state.storeDetails,
     );
-    const { onBoardingNextScreen } = useStoreSetupNavigation();
 
     useEffect(() => {
         console.log("latitude", latitude);
         if (latitude !== null || longitude !== null) {
-            onBoardingNextScreen(2, false);
         }
     }, [latitude, longitude]);
 
     function nextPage() {
         if (latitude || longitude) {
-            onBoardingNextScreen(2, false);
         }
     }
 

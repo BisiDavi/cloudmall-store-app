@@ -42,5 +42,6 @@ export type DrawerStackParamList = {
     PaymentApprovedScreen: undefined;
     ConfirmPaymentScreen: undefined;
     OrderScreen: undefined;
+    RequestARiderScreen: undefined;
     DeliveryAddressScreen: undefined;
 };

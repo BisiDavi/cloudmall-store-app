@@ -12,6 +12,7 @@ export const storeDetailsScreenOneSchema = yup.object().shape({
         .min(11, "number must be eleven digits")
         .max(11, "number must be eleven digits"),
     address: yup.string().required("store address is required"),
+    state: yup.string().required("state is required"),
     category: yup.string().required("store category is required"),
 });
 

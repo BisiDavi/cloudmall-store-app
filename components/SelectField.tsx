@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import colors from "@utils/colors";
-import { ActivityIndicator } from "react-native-paper";
 
 export default function SelectField({ content, ...props }: selectFieldProps) {
     function getPickerValue(item: any) {
@@ -24,14 +23,19 @@ export default function SelectField({ content, ...props }: selectFieldProps) {
                         style={props.style}
                     >
                         {content.options.length > 0 ? (
-                            content.options.map((item: { name: string }) => (
-                                <Picker.Item
-                                    fontFamily="RobotoRegular"
-                                    key={item.name}
-                                    label={item.name}
-                                    value={getPickerValue(item)}
-                                />
-                            ))
+                            content.options.map((item: any, index: number) => {
+                                const labelName = content.optionName
+                                    ? item[content.optionName]
+                                    : item.name;
+                                return (
+                                    <Picker.Item
+                                        fontFamily="RobotoRegular"
+                                        key={`${item.name}-${index}`}
+                                        label={labelName}
+                                        value={getPickerValue(item)}
+                                    />
+                                );
+                            })
                         ) : (
                             <Picker.Item
                                 fontFamily="RobotoRegular"
@@ -52,6 +56,7 @@ interface selectFieldProps {
         label?: string;
         options?: any;
         value?: string;
+        optionName?: string;
     };
     selectedValue?: any;
     onValueChange?: any;

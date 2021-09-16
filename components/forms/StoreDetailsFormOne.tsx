@@ -20,7 +20,7 @@ export default function StoreDetailsFormOne() {
     const [infoModal, setInfoModal] = useState(false);
     const [storeCategory, setStoreCategory] = useState([]);
 
-    storeDetailsFormOne[4].options = storeCategory;
+    storeDetailsFormOne[5].options = storeCategory;
 
     function toggleModal() {
         return setInfoModal(!infoModal);
@@ -46,6 +46,7 @@ export default function StoreDetailsFormOne() {
                         email: "",
                         phone: "",
                         address: "",
+                        state: "",
                         category: "",
                     }}
                     onSubmit={(values) => {

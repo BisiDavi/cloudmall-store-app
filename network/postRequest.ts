@@ -1,3 +1,4 @@
+import showToast from "@utils/showToast";
 import axiosInstance from "./axiosInstance";
 
 type postStoreDetailsType = {
@@ -21,6 +22,23 @@ type postStoreDetailsType = {
     accountName: string;
 };
 
-export async function postStoreDetails(data: postStoreDetailsType) {
-    return await axiosInstance.post("/api/store", data);
+export async function postStoreDetails(
+    data: postStoreDetailsType,
+    navigation: any,
+) {
+    return await axiosInstance
+        .post("/api/store", data)
+        .then((response) => {
+            const data: any = response.data;
+            console.log("data", response.data);
+            if (response.status === 200) {
+                showToast(`${data.storeName} stores created`);
+                navigation.navigate("BottomNav");
+            } else {
+                showToast(data);
+            }
+        })
+        .catch((error) => {
+            showToast(error.response.data);
+        });
 }

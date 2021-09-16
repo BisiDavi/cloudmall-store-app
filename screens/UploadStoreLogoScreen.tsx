@@ -21,18 +21,22 @@ import UploadIcon from "@assets/upload.png";
 import colors from "@utils/colors";
 import { RootState } from "@store/RootReducer";
 import ProgressIndicator from "@components/ProgressIndicator";
-import { StoreImageUploadAction } from "@store/actions/StoreDetailsAction";
+import {
+    StoreImageUploadAction,
+    StoreLogoUploadAction,
+} from "@store/actions/StoreDetailsAction";
 import postStoreRequest from "@utils/postStoreRequest";
 
 export default function UploadStoreLogoScreen({
     navigation,
 }: StackScreenProps<RootStackParamList, "UploadStoreLogoScreen">) {
-    const [logo, setImage] = useState<any>(null);
+    const [storeLogo, setStoreLogo] = useState<any>(null);
     const [loading, setLoading] = useState(false);
-    const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
+    const { onBoardingNextScreen } = useStoreSetupNavigation();
     const dispatch = useDispatch();
     const state = useSelector((state: RootState) => state.storeDetails);
-    console.log("UploadStoreLogo", state);
+
+    console.log("logo", storeLogo);
 
     useEffect(() => {
         const displayAfter2Secs = setTimeout(() => {
@@ -53,12 +57,12 @@ export default function UploadStoreLogoScreen({
         return () => clearTimeout(displayAfter2Secs);
     }, []);
 
-    async function postToDB() {
+    async function postStore() {
         setLoading(true);
         await postStoreRequest(state, navigation)
             .then(() => {
                 setLoading(false);
-                onBoardingNextScreen(4, true);
+                onBoardingNextScreen(5, true);
             })
             .catch(() => {
                 setLoading(false);
@@ -66,12 +70,13 @@ export default function UploadStoreLogoScreen({
     }
 
     async function uploadImage() {
-        logo && dispatch(StoreImageUploadAction(logo));
-        logo && postToDB();
+        storeLogo && dispatch(StoreLogoUploadAction(storeLogo));
+        storeLogo && postStore();
     }
 
-    async function skipImage() {
-        postToDB();
+    function skipImage() {
+        postStore();
+        return onBoardingNextScreen(5, true);
     }
 
     const pickImage = async () => {
@@ -83,13 +88,13 @@ export default function UploadStoreLogoScreen({
         });
         if (!result.cancelled) {
             console.log("result", result);
-            setImage(result.uri);
+            setStoreLogo(result.uri);
         }
         setLoading(false);
     };
     return (
         <SafeAreaView style={styles.view}>
-            <Spinner visible={loading} color="blue" />
+            <Spinner visible={loading} color={colors.cloudOrange5} />
             <ScrollView style={styles.view}>
                 <View style={styles.container}>
                     <ProgressIndicator
@@ -101,7 +106,7 @@ export default function UploadStoreLogoScreen({
                             This Logo will represent your store on the user's
                             app
                         </Text>
-                        {!logo ? (
+                        {!storeLogo ? (
                             <>
                                 <View style={styles.imageView}>
                                     <Image
@@ -116,7 +121,7 @@ export default function UploadStoreLogoScreen({
                                 </Text>
                             </>
                         ) : (
-                            <Image style={styles.logo} source={{ uri: logo }} />
+                            <Image style={styles.logo} source={{ uri: storeLogo }} />
                         )}
                         <View>
                             <Button

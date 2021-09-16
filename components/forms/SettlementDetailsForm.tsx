@@ -13,32 +13,28 @@ import { StoreSettlementAction } from "@store/actions/StoreDetailsAction";
 import { RootState } from "@store/RootReducer";
 import { getBanksRequest } from "@network/getRequest";
 
-export default function SettlementDetailsForm({ navigation }: any) {
+type stateType = {
+    ___v: number;
+    _id: string;
+    bank_code: string;
+    bank_name: string;
+};
+
+export default function SettlementDetailsForm() {
     const [loading, setLoading] = useState(false);
     const { onBoardingNextScreen } = useStoreSetupNavigation();
-    const [banks, setBanks] = useState([]);
+    const [banks, setBanks] = useState<stateType[] | [] | any>([]);
     const dispatch = useDispatch();
-    const state = useSelector((state: RootState) => state.storeDetails);
-    console.log("SettlementDetailsForm", state);
 
     function skipHandler() {
-        return screenNavigate(3, navigation);
+        return onBoardingNextScreen(4, false);
     }
 
     settlementDetails[1].options = banks;
 
-    console.log("settlementDetails banks", banks);
-
     useEffect(() => {
         getBanksRequest()
-            .then((response) => {
-                console.log(
-                    "settlementDetails response.data.data",
-                    response.data.data,
-                );
-
-                setBanks(response.data.data);
-            })
+            .then((response) => setBanks(response.data.data))
             .catch((error) => console.log("error", error.response.data));
     }, []);
 
@@ -56,11 +52,17 @@ export default function SettlementDetailsForm({ navigation }: any) {
                 }}
                 onSubmit={(values) => {
                     console.log("values", values);
+                    const selectedBank = banks.filter(
+                        (bank: any) => bank.bank_code === values.bankCode,
+                    );
+                    values.bankName = selectedBank.map(
+                        (bank: any) => bank.bank_name,
+                    );
+                    console.log("settlementDetails values", values);
                     setLoading(true);
                     dispatch(StoreSettlementAction(values));
                     setLoading(false);
-                    onBoardingNextScreen(3, false);
-                    screenNavigate(3, navigation);
+                    onBoardingNextScreen(4, false);
                 }}
             >
                 {({

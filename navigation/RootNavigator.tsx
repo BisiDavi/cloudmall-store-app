@@ -10,6 +10,7 @@ import {
     hasTokenExpired,
     checkExistingStore,
     colors,
+    screenNavigate,
 } from "@utils/.";
 import DrawerNavigation from "./DrawerNavigation";
 import PublicNavigation from "./PublicNavigation";
@@ -17,7 +18,7 @@ import StoreDetailsNavigation from "./StoreDetailsNavigation";
 
 export default function RootNavigator() {
     const { state } = useContext(AuthContext);
-    const { completed } = useSelector(
+    const { completed, formPage } = useSelector(
         (storeState: RootState) => storeState.setupStore,
     );
     const navigation = useNavigation();
@@ -28,6 +29,9 @@ export default function RootNavigator() {
             const userEmail = getsignedUserEmail(state.userToken);
             if (userEmail && !isSignedIn) {
                 setClientToken(state.userToken);
+                if (formPage !== 0) {
+                    screenNavigate(formPage, navigation);
+                }
                 //checkExistingStore(navigation, userEmail);
             }
         }

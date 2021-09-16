@@ -17,13 +17,12 @@ export function StoreDetailsReducer(
         address: "",
         category: "",
         type: "",
+        openDays: "",
         latitude: null,
         longitude: null,
         ownerName: "",
         ownerPhone: "",
         ownerEmail: "",
-        openDays: "",
-        openTime: "",
         settlementPlan: "",
         bankName: "",
         bankCode: "",
@@ -41,7 +40,7 @@ export function StoreDetailsReducer(
         case STORETYPE_SELECTED: {
             return {
                 ...state,
-                storeType: payload,
+                type: payload,
             };
         }
         case STORE_DETAILS: {
@@ -57,9 +56,9 @@ export function StoreDetailsReducer(
         case STORE_OWNER_DETAILS: {
             return {
                 ...state,
-                storeOwnerName: payload.ownerName,
-                openingDays: payload.openDays,
-                storeOpenTime: payload.openTime,
+                ownerName: payload.ownerName,
+                ownerPhone: payload.ownerPhone,
+                ownerEmail: payload.ownerEmail,
             };
         }
         case STORE_ADDRESS_COORDINATES: {
@@ -99,13 +98,14 @@ export function StoreDetailsReducer(
                 phone: payload.phone,
                 address: payload.address,
                 category: payload.category,
-                storeType: payload?.type,
-                bankCode: payload.bankCode,
-                storeOwnerName: payload.ownerName,
-                openingDays: payload.openDays,
-                storeOpenTime: payload.openTime,
+                type: payload?.type,
+                openDays: payload.openDays,
+                ownerName: payload.ownerName,
+                ownerPhone: payload.ownerPhone,
+                ownerEmail: payload.ownerEmail,
                 settlementPlan: payload.settlementPlan,
                 bankName: payload.bankName,
+                bankCode: payload.bankCode,
                 accountNumber: payload.accountNumber,
                 accountName: payload.accountName,
             };
@@ -139,7 +139,6 @@ type StoreDetailsType = {
     ownerPhone: string;
     ownerEmail: string;
     openDays: string;
-    openTime: string;
     latitude: number | null;
     longitude: number | null;
     settlementPlan: string;

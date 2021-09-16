@@ -9,14 +9,14 @@
     ],
     "storeDetails": [
         {
-            "name": "StoreDetailsScreenOne",
-            "position": "left"
-        },
-        {
-            "name": "StoreAddressScreen"
+            "name": "StoreDetailsScreenOne"
         },
         {
             "name": "StoreDetailsScreenTwo"
+        },
+
+        {
+            "name": "StoreAddressScreen"
         },
         {
             "name": "SettlementDetailsScreen"

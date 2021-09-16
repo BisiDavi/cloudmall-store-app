@@ -1,146 +1,146 @@
 [
-    {
-        "label": "Name of Store",
-        "placeholder": "Cloudmall Stores",
-        "name": "name",
-        "type": "input"
-    },
-    {
-        "label": "Email Address of Store",
-        "placeholder": "mystore@cloudmall.com",
-        "name": "email",
-        "type": "input",
-        "keyboardType": "email-address",
-        "textContentType": "emailAddress"
-    },
-    {
-        "label": "Phone number",
-        "name": "phone",
-        "type": "input",
-        "placeholder": "0812345678",
-        "textContentType": "telephoneNumber",
-        "keyboardType": "numeric"
-    },
-    {
-        "label": "Address of Store",
-        "name": "address",
-        "type": "input",
-        "placeholder": "Mayfair, Ile-Ife",
-        "textContentType": "fullStreetAddress"
-    },
-    {
-        "label": "Store Category",
-        "type": "select",
-        "options": [],
-        "value": "_id",
-        "name": "category"
-    },
-    {
-        "name": "type",
-        "label": "Type of Store",
-        "icon": true,
-        "iconName": "infoIcon",
-        "type": "radio",
-        "fields": [
-            { "name": "type", "value": "IN STORE", "label": "Instore" },
-            { "name": "type", "value": "PICK UP", "label": "Pickup" }
-        ]
-    },
-    {
-        "name": "openDays",
-        "label": "Open Days",
-        "type": "switch&Time",
-        "fields": [
-            {
-                "switch": { "name": "weekDays", "label": "Week Days" },
-                "time": [
-                    {
-                        "name": "opensAt",
-                        "label": "Opens At",
-                        "options": [
-                            { "name": "24 hours" },
-                            { "name": "7:00 am" },
-                            { "name": "8:00 am" },
-                            { "name": "9:00 am" },
-                            { "name": "10:00 am" },
-                            { "name": "11:00 am" },
-                            { "name": "12:00 noon" }
-                        ]
-                    },
-                    {
-                        "name": "closesAt",
-                        "label": "Closes At",
-                        "options": [
-                            { "name": "5:00 pm" },
-                            { "name": "6:00 pm" },
-                            { "name": "7:00 pm" },
-                            { "name": "8:00 pm" },
-                            { "name": "9:00 pm" },
-                            { "name": "10:00 pm" }
-                        ]
-                    }
-                ]
-            },
-            {
-                "switch": { "name": "saturday", "label": "Saturday" },
-                "time": [
-                    {
-                        "name": "opensAt",
-                        "label": "Opens At",
-                        "options": [
-                            { "name": "24 hours" },
-                            { "name": "7:00 am" },
-                            { "name": "8:00 am" },
-                            { "name": "9:00 am" },
-                            { "name": "10:00 am" },
-                            { "name": "11:00 am" },
-                            { "name": "12:00 noon" }
-                        ]
-                    },
-                    {
-                        "name": "closesAt",
-                        "label": "Closes At",
-                        "options": [
-                            { "name": "5:00 pm" },
-                            { "name": "6:00 pm" },
-                            { "name": "7:00 pm" },
-                            { "name": "8:00 pm" },
-                            { "name": "9:00 pm" },
-                            { "name": "10:00 pm" }
-                        ]
-                    }
-                ]
-            },
-            {
-                "switch": { "name": "sunday", "label": "Sunday" },
-                "time": [
-                    {
-                        "name": "opensAt",
-                        "label": "Opens At",
-                        "options": [
-                            { "name": "24 hours" },
-                            { "name": "7:00 am" },
-                            { "name": "8:00 am" },
-                            { "name": "9:00 am" },
-                            { "name": "10:00 am" },
-                            { "name": "11:00 am" },
-                            { "name": "12:00 noon" }
-                        ]
-                    },
-                    {
-                        "name": "closesAt",
-                        "label": "Closes At",
-                        "options": [
-                            { "name": "5:00 pm" },
-                            { "name": "6:00 pm" },
-                            { "name": "7:00 pm" },
-                            { "name": "8:00 pm" },
-                            { "name": "9:00 pm" },
-                            { "name": "10:00 pm" }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
+	{
+			"label": "Name of Store",
+			"placeholder": "Cloudmall Stores",
+			"name": "name",
+			"type": "input"
+	},
+	{
+			"label": "Email Address of Store",
+			"placeholder": "mystore@cloudmall.com",
+			"name": "email",
+			"type": "input",
+			"keyboardType": "email-address",
+			"textContentType": "emailAddress"
+	},
+	{
+			"label": "Phone number",
+			"name": "phone",
+			"type": "input",
+			"placeholder": "0812345678",
+			"textContentType": "telephoneNumber",
+			"keyboardType": "numeric"
+	},
+	{
+			"label": "Address of Store",
+			"name": "address",
+			"type": "input",
+			"placeholder": "Mayfair, Ile-Ife",
+			"textContentType": "fullStreetAddress"
+	},
+	{
+			"label": "Store Category",
+			"type": "select",
+			"options": [],
+			"value": "_id",
+			"name": "category"
+	},
+	{
+			"name": "type",
+			"label": "Type of Store",
+			"icon": true,
+			"iconName": "infoIcon",
+			"type": "radio",
+			"fields": [
+					{ "name": "type", "value": "IN STORE", "label": "Instore" },
+					{ "name": "type", "value": "PICK UP", "label": "Pickup" }
+			]
+	},
+	{
+			"name": "openDays",
+			"label": "Open Days",
+			"type": "switch&Time",
+			"fields": [
+					{
+							"switch": { "name": "weekDays", "label": "Week Days" },
+							"time": [
+									{
+											"name": "opensAt",
+											"label": "Opens At",
+											"options": [
+													{ "name": "24 hours" },
+													{ "name": "7:00 am" },
+													{ "name": "8:00 am" },
+													{ "name": "9:00 am" },
+													{ "name": "10:00 am" },
+													{ "name": "11:00 am" },
+													{ "name": "12:00 noon" }
+											]
+									},
+									{
+											"name": "closesAt",
+											"label": "Closes At",
+											"options": [
+													{ "name": "5:00 pm" },
+													{ "name": "6:00 pm" },
+													{ "name": "7:00 pm" },
+													{ "name": "8:00 pm" },
+													{ "name": "9:00 pm" },
+													{ "name": "10:00 pm" }
+											]
+									}
+							]
+					},
+					{
+							"switch": { "name": "saturday", "label": "Saturday" },
+							"time": [
+									{
+											"name": "opensAt",
+											"label": "Opens At",
+											"options": [
+													{ "name": "24 hours" },
+													{ "name": "7:00 am" },
+													{ "name": "8:00 am" },
+													{ "name": "9:00 am" },
+													{ "name": "10:00 am" },
+													{ "name": "11:00 am" },
+													{ "name": "12:00 noon" }
+											]
+									},
+									{
+											"name": "closesAt",
+											"label": "Closes At",
+											"options": [
+													{ "name": "5:00 pm" },
+													{ "name": "6:00 pm" },
+													{ "name": "7:00 pm" },
+													{ "name": "8:00 pm" },
+													{ "name": "9:00 pm" },
+													{ "name": "10:00 pm" }
+											]
+									}
+							]
+					},
+					{
+							"switch": { "name": "sunday", "label": "Sunday" },
+							"time": [
+									{
+											"name": "opensAt",
+											"label": "Opens At",
+											"options": [
+													{ "name": "24 hours" },
+													{ "name": "7:00 am" },
+													{ "name": "8:00 am" },
+													{ "name": "9:00 am" },
+													{ "name": "10:00 am" },
+													{ "name": "11:00 am" },
+													{ "name": "12:00 noon" }
+											]
+									},
+									{
+											"name": "closesAt",
+											"label": "Closes At",
+											"options": [
+													{ "name": "5:00 pm" },
+													{ "name": "6:00 pm" },
+													{ "name": "7:00 pm" },
+													{ "name": "8:00 pm" },
+													{ "name": "9:00 pm" },
+													{ "name": "10:00 pm" }
+											]
+									}
+							]
+					}
+			]
+	}
 ]

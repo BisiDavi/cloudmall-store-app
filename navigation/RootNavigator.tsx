@@ -9,6 +9,7 @@ import {
     getsignedUserEmail,
     hasTokenExpired,
     checkExistingStore,
+    colors,
 } from "@utils/.";
 import DrawerNavigation from "./DrawerNavigation";
 import PublicNavigation from "./PublicNavigation";
@@ -27,7 +28,7 @@ export default function RootNavigator() {
             const userEmail = getsignedUserEmail(state.userToken);
             if (userEmail && !isSignedIn) {
                 setClientToken(state.userToken);
-                checkExistingStore(navigation, userEmail);
+                //checkExistingStore(navigation, userEmail);
             }
         }
     }, [state]);
@@ -40,17 +41,13 @@ export default function RootNavigator() {
 
     return (
         <>
-            <Spinner visible={state.isLoading} color="blue" />
+            <Spinner visible={state.isLoading} color={colors.cloudOrange5} />
             {!isSignedIn && !completed ? (
-                <>
-                    <StoreDetailsNavigation />
-                </>
+                <StoreDetailsNavigation />
             ) : !isSignedIn && completed ? (
                 <DrawerNavigation />
             ) : (
-                <>
-                    <PublicNavigation />
-                </>
+                <PublicNavigation />
             )}
         </>
     );

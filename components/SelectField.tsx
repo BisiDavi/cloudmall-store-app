@@ -35,11 +35,9 @@ export default function SelectField({ content, ...props }: selectFieldProps) {
                         ) : (
                             <Picker.Item
                                 fontFamily="RobotoRegular"
-                                //label="Loading ..."
-                                //value="loading"
-                            >
-                                <ActivityIndicator />
-                            </Picker.Item>
+                                label="Loading ..."
+                                value="loading"
+                            />
                         )}
                     </Picker>
                 </View>

@@ -20,11 +20,11 @@ export default function StoreDetailsScreenTwo({
     const [loading, setLoading] = useState(false);
 
     return (
-        <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            enabled={true}
-        >
-            <SafeAreaView>
+        <SafeAreaView>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+                enabled={true}
+            >
                 <ScrollView>
                     <View style={styles.container}>
                         <ProgressIndicator
@@ -34,8 +34,8 @@ export default function StoreDetailsScreenTwo({
                         <StoreDetailsFormTwo navigation={navigation} />
                     </View>
                 </ScrollView>
-            </SafeAreaView>
-        </KeyboardAvoidingView>
+            </KeyboardAvoidingView>
+        </SafeAreaView>
     );
 }
 

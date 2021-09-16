@@ -21,7 +21,7 @@ export default function StoreDetailsFormTwo({ navigation }: any) {
 
     return (
         <View>
-            <Spinner visible={loading} color="blue" />
+            <Spinner visible={loading} color={colors.cloudOrange5} />
             <Formik
                 validationSchema={storeDetailsScreenTwoSchema}
                 initialValues={{

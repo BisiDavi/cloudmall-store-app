@@ -35,8 +35,8 @@ export default function StoreDetailsFormOne() {
     }, []);
 
     return (
-        <>
-            <Spinner visible={loading} color="blue" />
+        <View>
+            <Spinner visible={loading} color={colors.cloudOrange5} />
             <StoreTypeInfoModal modal={infoModal} toggleModal={toggleModal} />
             <View style={styles.form}>
                 <Formik
@@ -77,7 +77,6 @@ export default function StoreDetailsFormOne() {
                                     toggleModal={toggleModal}
                                 />
                             ))}
-                            {console.log("formik values", values)}
                             <View style={styles.buttonView}>
                                 <Button
                                     buttonStyle={styles.buttonStyle}
@@ -90,7 +89,7 @@ export default function StoreDetailsFormOne() {
                     )}
                 </Formik>
             </View>
-        </>
+        </View>
     );
 }
 

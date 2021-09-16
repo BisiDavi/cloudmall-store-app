@@ -12,12 +12,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function StoreDetailsScreenOne() {
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{ flex: 1 }}>
             <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 enabled={true}
+                style={{ flex: 1 }}
             >
-                <ScrollView>
+                <ScrollView style={{ flex: 1 }}>
                     <View style={styles.container}>
                         <ProgressIndicator
                             title="Step 1: Stores Details"
@@ -35,11 +36,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
+        width: "100%",
         flexDirection: "column",
         padding: 20,
-        paddingLeft: 30,
-        paddingRight: 30,
-        paddingTop: 0,
-        alignItems: "center",
+        paddingLeft: 0,
+        alignItems: "flex-start",
     },
 });

@@ -47,7 +47,7 @@ export default function StoreDetailsFormOne() {
     }, []);
 
     return (
-        <View>
+        <>
             <Spinner visible={loading} color={colors.cloudOrange5} />
             <StoreTypeInfoModal modal={infoModal} toggleModal={toggleModal} />
             <View style={styles.form}>
@@ -77,7 +77,7 @@ export default function StoreDetailsFormOne() {
                         touched,
                         isValid,
                     }) => (
-                        <View>
+                        <>
                             {storeDetailsFormOne.map((formElement, index) => (
                                 <DisplayFormElements
                                     key={index}
@@ -98,19 +98,19 @@ export default function StoreDetailsFormOne() {
                                     title="Next"
                                 />
                             </View>
-                        </View>
+                        </>
                     )}
                 </Formik>
             </View>
-        </View>
+        </>
     );
 }
 
 const styles = StyleSheet.create({
     form: {
         marginTop: 10,
-        padding: 20,
-        paddingTop: 0,
+        padding: 0,
+				alignItems:"flex-start"
     },
     buttonStyle: {
         width: Dimensions.get("window").width * 0.7,

@@ -22,6 +22,19 @@ type postStoreDetailsType = {
     accountName: string;
 };
 
+type OrdersType = {
+    data: {
+        storeId: string;
+    };
+};
+
+type allProductType = {
+    data: {
+        categoryId: string;
+        storeId: string;
+    };
+};
+
 export async function postStoreDetails(
     data: postStoreDetailsType,
     navigation: any,
@@ -41,4 +54,16 @@ export async function postStoreDetails(
         .catch((error) => {
             showToast(error.response.data);
         });
+}
+
+export async function getAllProducts(data: allProductType) {
+    return await axiosInstance.post("/api/store/get-all-products", data);
+}
+
+export async function getCompletedOrders(data: OrdersType) {
+    return await axiosInstance.post("/api/store/get-completed-orders", data);
+}
+
+export async function getPendingOrders(data: OrdersType) {
+    return await axiosInstance.post("/api/store/get-pending-orders", data);
 }

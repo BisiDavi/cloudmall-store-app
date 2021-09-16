@@ -10,9 +10,14 @@
     ],
     "products": [
         { "name": "ProductScreen", "title": "My Product" },
-        { "name": "AddProductScreen", "title": "Add a new Product" },
+        {
+            "name": "AddProductScreen",
+            "title": "Add a new Product",
+            "position": "center"
+        },
         { "name": "EditProductScreen", "title": "Edit a new Product" },
         { "name": "AddProductScreenMethod", "title": "Add a Product" },
+        { "name": "ProductWithISBNScreen", "title": "Add a Product" },
         { "name": "FoodCategoryScreen", "title": "Food Category" },
         { "name": "AddExtraScreen", "title": "Add an Extra" },
         { "name": "AddProductOtherDetailsScreen", "title": "Add a new Product" }

@@ -21,7 +21,7 @@ export default function UploadStoreImageScreen({
 }: StackScreenProps<RootStackParamList, "UploadStoreImageScreen">) {
     const [image, setImage] = useState<any>(null);
     const [loading, setLoading] = useState(false);
-    const { onBoardingNextScreen } = useStoreSetupNavigation(navigation);
+    const { onBoardingNextScreen } = useStoreSetupNavigation();
     const dispatch = useDispatch();
     const state = useSelector((state: RootState) => state.storeDetails);
     console.log("UploadStoreImage", state);

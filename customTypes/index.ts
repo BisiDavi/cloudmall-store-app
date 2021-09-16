@@ -15,14 +15,14 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-    AddProductScreen: undefined;
     Orders: undefined;
     Dashboard: undefined;
-    Products: undefined;
     Payment: undefined;
 };
 
 export type DrawerStackParamList = {
+    AddProductScreen: undefined;
+    Products: undefined;
     MyStoreScreen: undefined;
     ViewStoreScreen: undefined;
     EditProductScreen: undefined;
@@ -42,4 +42,5 @@ export type DrawerStackParamList = {
     PaymentApprovedScreen: undefined;
     ConfirmPaymentScreen: undefined;
     OrderScreen: undefined;
+    DeliveryAddressScreen: undefined;
 };

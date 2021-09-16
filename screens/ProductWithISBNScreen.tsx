@@ -1,44 +1,38 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { StackNavigationProp } from "@react-navigation/stack";
 import { RouteProp } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { DrawerStackParamList } from "@customTypes/.";
 import { Image } from "react-native-elements";
-import addproductContent from "@json/add-product.json";
+import addproductContent from "@json/isbnProduct.json";
 import pizza from "@assets/pizza.png";
-import {  DrawerStackParamList } from "@customTypes/.";
-import ProgressIndicator from "@components/ProgressIndicator";
 import { ScrollView } from "react-native-gesture-handler";
 import AddNewProductForm from "@components/forms/AddNewProductForm";
 import Fab from "@components/Fab";
 import colors from "@utils/colors";
 
-type AddProductScreenNavigationProps = StackNavigationProp<
-DrawerStackParamList,
-    "AddProductScreen"
+type ProductWithISBNNavigationProps = StackNavigationProp<
+    DrawerStackParamList,
+    "ProductWithISBN"
 >;
 
-type AddProductScreenRouteProps = RouteProp<
-DrawerStackParamList,
-    "AddProductScreen"
+type ProductWithISBNRouteProps = RouteProp<
+    DrawerStackParamList,
+    "ProductWithISBN"
 >;
 
 type Props = {
-    route: AddProductScreenRouteProps;
-    navigation: AddProductScreenNavigationProps;
+    route: ProductWithISBNRouteProps;
+    navigation: ProductWithISBNNavigationProps;
 };
 
-export default function AddProductScreen({ navigation }: Props) {
+export default function ProductWithISBNScreen({ navigation }: Props) {
     const [productImage, setProductImage] = useState(false);
+    const productContent: productType[] = addproductContent;
 
     return (
         <ScrollView>
             <View style={styles.container}>
-                <ProgressIndicator
-                    style={styles.progressIndicator}
-                    selected={1}
-                    title="Step 1: Product Details"
-                    total={2}
-                />
                 <View style={styles.uploadProductImage}>
                     <View style={styles.FabView}>
                         <View style={styles.fabContainer}>
@@ -61,26 +55,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "flex-start",
         padding: 15,
-        paddingTop: 0,
     },
     productImage: {
         height: 150,
         width: 200,
         marginBottom: 20,
-    },
-    progressIndicator: {
-        margin: 5,
-        marginLeft: 0,
-        marginBottom: 20,
-        marginTop: 0,
-    },
-    title: {
-        fontFamily: "MontserratBold",
-        fontSize: 16,
-        marginTop: 0,
-        margin: 10,
-        marginLeft: 0,
-        textAlign: "center",
     },
     uploadProductImage: {
         justifyContent: "center",

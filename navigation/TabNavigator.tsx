@@ -40,6 +40,7 @@ export function TabOneNavigator({ navigation }: any) {
                         headerTitleAlign: "left",
                         headerTitleStyle: {
                             fontSize: 18,
+                            fontFamily: "RobotoBold",
                         },
                         title: tab.title,
                     }}
@@ -79,6 +80,10 @@ export function TabTwoNavigator({ navigation }: any) {
                     key={index}
                     options={{
                         headerTitleAlign: "left",
+                        headerTitleStyle: {
+                            fontSize: 18,
+                            fontFamily: "RobotoBold",
+                        },
                         title: tab.title,
                     }}
                     component={displayScreenComponent(tab.name)}
@@ -117,6 +122,10 @@ export function TabThreeNavigator({ navigation }: any) {
                     key={index}
                     options={{
                         headerTitleAlign: "left",
+                        headerTitleStyle: {
+                            fontSize: 18,
+                            fontFamily: "RobotoBold",
+                        },
                         title: tab.title,
                     }}
                     component={displayScreenComponent(tab.name)}

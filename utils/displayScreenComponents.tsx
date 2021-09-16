@@ -30,6 +30,8 @@ import RequestARiderScreen from "@screens/RequestARiderScreen";
 import ConfirmPayment from "@screens/ConfirmPaymentScreen";
 import PaymentApprovedScreen from "@screens/PaymentApprovedScreen";
 import FailedPaymentScreen from "@screens/FailedPaymentScreen";
+import DeliveryAddressScreen from "@screens/DeliveryAddressScreen";
+import ProductWithISBNScreen from "@screens/ProductWithISBNScreen";
 
 export default function displayScreenComponent(
     name: string | RootStackParamList,
@@ -97,6 +99,10 @@ export default function displayScreenComponent(
             return PaymentApprovedScreen;
         case "FailedPaymentScreen":
             return FailedPaymentScreen;
+        case "ProductWithISBNScreen":
+            return ProductWithISBNScreen;
+        case "DeliveryAddressScreen":
+            return DeliveryAddressScreen;
         default:
             return null;
     }

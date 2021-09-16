@@ -21,6 +21,10 @@ export function DrawerOneStackNavigator({ navigation }: any) {
                         headerPressColor: colors.mallBlue5,
                         headerTintColor: colors.cloudOrange5,
                         title: stack.title,
+                        headerTitleStyle: {
+                            textAlign: "center",
+                            fontFamily: "RobotoBold",
+                        },
                         headerLeft: (props) => (
                             <HeaderIcon
                                 attributes={props}
@@ -55,6 +59,11 @@ export function DrawerTwoStackNavigator({ navigation }: any) {
                         title: stack.title,
                         headerPressColor: colors.mallBlue5,
                         headerTintColor: colors.cloudOrange5,
+                        headerTitleAlign: "center",
+                        headerTitleStyle: {
+                            textAlign: "center",
+                            fontFamily: "RobotoBold",
+                        },
                         headerLeft: (props) => (
                             <HeaderIcon
                                 attributes={props}
@@ -89,6 +98,11 @@ export function DrawerThreeStackNavigator({ navigation }: any) {
                         title: stack.title,
                         headerPressColor: colors.mallBlue5,
                         headerTintColor: colors.cloudOrange5,
+                        headerTitleAlign: "center",
+                        headerTitleStyle: {
+                            textAlign: "center",
+                            fontFamily: "RobotoBold",
+                        },
                         headerLeft: (props) => (
                             <HeaderIcon
                                 attributes={props}
@@ -122,6 +136,11 @@ export function DrawerFourStackNavigator({ navigation }: any) {
                         title: stack.title,
                         headerPressColor: colors.mallBlue5,
                         headerTintColor: colors.cloudOrange5,
+                        headerTitleAlign: "center",
+                        headerTitleStyle: {
+                            textAlign: "center",
+                            fontFamily: "RobotoBold",
+                        },
                         headerLeft: (props) => (
                             <HeaderIcon
                                 attributes={props}
@@ -156,6 +175,11 @@ export function DrawerFiveStackNavigator({ navigation }: any) {
                         title: stack.title,
                         headerPressColor: colors.mallBlue5,
                         headerTintColor: colors.cloudOrange5,
+                        headerTitleAlign: "center",
+                        headerTitleStyle: {
+                            textAlign: "center",
+                            fontFamily: "RobotoBold",
+                        },
                         headerLeft: (props) => (
                             <HeaderIcon
                                 attributes={props}

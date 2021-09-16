@@ -35,10 +35,7 @@ const styles = StyleSheet.create({
     progressView: {
         flexDirection: "column",
         justifyContent: "flex-start",
-        margin: 30,
-        marginTop: 20,
         marginBottom: 10,
-        marginLeft: 20,
     },
     progressIndicator: {
         flexDirection: "row",

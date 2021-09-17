@@ -1,49 +1,31 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import SelectField from "./SelectField";
 
 type stateType = {
-    weekDays: { opensAt: string; closesAt: string } | boolean;
-    saturday: { opensAt: string; closesAt: string } | boolean;
-    sunday: { opensAt: string; closesAt: string } | boolean;
+    weekDays: { openingTime: string; closingTime: string } | boolean;
+    saturday: { openingTime: string; closingTime: string } | boolean;
+    sunday: { openingTime: string; closingTime: string } | boolean;
 };
 
+interface SelectGroupProps {
+    selectedValue: any;
+    onValueChange: (value: string, index: number) => void;
+    selectField: any;
+}
+
 export default function SelectGroup(props: SelectGroupProps) {
-    const { selectField, durationName } = props;
-    const [openDays, setOpenDays] = useState<stateType>({
-        weekDays: { opensAt: "", closesAt: "" },
-        saturday: { opensAt: "", closesAt: "" },
-        sunday: { opensAt: "", closesAt: "" },
-    });
-
-    function handleSelect(field: any, value: any) {
-        console.log("field.switch.label", field);
-        console.log("handleSelect value", value);
-
-        console.log(" ");
-
-        setOpenDays((prevState: any) => {
-            return {
-                ...prevState,
-                [durationName]: {
-                    ...prevState[durationName],
-                    [field]: value,
-                },
-            };
-        });
-    }
-    console.log("openDays", openDays);
-
+    const { selectedValue, onValueChange, selectField } = props;
     return (
         <View style={styles.selectGroup}>
-            {selectField.map((field, index) => (
+            {selectField.map((field: any, index: number) => (
                 <SelectField
                     content={field}
                     key={index}
-                    selectedValue={openDays}
-                    onValueChange={(value: string) =>
-                        handleSelect(field.name, value)
-                    }
+                    selectedValue={selectedValue}
+                    onValueChange={(value: string) => {
+                        onValueChange(value, index);
+                    }}
                     style={styles.select}
                 />
             ))}
@@ -56,20 +38,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         width: "100%",
-        padding: 10,
+        alignItems: "flex-start",
     },
     select: {
         width: 130,
-        borderWidth: 0,
-        borderBottomWidth: 1,
+        borderWidth: 1,
     },
 });
-
-interface SelectGroupProps {
-    selectField: {
-        label: string;
-        options: { name: string }[];
-        name?: string;
-    }[];
-    durationName: string;
-}

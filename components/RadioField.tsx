@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
         display: "flex",
         flexDirection: "column",
-        padding: 10,
+        padding: 0,
+        width: Dimensions.get("window").width * 0.85,
     },
     typeView: {
         flexDirection: "row",

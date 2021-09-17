@@ -7,6 +7,7 @@ import {
     Platform,
     View,
     Text,
+    Dimensions,
 } from "react-native";
 
 import { RootStackParamList } from "../customTypes";
@@ -28,27 +29,29 @@ export default function LoginScreen({ navigation }: Props) {
         <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             enabled={true}
+            style={{ flex: 1 }}
         >
-            <ScrollView>
-                <SafeAreaView>
+            <SafeAreaView style={{ flex: 1 }}>
+                <ScrollView style={{ flex: 1 }}>
                     <View style={styles.container}>
                         <View style={styles.textView}>
                             <Text style={styles.title}>Welcome Back</Text>
                         </View>
                         <LoginForm navigation={navigation} />
                     </View>
-                </SafeAreaView>
-            </ScrollView>
+                </ScrollView>
+            </SafeAreaView>
         </KeyboardAvoidingView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        height: "100%",
+        height: Dimensions.get("window").height,
         width: "100%",
         flexDirection: "column",
-        justifyContent: "space-around",
+        justifyContent: "flex-start",
+        backgroundColor: colors.neutralWhite,
     },
     title: {
         color: colors.cloudOrange5,

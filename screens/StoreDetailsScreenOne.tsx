@@ -36,10 +36,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
-        width: "100%",
         flexDirection: "column",
-        padding: 20,
-        paddingLeft: 0,
-        alignItems: "flex-start",
+        margin: 15,
+        alignItems: "center",
     },
 });

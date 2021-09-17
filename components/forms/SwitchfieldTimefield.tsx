@@ -1,8 +1,10 @@
 import SelectGroup from "@components/SelectGroup";
+import { StoreOpendaysAction } from "@store/actions/StoreDetailsAction";
 import colors from "@utils/colors";
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { Switch } from "react-native-elements";
+import { useDispatch } from "react-redux";
 
 type TimeAndSwitchFieldType = {
     switch: {
@@ -13,6 +15,7 @@ type TimeAndSwitchFieldType = {
 };
 interface TimeAndSwitchField {
     field: TimeAndSwitchFieldType;
+    index: number;
 }
 
 interface SwitchFieldsProps {
@@ -23,59 +26,66 @@ interface SwitchFieldsProps {
     };
 }
 
-type stateType = {
-    weekDays: { opensAt: string; closesAt: string } | boolean;
-    saturday: { opensAt: string; closesAt: string } | boolean;
-    sunday: { opensAt: string; closesAt: string } | boolean;
-};
-
 function TimeAndSwitchField(props: TimeAndSwitchField) {
+    const dispatch = useDispatch();
     const { field } = props;
-    const [open, setOpen] = useState(false);
-    const [openDays, setOpenDays] = useState<stateType>({
-        weekDays: { opensAt: "", closesAt: "" },
-        saturday: { opensAt: "", closesAt: "" },
-        sunday: { opensAt: "", closesAt: "" },
+    const period: string = field.switch.name;
+
+    const [openDays, setOpenDays] = useState({
+        [period]: { openingTime: "", closingTime: "", status: false },
     });
 
-    function handleSelect(switchName: string) {
-        console.log("field.switch.label", field.switch.name);
-        console.log("switchName", switchName);
-        console.log(" ");
+    const switchStatus: boolean = openDays[period].status;
+    function handleSelect(value: string, index: number) {
+        const fieldName = field.time[index].name;
 
-        setOpenDays((prevState) => {
-            return {
-                ...prevState,
-                [field.switch.name]: { opensAt: switchName, closesAt: "" },
-            };
-        });
-        console.log("openDays", openDays);
+        setOpenDays((prevState: any) => ({
+            ...prevState,
+            [period]: {
+                ...prevState[period],
+                [fieldName]: value,
+            },
+        }));
+
+        dispatch(StoreOpendaysAction(openDays));
     }
-    const textColor = open ? styles.open : styles.close;
+    console.log("openDays", openDays);
+    const textColor = switchStatus ? styles.open : styles.close;
 
     function handleSwitchChange() {
-        setOpen((prevState) => !prevState);
+        setOpenDays((prevState: any) => ({
+            ...prevState,
+            [period]: {
+                ...prevState[period],
+                status: !prevState[period].status,
+            },
+        }));
     }
 
     return (
-        <View>
+        <View style={styles.timeAndSwitchField}>
             <View style={styles.switchView}>
-                <Text style={styles.switchText}>{field.switch.label}</Text>
+                <Text style={{ ...styles.switchLabel, ...styles.switchText }}>
+                    {field.switch.label}
+                </Text>
                 <Switch
                     color={colors.mallBlue5}
-                    value={open}
+                    value={switchStatus}
                     onValueChange={handleSwitchChange}
                 />
                 <Text style={{ ...textColor, ...styles.switchText }}>
-                    {open ? "Open" : "Close"}
+                    {switchStatus ? "Open" : "Close"}
                 </Text>
             </View>
-            {open && (
-                <SelectGroup
-                    durationName={field.switch.name}
-                    selectField={field?.time}
-                    {...props}
-                />
+            {switchStatus && (
+                <View style={styles.selectField}>
+                    <SelectGroup
+                        selectedValue={openDays}
+                        onValueChange={handleSelect}
+                        selectField={field.time}
+                        {...props}
+                    />
+                </View>
             )}
         </View>
     );
@@ -88,17 +98,37 @@ export default function SwitchfieldTimefield(props: SwitchFieldsProps) {
         <View style={styles.SwitchFields}>
             <Text style={styles.label}>{content.label}</Text>
             {content.fields?.map((item, index) => (
-                <TimeAndSwitchField key={index} field={item} {...props} />
+                <TimeAndSwitchField
+                    index={index}
+                    key={index}
+                    field={item}
+                    {...props}
+                />
             ))}
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    SwitchFields: {
+        marginTop: 0,
+        padding: 0,
+        alignItems: "flex-start",
+        width: Dimensions.get("window").width * 0.85,
+    },
+    timeAndSwitchField: {
+        paddingTop: 5,
+        paddingBottom: 5,
+    },
+    selectField: {
+        width: Dimensions.get("window").width * 0.85,
+        alignItems: "center",
+    },
     switchView: {
         flexDirection: "row",
         justifyContent: "space-between",
-        margin: 10,
+        width: "100%",
+        alignItems: "center",
     },
     open: {
         color: "green",
@@ -106,19 +136,19 @@ const styles = StyleSheet.create({
     close: {
         color: colors.accentRed,
     },
-    SwitchFields: {
-        marginTop: 0,
-        margin: 10,
-    },
+
     label: {
         fontFamily: "RobotoRegular",
         fontSize: 14,
-        lineHeight: 20,
+        lineHeight: 18,
         marginBottom: 10,
     },
     switchText: {
         fontFamily: "RobotoRegular",
         fontSize: 17,
-        lineHeight: 20,
+        lineHeight: 19,
+    },
+    switchLabel: {
+        width: 100,
     },
 });

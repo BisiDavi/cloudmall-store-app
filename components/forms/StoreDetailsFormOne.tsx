@@ -110,16 +110,20 @@ const styles = StyleSheet.create({
     form: {
         marginTop: 10,
         padding: 0,
-				alignItems:"flex-start"
+        justifyContent: "center",
+        width: Dimensions.get("window").width,
+        alignItems: "center",
     },
     buttonStyle: {
         width: Dimensions.get("window").width * 0.7,
         alignItems: "center",
         backgroundColor: colors.mallBlue5,
+        justifyContent: "center",
     },
     buttonView: {
         alignItems: "center",
         marginTop: 20,
+        justifyContent: "center",
     },
     title: {
         fontSize: 20,

@@ -7,6 +7,7 @@ import {
     STORE_IMAGE_UPLOAD,
     STORE_LOGO_UPLOAD,
     STORE_ADDRESS_COORDINATES,
+    UPDATE_STORE_OPENDAYS,
 } from "../constant";
 
 export function StoreDetailsReducer(
@@ -17,7 +18,11 @@ export function StoreDetailsReducer(
         address: "",
         category: "",
         type: "",
-        openDays: "",
+        openDays: {
+            weekDays: { status: false, openingTime: "", closingTime: "" },
+            saturday: { status: false, openingTime: "", closingTime: "" },
+            sunday: { status: false, openingTime: "", closingTime: "" },
+        },
         latitude: null,
         longitude: null,
         ownerName: "",
@@ -59,6 +64,15 @@ export function StoreDetailsReducer(
                 ownerName: payload.ownerName,
                 ownerPhone: payload.ownerPhone,
                 ownerEmail: payload.ownerEmail,
+            };
+        }
+        case UPDATE_STORE_OPENDAYS: {
+            return {
+                ...state,
+                openDays: {
+                    ...state.openDays,
+                    payload,
+                },
             };
         }
         case STORE_ADDRESS_COORDINATES: {
@@ -124,7 +138,8 @@ type actionType = {
         | "STORE_SETTLEMENT_DETAILS"
         | "STORE_IMAGE_UPLOAD"
         | "STORE_LOGO_UPLOAD"
-        | "STORE_ADDRESS_COORDINATES";
+        | "STORE_ADDRESS_COORDINATES"
+        | "UPDATE_STORE_OPENDAYS";
     payload: StoreDetailsType;
 };
 
@@ -138,7 +153,11 @@ type StoreDetailsType = {
     ownerName: string;
     ownerPhone: string;
     ownerEmail: string;
-    openDays: string;
+    openDays: {
+        weekDays: { status: boolean; openingTime: string; closingTime: string };
+        saturday: { status: boolean; openingTime: string; closingTime: string };
+        sunday: { status: boolean; openingTime: string; closingTime: string };
+    };
     latitude: number | null;
     longitude: number | null;
     settlementPlan: string;

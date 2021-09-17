@@ -6,7 +6,8 @@ import {
     STORE_SETTLEMENT_DETAILS,
     STORE_IMAGE_UPLOAD,
     STORE_ADDRESS_COORDINATES,
-		STORE_LOGO_UPLOAD,
+    STORE_LOGO_UPLOAD,
+    UPDATE_STORE_OPENDAYS,
 } from "../constant";
 
 export const StoreDetailsTypeAction = (payload: any) => (dispatch: any) => {
@@ -67,3 +68,11 @@ export const StoreAddressCoordinatesAction =
             payload,
         });
     };
+
+
+export const StoreOpendaysAction = (payload: any) => (dispatch: any) => {
+    dispatch({
+        type: UPDATE_STORE_OPENDAYS,
+        payload,
+    });
+};

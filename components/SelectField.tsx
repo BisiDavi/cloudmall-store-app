@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import colors from "@utils/colors";
 
@@ -66,7 +66,8 @@ interface selectFieldProps {
 
 const styles = StyleSheet.create({
     text: {
-        margin: 10,
+        margin: 5,
+        marginLeft: 0,
         fontWeight: "500",
         fontSize: 14,
         textAlign: "left",
@@ -74,7 +75,6 @@ const styles = StyleSheet.create({
     },
     textView: {
         alignItems: "flex-start",
-        display: "flex",
         justifyContent: "flex-start",
     },
     pickerView: {
@@ -82,14 +82,15 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     selectField: {
-        marginBottom: 0,
-        marginTop: -10,
-        justifyContent: "center",
+        margin: 0,
+        padding: 0,
+        alignItems: "flex-start",
+        flexDirection: "column",
     },
     picker: {
         height: 48,
-        marginBottom: 0,
-        paddingBottom: 0,
+        margin: 0,
+        padding: 0,
         borderColor: colors.mallBlue3,
         borderWidth: 1,
         borderRadius: 5,

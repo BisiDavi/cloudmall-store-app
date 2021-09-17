@@ -7,6 +7,7 @@ import {
     Platform,
     View,
     Text,
+    Dimensions,
 } from "react-native";
 
 import { RootStackParamList } from "customTypes";
@@ -30,8 +31,8 @@ export default function SignupScreen({ navigation }: signupScreenProps) {
             enabled={true}
             style={{ flex: 1 }}
         >
-            <ScrollView style={{ flex: 1 }}>
-                <SafeAreaView>
+            <SafeAreaView style={{ flex: 1 }}>
+                <ScrollView style={{ flex: 1 }}>
                     <View style={styles.container}>
                         <View style={styles.textView}>
                             <Text style={styles.title}>Create an Account</Text>
@@ -42,20 +43,21 @@ export default function SignupScreen({ navigation }: signupScreenProps) {
                         </View>
                         <SignupForm navigation={navigation} />
                     </View>
-                </SafeAreaView>
-            </ScrollView>
+                </ScrollView>
+            </SafeAreaView>
         </KeyboardAvoidingView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        height: "100%",
         width: "100%",
+        height: Dimensions.get("window").height,
         flexDirection: "column",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         alignItems: "flex-start",
         flex: 1,
+        backgroundColor: colors.neutralWhite,
     },
     title: {
         color: colors.cloudOrange5,

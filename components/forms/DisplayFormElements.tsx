@@ -32,15 +32,7 @@ function FormElements(props: displayFormElementsProps) {
         }
         case "radio": {
             return (
-                <RadioField
-                    content={formElement}
-                    toggleModal={toggleModal}
-                    error={
-                        props.errors[formElement.name] &&
-                        props.touched[formElement.name] &&
-                        props.errors[formElement.name]
-                    }
-                />
+                <RadioField content={formElement} toggleModal={toggleModal} />
             );
         }
         case "select": {

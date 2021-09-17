@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-native-elements";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
 import { useStoreSetupNavigation } from "@hooks/.";
-import { colors, screenNavigate } from "@utils/.";
+import { colors } from "@utils/.";
 import settlementDetails from "@json/settlement-details.json";
 import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import { storeSettlementDetailsSchema } from "./StoreDetailsSchema";
 import { StoreSettlementAction } from "@store/actions/StoreDetailsAction";
-import { RootState } from "@store/RootReducer";
 import { getBanksRequest } from "@network/getRequest";
 
 type stateType = {
@@ -74,7 +73,7 @@ export default function SettlementDetailsForm() {
                     touched,
                     isValid,
                 }) => (
-                    <View>
+                    <>
                         {settlementDetails.map((formElement, index: number) => (
                             <DisplayFormElements
                                 key={index}
@@ -101,7 +100,7 @@ export default function SettlementDetailsForm() {
                                 title="Next"
                             />
                         </View>
-                    </View>
+                    </>
                 )}
             </Formik>
         </View>
@@ -110,9 +109,12 @@ export default function SettlementDetailsForm() {
 
 const styles = StyleSheet.create({
     form: {
-        marginTop: 10,
         padding: 20,
-        paddingTop: 0,
+        paddingTop: 10,
+        paddingLeft: 0,
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
     },
     nextButtonStyle: {
         width: Dimensions.get("window").width * 0.3,
@@ -142,6 +144,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         padding: 10,
         paddingTop: 0,
+        width: "80%",
     },
     title: {
         fontSize: 20,

@@ -27,6 +27,7 @@ export function StoreDetailsReducer(
         longitude: null,
         ownerName: "",
         ownerPhone: "",
+        state: "",
         ownerEmail: "",
         settlementPlan: "",
         bankName: "",
@@ -39,8 +40,6 @@ export function StoreDetailsReducer(
     action: actionType,
 ) {
     const { payload, type } = action;
-    console.log("StoreDetailsReducer", state);
-
     switch (type) {
         case STORETYPE_SELECTED: {
             return {
@@ -55,6 +54,7 @@ export function StoreDetailsReducer(
                 email: payload.email,
                 phone: payload.phone,
                 address: payload.address,
+                state: payload.state,
                 category: payload.category,
             };
         }
@@ -151,6 +151,7 @@ type StoreDetailsType = {
     phone: string;
     address: string;
     type: string;
+    state: string;
     category: string;
     ownerName: string;
     ownerPhone: string;

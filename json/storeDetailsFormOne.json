@@ -41,7 +41,7 @@
         "type": "select",
         "options": [],
         "value": "_id",
-        "placholder": "Select Store Category",
+        "placeholder": "Select Store Category",
         "name": "category"
     },
     {

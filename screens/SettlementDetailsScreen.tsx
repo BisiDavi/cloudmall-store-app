@@ -7,6 +7,7 @@ import {
     Platform,
     KeyboardAvoidingView,
     ScrollView,
+    Dimensions,
 } from "react-native";
 import { RootStackParamList } from "@customTypes/.";
 import ProgressIndicator from "@components/ProgressIndicator";
@@ -24,10 +25,12 @@ export default function SettlementDetailsScreen({
             >
                 <ScrollView style={styles.view}>
                     <View style={styles.container}>
-                        <ProgressIndicator
-                            title="Step 3: Settlement Details"
-                            selected={3}
-                        />
+                        <View style={styles.indicator}>
+                            <ProgressIndicator
+                                title="Step 3: Settlement Details"
+                                selected={3}
+                            />
+                        </View>
                         <SettlementDetailsForm />
                     </View>
                 </ScrollView>
@@ -42,12 +45,13 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: "flex-start",
         flexDirection: "column",
-        padding: 20,
-        paddingTop: 0,
-        paddingLeft: 30,
-        paddingRight: 30,
+        margin: 20,
+        width: Dimensions.get("window").width * 0.95,
         alignItems: "center",
+    },
+    indicator: {
+        marginLeft: -20,
     },
 });

@@ -24,6 +24,12 @@ export default function SelectField({ content, ...props }: selectFieldProps) {
                                 onValueChange={props.onValueChange}
                                 style={props.style}
                             >
+                                {content.placeholder && (
+                                    <Picker.Item
+                                        label={content.placeholder}
+                                        value=""
+                                    />
+                                )}
                                 {content.options.length > 0 ? (
                                     content.options.map(
                                         (item: any, index: number) => {
@@ -31,24 +37,12 @@ export default function SelectField({ content, ...props }: selectFieldProps) {
                                                 ? item[content.optionName]
                                                 : item.name;
                                             return (
-                                                <>
-                                                    {content.placeholder && (
-                                                        <Picker.Item
-                                                            label={
-                                                                content.label
-                                                            }
-                                                            value=""
-                                                        />
-                                                    )}
-                                                    <Picker.Item
-                                                        fontFamily="RobotoRegular"
-                                                        key={`${item.name}-${index}`}
-                                                        label={labelName}
-                                                        value={getPickerValue(
-                                                            item,
-                                                        )}
-                                                    />
-                                                </>
+                                                <Picker.Item
+                                                    fontFamily="RobotoRegular"
+                                                    key={`${item.name}-${index}`}
+                                                    label={labelName}
+                                                    value={getPickerValue(item)}
+                                                />
                                             );
                                         },
                                     )

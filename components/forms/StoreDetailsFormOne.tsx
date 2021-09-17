@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-native-elements";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
@@ -15,9 +15,11 @@ import {
     getStoreCategoriesRequest,
 } from "@network/getRequest";
 import StoreTypeInfoModal from "@components/StoreTypeInfoModal";
+import { RootState } from "@store/RootReducer";
 
 export default function StoreDetailsFormOne() {
     const dispatch = useDispatch();
+    const storeDetails = useSelector((state: RootState) => state.storeDetails);
     const { onBoardingNextScreen } = useStoreSetupNavigation();
     const [loading, setLoading] = useState(false);
     const [infoModal, setInfoModal] = useState(false);
@@ -26,6 +28,8 @@ export default function StoreDetailsFormOne() {
 
     storeDetailsFormOne[4].options = availableStates;
     storeDetailsFormOne[5].options = storeCategory;
+
+    console.log("storeDetails", storeDetails);
 
     function toggleModal() {
         return setInfoModal(!infoModal);
@@ -124,6 +128,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 20,
         justifyContent: "center",
+				 marginBottom:40
     },
     title: {
         fontSize: 20,

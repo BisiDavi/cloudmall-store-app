@@ -20,27 +20,25 @@ export default function InputField({
     ...props
 }: InputFieldProps) {
     return (
-        <View>
-            <Input
-                {...props}
-                label={label}
-                placeholder={props.placeholder}
-                inputContainerStyle={[
-                    inputStyles.inputContainer,
-                    props.styleContainer,
-                ]}
-                labelStyle={[inputStyles.label, props.styleLabel]}
-                inputStyle={[inputStyles.input, props.styleInput]}
-                keyboardType={keyboardType}
-                value={value}
-                placeholderTextColor={colors.neutral4}
-                errorMessage={errorMessage}
-                onChangeText={onChangeText}
-                secureTextEntry={secureTextEntry}
-                rightIcon={rightIcon}
-                rightIconContainerStyle={inputStyles.rightIconStyle}
-            />
-        </View>
+        <Input
+            {...props}
+            label={label}
+            placeholder={props.placeholder}
+            inputContainerStyle={[
+                inputStyles.inputContainer,
+                props.styleContainer,
+            ]}
+            labelStyle={[inputStyles.label, props.styleLabel]}
+            inputStyle={[inputStyles.input, props.styleInput]}
+            keyboardType={keyboardType}
+            value={value}
+            placeholderTextColor={colors.neutral4}
+            errorMessage={errorMessage}
+            onChangeText={onChangeText}
+            secureTextEntry={secureTextEntry}
+            rightIcon={rightIcon}
+            rightIconContainerStyle={inputStyles.rightIconStyle}
+        />
     );
 }
 
@@ -52,7 +50,6 @@ const inputStyles = StyleSheet.create({
         borderColor: colors.mallBlue3,
         borderWidth: 1,
         borderRadius: 5,
-        marginLeft: 0,
     },
     input: {
         height: 48,

@@ -1,5 +1,4 @@
-import { StackScreenProps } from "@react-navigation/stack";
-import React, { useState } from "react";
+import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
     StyleSheet,
@@ -9,16 +8,11 @@ import {
     ScrollView,
 } from "react-native";
 
-import { RootStackParamList } from "@customTypes/.";
 import ProgressIndicator from "@components/ProgressIndicator";
 import StoreDetailsFormTwo from "@components/forms/StoreDetailsFormTwo";
 import { colors } from "@utils/.";
 
-export default function StoreDetailsScreenTwo({
-    navigation,
-}: StackScreenProps<RootStackParamList, "StoreDetailsScreenTwo">) {
-    const [loading, setLoading] = useState(false);
-
+export default function StoreDetailsScreenTwo() {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <KeyboardAvoidingView
@@ -46,7 +40,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         padding: 20,
-        paddingTop: 0,
         backgroundColor: colors.neutralWhite,
     },
     inputField: {

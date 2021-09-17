@@ -1,10 +1,11 @@
 import SelectGroup from "@components/SelectGroup";
 import { StoreOpendaysAction } from "@store/actions/StoreDetailsAction";
+import { RootState } from "@store/RootReducer";
 import colors from "@utils/colors";
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { Switch } from "react-native-elements";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 type TimeAndSwitchFieldType = {
     switch: {
@@ -28,6 +29,9 @@ interface SwitchFieldsProps {
 
 function TimeAndSwitchField(props: TimeAndSwitchField) {
     const dispatch = useDispatch();
+    const { openDays: openDaysFromState } = useSelector(
+        (state: RootState) => state.storeDetails,
+    );
     const { field } = props;
     const period: string = field.switch.name;
 
@@ -77,12 +81,18 @@ function TimeAndSwitchField(props: TimeAndSwitchField) {
                     {switchStatus ? "Open" : "Close"}
                 </Text>
             </View>
+            {!openDays[field.switch.name].status && (
+                <Text style={styles.error}>
+                    {field.switch.label} field is Required
+                </Text>
+            )}
             {switchStatus && (
                 <View style={styles.selectField}>
                     <SelectGroup
                         selectedValue={openDays}
                         onValueChange={handleSelect}
                         selectField={field.time}
+                        checkError={openDays[period]}
                         {...props}
                     />
                 </View>
@@ -150,5 +160,9 @@ const styles = StyleSheet.create({
     },
     switchLabel: {
         width: 100,
+    },
+    error: {
+        color: "red",
+        fontSize: 13,
     },
 });

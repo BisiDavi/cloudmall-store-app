@@ -59,36 +59,7 @@
         "type": "switch&Time",
         "fields": [
             {
-                "switch": { "name": "weekDays", "label": "Week Days *" },
-                "time": [
-                    {
-                        "name": "openingTime",
-                        "options": [
-                            { "name": "Opens At" },
-                            { "name": "24 hours" },
-                            { "name": "7:00 am" },
-                            { "name": "8:00 am" },
-                            { "name": "9:00 am" },
-                            { "name": "10:00 am" },
-                            { "name": "11:00 am" },
-                            { "name": "12:00 noon" }
-                        ]
-                    },
-                    {
-                        "name": "closingTime",
-                        "options": [
-                            { "name": "5:00 pm" },
-                            { "name": "6:00 pm" },
-                            { "name": "7:00 pm" },
-                            { "name": "8:00 pm" },
-                            { "name": "9:00 pm" },
-                            { "name": "10:00 pm" }
-                        ]
-                    }
-                ]
-            },
-            {
-                "switch": { "name": "saturday", "label": "Saturday *" },
+                "switch": { "name": "weekDays", "label": "Week Days" },
                 "time": [
                     {
                         "name": "openingTime",
@@ -118,7 +89,37 @@
                 ]
             },
             {
-                "switch": { "name": "sunday", "label": "Sunday *" },
+                "switch": { "name": "saturday", "label": "Saturday" },
+                "time": [
+                    {
+                        "name": "openingTime",
+                        "options": [
+                            { "name": "Opens At" },
+                            { "name": "24 hours" },
+                            { "name": "7:00 am" },
+                            { "name": "8:00 am" },
+                            { "name": "9:00 am" },
+                            { "name": "10:00 am" },
+                            { "name": "11:00 am" },
+                            { "name": "12:00 noon" }
+                        ]
+                    },
+                    {
+                        "name": "closingTime",
+                        "options": [
+                            { "name": "Closes At" },
+                            { "name": "5:00 pm" },
+                            { "name": "6:00 pm" },
+                            { "name": "7:00 pm" },
+                            { "name": "8:00 pm" },
+                            { "name": "9:00 pm" },
+                            { "name": "10:00 pm" }
+                        ]
+                    }
+                ]
+            },
+            {
+                "switch": { "name": "sunday", "label": "Sunday" },
                 "time": [
                     {
                         "name": "openingTime",

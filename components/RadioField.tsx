@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { RadioButton } from "react-native-paper";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { colors, displayAsset } from "@utils/.";
 import { StoreDetailsTypeAction } from "@store/actions/StoreDetailsAction";
+import { RootState } from "@store/RootReducer";
 
-export default function RadioField({
-    content,
-    toggleModal,
-    error,
-}: RadioFieldProps) {
+export default function RadioField({ content, toggleModal }: RadioFieldProps) {
     const [checked, setChecked] = useState("");
     const dispatch = useDispatch();
-
+    const { type }: any = useSelector((state: RootState) => state.storeDetails);
     useEffect(() => {
         dispatch(StoreDetailsTypeAction(checked));
     }, [checked]);
+
+    const isTypeValid = type.length > 0;
 
     return (
         <View style={styles.storeType}>
@@ -39,7 +38,9 @@ export default function RadioField({
                     </View>
                 ))}
             </View>
-            <Text style={styles.error}>{error}</Text>
+            {!isTypeValid && (
+                <Text style={styles.error}>Store type is required</Text>
+            )}
         </View>
     );
 }
@@ -51,6 +52,7 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         padding: 0,
         width: Dimensions.get("window").width * 0.85,
+        marginBottom: 20,
     },
     typeView: {
         flexDirection: "row",
@@ -105,7 +107,6 @@ interface RadioFieldProps {
         fields?: itemType[] | undefined;
         iconName?: string | undefined;
     };
-    error: string;
     toggleModal?: () => void;
 }
 

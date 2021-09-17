@@ -27,8 +27,7 @@ export default function StoreDetailsFormOne() {
     storeDetailsFormOne[4].options = availableStates;
     storeDetailsFormOne[5].options = storeCategory;
 
-    console.log("storeCategory", storeCategory.length);
-    console.log("availableStates", availableStates.length);
+    console.log("availableStates", availableStates);
 
     function toggleModal() {
         return setInfoModal(!infoModal);
@@ -62,11 +61,8 @@ export default function StoreDetailsFormOne() {
                         address: "",
                         state: "",
                         category: "",
-                        type: "",
-                        openDays: "",
                     }}
                     onSubmit={(values) => {
-                        console.log("form onevalues", values);
                         setLoading(true);
                         dispatch(StoreDetailsAction(values));
                         setLoading(false);
@@ -95,6 +91,7 @@ export default function StoreDetailsFormOne() {
                                     toggleModal={toggleModal}
                                 />
                             ))}
+                            {console.log("form onevalues", values)}
                             <View style={styles.buttonView}>
                                 <Button
                                     buttonStyle={styles.buttonStyle}

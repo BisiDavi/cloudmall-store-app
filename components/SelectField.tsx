@@ -9,45 +9,51 @@ export default function SelectField({ content, ...props }: selectFieldProps) {
         return pickerValue;
     }
     return (
-        <View style={styles.selectField}>
-            {content.label && (
-                <View style={styles.textView}>
-                    <Text style={styles.text}>{content.label}</Text>
-                </View>
-            )}
-            <View style={styles.pickerView}>
-                <View style={{ ...props.style, ...styles.picker }}>
-                    <Picker
-                        selectedValue={props.selectedValue}
-                        onValueChange={props.onValueChange}
-                        style={props.style}
-                    >
-                        {content.options.length > 0 ? (
-                            content.options.map((item: any, index: number) => {
-                                const labelName = content.optionName
-                                    ? item[content.optionName]
-                                    : item.name;
-                                return (
+        <>
+            {content.options !== null ? (
+                <View style={styles.selectField}>
+                    {content.label && (
+                        <View style={styles.textView}>
+                            <Text style={styles.text}>{content.label}</Text>
+                        </View>
+                    )}
+                    <View style={styles.pickerView}>
+                        <View style={{ ...props.style, ...styles.picker }}>
+                            <Picker
+                                selectedValue={props.selectedValue}
+                                onValueChange={props.onValueChange}
+                                style={props.style}
+                            >
+                                {content.options.length > 0 ? (
+                                    content.options.map(
+                                        (item: any, index: number) => {
+                                            const labelName = content.optionName
+                                                ? item[content.optionName]
+                                                : item.name;
+                                            return (
+                                                <Picker.Item
+                                                    fontFamily="RobotoRegular"
+                                                    key={`${item.name}-${index}`}
+                                                    label={labelName}
+                                                    value={getPickerValue(item)}
+                                                />
+                                            );
+                                        },
+                                    )
+                                ) : (
                                     <Picker.Item
                                         fontFamily="RobotoRegular"
-                                        key={`${item.name}-${index}`}
-                                        label={labelName}
-                                        value={getPickerValue(item)}
+                                        label="Loading ..."
+                                        value="loading"
                                     />
-                                );
-                            })
-                        ) : (
-                            <Picker.Item
-                                fontFamily="RobotoRegular"
-                                label="Loading ..."
-                                value="loading"
-                            />
-                        )}
-                    </Picker>
+                                )}
+                            </Picker>
+                        </View>
+                    </View>
+                    <Text style={styles.error}>{props.error}</Text>
                 </View>
-            </View>
-            <Text style={styles.error}>{props.error}</Text>
-        </View>
+            ) : null}
+        </>
     );
 }
 

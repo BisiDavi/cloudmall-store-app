@@ -34,7 +34,6 @@
         "type": "select",
         "options": [],
         "value": "_id"
-
     },
     {
         "label": "Store Category *",
@@ -64,8 +63,8 @@
                 "time": [
                     {
                         "name": "openingTime",
-                        "label": "Opens At",
                         "options": [
+                            { "name": "Opens At" },
                             { "name": "24 hours" },
                             { "name": "7:00 am" },
                             { "name": "8:00 am" },
@@ -77,7 +76,6 @@
                     },
                     {
                         "name": "closingTime",
-                        "label": "Closes At",
                         "options": [
                             { "name": "5:00 pm" },
                             { "name": "6:00 pm" },
@@ -94,8 +92,8 @@
                 "time": [
                     {
                         "name": "openingTime",
-                        "label": "Opens At",
                         "options": [
+                            { "name": "Opens At" },
                             { "name": "24 hours" },
                             { "name": "7:00 am" },
                             { "name": "8:00 am" },
@@ -107,8 +105,8 @@
                     },
                     {
                         "name": "closingTime",
-                        "label": "Closes At",
                         "options": [
+                            { "name": "Closes At" },
                             { "name": "5:00 pm" },
                             { "name": "6:00 pm" },
                             { "name": "7:00 pm" },
@@ -124,8 +122,8 @@
                 "time": [
                     {
                         "name": "openingTime",
-                        "label": "Opens At",
                         "options": [
+                            { "name": "Opens At" },
                             { "name": "24 hours" },
                             { "name": "7:00 am" },
                             { "name": "8:00 am" },
@@ -137,8 +135,8 @@
                     },
                     {
                         "name": "closingTime",
-                        "label": "Closes At",
                         "options": [
+                            { "name": "Closes At" },
                             { "name": "5:00 pm" },
                             { "name": "6:00 pm" },
                             { "name": "7:00 pm" },

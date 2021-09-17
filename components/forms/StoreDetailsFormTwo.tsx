@@ -12,7 +12,7 @@ import { StoreOwnerAction } from "@store/actions/StoreDetailsAction";
 import { colors } from "@utils/.";
 import { RootState } from "@store/RootReducer";
 
-export default function StoreDetailsFormTwo({ navigation }: any) {
+export default function StoreDetailsFormTwo() {
     const [loading, setLoading] = useState(false);
     const { onBoardingNextScreen } = useStoreSetupNavigation();
     const dispatch = useDispatch();

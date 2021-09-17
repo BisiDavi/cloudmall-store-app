@@ -20,18 +20,19 @@ export default function StoreDetailsScreenTwo({
     const [loading, setLoading] = useState(false);
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{ flex: 1 }}>
             <KeyboardAvoidingView
                 behavior={Platform.OS === "ios" ? "padding" : "height"}
                 enabled={true}
+                style={{ flex: 1 }}
             >
-                <ScrollView>
+                <ScrollView style={{ flex: 1 }}>
                     <View style={styles.container}>
                         <ProgressIndicator
                             title="Step 2: Owner Details"
                             selected={2}
                         />
-                        <StoreDetailsFormTwo navigation={navigation} />
+                        <StoreDetailsFormTwo />
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>

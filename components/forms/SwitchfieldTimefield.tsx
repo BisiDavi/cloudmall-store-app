@@ -34,7 +34,7 @@ function TimeAndSwitchField(props: TimeAndSwitchField) {
     const [openDays, setOpenDays] = useState({
         [period]: { openingTime: "", closingTime: "", status: false },
     });
-
+    const specificPeriod = openDays[period];
     const switchStatus: boolean = openDays[period].status;
     function handleSelect(value: string, index: number) {
         const fieldName = field.time[index].name;
@@ -47,9 +47,9 @@ function TimeAndSwitchField(props: TimeAndSwitchField) {
             },
         }));
 
-        dispatch(StoreOpendaysAction(openDays));
+        dispatch(StoreOpendaysAction({ specificPeriod, period }));
     }
-    console.log("openDays", openDays);
+
     const textColor = switchStatus ? styles.open : styles.close;
 
     function handleSwitchChange() {

@@ -69,10 +69,20 @@ export const StoreAddressCoordinatesAction =
         });
     };
 
-
-export const StoreOpendaysAction = (payload: any) => (dispatch: any) => {
-    dispatch({
-        type: UPDATE_STORE_OPENDAYS,
-        payload,
-    });
+type StoreOpendaysType = {
+    specificPeriod: {
+        openingTime: string;
+        closingTime: string;
+        status: boolean;
+    };
+    period: string;
 };
+
+export const StoreOpendaysAction =
+    (payload: StoreOpendaysType) => (dispatch: any) => {
+        console.log("StoreOpendaysAction", payload);
+        dispatch({
+            type: UPDATE_STORE_OPENDAYS,
+            payload,
+        });
+    };

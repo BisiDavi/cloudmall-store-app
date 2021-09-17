@@ -67,11 +67,13 @@ export function StoreDetailsReducer(
             };
         }
         case UPDATE_STORE_OPENDAYS: {
+            const { period, specificPeriod } = payload;
+
             return {
                 ...state,
                 openDays: {
                     ...state.openDays,
-                    payload,
+                    [period]: specificPeriod,
                 },
             };
         }
@@ -167,4 +169,6 @@ type StoreDetailsType = {
     accountName: string;
     storeImage: string;
     storeLogo: string;
+    period?: any;
+    specificPeriod?: any;
 };

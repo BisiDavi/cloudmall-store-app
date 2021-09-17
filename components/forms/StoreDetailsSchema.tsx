@@ -14,6 +14,7 @@ export const storeDetailsScreenOneSchema = yup.object().shape({
     address: yup.string().required("store address is required"),
     state: yup.string().required("state is required"),
     category: yup.string().required("store category is required"),
+    type: yup.string().required("store type is required"),
 });
 
 export const storeDetailsScreenTwoSchema = yup.object().shape({

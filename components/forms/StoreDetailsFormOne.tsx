@@ -25,8 +25,10 @@ export default function StoreDetailsFormOne() {
     const [availableStates, setAvailableState] = useState([]);
 
     storeDetailsFormOne[4].options = availableStates;
-
     storeDetailsFormOne[5].options = storeCategory;
+
+    console.log("storeCategory", storeCategory.length);
+    console.log("availableStates", availableStates.length);
 
     function toggleModal() {
         return setInfoModal(!infoModal);
@@ -60,8 +62,11 @@ export default function StoreDetailsFormOne() {
                         address: "",
                         state: "",
                         category: "",
+                        type: "",
+                        openDays: "",
                     }}
                     onSubmit={(values) => {
+                        console.log("form onevalues", values);
                         setLoading(true);
                         dispatch(StoreDetailsAction(values));
                         setLoading(false);

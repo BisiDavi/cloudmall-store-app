@@ -28,7 +28,7 @@ export default function SettlementDetailsScreen({
                             title="Step 3: Settlement Details"
                             selected={3}
                         />
-                        <SettlementDetailsForm navigation={navigation} />
+                        <SettlementDetailsForm />
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>

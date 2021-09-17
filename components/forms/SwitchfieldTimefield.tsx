@@ -81,18 +81,13 @@ function TimeAndSwitchField(props: TimeAndSwitchField) {
                     {switchStatus ? "Open" : "Close"}
                 </Text>
             </View>
-            {!openDays[field.switch.name].status && (
-                <Text style={styles.error}>
-                    {field.switch.label} field is Required
-                </Text>
-            )}
+
             {switchStatus && (
                 <View style={styles.selectField}>
                     <SelectGroup
                         selectedValue={openDays}
                         onValueChange={handleSelect}
                         selectField={field.time}
-                        checkError={openDays[period]}
                         {...props}
                     />
                 </View>

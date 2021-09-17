@@ -31,6 +31,7 @@
     {
         "label": "State *",
         "name": "state",
+        "placeholder": "Select your State",
         "type": "select",
         "options": [],
         "value": "_id"
@@ -40,6 +41,7 @@
         "type": "select",
         "options": [],
         "value": "_id",
+        "placholder": "Select Store Category",
         "name": "category"
     },
     {

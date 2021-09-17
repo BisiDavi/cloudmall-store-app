@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import colors from "@utils/colors";
 
@@ -31,12 +31,24 @@ export default function SelectField({ content, ...props }: selectFieldProps) {
                                                 ? item[content.optionName]
                                                 : item.name;
                                             return (
-                                                <Picker.Item
-                                                    fontFamily="RobotoRegular"
-                                                    key={`${item.name}-${index}`}
-                                                    label={labelName}
-                                                    value={getPickerValue(item)}
-                                                />
+                                                <>
+                                                    {content.placeholder && (
+                                                        <Picker.Item
+                                                            label={
+                                                                content.label
+                                                            }
+                                                            value=""
+                                                        />
+                                                    )}
+                                                    <Picker.Item
+                                                        fontFamily="RobotoRegular"
+                                                        key={`${item.name}-${index}`}
+                                                        label={labelName}
+                                                        value={getPickerValue(
+                                                            item,
+                                                        )}
+                                                    />
+                                                </>
                                             );
                                         },
                                     )
@@ -63,6 +75,7 @@ interface selectFieldProps {
         options?: any;
         value?: string;
         optionName?: string;
+        placeholder?: string;
     };
     selectedValue?: any;
     onValueChange?: any;

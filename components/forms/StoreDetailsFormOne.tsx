@@ -27,8 +27,6 @@ export default function StoreDetailsFormOne() {
     storeDetailsFormOne[4].options = availableStates;
     storeDetailsFormOne[5].options = storeCategory;
 
-    console.log("availableStates", availableStates);
-
     function toggleModal() {
         return setInfoModal(!infoModal);
     }

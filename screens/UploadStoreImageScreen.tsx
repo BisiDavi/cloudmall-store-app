@@ -1,50 +1,45 @@
-import { StackScreenProps } from "@react-navigation/stack";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StyleSheet, View, Text, Dimensions, ScrollView } from "react-native";
 import { Image, Button } from "react-native-elements";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as ImagePicker from "expo-image-picker";
 import Spinner from "react-native-loading-spinner-overlay";
 
 import useStoreSetupNavigation from "@hooks/useStoreSetupNavigation";
 import UploadIcon from "@assets/upload.png";
 import colors from "@utils/colors";
-import { RootState } from "@store/RootReducer";
 import ProgressIndicator from "@components/ProgressIndicator";
 import { StoreImageUploadAction } from "@store/actions/StoreDetailsAction";
-import postStoreRequest from "@utils/postStoreRequest";
+import { uploadStoreBackgroundRequest } from "@network/postRequest";
+import formatUploadedImage from "@utils/formatUploadedImage";
 
 export default function UploadStoreImageScreen() {
-    const [image, setImage] = useState<any>(null);
+    const [formDataState, setFormDataState] = useState({});
+    const [image, setImage] = useState<string>("");
     const [loading, setLoading] = useState(false);
     const { onBoardingNextScreen } = useStoreSetupNavigation();
     const dispatch = useDispatch();
-    const { storeDetails } = useSelector(
-        (state: RootState) => state.storeDetails,
-    );
 
     console.log("image", image);
 
-    async function postToDB() {
+    async function uploadImage() {
         setLoading(true);
-        await postStoreRequest(storeDetails)
-            .then(() => {
+        dispatch(StoreImageUploadAction(formDataState));
+        return uploadStoreBackgroundRequest(formDataState)
+            .then((response) => {
                 setLoading(false);
+                console.log("response", response);
                 onBoardingNextScreen(6, true);
             })
-            .catch(() => {
+            .catch((error) => {
                 setLoading(false);
+                console.log("error", error);
             });
     }
 
-    async function uploadImage() {
-        image && dispatch(StoreImageUploadAction(image));
-        image && postToDB();
-    }
-
     async function skipImage() {
-        postToDB();
+        onBoardingNextScreen(6, true);
     }
 
     const pickImage = async () => {
@@ -56,8 +51,9 @@ export default function UploadStoreImageScreen() {
         });
         if (!result.cancelled) {
             console.log("result", result);
-            const storeImage = JSON.stringify(result.uri);
-            setImage(storeImage);
+            let formData = formatUploadedImage(result);
+            setFormDataState(formData);
+            setImage(result.uri);
         }
         setLoading(false);
     };

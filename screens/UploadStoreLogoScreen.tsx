@@ -24,6 +24,7 @@ import {
     uploadStoreLogoRequest,
     postStoreDetailsRequest,
 } from "@network/postRequest";
+import formatUploadedImage from "@utils/formatUploadedImage";
 
 export default function UploadStoreLogoScreen() {
     const [formDataState, setFormDataState] = useState({});
@@ -56,32 +57,36 @@ export default function UploadStoreLogoScreen() {
         return () => clearTimeout(displayAfter2Secs);
     }, []);
 
-    async function postStore() {
+    async function postStoreDetails(screenNumber: number, status: boolean) {
         setLoading(true);
         await postStoreDetailsRequest(storeDetails)
             .then(() => {
                 setLoading(false);
-                onBoardingNextScreen(5, false);
+                onBoardingNextScreen(screenNumber, status);
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log("error", error);
                 setLoading(false);
             });
     }
 
     async function uploadImage() {
-        storeLogo && dispatch(StoreLogoUploadAction(formDataState));
+        dispatch(StoreLogoUploadAction(formDataState));
         setLoading(true);
         await uploadStoreLogoRequest(formDataState)
             .then((response) => {
                 console.log("response", response);
+                setLoading(false);
             })
-            .catch((error) => console.log("error", error));
-        storeLogo && postStore();
+            .catch((error) => {
+                console.log("error", error);
+                setLoading(false);
+            });
+        return postStoreDetails(5, false);
     }
 
-    function skipImage() {
-        postStore();
-        onBoardingNextScreen(6, true);
+    async function skipImage() {
+        return postStoreDetails(6, true);
     }
 
     const pickImage = async () => {
@@ -98,20 +103,7 @@ export default function UploadStoreLogoScreen() {
             );
         }
         if (!result.cancelled) {
-            let filename: string | any = result.uri.split("/").pop();
-            let match = /\.(\w+)$/.exec(filename);
-            let type = match ? `image/${match[1]}` : `image`;
-            const source = {
-                fileName: filename,
-                uri: result.uri,
-                type: type,
-                height: result.height,
-                width: result.width,
-            };
-            let formData = new FormData();
-            formData.append("storeLogo", source);
-            console.log("formData", formData);
-            console.log("result", result);
+            let formData = formatUploadedImage(result);
             setFormDataState(formData);
             setStoreLogo(result.uri);
         }

@@ -1,8 +1,5 @@
 {
-    "orders": [
-        { "name": "OrderScreen", "title": "Orders" },
-        { "name": "ViewOrderScreen" }
-    ],
+    "orders": [{ "name": "OrderScreen", "title": "Orders" }],
     "myStore": [
         { "name": "ViewStoreScreen", "title": "Ongbona" },
         { "name": "DashboardScreen", "title": "Dashboard" },

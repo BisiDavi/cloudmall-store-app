@@ -110,9 +110,9 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     error: {
-        color: colors.accentRed,
+        color: "red",
         margin: 5,
-        marginLeft: 15,
+        marginLeft: 5,
         marginBottom: 0,
         fontFamily: "RobotoRegular",
         fontSize: 12,

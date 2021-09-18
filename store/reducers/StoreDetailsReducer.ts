@@ -87,13 +87,13 @@ export function StoreDetailsReducer(
         case STORE_IMAGE_UPLOAD: {
             return {
                 ...state,
-                storeImage: payload.storeImage,
+                storeImage: payload,
             };
         }
         case STORE_LOGO_UPLOAD: {
             return {
                 ...state,
-                storeLogo: payload.storeLogo,
+                storeLogo: payload,
             };
         }
         case STORE_SETTLEMENT_DETAILS: {

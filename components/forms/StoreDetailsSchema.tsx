@@ -18,7 +18,15 @@ export const storeDetailsScreenOneSchema = yup.object().shape({
 
 export const storeDetailsScreenTwoSchema = yup.object().shape({
     ownerName: yup.string().required("store owner name is required"),
-    ownerPhone: yup.string().required("phone number is required"),
+    ownerPhone: yup
+        .string()
+        .required("phone number is required")
+        .min(11, "number must be eleven digits")
+        .max(11, "number must be eleven digits"),
+    ownerEmail: yup
+        .string()
+        .email("store email must be a valid email")
+        .notRequired(),
 });
 
 export const storeAddressSchema = yup.object().shape({

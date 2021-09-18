@@ -1,11 +1,10 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
 import { View, Text, StyleSheet } from "react-native";
 import { ListItem, Image } from "react-native-elements";
 import clipboard from "@assets/clipboard.png";
 import colors from "@utils/colors";
 import displayAsset from "@utils/displayAsset";
-import { ordersList } from "./NewOrdersTab";
+import { TouchableHighlight, TouchableOpacity } from "react-native-gesture-handler";
 
 export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
     const statusStyle =
@@ -15,34 +14,28 @@ export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
             ? styles.pending
             : styles.completed;
 
-    const navigation = useNavigation();
-
-    function viewOrder(item: ordersList) {
-        navigation.navigate("ViewOrderScreen", item);
-    }
-
     return (
-        <ListItem
-            key={item?.id}
-            style={styles.listItem}
-            onPress={() => viewOrder(item)}
-            bottomDivider
-        >
-            <Image source={displayAsset(item.image)} style={styles.avatar} />
-            <ListItem.Content>
-                <View style={styles.row}>
-                    <Text>{item?.name}</Text>
-                    <Text>{item?.code}</Text>
-                </View>
-                <View style={styles.row}>
-                    <Text>{item?.time}</Text>
-                    <Image style={styles.clipboard} source={clipboard} />
-                    <Text style={{ ...styles.status, ...statusStyle }}>
-                        {item?.status}
-                    </Text>
-                </View>
-            </ListItem.Content>
-        </ListItem>
+        <TouchableHighlight key={item?.id} onPress={onPress}>
+            <ListItem style={styles.listItem} bottomDivider>
+                <Image
+                    source={displayAsset(item.image)}
+                    style={styles.avatar}
+                />
+                <ListItem.Content>
+                    <View style={styles.row}>
+                        <Text>{item?.name}</Text>
+                        <Text>{item?.code}</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text>{item?.time}</Text>
+                        <Image style={styles.clipboard} source={clipboard} />
+                        <Text style={{ ...styles.status, ...statusStyle }}>
+                            {item?.status}
+                        </Text>
+                    </View>
+                </ListItem.Content>
+            </ListItem>
+        </TouchableHighlight>
     );
 }
 

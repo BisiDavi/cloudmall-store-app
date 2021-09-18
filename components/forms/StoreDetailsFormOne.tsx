@@ -114,7 +114,6 @@ const styles = StyleSheet.create({
         marginTop: 10,
         padding: 0,
         justifyContent: "center",
-        width: Dimensions.get("window").width,
         alignItems: "center",
     },
     buttonStyle: {

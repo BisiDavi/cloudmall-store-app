@@ -23,13 +23,14 @@ import { StoreLogoUploadAction } from "@store/actions/StoreDetailsAction";
 import postStoreRequest from "@utils/postStoreRequest";
 
 export default function UploadStoreLogoScreen() {
+    const [formDataState, setFormDataState] = useState({});
     const [storeLogo, setStoreLogo] = useState<any>(null);
     const [loading, setLoading] = useState(false);
     const { onBoardingNextScreen } = useStoreSetupNavigation();
     const dispatch = useDispatch();
     const state = useSelector((state: RootState) => state.storeDetails);
 
-    console.log("logo", storeLogo);
+    console.log("storeLogo", storeLogo);
 
     useEffect(() => {
         const displayAfter2Secs = setTimeout(() => {
@@ -55,7 +56,7 @@ export default function UploadStoreLogoScreen() {
         await postStoreRequest(state)
             .then(() => {
                 setLoading(false);
-                onBoardingNextScreen(5, true);
+                onBoardingNextScreen(5, false);
             })
             .catch(() => {
                 setLoading(false);
@@ -63,7 +64,7 @@ export default function UploadStoreLogoScreen() {
     }
 
     async function uploadImage() {
-        storeLogo && dispatch(StoreLogoUploadAction(storeLogo));
+        storeLogo && dispatch(StoreLogoUploadAction(formDataState));
         storeLogo && postStore();
     }
 
@@ -79,8 +80,28 @@ export default function UploadStoreLogoScreen() {
             allowsEditing: false,
             aspect: [4, 3],
         });
+        if (result.cancelled) {
+            ToastAndroid.show(
+                "To upload your stores logo, we need your permission to view your gallery",
+                ToastAndroid.LONG,
+            );
+        }
         if (!result.cancelled) {
+            let filename: string | any = result.uri.split("/").pop();
+            let match = /\.(\w+)$/.exec(filename);
+            let type = match ? `image/${match[1]}` : `image`;
+            const source = {
+                fileName: filename,
+                uri: result.uri,
+                type: type,
+                height: result.height,
+                width: result.width,
+            };
+            let formData = new FormData();
+            formData.append("storeLogo", source);
+            console.log("formData", formData);
             console.log("result", result);
+            setFormDataState(formData);
             setStoreLogo(result.uri);
         }
         setLoading(false);

@@ -16,22 +16,21 @@ import ProgressIndicator from "@components/ProgressIndicator";
 import { StoreImageUploadAction } from "@store/actions/StoreDetailsAction";
 import postStoreRequest from "@utils/postStoreRequest";
 
-export default function UploadStoreImageScreen({
-    navigation,
-}: StackScreenProps<RootStackParamList, "UploadStoreImageScreen">) {
+export default function UploadStoreImageScreen() {
     const [image, setImage] = useState<any>(null);
     const [loading, setLoading] = useState(false);
     const { onBoardingNextScreen } = useStoreSetupNavigation();
     const dispatch = useDispatch();
     const state = useSelector((state: RootState) => state.storeDetails);
-    console.log("UploadStoreImage", state);
+
+    console.log("image", image);
 
     async function postToDB() {
         setLoading(true);
         await postStoreRequest(state)
             .then(() => {
                 setLoading(false);
-                onBoardingNextScreen(5, true);
+                onBoardingNextScreen(6, true);
             })
             .catch(() => {
                 setLoading(false);
@@ -56,7 +55,8 @@ export default function UploadStoreImageScreen({
         });
         if (!result.cancelled) {
             console.log("result", result);
-            setImage(result.uri);
+            const storeImage = JSON.stringify(result.uri);
+            setImage(storeImage);
         }
         setLoading(false);
     };

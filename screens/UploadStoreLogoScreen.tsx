@@ -21,10 +21,7 @@ import UploadIcon from "@assets/upload.png";
 import colors from "@utils/colors";
 import { RootState } from "@store/RootReducer";
 import ProgressIndicator from "@components/ProgressIndicator";
-import {
-    StoreImageUploadAction,
-    StoreLogoUploadAction,
-} from "@store/actions/StoreDetailsAction";
+import { StoreLogoUploadAction } from "@store/actions/StoreDetailsAction";
 import postStoreRequest from "@utils/postStoreRequest";
 
 export default function UploadStoreLogoScreen({
@@ -76,7 +73,7 @@ export default function UploadStoreLogoScreen({
 
     function skipImage() {
         postStore();
-        return onBoardingNextScreen(5, true);
+        onBoardingNextScreen(5, true);
     }
 
     const pickImage = async () => {
@@ -121,7 +118,10 @@ export default function UploadStoreLogoScreen({
                                 </Text>
                             </>
                         ) : (
-                            <Image style={styles.logo} source={{ uri: storeLogo }} />
+                            <Image
+                                style={styles.logo}
+                                source={{ uri: storeLogo }}
+                            />
                         )}
                         <View>
                             <Button

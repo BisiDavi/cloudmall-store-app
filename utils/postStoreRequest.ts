@@ -3,7 +3,7 @@ import showToast from "@utils/showToast";
 
 export default async function postStoreRequest(store: any, navigation: any) {
     return await axiosInstance
-        .post("/store", store)
+        .post("/api/store/profile", store)
         .then((response) => {
             const data: any = response.data;
             console.log("data", data);

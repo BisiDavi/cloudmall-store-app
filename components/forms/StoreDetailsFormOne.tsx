@@ -93,7 +93,6 @@ export default function StoreDetailsFormOne() {
                                     toggleModal={toggleModal}
                                 />
                             ))}
-                            {console.log("form onevalues", values)}
                             <View style={styles.buttonView}>
                                 <Button
                                     buttonStyle={styles.buttonStyle}
@@ -128,7 +127,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 20,
         justifyContent: "center",
-				 marginBottom:40
+        marginBottom: 40,
     },
     title: {
         fontSize: 20,

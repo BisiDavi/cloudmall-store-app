@@ -54,9 +54,10 @@ export default function SettlementDetailsForm() {
                     const selectedBank = banks.filter(
                         (bank: any) => bank.bank_code === values.bankCode,
                     );
-                    values.bankName = selectedBank.map(
+                    const selectedBankArray = selectedBank.map(
                         (bank: any) => bank.bank_name,
                     );
+                    values.bankName = selectedBankArray[0];
                     console.log("settlementDetails values", values);
                     setLoading(true);
                     dispatch(StoreSettlementAction(values));
@@ -85,6 +86,7 @@ export default function SettlementDetailsForm() {
                                 touched={touched}
                             />
                         ))}
+                        {console.log("form values", values)}
                         <View style={styles.buttonView}>
                             <Button
                                 buttonStyle={styles.skipButtonStyle}

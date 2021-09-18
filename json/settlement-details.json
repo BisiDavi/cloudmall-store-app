@@ -2,6 +2,7 @@
     {
         "label": "Settlement plan*",
         "type": "select",
+        "placeholder": "Select your settlement plan",
         "options": [
             { "name": "Daily" },
             { "name": "Weekly" },
@@ -12,6 +13,7 @@
     {
         "label": "Bank Name*",
         "type": "select",
+				"placeholder":"Select your bank",
         "options": [],
         "value": "bank_code",
         "optionName": "bank_name",

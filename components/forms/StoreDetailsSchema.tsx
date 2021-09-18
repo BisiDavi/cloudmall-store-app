@@ -27,7 +27,7 @@ export const storeAddressSchema = yup.object().shape({
 
 export const storeSettlementDetailsSchema = yup.object().shape({
     settlementPlan: yup.string().required("settlement plan is required"),
-    bankName: yup.string().required("bank name  is required"),
+    bankCode: yup.string().required("bank name  is required"),
     accountNumber: yup
         .string()
         .required("account number is required")

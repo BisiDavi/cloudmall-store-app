@@ -8,7 +8,6 @@ import { RootState } from "@store/RootReducer";
 import {
     getsignedUserEmail,
     hasTokenExpired,
-    checkExistingStore,
     colors,
     screenNavigate,
 } from "@utils/.";

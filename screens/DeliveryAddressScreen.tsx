@@ -47,10 +47,10 @@ function RenderGoogleInput(nextPage: () => void) {
 export default function DeliveryAddressScreen({
     navigation,
 }: StackScreenProps<DrawerStackParamList, "DeliveryAddressScreen">) {
-    const { latitude, longitude } = useSelector(
+    const { storeDetails } = useSelector(
         (state: RootState) => state.storeDetails,
     );
-
+    const { latitude, longitude } = storeDetails;
     useEffect(() => {
         console.log("latitude", latitude);
         if (latitude !== null || longitude !== null) {

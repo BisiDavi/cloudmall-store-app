@@ -11,3 +11,9 @@ export async function getBanksRequest() {
 export async function getAvailableState() {
     return await axiosInstance.get("/api/store/get-available-states");
 }
+
+export async function getCatalogProductCategories() {
+    return await axiosInstance.get(
+        "/api/store/pull-catalog-product-categories",
+    );
+}

@@ -20,7 +20,10 @@ import colors from "@utils/colors";
 import { RootState } from "@store/RootReducer";
 import ProgressIndicator from "@components/ProgressIndicator";
 import { StoreLogoUploadAction } from "@store/actions/StoreDetailsAction";
-import postStoreRequest from "@utils/postStoreRequest";
+import {
+    uploadStoreLogoRequest,
+    postStoreDetailsRequest,
+} from "@network/postRequest";
 
 export default function UploadStoreLogoScreen() {
     const [formDataState, setFormDataState] = useState({});
@@ -28,7 +31,9 @@ export default function UploadStoreLogoScreen() {
     const [loading, setLoading] = useState(false);
     const { onBoardingNextScreen } = useStoreSetupNavigation();
     const dispatch = useDispatch();
-    const state = useSelector((state: RootState) => state.storeDetails);
+    const { storeDetails } = useSelector(
+        (state: RootState) => state.storeDetails,
+    );
 
     console.log("storeLogo", storeLogo);
 
@@ -53,7 +58,7 @@ export default function UploadStoreLogoScreen() {
 
     async function postStore() {
         setLoading(true);
-        await postStoreRequest(state)
+        await postStoreDetailsRequest(storeDetails)
             .then(() => {
                 setLoading(false);
                 onBoardingNextScreen(5, false);
@@ -65,6 +70,12 @@ export default function UploadStoreLogoScreen() {
 
     async function uploadImage() {
         storeLogo && dispatch(StoreLogoUploadAction(formDataState));
+        setLoading(true);
+        await uploadStoreLogoRequest(formDataState)
+            .then((response) => {
+                console.log("response", response);
+            })
+            .catch((error) => console.log("error", error));
         storeLogo && postStore();
     }
 

@@ -48,9 +48,10 @@ function RenderGoogleInput(nextPage: () => void) {
 export default function StoreAddressScreen({
     navigation,
 }: StackScreenProps<RootStackParamList, "StoreAddressScreen">) {
-    const { latitude, longitude } = useSelector(
+    const { storeDetails } = useSelector(
         (state: RootState) => state.storeDetails,
     );
+    const { latitude, longitude } = storeDetails;
     const { onBoardingNextScreen } = useStoreSetupNavigation();
 
     useEffect(() => {

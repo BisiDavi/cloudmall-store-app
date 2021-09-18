@@ -9,7 +9,10 @@ import { RootState } from "@store/RootReducer";
 export default function RadioField({ content, toggleModal }: RadioFieldProps) {
     const [checked, setChecked] = useState("");
     const dispatch = useDispatch();
-    const { type }: any = useSelector((state: RootState) => state.storeDetails);
+    const { storeDetails }: any = useSelector(
+        (state: RootState) => state.storeDetails,
+    );
+    const { type } = storeDetails;
     useEffect(() => {
         dispatch(StoreDetailsTypeAction(checked));
     }, [checked]);

@@ -8,7 +8,6 @@ import * as ImagePicker from "expo-image-picker";
 import Spinner from "react-native-loading-spinner-overlay";
 
 import useStoreSetupNavigation from "@hooks/useStoreSetupNavigation";
-import { RootStackParamList } from "@customTypes/.";
 import UploadIcon from "@assets/upload.png";
 import colors from "@utils/colors";
 import { RootState } from "@store/RootReducer";
@@ -21,13 +20,15 @@ export default function UploadStoreImageScreen() {
     const [loading, setLoading] = useState(false);
     const { onBoardingNextScreen } = useStoreSetupNavigation();
     const dispatch = useDispatch();
-    const state = useSelector((state: RootState) => state.storeDetails);
+    const { storeDetails } = useSelector(
+        (state: RootState) => state.storeDetails,
+    );
 
     console.log("image", image);
 
     async function postToDB() {
         setLoading(true);
-        await postStoreRequest(state)
+        await postStoreRequest(storeDetails)
             .then(() => {
                 setLoading(false);
                 onBoardingNextScreen(6, true);

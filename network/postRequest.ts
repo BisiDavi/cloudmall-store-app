@@ -1,52 +1,24 @@
+import {
+    addProductExtraRequestType,
+    addProductMainExtraRequestType,
+    addProductSpecificationType,
+    addProductsRequestType,
+    allProductType,
+    OrdersType,
+    postStoreDetailsType,
+    toggleSpecificationStatusRequestType,
+} from "@customTypes/postRequestTypes";
 import showToast from "@utils/showToast";
 import axiosInstance from "./axiosInstance";
 
-type postStoreDetailsType = {
-    name: string;
-    email: string;
-    phone: string;
-    address: string;
-    type: "IN STORE" | "PICK UP";
-    openDays: any;
-    longitude: number;
-    latitude: number;
-    category: string;
-    state: string;
-    ownerName: string;
-    ownerPhone: string;
-    ownerEmail: string;
-    settlementPlan: "Daily" | "Weekly" | "Monthly";
-    bankName: string;
-    bankCode: string;
-    accountNumber: string;
-    accountName: string;
-};
-
-type OrdersType = {
-    data: {
-        storeId: string;
-    };
-};
-
-type allProductType = {
-    data: {
-        categoryId: string;
-        storeId: string;
-    };
-};
-
-export async function postStoreDetails(
-    data: postStoreDetailsType,
-    navigation: any,
-) {
+export async function postStoreDetailsRequest(data: postStoreDetailsType) {
     return await axiosInstance
-        .post("/api/store", data)
+        .post("/api/store/profile", data)
         .then((response) => {
             const data: any = response.data;
-            console.log("data", response.data);
+            console.log("data", data);
             if (response.status === 200) {
                 showToast(`${data.storeName} stores created`);
-                navigation.navigate("BottomNav");
             } else {
                 showToast(data);
             }
@@ -56,14 +28,73 @@ export async function postStoreDetails(
         });
 }
 
-export async function getAllProducts(data: allProductType) {
+export async function getAllProductsRequest(data: allProductType) {
     return await axiosInstance.post("/api/store/get-all-products", data);
 }
 
-export async function getCompletedOrders(data: OrdersType) {
+export async function getCompletedOrdersRequest(data: OrdersType) {
     return await axiosInstance.post("/api/store/get-completed-orders", data);
 }
 
-export async function getPendingOrders(data: OrdersType) {
+export async function getPendingOrdersRequest(data: OrdersType) {
     return await axiosInstance.post("/api/store/get-pending-orders", data);
+}
+
+export async function uploadStoreLogoRequest(logo: any) {
+    return await axiosInstance.post("/api/store/upload-store-logo", logo);
+}
+
+export async function uploadStoreBackgroundRequest(background: any) {
+    return await axiosInstance.post(
+        "/api/store/upload-store-background",
+        background,
+    );
+}
+
+export async function pullCatalogProductsWithCategoryIdRequest(
+    categoryId: number,
+) {
+    return await axiosInstance.post(
+        "/api/store/pull-catalog-products-with-category-id",
+        categoryId,
+    );
+}
+
+export async function addProductsRequest(data: addProductsRequestType) {
+    return await axiosInstance.post("/api/store/add-product", data);
+}
+
+export async function toggleSpecificationStatusRequest(
+    data: toggleSpecificationStatusRequestType,
+) {
+    return await axiosInstance.post(
+        "/api/store/toggle-specification-status",
+        data,
+    );
+}
+
+export async function addProductExtraRequest(data: addProductExtraRequestType) {
+    return await axiosInstance.post("/api/store/add-product-extra", data);
+}
+
+export async function addProductSpecificationRequest(
+    data: addProductSpecificationType,
+) {
+    return await axiosInstance.post(
+        "/api/store/add-product-specification",
+        data,
+    );
+}
+
+export async function addProductMainExtraRequest(
+    data: addProductMainExtraRequestType,
+) {
+    return await axiosInstance.post("/api/store/add-product-main-extra", data);
+}
+
+export async function getProductMainExtra(productId: string) {
+    return await axiosInstance.post(
+        "/api/store/get-product-main-extras",
+        productId,
+    );
 }

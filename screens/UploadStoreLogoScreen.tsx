@@ -1,4 +1,3 @@
-import { StackScreenProps } from "@react-navigation/stack";
 import React, { useState, useEffect } from "react";
 import {
     StyleSheet,
@@ -16,7 +15,6 @@ import * as ImagePicker from "expo-image-picker";
 import Spinner from "react-native-loading-spinner-overlay";
 
 import useStoreSetupNavigation from "@hooks/useStoreSetupNavigation";
-import { RootStackParamList } from "@customTypes/.";
 import UploadIcon from "@assets/upload.png";
 import colors from "@utils/colors";
 import { RootState } from "@store/RootReducer";
@@ -24,9 +22,7 @@ import ProgressIndicator from "@components/ProgressIndicator";
 import { StoreLogoUploadAction } from "@store/actions/StoreDetailsAction";
 import postStoreRequest from "@utils/postStoreRequest";
 
-export default function UploadStoreLogoScreen({
-    navigation,
-}: StackScreenProps<RootStackParamList, "UploadStoreLogoScreen">) {
+export default function UploadStoreLogoScreen() {
     const [storeLogo, setStoreLogo] = useState<any>(null);
     const [loading, setLoading] = useState(false);
     const { onBoardingNextScreen } = useStoreSetupNavigation();
@@ -56,7 +52,7 @@ export default function UploadStoreLogoScreen({
 
     async function postStore() {
         setLoading(true);
-        await postStoreRequest(state, navigation)
+        await postStoreRequest(state)
             .then(() => {
                 setLoading(false);
                 onBoardingNextScreen(5, true);
@@ -73,7 +69,7 @@ export default function UploadStoreLogoScreen({
 
     function skipImage() {
         postStore();
-        onBoardingNextScreen(5, true);
+        onBoardingNextScreen(6, true);
     }
 
     const pickImage = async () => {

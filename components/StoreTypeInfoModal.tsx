@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-
     modalView: {
         backgroundColor: colors.neutralWhite,
         height: 260,

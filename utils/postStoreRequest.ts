@@ -1,7 +1,7 @@
 import axiosInstance from "@network/axiosInstance";
 import showToast from "@utils/showToast";
 
-export default async function postStoreRequest(store: any, navigation: any) {
+export default async function postStoreRequest(store: any) {
     return await axiosInstance
         .post("/api/store/profile", store)
         .then((response) => {
@@ -9,7 +9,6 @@ export default async function postStoreRequest(store: any, navigation: any) {
             console.log("data", data);
             if (response.status === 200) {
                 showToast(`${data.storeName} stores created`);
-                navigation.navigate("BottomNav");
             } else {
                 showToast(data);
             }

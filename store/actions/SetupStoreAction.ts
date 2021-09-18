@@ -1,4 +1,4 @@
-import { STOREDETAILS_PAGE } from "../constant";
+import { CLOSE_WELCOME_MODAL, STOREDETAILS_PAGE } from "../constant";
 
 export const SetupStoreScreenAction =
     (page: number, status: boolean) => (dispatch: (arg0: argType) => void) => {
@@ -8,6 +8,13 @@ export const SetupStoreScreenAction =
                 page,
                 status,
             },
+        });
+    };
+
+export const CloseWelcomeModalAction =
+    () => (dispatch: (arg0: { type: string }) => void) => {
+        dispatch({
+            type: CLOSE_WELCOME_MODAL,
         });
     };
 

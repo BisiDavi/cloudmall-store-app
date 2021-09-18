@@ -44,4 +44,5 @@ export type DrawerStackParamList = {
     OrderScreen: undefined;
     RequestARiderScreen: undefined;
     DeliveryAddressScreen: undefined;
+    ViewOrderScreen: undefined;
 };

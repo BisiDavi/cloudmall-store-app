@@ -7,6 +7,7 @@ import CompletedOrdersTab from "@components/CompletedOrdersTab";
 import { RootState } from "@store/RootReducer";
 import WelcomeModal from "@components/WelcomeModal";
 import { CloseWelcomeModalAction } from "@store/actions/SetupStoreAction";
+import { colors } from "@utils/.";
 
 export default function OrdersScreen() {
     const [index, setIndex] = useState(0);
@@ -32,12 +33,15 @@ export default function OrdersScreen() {
                 <WelcomeModal visible={welcomeModal} closeModal={closeModal} />
                 <>
                     <Tab
-                        indicatorStyle={{ backgroundColor: "red" }}
+                        indicatorStyle={{
+                            backgroundColor: colors.mallBlue5,
+                        }}
                         value={index}
                         onChange={setIndex}
                     >
                         <Tab.Item
                             titleStyle={styles.tabItem}
+                            style={styles.tab}
                             title="New Orders"
                         />
                         <Tab.Item
@@ -63,6 +67,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    tab: {
+        backgroundColor: "white",
+        width: "100%",
+    },
     TabOneView: {
         width: "100%",
     },
@@ -70,6 +78,8 @@ const styles = StyleSheet.create({
         color: "black",
         fontSize: 12,
         marginBottom: 0,
+        //backgroundColor: "white",
+        //width: "100%",
     },
     TabTwoView: {
         width: "100%",

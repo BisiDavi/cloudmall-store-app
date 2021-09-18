@@ -1,12 +1,13 @@
 [
-  {
-    "label": "Name of Extra",
-    "name": "extraName",
-    "type": "input"
-  },
-  {
-    "label": "Product Price",
-    "name": "productPrice",
-    "type": "input"
-  }
+    {
+        "label": "Name of Extra",
+        "name": "extraName",
+        "type": "input"
+    },
+    {
+        "label": "Product Price",
+        "name": "productPrice",
+        "type": "input",
+        "keyboardType": "numeric"
+    }
 ]

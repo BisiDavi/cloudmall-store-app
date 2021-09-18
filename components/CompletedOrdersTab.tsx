@@ -10,6 +10,7 @@ type ordersList = {
   time: string;
   status: string;
   image: string;
+	orders: { name: string; amount: string }[];
 };
 
 type completedOrders = {

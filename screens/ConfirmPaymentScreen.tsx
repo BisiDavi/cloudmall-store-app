@@ -23,7 +23,7 @@ export default function ConfirmPayment({ navigation }: Props) {
         <View style={styles.container}>
             <Text style={styles.labelStyle}>Input Total Amount</Text>
             <View style={styles.inputField}>
-                <InputField />
+                <InputField keyboardType={"numeric"} />
             </View>
             <View style={styles.buttonViewStyle}>
                 <Button

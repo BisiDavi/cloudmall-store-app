@@ -63,29 +63,27 @@ export default function DeliveryAddressScreen({
     }
 
     return (
-        <SafeAreaView style={styles.safeView}>
-            <KeyboardAvoidingView
-                behavior={Platform.OS === "ios" ? "padding" : "height"}
-                enabled={true}
-                style={styles.safeView}
-            >
-                <View style={styles.container}>
-                    <View style={styles.textView}>
-                        <Text style={styles.title}>Person Address</Text>
-                    </View>
-                    <FlatList
-                        style={styles.safeView}
-                        data={null}
-                        removeClippedSubviews={false}
-                        keyboardShouldPersistTaps={"handled"}
-                        ListHeaderComponent={<MapView />}
-                        ListFooterComponent={RenderGoogleInput(nextPage)}
-                        renderItem={null}
-                        ListFooterComponentStyle={styles.footerComponentStyle}
-                    />
+        <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            enabled={true}
+            style={styles.safeView}
+        >
+            <View style={styles.container}>
+                <View style={styles.textView}>
+                    <Text style={styles.title}>Person Address</Text>
                 </View>
-            </KeyboardAvoidingView>
-        </SafeAreaView>
+                <FlatList
+                    style={styles.safeView}
+                    data={null}
+                    removeClippedSubviews={false}
+                    keyboardShouldPersistTaps={"handled"}
+                    ListHeaderComponent={<MapView />}
+                    ListFooterComponent={RenderGoogleInput(nextPage)}
+                    renderItem={null}
+                    ListFooterComponentStyle={styles.footerComponentStyle}
+                />
+            </View>
+        </KeyboardAvoidingView>
     );
 }
 

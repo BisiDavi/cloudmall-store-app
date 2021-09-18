@@ -1,45 +1,37 @@
-import React, { useState } from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
-import AppModal from "@components/AppModal";
+import React from "react";
+import { View, FlatList } from "react-native";
 import NewOrdersList from "@json/new-order.json";
 import OrdersListItem from "@components/OrdersListItem";
 
-type ordersList = {
-  id: number;
-  name: string;
-  code: string;
-  time: string;
-  status: string;
-  image: string;
+export type ordersList = {
+    id: number;
+    name: string;
+    code: string;
+    time: string;
+    status: string;
+    image: string;
+    orders: { name: string; amount: string }[];
 };
 
 type newOrder = {
-  item: ordersList;
+    item: ordersList;
 };
 
 export default function NewOrdersTab() {
-  function renderItem({ item }: newOrder) {
-    return <OrdersListItem item={item} />;
-  }
+    function renderItem({ item }: newOrder) {
+        return <OrdersListItem item={item} />;
+    }
 
-  return (
-    <>
-      <View>
-        <FlatList
-          data={NewOrdersList}
-          renderItem={renderItem}
-          initialNumToRender={5}
-          keyExtractor={function (newOrder) {
-            return newOrder.id.toString();
-          }}
-        />
-      </View>
-    </>
-  );
+    return (
+        <>
+            <FlatList
+                data={NewOrdersList}
+                renderItem={renderItem}
+                initialNumToRender={4}
+                keyExtractor={function (newOrder) {
+                    return newOrder.id.toString();
+                }}
+            />
+        </>
+    );
 }
-
-const styles = StyleSheet.create({
-  appModal: {
-    flex: 1,
-  },
-});

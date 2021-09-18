@@ -28,7 +28,7 @@ export default function UploadStoreImageScreen({
 
     async function postToDB() {
         setLoading(true);
-        await postStoreRequest(state, navigation)
+        await postStoreRequest(state)
             .then(() => {
                 setLoading(false);
                 onBoardingNextScreen(5, true);

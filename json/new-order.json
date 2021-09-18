@@ -1,227 +1,152 @@
 [
-  {
-    "id": 1,
-    "name": "Spaghetti and Turkey",
-    "image": "spaghetti",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "New",
-    "orders": [
-      { "name": "Spaghetti and Turkey (2)", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  },
-  {
-    "id": 2,
-    "name": "Jollof Rice and Chicken",
-    "image": "jollofRice",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "Pending",
-    "orders": [
-      { "name": "Jollof Rice and Chicken", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  },
-  {
-    "id": 3,
-    "name": "Spaghetti and Turkey",
-    "image": "spaghetti",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "New",
-    "orders": [
-      { "name": "Spaghetti and Turkey (2)", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  },
-  {
-    "id": 4,
-    "name": "Jollof Rice and Chicken",
-    "image": "jollofRice",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "Pending",
-    "orders": [
-      { "name": "Jollof Rice and Chicken", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Spaghetti and Turkey",
-    "image": "spaghetti",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "New",
-    "orders": [
-      { "name": "Spaghetti and Turkey (2)", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  },
-  {
-    "id": 6,
-    "name": "Jollof Rice and Chicken",
-    "image": "jollofRice",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "Pending",
-    "orders": [
-      { "name": "Jollof Rice and Chicken", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  },
-  {
-    "id": 7,
-    "name": "Spaghetti and Turkey",
-    "image": "spaghetti",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "New",
-    "orders": [
-      { "name": "Spaghetti and Turkey (2)", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  },
-  {
-    "id": 8,
-    "name": "Spaghetti and Turkey",
-    "image": "spaghetti",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "Pending",
-    "orders": [
-      { "name": "Spaghetti and Turkey (2)", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  },
-  {
-    "id": 9,
-    "name": "Jollof Rice and Chicken",
-    "image": "jollofRice",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "Pending",
-    "orders": [
-      { "name": "Jollof Rice and Chicken", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  },
-  {
-    "id": 10,
-    "name": "Spaghetti and Turkey",
-    "image": "spaghetti",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "New",
-    "orders": [
-      { "name": "Spaghetti and Turkey (2)", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  },
-  {
-    "id": 11,
-    "name": "Spaghetti and Turkey",
-    "image": "spaghetti",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "Completed",
-    "orders": [
-      { "name": "Spaghetti and Turkey (2)", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  },
-  {
-    "id": 12,
-    "name": "Spaghetti and Turkey",
-    "image": "spaghetti",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "Completed",
-    "orders": [
-      { "name": "Spaghetti and Turkey (2)", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  },
-  {
-    "id": 13,
-    "name": "Spaghetti and Turkey",
-    "image": "spaghetti",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "Completed",
-    "orders": [
-      { "name": "Spaghetti and Turkey (2)", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  },
-  {
-    "id": 14,
-    "name": "Spaghetti and Turkey",
-    "image": "spaghetti",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "Completed",
-    "orders": [
-      { "name": "Spaghetti and Turkey (2)", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  },
-  {
-    "id": 15,
-    "name": "Spaghetti and Turkey",
-    "image": "spaghetti",
-    "code": "19YU34",
-    "time": "10 mins ago",
-    "status": "Completed",
-    "orders": [
-      { "name": "Spaghetti and Turkey (2)", "amount": "200" },
-      { "name": "Beans (1)", "amount": "100" },
-      { "name": "Plantain (1)", "amount": "100" },
-      { "name": "Chicken lap", "amount": "800" },
-      { "name": "Disposable pack", "amount": "100" }
-    ]
-  }
+    {
+        "id": 1,
+        "name": "Spaghetti and Turkey",
+        "image": "spaghetti",
+        "code": "19YU34",
+        "time": "10 mins ago",
+        "status": "New",
+        "orders": [
+            { "name": "Spaghetti and Turkey (2)", "amount": "200" },
+            { "name": "Beans (1)", "amount": "100" },
+            { "name": "Plantain (1)", "amount": "100" },
+            { "name": "Chicken lap", "amount": "800" },
+            { "name": "Disposable pack", "amount": "100" }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Jollof Rice and Chicken",
+        "image": "jollofRice",
+        "code": "19YU34",
+        "time": "10 mins ago",
+        "status": "Pending",
+        "orders": [
+            { "name": "Jollof Rice and Chicken", "amount": "200" },
+            { "name": "Beans (1)", "amount": "100" },
+            { "name": "Plantain (1)", "amount": "100" },
+            { "name": "Chicken lap", "amount": "800" },
+            { "name": "Disposable pack", "amount": "100" }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Spaghetti and Turkey",
+        "image": "spaghetti",
+        "code": "19YU34",
+        "time": "10 mins ago",
+        "status": "New",
+        "orders": [
+            { "name": "Spaghetti and Turkey (2)", "amount": "200" },
+            { "name": "Beans (1)", "amount": "100" },
+            { "name": "Plantain (1)", "amount": "100" },
+            { "name": "Chicken lap", "amount": "800" },
+            { "name": "Disposable pack", "amount": "100" }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Jollof Rice and Chicken",
+        "image": "jollofRice",
+        "code": "19YU34",
+        "time": "10 mins ago",
+        "status": "Pending",
+        "orders": [
+            { "name": "Jollof Rice and Chicken", "amount": "200" },
+            { "name": "Beans (1)", "amount": "100" },
+            { "name": "Plantain (1)", "amount": "100" },
+            { "name": "Chicken lap", "amount": "800" },
+            { "name": "Disposable pack", "amount": "100" }
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Spaghetti and Turkey",
+        "image": "spaghetti",
+        "code": "19YU34",
+        "time": "10 mins ago",
+        "status": "New",
+        "orders": [
+            { "name": "Spaghetti and Turkey (2)", "amount": "200" },
+            { "name": "Beans (1)", "amount": "100" },
+            { "name": "Plantain (1)", "amount": "100" },
+            { "name": "Chicken lap", "amount": "800" },
+            { "name": "Disposable pack", "amount": "100" }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Jollof Rice and Chicken",
+        "image": "jollofRice",
+        "code": "19YU34",
+        "time": "10 mins ago",
+        "status": "Pending",
+        "orders": [
+            { "name": "Jollof Rice and Chicken", "amount": "200" },
+            { "name": "Beans (1)", "amount": "100" },
+            { "name": "Plantain (1)", "amount": "100" },
+            { "name": "Chicken lap", "amount": "800" },
+            { "name": "Disposable pack", "amount": "100" }
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Spaghetti and Turkey",
+        "image": "spaghetti",
+        "code": "19YU34",
+        "time": "10 mins ago",
+        "status": "New",
+        "orders": [
+            { "name": "Spaghetti and Turkey (2)", "amount": "200" },
+            { "name": "Beans (1)", "amount": "100" },
+            { "name": "Plantain (1)", "amount": "100" },
+            { "name": "Chicken lap", "amount": "800" },
+            { "name": "Disposable pack", "amount": "100" }
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Spaghetti and Turkey",
+        "image": "spaghetti",
+        "code": "19YU34",
+        "time": "10 mins ago",
+        "status": "Pending",
+        "orders": [
+            { "name": "Spaghetti and Turkey (2)", "amount": "200" },
+            { "name": "Beans (1)", "amount": "100" },
+            { "name": "Plantain (1)", "amount": "100" },
+            { "name": "Chicken lap", "amount": "800" },
+            { "name": "Disposable pack", "amount": "100" }
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Jollof Rice and Chicken",
+        "image": "jollofRice",
+        "code": "19YU34",
+        "time": "10 mins ago",
+        "status": "Pending",
+        "orders": [
+            { "name": "Jollof Rice and Chicken", "amount": "200" },
+            { "name": "Beans (1)", "amount": "100" },
+            { "name": "Plantain (1)", "amount": "100" },
+            { "name": "Chicken lap", "amount": "800" },
+            { "name": "Disposable pack", "amount": "100" }
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Spaghetti and Turkey",
+        "image": "spaghetti",
+        "code": "19YU34",
+        "time": "10 mins ago",
+        "status": "New",
+        "orders": [
+            { "name": "Spaghetti and Turkey (2)", "amount": "200" },
+            { "name": "Beans (1)", "amount": "100" },
+            { "name": "Plantain (1)", "amount": "100" },
+            { "name": "Chicken lap", "amount": "800" },
+            { "name": "Disposable pack", "amount": "100" }
+        ]
+    }
 ]

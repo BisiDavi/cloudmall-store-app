@@ -1,13 +1,14 @@
 import colors from "@utils/colors";
 import displayAsset from "@utils/displayAsset";
-import React from "react";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, Dimensions, TextInput } from "react-native";
 import { Button, Image } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function ViewOrderScreen({ route, navigation }: any) {
+    const [note, setNote] = useState("");
     console.log("route viewOrderScreen", route.params);
+
     const userOrders = route.params;
     return (
         <ScrollView style={{ flex: 1 }}>
@@ -29,12 +30,24 @@ export default function ViewOrderScreen({ route, navigation }: any) {
                             </View>
                         </View>
                     ))}
-                    <View>
-                        <Text>Total Amount</Text>
-                        <Text>N1200</Text>
+                    <View style={{ ...styles.orderView, ...styles.totalView }}>
+                        <Text style={styles.totalText}>Total Amount</Text>
+                        <Text style={styles.totalText}>N1200</Text>
                     </View>
-                    <View>
-                        <Text>Dont put plenty oil in the beans</Text>
+                    <View style={styles.note}>
+                        <TextInput
+                            multiline={true}
+                            numberOfLines={3}
+                            onChangeText={(text) => setNote(text)}
+                            value={note}
+                            placeholder="Dont put plenty oil in the beans"
+                        />
+                    </View>
+                    <View style={styles.note}>
+                        <Text>
+                            Accept the order if all the products are available.
+                            Recommend Replacement for unavailable products
+                        </Text>
                     </View>
                     <View style={styles.buttonView}>
                         <Button
@@ -67,7 +80,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        width: Dimensions.get("window").width,
+        width: Dimensions.get("window").width * 0.9,
     },
     orderGroup: {
         marginTop: 20,
@@ -82,22 +95,19 @@ const styles = StyleSheet.create({
         padding: 10,
         borderWidth: 1,
         borderColor: colors.black,
-        width: Dimensions.get("window").width * 0.8,
     },
     buttonView: {
         marginTop: 20,
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        width: Dimensions.get("window").width * 0.7,
     },
     buttonStyle: {
-        //width: Dimensions.get("window").width * 0.7,
         alignItems: "center",
-        width: "100%",
         backgroundColor: colors.mallBlue5,
         justifyContent: "center",
         marginTop: 20,
+        width: Dimensions.get("window").width * 0.8,
         height: 50,
     },
     image: {
@@ -108,13 +118,14 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        width: Dimensions.get("window").width * 0.6,
+        width: Dimensions.get("window").width * 0.7,
     },
     outlineButton: {
         marginTop: 20,
-        width: "100%",
-        //width: Dimensions.get("window").width * 0.7,
+        width: Dimensions.get("window").width * 0.8,
         borderWidth: 1,
+        justifyContent: "center",
+        alignItems: "center",
         borderColor: colors.mallBlue5,
         shadowColor: "rgba(184, 110, 0, 0.25)",
         shadowOpacity: 0.2,
@@ -123,5 +134,20 @@ const styles = StyleSheet.create({
     },
     outlineTitle: {
         color: colors.mallBlue5,
+    },
+    totalView: {
+        marginTop: -2,
+    },
+    totalText: {
+        color: colors.mallBlue5,
+        fontFamily: "RobotoBold",
+    },
+    note: {
+        marginTop: 10,
+        marginBottom: 10,
+        alignItems: "center",
+        padding: 10,
+        borderWidth: 1,
+        borderColor: colors.mallBlue5,
     },
 });

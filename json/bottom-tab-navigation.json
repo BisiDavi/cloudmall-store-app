@@ -1,6 +1,7 @@
 {
     "tabOne": [
-        { "name": "OrderScreen", "title": "Orders" }
+        { "name": "OrderScreen", "title": "Orders" },
+        { "name": "ViewOrderScreen" }
     ],
     "tabTwo": [
         { "name": "DashboardScreen", "title": "Dashboard" },

@@ -50,7 +50,6 @@ export default function SettlementDetailsForm() {
                     accountName: "",
                 }}
                 onSubmit={(values) => {
-                    console.log("values", values);
                     const selectedBank = banks.filter(
                         (bank: any) => bank.bank_code === values.bankCode,
                     );
@@ -58,7 +57,6 @@ export default function SettlementDetailsForm() {
                         (bank: any) => bank.bank_name,
                     );
                     values.bankName = selectedBankArray[0];
-                    console.log("settlementDetails values", values);
                     setLoading(true);
                     dispatch(StoreSettlementAction(values));
                     setLoading(false);

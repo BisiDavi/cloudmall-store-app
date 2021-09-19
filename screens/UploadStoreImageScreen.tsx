@@ -88,6 +88,7 @@ export default function UploadStoreImageScreen() {
                         ) : (
                             <Image
                                 style={styles.image}
+                                onPress={pickImage}
                                 source={{ uri: image }}
                             />
                         )}

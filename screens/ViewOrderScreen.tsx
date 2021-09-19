@@ -3,8 +3,8 @@ import displayAsset from "@utils/displayAsset";
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Dimensions, TextInput } from "react-native";
 import { Button, Image } from "react-native-elements";
+import FastImage from "react-native-fast-image";
 import { ScrollView } from "react-native-gesture-handler";
-import { Shadow } from "react-native-shadow-2";
 
 export default function ViewOrderScreen({ route }: any) {
     const [note, setNote] = useState("");
@@ -21,7 +21,7 @@ export default function ViewOrderScreen({ route }: any) {
                 <View style={styles.orderGroup}>
                     {userOrders.orders.map((order: any, index: number) => (
                         <View style={styles.orderView} key={index}>
-                            <Image
+                            <FastImage
                                 style={styles.image}
                                 source={displayAsset(userOrders.image)}
                             />

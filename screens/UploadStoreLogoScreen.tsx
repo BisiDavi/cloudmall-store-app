@@ -140,6 +140,7 @@ export default function UploadStoreLogoScreen() {
                         ) : (
                             <Image
                                 style={styles.logo}
+                                onPress={pickImage}
                                 source={{ uri: storeLogo }}
                             />
                         )}

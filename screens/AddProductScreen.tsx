@@ -52,29 +52,29 @@ export default function AddProductScreen({ navigation }: Props) {
     return (
         <ScrollView>
             <View style={styles.container}>
-                <ProgressIndicator
-                    style={styles.progressIndicator}
-                    selected={1}
-                    title="Step 1: Product Details"
-                    total={2}
-                />
-                <View>
-                    <View style={styles.uploadProductImage}>
-                        {!productImage ? (
-                            <View style={styles.FabView}>
-                                <View style={styles.fabContainer}>
-                                    <Fab onPress={pickImage} />
-                                </View>
-                                <Text>Upload Product Picture</Text>
+                <View style={styles.progressIndicatorView}>
+                    <ProgressIndicator
+                        style={styles.progressIndicator}
+                        selected={1}
+                        title="Step 1: Product Details"
+                        total={2}
+                    />
+                </View>
+                <View style={styles.uploadProductImage}>
+                    {!productImage ? (
+                        <View style={styles.FabView}>
+                            <View style={styles.fabContainer}>
+                                <Fab onPress={pickImage} />
                             </View>
-                        ) : (
-                            <Image
-                                onPress={pickImage}
-                                style={styles.productImage}
-                                source={{ uri: productImage }}
-                            />
-                        )}
-                    </View>
+                            <Text>Upload Product Picture</Text>
+                        </View>
+                    ) : (
+                        <Image
+                            onPress={pickImage}
+                            style={styles.productImage}
+                            source={{ uri: productImage }}
+                        />
+                    )}
                 </View>
                 <AddNewProductForm navigation={navigation} />
             </View>
@@ -88,6 +88,9 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         padding: 15,
         paddingTop: 0,
+    },
+    progressIndicatorView: {
+        marginLeft: 15,
     },
     productImage: {
         height: 150,

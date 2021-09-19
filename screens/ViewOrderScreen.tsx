@@ -35,22 +35,15 @@ export default function ViewOrderScreen({ route }: any) {
                         <Text style={styles.totalText}>Total Amount</Text>
                         <Text style={styles.totalText}>N1200</Text>
                     </View>
-                    <Shadow
-                        distance={1}
-                        startColor={"white"}
-                        finalColor={"red"}
-                        offset={[2, 2]}
-                    >
-                        <View style={styles.note}>
-                            <TextInput
-                                multiline={true}
-                                numberOfLines={3}
-                                onChangeText={(text) => setNote(text)}
-                                value={note}
-                                placeholder="Dont put plenty oil in the beans"
-                            />
-                        </View>
-                    </Shadow>
+                    <View style={styles.note}>
+                        <TextInput
+                            multiline={true}
+                            numberOfLines={3}
+                            onChangeText={(text) => setNote(text)}
+                            value={note}
+                            placeholder="Dont put plenty oil in the beans"
+                        />
+                    </View>
                     <View style={styles.note}>
                         <Text>
                             Accept the order if all the products are available.

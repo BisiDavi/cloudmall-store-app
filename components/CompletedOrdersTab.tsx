@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList } from "react-native";
+import { View, FlatList } from "react-native";
 import CompletedOrdersList from "@json/completed-order.json";
 import OrdersListItem from "@components/OrdersListItem";
 
@@ -18,12 +18,16 @@ type completedOrders = {
 };
 
 export default function CompletedOrdersTab({ navigation }: any) {
-    const renderItem = function renderItem({ item }: completedOrders) {
+    function viewOrder(item: ordersList) {
+        console.log("viewOrder, I am console.log");
+        navigation.navigate("ViewOrderScreen", item);
+    }
+    const completedOrders = function renderItem({ item }: completedOrders) {
         return (
             <OrdersListItem
                 key={item.id}
                 item={item}
-                onPress={() => navigation.navigate("ViewOrderScreen", item)}
+                onPress={() => viewOrder(item)}
             />
         );
     };
@@ -31,10 +35,12 @@ export default function CompletedOrdersTab({ navigation }: any) {
     return (
         <FlatList
             data={CompletedOrdersList}
-            renderItem={renderItem}
+            renderItem={completedOrders}
             initialNumToRender={5}
             maxToRenderPerBatch={5}
-            keyExtractor={(item, index) => index.toString()}
+            keyExtractor={function (item) {
+                return item.id.toString();
+            }}
         />
     );
 }

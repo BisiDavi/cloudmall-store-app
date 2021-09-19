@@ -3,22 +3,24 @@ import { StyleSheet, View, Text } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RouteProp } from "@react-navigation/native";
 import { Image } from "react-native-elements";
+import * as ImagePicker from "expo-image-picker";
 import addproductContent from "@json/add-product.json";
 import pizza from "@assets/pizza.png";
-import {  DrawerStackParamList } from "@customTypes/.";
+import { DrawerStackParamList } from "@customTypes/.";
 import ProgressIndicator from "@components/ProgressIndicator";
 import { ScrollView } from "react-native-gesture-handler";
 import AddNewProductForm from "@components/forms/AddNewProductForm";
 import Fab from "@components/Fab";
 import colors from "@utils/colors";
+import formatUploadedImage from "@utils/formatUploadedImage";
 
 type AddProductScreenNavigationProps = StackNavigationProp<
-DrawerStackParamList,
+    DrawerStackParamList,
     "AddProductScreen"
 >;
 
 type AddProductScreenRouteProps = RouteProp<
-DrawerStackParamList,
+    DrawerStackParamList,
     "AddProductScreen"
 >;
 
@@ -28,8 +30,25 @@ type Props = {
 };
 
 export default function AddProductScreen({ navigation }: Props) {
-    const [productImage, setProductImage] = useState(false);
+    const [productImage, setProductImage] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [formDataState, setFormDataState] = useState({});
 
+    const pickImage = async () => {
+        setLoading(true);
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: false,
+            aspect: [4, 3],
+        });
+        if (!result.cancelled) {
+            console.log("result", result);
+            let formData = formatUploadedImage(result);
+            setFormDataState(formData);
+            setProductImage(result.uri);
+        }
+        setLoading(false);
+    };
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -39,17 +58,24 @@ export default function AddProductScreen({ navigation }: Props) {
                     title="Step 1: Product Details"
                     total={2}
                 />
-                <View style={styles.uploadProductImage}>
-                    <View style={styles.FabView}>
-                        <View style={styles.fabContainer}>
-                            <Fab onPress={() => {}} />
-                        </View>
-                        <Text>Upload Product Picture</Text>
+                <View>
+                    <View style={styles.uploadProductImage}>
+                        {!productImage ? (
+                            <View style={styles.FabView}>
+                                <View style={styles.fabContainer}>
+                                    <Fab onPress={pickImage} />
+                                </View>
+                                <Text>Upload Product Picture</Text>
+                            </View>
+                        ) : (
+                            <Image
+                                onPress={pickImage}
+                                style={styles.productImage}
+                                source={{ uri: productImage }}
+                            />
+                        )}
                     </View>
                 </View>
-                {productImage && (
-                    <Image style={styles.productImage} source={pizza} />
-                )}
                 <AddNewProductForm navigation={navigation} />
             </View>
         </ScrollView>

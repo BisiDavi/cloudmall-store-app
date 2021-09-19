@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import requestRiderSchema from "@components/forms/RequestRiderSchema";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import { Button } from "react-native-elements";
 import requestRiderContent from "@json/request-rider.json";
@@ -30,7 +30,7 @@ export default function RequestRiderForm() {
                 touched,
                 isValid,
             }) => (
-                <View>
+                <>
                     {requestRiderContent.map((formElement, index) => (
                         <DisplayFormElements
                             key={index}
@@ -46,41 +46,34 @@ export default function RequestRiderForm() {
                         <Button
                             title="Proceed to Payment"
                             type="solid"
-                            titleStyle={styles.backButtonTitle}
-                            //   onPress={goBack}
-                            buttonStyle={styles.backButton}
+                            onPress={handleSubmit}
+                            titleStyle={styles.buttonTitle}
+                            buttonStyle={styles.button}
                         />
                     </View>
-                </View>
+                </>
             )}
         </Formik>
     );
 }
 
 const styles = StyleSheet.create({
-    nextButton: {
+    button: {
         justifyContent: "center",
         alignItems: "center",
         display: "flex",
-        width: 100,
-        borderRadius: 10,
+        width: Dimensions.get("window").width * 0.7,
+        borderRadius: 8,
+        height: 40,
         backgroundColor: colors.mallBlue5,
     },
-    backButton: {
-        borderWidth: 1,
-        borderColor: colors.mallBlue5,
-        backgroundColor: "transparent",
-        width: 100,
-        borderRadius: 10,
-    },
-    backButtonTitle: {
-        color: colors.mallBlue5,
+    buttonTitle: {
+        color: colors.neutralWhite,
     },
     buttonGroup: {
-        flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        width: "92%",
+        width: Dimensions.get("window").width * 0.8,
         margin: 10,
         marginTop: 10,
     },

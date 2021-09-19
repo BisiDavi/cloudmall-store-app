@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { StyleSheet, SafeAreaView, View } from "react-native";
 import { Tab, TabView } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,8 +9,18 @@ import { RootState } from "@store/RootReducer";
 import WelcomeModal from "@components/WelcomeModal";
 import { CloseWelcomeModalAction } from "@store/actions/SetupStoreAction";
 import { colors } from "@utils/.";
+import { DrawerStackParamList } from "@customTypes/.";
 
-export default function OrdersScreen() {
+type OrdersScreenNavigationProps = StackNavigationProp<
+    DrawerStackParamList,
+    "OrdersScreen"
+>;
+
+type Props = {
+    navigation: OrdersScreenNavigationProps;
+};
+
+export default function OrdersScreen({ navigation }: Props) {
     const [index, setIndex] = useState(0);
     const [welcomeModal, setWelcomeModal] = useState(false);
     const dispatch = useDispatch();
@@ -51,10 +62,10 @@ export default function OrdersScreen() {
                     </Tab>
                     <TabView value={index} onChange={setIndex}>
                         <TabView.Item style={styles.TabOneView}>
-                            <NewOrdersTab />
+                            <NewOrdersTab navigation={navigation} />
                         </TabView.Item>
                         <TabView.Item style={styles.TabTwoView}>
-                            <CompletedOrdersTab />
+                            <CompletedOrdersTab navigation={navigation} />
                         </TabView.Item>
                     </TabView>
                 </>
@@ -78,8 +89,6 @@ const styles = StyleSheet.create({
         color: "black",
         fontSize: 12,
         marginBottom: 0,
-        //backgroundColor: "white",
-        //width: "100%",
     },
     TabTwoView: {
         width: "100%",

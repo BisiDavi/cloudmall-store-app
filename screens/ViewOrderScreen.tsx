@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, Dimensions, TextInput } from "react-native";
 import { Button, Image } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
+import { Shadow } from "react-native-shadow-2";
 
-export default function ViewOrderScreen({ route, navigation }: any) {
+export default function ViewOrderScreen({ route }: any) {
     const [note, setNote] = useState("");
     console.log("route viewOrderScreen", route.params);
 
@@ -34,15 +35,22 @@ export default function ViewOrderScreen({ route, navigation }: any) {
                         <Text style={styles.totalText}>Total Amount</Text>
                         <Text style={styles.totalText}>N1200</Text>
                     </View>
-                    <View style={styles.note}>
-                        <TextInput
-                            multiline={true}
-                            numberOfLines={3}
-                            onChangeText={(text) => setNote(text)}
-                            value={note}
-                            placeholder="Dont put plenty oil in the beans"
-                        />
-                    </View>
+                    <Shadow
+                        distance={1}
+                        startColor={"white"}
+                        finalColor={"red"}
+                        offset={[2, 2]}
+                    >
+                        <View style={styles.note}>
+                            <TextInput
+                                multiline={true}
+                                numberOfLines={3}
+                                onChangeText={(text) => setNote(text)}
+                                value={note}
+                                placeholder="Dont put plenty oil in the beans"
+                            />
+                        </View>
+                    </Shadow>
                     <View style={styles.note}>
                         <Text>
                             Accept the order if all the products are available.

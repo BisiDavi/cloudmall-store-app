@@ -25,6 +25,7 @@ export type DrawerStackParamList = {
     Products: undefined;
     MyStoreScreen: undefined;
     ViewStoreScreen: undefined;
+    OrdersScreen: undefined;
     EditProductScreen: undefined;
     StatisticsScreen: undefined;
     FoodCategoryScreen: undefined;

@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { ListItem, Image } from "react-native-elements";
 import clipboard from "@assets/clipboard.png";
 import colors from "@utils/colors";
 import displayAsset from "@utils/displayAsset";
-import { TouchableHighlight, TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
     const statusStyle =
@@ -15,13 +15,17 @@ export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
             : styles.completed;
 
     return (
-        <TouchableHighlight key={item?.id} onPress={onPress}>
+        <TouchableOpacity
+            style={styles.touchableOpacity}
+            key={item?.id}
+            onPress={onPress}
+        >
             <ListItem style={styles.listItem} bottomDivider>
                 <Image
                     source={displayAsset(item.image)}
                     style={styles.avatar}
                 />
-                <ListItem.Content>
+                <ListItem.Content style={styles.listItemContent}>
                     <View style={styles.row}>
                         <Text>{item?.name}</Text>
                         <Text>{item?.code}</Text>
@@ -35,7 +39,7 @@ export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
                     </View>
                 </ListItem.Content>
             </ListItem>
-        </TouchableHighlight>
+        </TouchableOpacity>
     );
 }
 
@@ -58,19 +62,29 @@ const styles = StyleSheet.create({
     pending: {
         backgroundColor: colors.cloudOrange5,
     },
-
     new: {
         backgroundColor: colors.accentRed,
+    },
+    touchableOpacity: {
+        width: Dimensions.get("window").width,
+        height: 120,
     },
     listItem: {
         flexDirection: "row",
         alignItems: "center",
+        justifyContent: "center",
+        width: Dimensions.get("window").width,
+        height: 120,
+    },
+    listItemContent: {
+        width: Dimensions.get("window").width,
     },
     row: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        width: "100%",
+        //width: "100%",
+        width: Dimensions.get("window").width * 0.7,
         marginTop: 10,
         marginBottom: 10,
     },

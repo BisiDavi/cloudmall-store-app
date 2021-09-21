@@ -41,7 +41,10 @@ export async function getPendingOrdersRequest(data: OrdersType) {
 }
 
 export async function uploadStoreLogoRequest(logo: any) {
-    return await axiosInstance.post("https://cloudmallng.com/api/store/profile", logo);
+    return await axiosInstance.post(
+        "https://cloudmallng.com/api/store/profile",
+        logo,
+    );
 }
 
 export async function uploadStoreBackgroundRequest(background: any) {

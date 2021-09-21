@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-native-elements";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
@@ -11,6 +11,8 @@ import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import { storeSettlementDetailsSchema } from "./StoreDetailsSchema";
 import { StoreSettlementAction } from "@store/actions/StoreDetailsAction";
 import { getBanksRequest } from "@network/getRequest";
+import { postStoreDetailsRequest } from "@network/postRequest";
+import { RootState } from "@store/RootReducer";
 
 type stateType = {
     ___v: number;
@@ -24,9 +26,26 @@ export default function SettlementDetailsForm() {
     const { onBoardingNextScreen } = useStoreSetupNavigation();
     const [banks, setBanks] = useState<stateType[] | [] | any>([]);
     const dispatch = useDispatch();
-
+    const { storeDetails } = useSelector(
+        (state: RootState) => state.storeDetails,
+    );
+    console.log("storeDetails", storeDetails);
     function skipHandler() {
         return onBoardingNextScreen(4, false);
+    }
+
+    function postStoreDetails(handleSubmit: () => void) {
+        handleSubmit();
+        setLoading(true);
+        return postStoreDetailsRequest(storeDetails)
+            .then(() => {
+                setLoading(false);
+                onBoardingNextScreen(4, false);
+            })
+            .catch((error) => {
+                console.log("error", error);
+                setLoading(false);
+            });
     }
 
     settlementDetails[1].options = banks;
@@ -84,17 +103,16 @@ export default function SettlementDetailsForm() {
                                 touched={touched}
                             />
                         ))}
-                        {console.log("form values", values)}
                         <View style={styles.buttonView}>
-                            <Button
+                            {/*<Button
                                 buttonStyle={styles.skipButtonStyle}
                                 onPress={skipHandler}
                                 titleStyle={styles.skipTextStyle}
                                 title="Skip"
-                            />
+                            />*/}
                             <Button
                                 buttonStyle={styles.nextButtonStyle}
-                                onPress={handleSubmit}
+                                onPress={() => postStoreDetails(handleSubmit)}
                                 titleStyle={styles.nextTextStyle}
                                 disabled={!isValid}
                                 title="Next"

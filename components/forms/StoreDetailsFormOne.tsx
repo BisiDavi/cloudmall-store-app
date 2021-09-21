@@ -15,11 +15,9 @@ import {
     getStoreCategoriesRequest,
 } from "@network/getRequest";
 import StoreTypeInfoModal from "@components/StoreTypeInfoModal";
-import { RootState } from "@store/RootReducer";
 
 export default function StoreDetailsFormOne() {
     const dispatch = useDispatch();
-    const storeDetails = useSelector((state: RootState) => state.storeDetails);
     const { onBoardingNextScreen } = useStoreSetupNavigation();
     const [loading, setLoading] = useState(false);
     const [infoModal, setInfoModal] = useState(false);
@@ -28,8 +26,6 @@ export default function StoreDetailsFormOne() {
 
     storeDetailsFormOne[4].options = availableStates;
     storeDetailsFormOne[5].options = storeCategory;
-
-    console.log("storeDetails", storeDetails);
 
     function toggleModal() {
         return setInfoModal(!infoModal);

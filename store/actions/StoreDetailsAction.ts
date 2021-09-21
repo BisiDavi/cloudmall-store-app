@@ -80,7 +80,6 @@ type StoreOpendaysType = {
 
 export const StoreOpendaysAction =
     (payload: StoreOpendaysType) => (dispatch: any) => {
-        console.log("StoreOpendaysAction", payload);
         dispatch({
             type: UPDATE_STORE_OPENDAYS,
             payload,

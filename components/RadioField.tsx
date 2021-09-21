@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
         color: "red",
         alignItems: "flex-start",
         justifyContent: "flex-start",
+        fontSize: 13,
         textAlign: "left",
     },
 });

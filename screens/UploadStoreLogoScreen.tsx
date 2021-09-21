@@ -36,7 +36,6 @@ export default function UploadStoreLogoScreen() {
         (state: RootState) => state.storeDetails,
     );
 
-    console.log("storeLogo", storeLogo);
 
     useEffect(() => {
         const displayAfter2Secs = setTimeout(() => {

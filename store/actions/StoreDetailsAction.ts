@@ -11,7 +11,6 @@ import {
 } from "../constant";
 
 export const StoreDetailsTypeAction = (payload: any) => (dispatch: any) => {
-    console.log("payload", payload);
     dispatch({
         type: STORETYPE_SELECTED,
         payload,

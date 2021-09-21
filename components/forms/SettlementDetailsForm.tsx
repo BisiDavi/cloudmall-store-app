@@ -34,20 +34,6 @@ export default function SettlementDetailsForm() {
         return onBoardingNextScreen(4, false);
     }
 
-    function postStoreDetails(handleSubmit: () => void) {
-        handleSubmit();
-        setLoading(true);
-        return postStoreDetailsRequest(storeDetails)
-            .then(() => {
-                setLoading(false);
-                onBoardingNextScreen(4, false);
-            })
-            .catch((error) => {
-                console.log("error", error);
-                setLoading(false);
-            });
-    }
-
     settlementDetails[1].options = banks;
 
     useEffect(() => {
@@ -55,73 +41,84 @@ export default function SettlementDetailsForm() {
             .then((response) => setBanks(response.data.data))
             .catch((error) => console.log("error", error.response.data));
     }, []);
-
+    console.log("loading", loading);
     return (
-        <View style={styles.form}>
-            <Spinner visible={loading} color="blue" />
-            <Formik
-                validationSchema={storeSettlementDetailsSchema}
-                initialValues={{
-                    settlementPlan: "",
-                    bankName: "",
-                    bankCode: "",
-                    accountNumber: "",
-                    accountName: "",
-                }}
-                onSubmit={(values) => {
-                    const selectedBank = banks.filter(
-                        (bank: any) => bank.bank_code === values.bankCode,
-                    );
-                    const selectedBankArray = selectedBank.map(
-                        (bank: any) => bank.bank_name,
-                    );
-                    values.bankName = selectedBankArray[0];
-                    setLoading(true);
-                    dispatch(StoreSettlementAction(values));
-                    setLoading(false);
-                    onBoardingNextScreen(4, false);
-                }}
-            >
-                {({
-                    handleChange,
-                    handleBlur,
-                    handleSubmit,
-                    values,
-                    errors,
-                    touched,
-                    isValid,
-                }) => (
-                    <>
-                        {settlementDetails.map((formElement, index: number) => (
-                            <DisplayFormElements
-                                key={index}
-                                formElement={formElement}
-                                handleChange={handleChange}
-                                handleBlur={handleBlur}
-                                values={values}
-                                errors={errors}
-                                touched={touched}
-                            />
-                        ))}
-                        <View style={styles.buttonView}>
-                            {/*<Button
+        <>
+            <Spinner visible={loading} color={colors.cloudOrange5} />
+            <View style={styles.form}>
+                <Formik
+                    validationSchema={storeSettlementDetailsSchema}
+                    initialValues={{
+                        settlementPlan: "",
+                        bankName: "",
+                        bankCode: "",
+                        accountNumber: "",
+                        accountName: "",
+                    }}
+                    onSubmit={(values) => {
+                        const selectedBank = banks.filter(
+                            (bank: any) => bank.bank_code === values.bankCode,
+                        );
+                        const selectedBankArray = selectedBank.map(
+                            (bank: any) => bank.bank_name,
+                        );
+                        values.bankName = selectedBankArray[0];
+                        setLoading(true);
+                        dispatch(StoreSettlementAction(values));
+                        postStoreDetailsRequest(storeDetails)
+                            .then(() => {
+                                setLoading(false);
+                                onBoardingNextScreen(4, false);
+                            })
+                            .catch((error) => {
+                                console.log("error", error);
+                                setLoading(false);
+                            });
+                    }}
+                >
+                    {({
+                        handleChange,
+                        handleBlur,
+                        handleSubmit,
+                        values,
+                        errors,
+                        touched,
+                        isValid,
+                    }) => (
+                        <>
+                            {settlementDetails.map(
+                                (formElement, index: number) => (
+                                    <DisplayFormElements
+                                        key={index}
+                                        formElement={formElement}
+                                        handleChange={handleChange}
+                                        handleBlur={handleBlur}
+                                        values={values}
+                                        errors={errors}
+                                        touched={touched}
+                                    />
+                                ),
+                            )}
+                            <View style={styles.buttonView}>
+                                {/*<Button
                                 buttonStyle={styles.skipButtonStyle}
                                 onPress={skipHandler}
                                 titleStyle={styles.skipTextStyle}
                                 title="Skip"
                             />*/}
-                            <Button
-                                buttonStyle={styles.nextButtonStyle}
-                                onPress={() => postStoreDetails(handleSubmit)}
-                                titleStyle={styles.nextTextStyle}
-                                disabled={!isValid}
-                                title="Next"
-                            />
-                        </View>
-                    </>
-                )}
-            </Formik>
-        </View>
+                                <Button
+                                    buttonStyle={styles.nextButtonStyle}
+                                    onPress={handleSubmit}
+                                    titleStyle={styles.nextTextStyle}
+                                    disabled={!isValid}
+                                    title="Next"
+                                />
+                            </View>
+                        </>
+                    )}
+                </Formik>
+            </View>
+        </>
     );
 }
 

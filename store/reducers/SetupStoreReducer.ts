@@ -1,11 +1,15 @@
-import { CLOSE_WELCOME_MODAL, STOREDETAILS_PAGE } from "../constant";
-import { setupStorePayloadType } from "../actions/SetupStoreAction";
+import {
+    AUTH_TOKEN,
+    CLOSE_WELCOME_MODAL,
+    STOREDETAILS_PAGE,
+} from "../constant";
 
 export function SetupStoreReducer(
     state = {
         completed: false,
         formPage: 0,
         isWelcomeModalShown: false,
+        token: null,
     },
     action: actionType,
 ) {
@@ -24,12 +28,22 @@ export function SetupStoreReducer(
                 isWelcomeModalShown: true,
             };
         }
+        case AUTH_TOKEN: {
+            return {
+                ...state,
+                token: payload.token,
+            };
+        }
         default:
             return state;
     }
 }
 
 type actionType = {
-    type: "STOREDETAILS_PAGE" | "CLOSE_WELCOME_MODAL";
-    payload: setupStorePayloadType;
+    type: "STOREDETAILS_PAGE" | "CLOSE_WELCOME_MODAL" | "AUTH_TOKEN";
+    payload: {
+        status: boolean;
+        page: number;
+        token: string;
+    };
 };

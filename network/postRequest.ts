@@ -12,19 +12,21 @@ import showToast from "@utils/showToast";
 import axiosInstance from "./axiosInstance";
 
 export async function postStoreDetailsRequest(data: postStoreDetailsType) {
-    return await axiosInstance
+    const dataToPost = JSON.stringify(data);
+    console.log("dataToPost", data);
+    await axiosInstance
         .post("/api/store/profile", data)
         .then((response) => {
-            const data: any = response.data;
-            console.log("data", data);
-            if (response.status === 200) {
-                showToast(`${data.storeName} stores created`);
-            } else {
-                showToast(data);
-            }
+            console.log("data", response.data);
+            //if (response.status === 200) {
+            //    showToast(`${data.storeName} stores created`);
+            //} else {
+            //    showToast(data);
+            //}
         })
         .catch((error) => {
-            showToast(error.response.data);
+            console.log("error", error);
+            //showToast(error.response.data);
         });
 }
 

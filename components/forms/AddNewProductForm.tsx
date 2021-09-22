@@ -8,7 +8,8 @@ import addproductContent from "@json/add-product.json";
 import colors from "@utils/colors";
 
 export default function AddNewProductForm({ navigation }: any) {
-    function navigationHandler() {
+    function navigationHandler(handleSubmit: any) {
+        handleSubmit();
         navigation.navigate("AddProductOtherDetailsScreen");
     }
     function goBack() {
@@ -37,7 +38,7 @@ export default function AddNewProductForm({ navigation }: any) {
                 touched,
                 isValid,
             }) => (
-                <View>
+                <>
                     {addproductContent.map((formElement, index) => (
                         <DisplayFormElements
                             key={index}
@@ -61,11 +62,11 @@ export default function AddNewProductForm({ navigation }: any) {
                             disabled={!isValid}
                             title="Next"
                             type="solid"
-                            onPress={navigationHandler}
+                            onPress={() => navigationHandler(handleSubmit)}
                             buttonStyle={styles.nextButton}
                         />
                     </View>
-                </View>
+                </>
             )}
         </Formik>
     );

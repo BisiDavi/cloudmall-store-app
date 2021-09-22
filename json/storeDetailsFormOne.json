@@ -67,7 +67,7 @@
                         "name": "openingTime",
                         "options": [
                             { "name": "Opens At" },
-                            { "name": "24 hours", "value": "8:00" },
+                            { "name": "24 hours", "value": "24:00" },
                             { "name": "7:00 am", "value": "7:00" },
                             { "name": "8:00 am", "value": "8:00" },
                             { "name": "9:00 am", "value": "9:00" },
@@ -97,7 +97,7 @@
                         "name": "openingTime",
                         "options": [
                             { "name": "Opens At" },
-                            { "name": "24 hours", "value": "8:00" },
+                            { "name": "24 hours", "value": "24:00" },
                             { "name": "7:00 am", "value": "7:00" },
                             { "name": "8:00 am", "value": "8:00" },
                             { "name": "9:00 am", "value": "9:00" },
@@ -127,7 +127,7 @@
                         "name": "openingTime",
                         "options": [
                             { "name": "Opens At" },
-                            { "name": "24 hours", "value": "8:00" },
+                            { "name": "24 hours", "value": "24:00" },
                             { "name": "7:00 am", "value": "7:00" },
                             { "name": "8:00 am", "value": "8:00" },
                             { "name": "9:00 am", "value": "9:00" },

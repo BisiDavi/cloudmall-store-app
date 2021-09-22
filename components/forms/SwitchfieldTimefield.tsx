@@ -33,7 +33,11 @@ function TimeAndSwitchField(props: TimeAndSwitchField) {
     const period: string = field.switch.name;
 
     const [openDays, setOpenDays] = useState({
-        [period]: { openingTime: "", closingTime: "", status: false },
+        [period]: {
+            openingTime: "0:00",
+            closingTime: "0:00",
+            status: false,
+        },
     });
 
     const specificPeriod = openDays[period];

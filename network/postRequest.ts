@@ -14,20 +14,7 @@ import axiosInstance from "./axiosInstance";
 export async function postStoreDetailsRequest(data: postStoreDetailsType) {
     const dataToPost = JSON.stringify(data);
     console.log("dataToPost", data);
-    await axiosInstance
-        .post("/api/store/profile", data)
-        .then((response) => {
-            console.log("data", response.data);
-            //if (response.status === 200) {
-            //    showToast(`${data.storeName} stores created`);
-            //} else {
-            //    showToast(data);
-            //}
-        })
-        .catch((error) => {
-            console.log("error", error);
-            //showToast(error.response.data);
-        });
+    return await axiosInstance.post("/api/store/profile", data);
 }
 
 export async function getAllProductsRequest(data: allProductType) {
@@ -43,10 +30,7 @@ export async function getPendingOrdersRequest(data: OrdersType) {
 }
 
 export async function uploadStoreLogoRequest(logo: any) {
-    return await axiosInstance.post(
-        "https://cloudmallng.com/api/store/profile",
-        logo,
-    );
+    return await axiosInstance.post("/api/store/profile", logo);
 }
 
 export async function uploadStoreBackgroundRequest(background: any) {

@@ -42,7 +42,7 @@ export default function StoreDetailsFormOne() {
             .then((response) => {
                 setAvailableState(response.data.data);
             })
-            .catch((error) => console.log("error", error?.response.data));
+            .catch((error) => console.log("error", error));
     }, []);
 
     return (

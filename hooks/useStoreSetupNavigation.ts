@@ -6,7 +6,9 @@ import screenNavigate from "@utils/screenNavigate";
 import { useNavigation } from "@react-navigation/core";
 
 export default function useStoreSetupNavigation() {
-    const setupStorestate = useSelector((state: RootState) => state.setupStore);
+    const setupStorestate: setupStorestateType = useSelector(
+        (state: RootState) => state.setupStore,
+    );
     const dispatch = useDispatch();
     const navigation = useNavigation();
 
@@ -22,3 +24,7 @@ export default function useStoreSetupNavigation() {
 
     return { setupStorestate, onBoardingNextScreen };
 }
+
+type setupStorestateType = {
+    formPage: number;
+};

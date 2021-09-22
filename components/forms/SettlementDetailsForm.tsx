@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
@@ -10,38 +10,25 @@ import settlementDetails from "@json/settlement-details.json";
 import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import { storeSettlementDetailsSchema } from "./StoreDetailsSchema";
 import { StoreSettlementAction } from "@store/actions/StoreDetailsAction";
-import { getBanksRequest } from "@network/getRequest";
 import { postStoreDetailsRequest } from "@network/postRequest";
 import { RootState } from "@store/RootReducer";
-
-type stateType = {
-    ___v: number;
-    _id: string;
-    bank_code: string;
-    bank_name: string;
-};
+import bankDetails from "@json/banks.json";
 
 export default function SettlementDetailsForm() {
     const [loading, setLoading] = useState(false);
     const { onBoardingNextScreen } = useStoreSetupNavigation();
-    const [banks, setBanks] = useState<stateType[] | [] | any>([]);
     const dispatch = useDispatch();
     const { storeDetails } = useSelector(
         (state: RootState) => state.storeDetails,
     );
     console.log("storeDetails", storeDetails);
+
     function skipHandler() {
         return onBoardingNextScreen(4, false);
     }
+    let settleDetailsOption: any = settlementDetails[1].options;
+    settleDetailsOption = bankDetails;
 
-    settlementDetails[1].options = banks;
-
-    useEffect(() => {
-        getBanksRequest()
-            .then((response) => setBanks(response.data.data))
-            .catch((error) => console.log("error", error.response.data));
-    }, []);
-    console.log("loading", loading);
     return (
         <>
             <Spinner visible={loading} color={colors.cloudOrange5} />
@@ -56,7 +43,7 @@ export default function SettlementDetailsForm() {
                         accountName: "",
                     }}
                     onSubmit={(values) => {
-                        const selectedBank = banks.filter(
+                        const selectedBank = settleDetailsOption.filter(
                             (bank: any) => bank.bank_code === values.bankCode,
                         );
                         const selectedBankArray = selectedBank.map(
@@ -66,12 +53,19 @@ export default function SettlementDetailsForm() {
                         setLoading(true);
                         dispatch(StoreSettlementAction(values));
                         postStoreDetailsRequest(storeDetails)
-                            .then(() => {
+                            .then((response) => {
+                                console.log(
+                                    "response postStoreDetailsRequest",
+                                    response,
+                                );
                                 setLoading(false);
                                 onBoardingNextScreen(4, false);
                             })
                             .catch((error) => {
-                                console.log("error", error);
+                                console.log(
+                                    "error postStoreDetailsRequest",
+                                    error,
+                                );
                                 setLoading(false);
                             });
                     }}

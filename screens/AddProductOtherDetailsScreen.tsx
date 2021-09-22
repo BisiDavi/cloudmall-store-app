@@ -2,7 +2,7 @@ import React from "react";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import ProgressIndicator from "@components/ProgressIndicator";
-import { View, Text, StyleSheet, ScrollView, Dimensions } from "react-native";
+import { View, StyleSheet, ScrollView, Dimensions } from "react-native";
 import AddProductOtherDetailsForm from "@components/forms/AddProductOtherDetailsForm";
 import { DrawerStackParamList } from "../customTypes";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -24,21 +24,26 @@ type Props = {
 
 export default function AddProductOtherDetailsScreen({ navigation }: Props) {
     return (
-        <ScrollView style={{ flex: 1 }}>
-            <View style={styles.container}>
-                <ProgressIndicator
-                    style={styles.progressIndicator}
-                    selected={2}
-                    title="Step 2: Other Details"
-                    total={2}
-                />
-                <AddProductOtherDetailsForm navigation={navigation} />
-            </View>
-        </ScrollView>
+        <SafeAreaView style={styles.scrollView}>
+            <ScrollView style={styles.scrollView}>
+                <View style={styles.container}>
+                    <ProgressIndicator
+                        style={styles.progressIndicator}
+                        selected={2}
+                        title="Step 2: Other Details"
+                        total={2}
+                    />
+                    <AddProductOtherDetailsForm navigation={navigation} />
+                </View>
+            </ScrollView>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
+    scrollView: {
+        flex: 1,
+    },
     container: {
         flex: 1,
         margin: 20,

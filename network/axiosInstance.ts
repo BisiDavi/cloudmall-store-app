@@ -4,6 +4,9 @@ import { getAuthtoken } from "@utils/authToken";
 
 const axiosInstance = axios.create({
     baseURL: CLOUDMALL_BASE_API,
+    headers: {
+        "Content-Type": "application/json",
+    },
 });
 
 let savedToken: string | null;
@@ -16,6 +19,7 @@ axiosInstance.interceptors.request.use(
     (config) => {
         if (savedToken) {
             config.headers["Authorization"] = "Bearer " + savedToken;
+            console.log("savedToken", savedToken);
         }
         config.headers["Content-Type"] = "application/json";
         return config;

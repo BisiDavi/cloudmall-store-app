@@ -27,14 +27,12 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
                 const loginInToken = await loginUser(email, password);
                 await saveAuthtoken(loginInToken);
                 dispatch({ type: "SIGN_IN", token: loginInToken });
-                console.log("loginInToken authContext", loginInToken);
                 return setClientToken(loginInToken);
             },
             signOut: () => dispatch({ type: "SIGN_OUT" }),
             signUp: async (email: string, password: string) => {
                 dispatch({ type: "LOADING" });
                 const signUpToken = await signupUser(email, password);
-                console.log("signupToken", signUpToken);
                 await saveAuthtoken(signUpToken);
                 dispatch({ type: "SIGN_UP", token: signUpToken });
             },

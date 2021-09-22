@@ -1,0 +1,968 @@
+[
+    {
+        "_id": "5e525a6975c34d26811cb83e",
+        "bank_code": "070010",
+        "bank_name": "ABBEY MORTGAGE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb83f",
+        "bank_code": "090197",
+        "bank_name": "ABU MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb83d",
+        "bank_code": "090270",
+        "bank_name": "AB MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb844",
+        "bank_code": "090160",
+        "bank_name": "ADDOSSER MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb845",
+        "bank_code": "100028",
+        "bank_name": "AG MORTGAGE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb849",
+        "bank_code": "090169",
+        "bank_name": "ALPHA KAPITAL MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb84a",
+        "bank_code": "090169",
+        "bank_name": "ALPHA KAPITAL MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb84e",
+        "bank_code": "090172",
+        "bank_name": "ASTRAPOLARIS MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb84f",
+        "bank_code": "090264",
+        "bank_name": "AUCHI MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb853",
+        "bank_code": "090148",
+        "bank_name": "BOWEN MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb854",
+        "bank_code": "070015",
+        "bank_name": "BRENT MORTGAGE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb858",
+        "bank_code": "090141",
+        "bank_name": "CHIKUM MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb859",
+        "bank_code": "090144",
+        "bank_name": "CIT MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb85d",
+        "bank_code": "060001",
+        "bank_name": "CORONATION BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb85e",
+        "bank_code": "070006",
+        "bank_name": "COVENANT MFB",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb862",
+        "bank_code": "090156",
+        "bank_name": "E-BARCS MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb863",
+        "bank_code": "000010",
+        "bank_name": "ECOBANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb867",
+        "bank_code": "090114",
+        "bank_name": "EMPIRE TRUST MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb868",
+        "bank_code": "000019",
+        "bank_name": "ENTERPRISE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb86c",
+        "bank_code": "090107",
+        "bank_name": "FBN MORTGAGES LIMITED",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb86d",
+        "bank_code": "060002",
+        "bank_name": "FBNQUEST MERCHANT BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb871",
+        "bank_code": "000007",
+        "bank_name": "FIDELITY BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb872",
+        "bank_code": "100019",
+        "bank_name": "FIDELITY MOBILE",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb876",
+        "bank_code": "000003",
+        "bank_name": "FIRST CITY MONUMENT BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb877",
+        "bank_code": "070014",
+        "bank_name": "FIRST GENERATION MORTGAGE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb87b",
+        "bank_code": "090145",
+        "bank_name": "FULLRANGE MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb87c",
+        "bank_code": "090158",
+        "bank_name": "FUTO MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb880",
+        "bank_code": "090195",
+        "bank_name": "GROOMING MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb881",
+        "bank_code": "100009",
+        "bank_name": "GT MOBILE",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb885",
+        "bank_code": "090121",
+        "bank_name": "HASAL MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb886",
+        "bank_code": "100017",
+        "bank_name": "HEDONMARK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb88a",
+        "bank_code": "090258",
+        "bank_name": "IMO STATE MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb843",
+        "bank_code": "090134",
+        "bank_name": "ACCION MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb88b",
+        "bank_code": "100024",
+        "bank_name": "IMPERIAL HOMES MORTGAGE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb88f",
+        "bank_code": "100027",
+        "bank_name": "INTELLFIN",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb848",
+        "bank_code": "090131",
+        "bank_name": "ALLWORKERS MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb890",
+        "bank_code": "090149",
+        "bank_name": "IRL MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb84d",
+        "bank_code": "090001",
+        "bank_name": "ASO SAVINGS",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb894",
+        "bank_code": "000002",
+        "bank_name": "KEYSTONE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb895",
+        "bank_code": "100025",
+        "bank_name": "KONGAPAY",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb852",
+        "bank_code": "090176",
+        "bank_name": "BOSAK MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb899",
+        "bank_code": "090171",
+        "bank_name": "MAINSTREET MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb89a",
+        "bank_code": "090136",
+        "bank_name": "MICROCRED MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb840",
+        "bank_code": "000014",
+        "bank_name": "ACCESS BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb857",
+        "bank_code": "100015",
+        "bank_name": "CHAMS MOBILE",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb89e",
+        "bank_code": "090151",
+        "bank_name": "MUTUAL TRUST MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb89f",
+        "bank_code": "myflex",
+        "bank_name": "myFlex Wallet",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb846",
+        "bank_code": "090133",
+        "bank_name": "AL-BARAKAH MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb85c",
+        "bank_code": "100032",
+        "bank_name": "CONTEC GLOBAL INFOTECH LIMITED(NOWNOW)",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb84b",
+        "bank_code": "090116",
+        "bank_name": "AMML MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb861",
+        "bank_code": "100021",
+        "bank_name": "EARTHOLEUM",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb850",
+        "bank_code": "090127",
+        "bank_name": "BC KASH MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb866",
+        "bank_code": "090097",
+        "bank_name": "EKONDO MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb855",
+        "bank_code": "100005",
+        "bank_name": "CELLULANT",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb86b",
+        "bank_code": "100014",
+        "bank_name": "FBN MOBILE",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb85a",
+        "bank_code": "000009",
+        "bank_name": "CITI BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb870",
+        "bank_code": "090153",
+        "bank_name": "FFS MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb85f",
+        "bank_code": "090159",
+        "bank_name": "CREDIT AFRIQUE MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb875",
+        "bank_code": "000016",
+        "bank_name": "FIRST BANK OF NIGERIA",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb864",
+        "bank_code": "100008",
+        "bank_name": "ECOBANK XPRESS ACCOUNT",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb87a",
+        "bank_code": "400001",
+        "bank_name": "FSDH",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb869",
+        "bank_code": "100006",
+        "bank_name": "eTRANZACT",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb87f",
+        "bank_code": "090178",
+        "bank_name": "GREENBANK MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb86e",
+        "bank_code": "100031",
+        "bank_name": "FCMB MOBILE",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb884",
+        "bank_code": "070017",
+        "bank_name": "HAGGAI MORTGAGE BANK LIMITED",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb873",
+        "bank_code": "090126",
+        "bank_name": "FIDFUND MICROFINANCE Bank",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb889",
+        "bank_code": "090118",
+        "bank_name": "IBILE MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb878",
+        "bank_code": "070002",
+        "bank_name": "FORTIS MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb88e",
+        "bank_code": "100029",
+        "bank_name": "INNOVECTIVES KESH",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb87d",
+        "bank_code": "070009",
+        "bank_name": "GATEWAY MORTGAGE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb893",
+        "bank_code": "100015",
+        "bank_name": "KEGOW",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb882",
+        "bank_code": "000013",
+        "bank_name": "GTBANK PLC",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb898",
+        "bank_code": "100011",
+        "bank_name": "M KUDI",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb887",
+        "bank_code": "000020",
+        "bank_name": "HERITAGE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb89d",
+        "bank_code": "090129",
+        "bank_name": "MONEY TRUST MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb88c",
+        "bank_code": "090157",
+        "bank_name": "INFINITY MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb841",
+        "bank_code": "100013",
+        "bank_name": "ACCESS MOBILE",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb891",
+        "bank_code": "000006",
+        "bank_name": "JAIZ BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb842",
+        "bank_code": "000005",
+        "bank_name": "ACCESS(DIAMOND) BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb896",
+        "bank_code": "070012",
+        "bank_name": "LAGOS BUILDING AND INVESTMENT COMPANY",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb847",
+        "bank_code": "090259",
+        "bank_name": "ALEKUN MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb89b",
+        "bank_code": "090113",
+        "bank_name": "MICROVIS MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb84c",
+        "bank_code": "090143",
+        "bank_name": "APEKS MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8a0",
+        "bank_code": "090128",
+        "bank_name": "NDIORAH MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb851",
+        "bank_code": "090117",
+        "bank_name": "BOCTRUST MICROFINANCE BANK LIMITED",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8a2",
+        "bank_code": "090108",
+        "bank_name": "NEW PRUDENTIAL BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb856",
+        "bank_code": "090154",
+        "bank_name": "CEMCS MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8a3",
+        "bank_code": "090263",
+        "bank_name": "NIGERIAN NAVY MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb85b",
+        "bank_code": "090130",
+        "bank_name": "CONSUMER MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8a4",
+        "bank_code": "090263",
+        "bank_name": "NIGERIAN NAVY MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb860",
+        "bank_code": "090167",
+        "bank_name": "DAYLIGHT MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8a5",
+        "bank_code": "999999",
+        "bank_name": "NIP VIRTUAL BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb865",
+        "bank_code": "100030",
+        "bank_name": "ECOMOBILE",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8a7",
+        "bank_code": "060003",
+        "bank_name": "NOVA MERCHANT BANK LTD",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb86a",
+        "bank_code": "090179",
+        "bank_name": "FAST MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8a8",
+        "bank_code": "070001",
+        "bank_name": "NPF MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb86f",
+        "bank_code": "100001",
+        "bank_name": "FET",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8a9",
+        "bank_code": "090119",
+        "bank_name": "OHAFIA MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb874",
+        "bank_code": "090111",
+        "bank_name": "FINATRUST MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8aa",
+        "bank_code": "090161",
+        "bank_name": "OKPOGA MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb879",
+        "bank_code": "100016",
+        "bank_name": "FORTIS MOBILE",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8ac",
+        "bank_code": "100026",
+        "bank_name": "ONE FINANCE",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb87e",
+        "bank_code": "090122",
+        "bank_name": "GOWANS MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8ad",
+        "bank_code": "100002",
+        "bank_name": "PAGA",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb883",
+        "bank_code": "090147",
+        "bank_name": "HACKMAN MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8ae",
+        "bank_code": "070008",
+        "bank_name": "PAGE MFBank",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb888",
+        "bank_code": "090175",
+        "bank_name": "HIGHSTREET MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8af",
+        "bank_code": "090004",
+        "bank_name": "PARALLEX",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb88d",
+        "bank_code": "070016",
+        "bank_name": "INFINITY TRUST MORTGAGE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8b1",
+        "bank_code": "110001",
+        "bank_name": "PAYATTITUDE ONLINE",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb892",
+        "bank_code": "090003",
+        "bank_name": "JUBILEE LIFE",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8b2",
+        "bank_code": "100004",
+        "bank_name": "PAYCOM",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb897",
+        "bank_code": "090177",
+        "bank_name": "LAPO MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8b3",
+        "bank_code": "090137",
+        "bank_name": "PECANTRUST MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb89c",
+        "bank_code": "100020",
+        "bank_name": "MONEY BOX",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8b4",
+        "bank_code": "090196",
+        "bank_name": "PENNYWISE MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8a1",
+        "bank_code": "090205",
+        "bank_name": "NEW DAWN MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8b6",
+        "bank_code": "070013",
+        "bank_name": "PLATINUM MORTGAGE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8a6",
+        "bank_code": "090194",
+        "bank_name": "NIRSAL MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8b7",
+        "bank_code": "000008",
+        "bank_name": "POLARIS BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8ab",
+        "bank_code": "070007",
+        "bank_name": "OMOLUABI",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8b8",
+        "bank_code": "000023",
+        "bank_name": "PROVIDUS BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8b0",
+        "bank_code": "100003",
+        "bank_name": "PARKWAY-READYCASH",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8b9",
+        "bank_code": "090261",
+        "bank_name": "QUICKFUND MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8b5",
+        "bank_code": "090135",
+        "bank_name": "PERSONAL TRUST MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8bb",
+        "bank_code": "070011",
+        "bank_name": "REFUGE MORTGAGE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8ba",
+        "bank_code": "000024",
+        "bank_name": "RAND MERCHANT BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8bc",
+        "bank_code": "090125",
+        "bank_name": "REGENT MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8bd",
+        "bank_code": "090198",
+        "bank_name": "RENMONEY MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8be",
+        "bank_code": "090132",
+        "bank_name": "RICHWAY MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8bf",
+        "bank_code": "090138",
+        "bank_name": "ROYAL EXCHANGE MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8c0",
+        "bank_code": "090006",
+        "bank_name": "SAFETRUST",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8c1",
+        "bank_code": "090140",
+        "bank_name": "SAGAMU MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8c2",
+        "bank_code": "090112",
+        "bank_name": "SEED CAPITAL MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8c3",
+        "bank_code": "000012",
+        "bank_name": "STANBIC IBTC BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8c4",
+        "bank_code": "100007",
+        "bank_name": "STANBIC IBTC VIRTUAL BANKING",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8c5",
+        "bank_code": "000021",
+        "bank_name": "STANDARD CHARTERED BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8c6",
+        "bank_code": "090262",
+        "bank_name": "STELLAS MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8c7",
+        "bank_code": "000001",
+        "bank_name": "STERLING BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8c8",
+        "bank_code": "100022",
+        "bank_name": "STERLING MOBILE",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8c9",
+        "bank_code": "000022",
+        "bank_name": "SUNTRUST BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8ca",
+        "bank_code": "100023",
+        "bank_name": "TAGPAY",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8cb",
+        "bank_code": "090115",
+        "bank_name": "TCF MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8cc",
+        "bank_code": "100010",
+        "bank_name": "TEASY MOBILE",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8cd",
+        "bank_code": "090146",
+        "bank_name": "TRIDENT MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8ce",
+        "bank_code": "090005",
+        "bank_name": "TRUSTBOND",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8cf",
+        "bank_code": "000018",
+        "bank_name": "UNION BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8d0",
+        "bank_code": "000004",
+        "bank_name": "UNITED BANK FOR AFRICA",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8d1",
+        "bank_code": "000011",
+        "bank_name": "UNITY BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8d2",
+        "bank_code": "090251",
+        "bank_name": "UNIVERSITY OF NIGERIA, NSUKKA MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8d3",
+        "bank_code": "090123",
+        "bank_name": "VERITE MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8d4",
+        "bank_code": "090110",
+        "bank_name": "VFD MFB",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8d5",
+        "bank_code": "090150",
+        "bank_name": "VIRTUE MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8d6",
+        "bank_code": "090139",
+        "bank_name": "VISA MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8d7",
+        "bank_code": "100012",
+        "bank_name": "VT NETWORKS",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8d8",
+        "bank_code": "000017",
+        "bank_name": "WEMA BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8d9",
+        "bank_code": "090120",
+        "bank_name": "WETLAND  MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8da",
+        "bank_code": "090124",
+        "bank_name": "XSLNCE MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8db",
+        "bank_code": "090142",
+        "bank_name": "YES MICROFINANCE BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8dc",
+        "bank_code": "000015",
+        "bank_name": "ZENITH BANK",
+        "__v": 0
+    },
+    {
+        "_id": "5e525a6975c34d26811cb8dd",
+        "bank_code": "100018",
+        "bank_name": "ZENITH MOBILE",
+        "__v": 0
+    }
+]

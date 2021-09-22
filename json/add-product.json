@@ -1,20 +1,20 @@
 [
-  { "label": "Name of Product", "name": "productName", "type": "input" },
-  { "label": "Product Category", "name": "productCategory", "type": "input" },
-  {
-    "label": "Product Description",
-    "name": "productDescription",
-    "type": "input"
-  },
-  {
-    "label": "Product Price",
-    "name": "productPrice",
-    "type": "input"
-  },
-  {
-    "label": "Quantity",
-    "name": "quantity",
-    "type": "input",
-    "keyboardType": "numeric"
-  }
+    { "label": "Name of Product", "name": "name", "type": "input" },
+    { "label": "Product Category", "name": "categoryId", "type": "input" },
+    {
+        "label": "Product Description",
+        "name": "description",
+        "type": "input"
+    },
+    {
+        "label": "Product Price",
+        "name": "price",
+        "type": "input"
+    },
+    {
+        "label": "Quantity",
+        "name": "quantity",
+        "type": "input",
+        "keyboardType": "numeric"
+    }
 ]

@@ -22,6 +22,10 @@
         { "name": "AddProductScreenMethod", "title": "Add a Product" },
         { "name": "ProductWithISBNScreen", "title": "Add a Product" },
         { "name": "FoodCategoryScreen", "title": "Food Category" },
+        {
+            "name": "AddProductCategoryScreen",
+            "title": "Add a Product Category"
+        },
         { "name": "AddExtraScreen", "title": "Add an Extra" },
         { "name": "AddProductOtherDetailsScreen", "title": "Add a new Product" }
     ],

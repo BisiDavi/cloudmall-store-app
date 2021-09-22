@@ -1,13 +1,16 @@
 import React from "react";
 import { Formik } from "formik";
-import addNewProductSchema from "@components/forms/AddNewProductSchema";
 import { View, StyleSheet } from "react-native";
+import { useDispatch } from "react-redux";
+import addNewProductSchema from "@components/forms/AddNewProductSchema";
 import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import { Button } from "react-native-elements";
 import addproductContent from "@json/add-product.json";
 import colors from "@utils/colors";
+import { AddProductStep1Action } from "@store/actions/addProductAction";
 
 export default function AddNewProductForm({ navigation }: any) {
+    const dispatch = useDispatch();
     function navigationHandler(handleSubmit: any) {
         handleSubmit();
         navigation.navigate("AddProductOtherDetailsScreen");
@@ -18,15 +21,16 @@ export default function AddNewProductForm({ navigation }: any) {
     return (
         <Formik
             initialValues={{
-                productName: "",
-                productCategory: "",
-                productDescription: "",
-                productPrice: "",
-                quantity: "",
+                name: "",
+                categoryId: "",
+                description: "",
+                price: "",
+                quantity: 0,
             }}
             validationSchema={addNewProductSchema}
             onSubmit={(values: any) => {
                 console.log("values", values);
+                dispatch(AddProductStep1Action(values));
             }}
         >
             {({

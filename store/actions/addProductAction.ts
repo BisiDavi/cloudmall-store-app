@@ -15,7 +15,7 @@ export const AddProductStep1Action =
         });
     };
 
-		export const AddProductStep2Action =
+export const AddProductStep2Action =
     (payload: productPayloadType) =>
     (
         dispatch: (arg0: {

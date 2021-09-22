@@ -5,7 +5,8 @@ import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
 import { useStoreSetupNavigation } from "@hooks/.";
-import { colors } from "@utils/.";
+import { colors, showToast } from "@utils/.";
+
 import settlementDetails from "@json/settlement-details.json";
 import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import { storeSettlementDetailsSchema } from "./StoreDetailsSchema";
@@ -13,8 +14,17 @@ import { StoreSettlementAction } from "@store/actions/StoreDetailsAction";
 import { postStoreDetailsRequest } from "@network/postRequest";
 import { RootState } from "@store/RootReducer";
 
+interface formValuesState {
+    settlementPlan: string;
+    bankName: string;
+    bankCode: string;
+    accountNumber: string;
+    accountName: string;
+}
+
 export default function SettlementDetailsForm() {
     const [loading, setLoading] = useState(false);
+    const [formValues, setFormValues] = useState<formValuesState | null>(null);
     const { onBoardingNextScreen } = useStoreSetupNavigation();
     const dispatch = useDispatch();
     const { storeDetails } = useSelector(
@@ -40,18 +50,30 @@ export default function SettlementDetailsForm() {
             notEmpty(bankName) &&
             notEmpty(bankCode) &&
             notEmpty(accountNumber) &&
-            notEmpty(accountName)
+            notEmpty(accountName) &&
+            formValues !== null
         ) {
             console.log("running request");
             postStoreDetailsRequest(storeDetails)
                 .then((response) => {
-                    console.log("response postStoreDetailsRequest", response);
+                    console.log(
+                        "response postStoreDetailsRequest",
+                        response.data,
+                    );
                     setLoading(false);
+                    showToast(response.data.message);
                     onBoardingNextScreen(4, false);
                 })
                 .catch((error) => {
                     console.log("error postStoreDetailsRequest", error);
                     setLoading(false);
+                    let errorMessage;
+                    if (error.request) {
+                        errorMessage = "Oops, poor network, try again";
+                    } else if (error.response) {
+                        errorMessage = error.response.data.message;
+                    }
+                    showToast(errorMessage);
                 });
         }
     }, [storeDetails]);
@@ -79,6 +101,7 @@ export default function SettlementDetailsForm() {
                             (bank: any) => bank.bank_name,
                         );
                         values.bankName = selectedBankArray[0];
+                        setFormValues(values);
                         setLoading(true);
                         dispatch(StoreSettlementAction(values));
                     }}

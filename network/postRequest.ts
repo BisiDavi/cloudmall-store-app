@@ -9,7 +9,7 @@ import {
     toggleSpecificationStatusRequestType,
 } from "@customTypes/postRequestTypes";
 import showToast from "@utils/showToast";
-import axiosInstance from "./axiosInstance";
+import axiosInstance, { axiosImageInstance } from "./axiosInstance";
 
 export async function postStoreDetailsRequest(data: postStoreDetailsType) {
     const dataToPost = JSON.stringify(data);
@@ -30,11 +30,11 @@ export async function getPendingOrdersRequest(data: OrdersType) {
 }
 
 export async function uploadStoreLogoRequest(logo: any) {
-    return await axiosInstance.post("/api/store/profile", logo);
+    return await axiosImageInstance.post("/api/store/upload-store-logo", logo);
 }
 
 export async function uploadStoreBackgroundRequest(background: any) {
-    return await axiosInstance.post(
+    return await axiosImageInstance.post(
         "/api/store/upload-store-background",
         background,
     );

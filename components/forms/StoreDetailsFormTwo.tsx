@@ -17,7 +17,7 @@ export default function StoreDetailsFormTwo() {
     const dispatch = useDispatch();
 
     return (
-        <View>
+        <>
             <Spinner visible={loading} color={colors.cloudOrange5} />
             <Formik
                 validationSchema={storeDetailsScreenTwoSchema}
@@ -68,7 +68,7 @@ export default function StoreDetailsFormTwo() {
                     </View>
                 )}
             </Formik>
-        </View>
+        </>
     );
 }
 

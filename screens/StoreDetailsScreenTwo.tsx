@@ -14,12 +14,12 @@ import { colors } from "@utils/.";
 
 export default function StoreDetailsScreenTwo() {
     return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <KeyboardAvoidingView
-                behavior={Platform.OS === "ios" ? "padding" : "height"}
-                enabled={true}
-                style={{ flex: 1 }}
-            >
+        <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            enabled={true}
+            style={{ flex: 1 }}
+        >
+            <SafeAreaView style={{ flex: 1 }}>
                 <ScrollView style={{ flex: 1 }}>
                     <View style={styles.container}>
                         <ProgressIndicator
@@ -29,8 +29,8 @@ export default function StoreDetailsScreenTwo() {
                         <StoreDetailsFormTwo />
                     </View>
                 </ScrollView>
-            </KeyboardAvoidingView>
-        </SafeAreaView>
+            </SafeAreaView>
+        </KeyboardAvoidingView>
     );
 }
 

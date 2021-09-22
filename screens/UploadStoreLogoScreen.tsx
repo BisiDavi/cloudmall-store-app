@@ -10,21 +10,18 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image, Button } from "react-native-elements";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as ImagePicker from "expo-image-picker";
 import Spinner from "react-native-loading-spinner-overlay";
 
 import useStoreSetupNavigation from "@hooks/useStoreSetupNavigation";
 import UploadIcon from "@assets/upload.png";
 import colors from "@utils/colors";
-import { RootState } from "@store/RootReducer";
 import ProgressIndicator from "@components/ProgressIndicator";
 import { StoreLogoUploadAction } from "@store/actions/StoreDetailsAction";
-import {
-    uploadStoreLogoRequest,
-    postStoreDetailsRequest,
-} from "@network/postRequest";
+import { uploadStoreLogoRequest } from "@network/postRequest";
 import formatUploadedImage from "@utils/formatUploadedImage";
+import showToast from "@utils/showToast";
 
 export default function UploadStoreLogoScreen() {
     const [formDataState, setFormDataState] = useState({});
@@ -32,9 +29,6 @@ export default function UploadStoreLogoScreen() {
     const [loading, setLoading] = useState(false);
     const { onBoardingNextScreen } = useStoreSetupNavigation();
     const dispatch = useDispatch();
-    const { storeDetails } = useSelector(
-        (state: RootState) => state.storeDetails,
-    );
 
     useEffect(() => {
         const displayAfter2Secs = setTimeout(() => {
@@ -55,36 +49,31 @@ export default function UploadStoreLogoScreen() {
         return () => clearTimeout(displayAfter2Secs);
     }, []);
 
-    async function postStoreDetails(screenNumber: number, status: boolean) {
-        setLoading(true);
-        await postStoreDetailsRequest(storeDetails)
-            .then(() => {
-                setLoading(false);
-                onBoardingNextScreen(screenNumber, status);
-            })
-            .catch((error) => {
-                console.log("error", error);
-                setLoading(false);
-            });
-    }
-
     async function uploadImage() {
         dispatch(StoreLogoUploadAction(formDataState));
         setLoading(true);
         await uploadStoreLogoRequest(formDataState)
             .then((response) => {
-                console.log("response", response);
+                console.log("response", response.data.message);
                 setLoading(false);
+                showToast(response.data.message);
+                onBoardingNextScreen(5, false);
             })
             .catch((error) => {
-                console.log("error", error);
+                console.log("uploadImage error", error);
+                let errorMessage;
+                if (error.request) {
+                    console.log("error.request", error.request);
+                    errorMessage = error.request._response;
+                }
+                showToast(errorMessage);
                 setLoading(false);
             });
-        return postStoreDetails(5, false);
+        return;
     }
 
     async function skipImage() {
-        return postStoreDetails(6, true);
+        return onBoardingNextScreen(6, true);
     }
 
     const pickImage = async () => {
@@ -101,7 +90,7 @@ export default function UploadStoreLogoScreen() {
             );
         }
         if (!result.cancelled) {
-            let formData = formatUploadedImage(result);
+            let formData = formatUploadedImage("logo", result);
             setFormDataState(formData);
             setStoreLogo(result.uri);
         }

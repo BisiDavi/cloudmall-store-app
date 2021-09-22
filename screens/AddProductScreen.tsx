@@ -43,7 +43,7 @@ export default function AddProductScreen({ navigation }: Props) {
         });
         if (!result.cancelled) {
             console.log("result", result);
-            let formData = formatUploadedImage(result);
+            let formData = formatUploadedImage("image", result);
             setFormDataState(formData);
             setProductImage(result.uri);
         }

@@ -26,7 +26,7 @@ export default function UploadStoreImageScreen() {
     async function uploadImage() {
         setLoading(true);
         dispatch(StoreImageUploadAction(formDataState));
-        return uploadStoreBackgroundRequest(formDataState)
+        await uploadStoreBackgroundRequest(formDataState)
             .then((response) => {
                 setLoading(false);
                 console.log("response", response);
@@ -34,6 +34,9 @@ export default function UploadStoreImageScreen() {
             })
             .catch((error) => {
                 setLoading(false);
+                if (error.request) {
+                    console.log("error.request", error.request);
+                }
                 console.log("error", error);
             });
     }
@@ -50,8 +53,7 @@ export default function UploadStoreImageScreen() {
             aspect: [4, 3],
         });
         if (!result.cancelled) {
-            console.log("result", result);
-            let formData = formatUploadedImage(result);
+            let formData = formatUploadedImage("background", result);
             setFormDataState(formData);
             setImage(result.uri);
         }

@@ -42,8 +42,6 @@ function TimeAndSwitchField(props: TimeAndSwitchField) {
 
     const specificPeriod = openDays[period];
 
-    console.log("openDays", openDays);
-
     useEffect(() => {
         dispatch(StoreOpendaysAction({ specificPeriod, period }));
     }, [openDays]);

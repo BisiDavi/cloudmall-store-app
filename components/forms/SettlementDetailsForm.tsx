@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
@@ -12,7 +12,6 @@ import { storeSettlementDetailsSchema } from "./StoreDetailsSchema";
 import { StoreSettlementAction } from "@store/actions/StoreDetailsAction";
 import { postStoreDetailsRequest } from "@network/postRequest";
 import { RootState } from "@store/RootReducer";
-import bankDetails from "@json/banks.json";
 
 export default function SettlementDetailsForm() {
     const [loading, setLoading] = useState(false);
@@ -26,8 +25,38 @@ export default function SettlementDetailsForm() {
     function skipHandler() {
         return onBoardingNextScreen(4, false);
     }
-    let settleDetailsOption: any = settlementDetails[1].options;
-    settleDetailsOption = bankDetails;
+
+    useEffect(() => {
+        const {
+            settlementPlan,
+            bankName,
+            bankCode,
+            accountName,
+            accountNumber,
+        } = storeDetails;
+        const notEmpty = (name: string) => name.length !== 0;
+        if (
+            notEmpty(settlementPlan) &&
+            notEmpty(bankName) &&
+            notEmpty(bankCode) &&
+            notEmpty(accountNumber) &&
+            notEmpty(accountName)
+        ) {
+            console.log("running request");
+            postStoreDetailsRequest(storeDetails)
+                .then((response) => {
+                    console.log("response postStoreDetailsRequest", response);
+                    setLoading(false);
+                    onBoardingNextScreen(4, false);
+                })
+                .catch((error) => {
+                    console.log("error postStoreDetailsRequest", error);
+                    setLoading(false);
+                });
+        }
+    }, [storeDetails]);
+
+    const settlementOptions: any = settlementDetails[1].options;
 
     return (
         <>
@@ -43,7 +72,7 @@ export default function SettlementDetailsForm() {
                         accountName: "",
                     }}
                     onSubmit={(values) => {
-                        const selectedBank = settleDetailsOption.filter(
+                        const selectedBank: any = settlementOptions.filter(
                             (bank: any) => bank.bank_code === values.bankCode,
                         );
                         const selectedBankArray = selectedBank.map(
@@ -52,22 +81,6 @@ export default function SettlementDetailsForm() {
                         values.bankName = selectedBankArray[0];
                         setLoading(true);
                         dispatch(StoreSettlementAction(values));
-                        postStoreDetailsRequest(storeDetails)
-                            .then((response) => {
-                                console.log(
-                                    "response postStoreDetailsRequest",
-                                    response,
-                                );
-                                setLoading(false);
-                                onBoardingNextScreen(4, false);
-                            })
-                            .catch((error) => {
-                                console.log(
-                                    "error postStoreDetailsRequest",
-                                    error,
-                                );
-                                setLoading(false);
-                            });
                     }}
                 >
                     {({

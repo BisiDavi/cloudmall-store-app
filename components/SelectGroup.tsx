@@ -16,7 +16,6 @@ export default function SelectGroup(props: SelectGroupProps) {
         closeFlag: "",
     });
     const [secondOptions] = useState(selectField[1].options);
-    console.log("wholeDay", wholeday);
     return (
         <View style={styles.selectGroup}>
             {selectField.map((field: any, index: number) => {
@@ -24,7 +23,6 @@ export default function SelectGroup(props: SelectGroupProps) {
                     ? (selectField[1].options = null)
                     : (selectField[1].options = secondOptions);
 
-                //console.log("selectedField", selectField[index]);
                 return (
                     <View key={index}>
                         <SelectField

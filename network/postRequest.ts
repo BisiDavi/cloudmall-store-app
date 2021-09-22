@@ -13,8 +13,8 @@ import axiosInstance from "./axiosInstance";
 
 export async function postStoreDetailsRequest(data: postStoreDetailsType) {
     const dataToPost = JSON.stringify(data);
-    console.log("dataToPost", data);
-    return await axiosInstance.post("/api/store/profile", data);
+    console.log("dataToPost", dataToPost);
+    return await axiosInstance.post("/api/store/profile", dataToPost);
 }
 
 export async function getAllProductsRequest(data: allProductType) {

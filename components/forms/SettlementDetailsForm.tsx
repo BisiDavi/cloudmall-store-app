@@ -32,10 +32,6 @@ export default function SettlementDetailsForm() {
     );
     console.log("storeDetails", storeDetails);
 
-    function skipHandler() {
-        return onBoardingNextScreen(4, false);
-    }
-
     useEffect(() => {
         const {
             settlementPlan,

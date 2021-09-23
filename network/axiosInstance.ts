@@ -41,6 +41,7 @@ axiosImageInstance.interceptors.request.use(
         if (savedToken) {
             config.headers["Authorization"] = "Bearer " + savedToken;
         }
+        console.log("savedToken", savedToken);
         config.headers["content-type"] = "multipart/form-data;application/json";
         return config;
     },

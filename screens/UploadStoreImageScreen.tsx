@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { StyleSheet, View, Text, Dimensions, ScrollView } from "react-native";
+import {
+    StyleSheet,
+    View,
+    Text,
+    Dimensions,
+    ScrollView,
+    ToastAndroid,
+} from "react-native";
 import { Image, Button } from "react-native-elements";
 import { useDispatch } from "react-redux";
 import * as ImagePicker from "expo-image-picker";
@@ -13,6 +20,7 @@ import ProgressIndicator from "@components/ProgressIndicator";
 import { StoreImageUploadAction } from "@store/actions/StoreDetailsAction";
 import { uploadStoreBackgroundRequest } from "@network/postRequest";
 import formatUploadedImage from "@utils/formatUploadedImage";
+import showToast from "@utils/showToast";
 
 export default function UploadStoreImageScreen() {
     const [formDataState, setFormDataState] = useState({});
@@ -21,8 +29,6 @@ export default function UploadStoreImageScreen() {
     const { onBoardingNextScreen } = useStoreSetupNavigation();
     const dispatch = useDispatch();
 
-    console.log("image", image);
-
     async function uploadImage() {
         setLoading(true);
         dispatch(StoreImageUploadAction(formDataState));
@@ -30,6 +36,7 @@ export default function UploadStoreImageScreen() {
             .then((response) => {
                 setLoading(false);
                 console.log("response", response);
+                showToast(response.data.message);
                 onBoardingNextScreen(6, true);
             })
             .catch((error) => {
@@ -52,6 +59,12 @@ export default function UploadStoreImageScreen() {
             allowsEditing: false,
             aspect: [4, 3],
         });
+        if (result.cancelled) {
+            ToastAndroid.show(
+                "To upload your stores logo, we need your permission to view your gallery",
+                ToastAndroid.LONG,
+            );
+        }
         if (!result.cancelled) {
             let formData = formatUploadedImage("background", result);
             setFormDataState(formData);

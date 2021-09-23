@@ -5,7 +5,7 @@ import { Formik } from "formik";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Dimensions, StyleSheet, View } from "react-native";
 import { storeDetailsScreenOneSchema } from "@components/forms";
-import { colors } from "@utils/.";
+import { colors, showToast } from "@utils/.";
 import storeDetailsFormOne from "@json/storeDetailsFormOne.json";
 import { StoreDetailsAction } from "@store/actions/StoreDetailsAction";
 import { DisplayFormElements } from "@components/forms/DisplayFormElements";
@@ -36,7 +36,13 @@ export default function StoreDetailsFormOne() {
             .then((response) => {
                 setStoreCategory(response.data.data);
             })
-            .catch((error) => console.log("error", error?.response.data));
+            .catch((error) => {
+                if (error.response) {
+                    showToast(error.response.data);
+                } else if (error.request) {
+                    showToast(error.request);
+                }
+            });
 
         getAvailableState()
             .then((response) => {

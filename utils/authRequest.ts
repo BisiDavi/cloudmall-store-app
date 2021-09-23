@@ -14,12 +14,11 @@ export async function signupUser(
             return token;
         })
         .catch((error) => {
-            console.log("response", error.response.data.message);
-            if (error.response.data.message === "Registration unsuccessful.") {
-                let message = "email doesn't exist please use a valid email";
-                showToast(message);
-            } else {
+            if (error.response) {
+                console.log("error", error.response.data.message);
                 showToast(error.response.data.message);
+            } else if (error.request) {
+                showToast("Oops, poor network, please check your network");
             }
             token = error.response.data.token;
             return token;
@@ -42,7 +41,12 @@ export async function loginUser(
         })
         .catch((error) => {
             showToast(error.response.data?.message);
-            console.log("error", error.response.data.message);
+            if (error.response) {
+                console.log("error", error.response.data.message);
+                showToast(error.response.data.message);
+            } else if (error.request) {
+                showToast("Oops, poor network, please check your network");
+            }
             token = null;
             return token;
         });

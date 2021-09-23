@@ -76,7 +76,7 @@ export default function UploadStoreLogoScreen() {
         return onBoardingNextScreen(6, true);
     }
 
-    const pickImage = async () => {
+    async function pickImage() {
         setLoading(true);
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -95,7 +95,7 @@ export default function UploadStoreLogoScreen() {
             setStoreLogo(result.uri);
         }
         setLoading(false);
-    };
+    }
     return (
         <SafeAreaView style={styles.view}>
             <Spinner visible={loading} color={colors.cloudOrange5} />

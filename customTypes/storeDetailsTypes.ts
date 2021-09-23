@@ -8,7 +8,8 @@ export type storeDetailsActionType = {
         | "STORE_IMAGE_UPLOAD"
         | "STORE_LOGO_UPLOAD"
         | "STORE_ADDRESS_COORDINATES"
-        | "UPDATE_STORE_OPENDAYS";
+        | "UPDATE_STORE_OPENDAYS"
+        | "UPDATE_STORE_ID";
     payload: StoreDetailsPayloadType;
 };
 
@@ -53,6 +54,7 @@ export type StoreDetailsStateType = {
     storeLogo: string;
     period?: any;
     specificPeriod?: any;
+    storeId: string;
 };
 
 export type StoreDetailsPayloadType = {
@@ -94,4 +96,5 @@ export type StoreDetailsPayloadType = {
     storeLogo: string;
     period?: any;
     specificPeriod?: any;
+    storeId: string;
 };

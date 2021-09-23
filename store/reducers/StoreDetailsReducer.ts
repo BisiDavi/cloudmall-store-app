@@ -12,6 +12,7 @@ import {
     STORE_LOGO_UPLOAD,
     STORE_ADDRESS_COORDINATES,
     UPDATE_STORE_OPENDAYS,
+		UPDATE_STORE_ID,
 } from "../constant";
 
 export function StoreDetailsReducer(
@@ -42,6 +43,7 @@ export function StoreDetailsReducer(
         },
         storeLogo: "",
         storeImage: "",
+        storeId: "",
     },
     action: storeDetailsActionType,
 ) {
@@ -128,6 +130,12 @@ export function StoreDetailsReducer(
                     accountNumber: payload.accountNumber,
                     accountName: payload.accountName,
                 },
+            };
+        }
+        case UPDATE_STORE_ID: {
+            return {
+                ...state,
+                storeId: payload.storeId,
             };
         }
         case STOREDETAILS_SUBMITTED: {

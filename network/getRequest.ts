@@ -17,3 +17,7 @@ export async function getCatalogProductCategories() {
         "/api/store/pull-catalog-product-categories",
     );
 }
+
+export async function getStoreDetailsRequest() {
+    return await axiosInstance.get("/api/store/profile");
+}

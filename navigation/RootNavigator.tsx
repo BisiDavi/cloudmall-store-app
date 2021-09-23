@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import Spinner from "react-native-loading-spinner-overlay";
@@ -14,14 +14,39 @@ import {
 import DrawerNavigation from "./DrawerNavigation";
 import PublicNavigation from "./PublicNavigation";
 import StoreDetailsNavigation from "./StoreDetailsNavigation";
+import { getStoreDetailsRequest } from "@network/getRequest";
 
 export default function RootNavigator() {
     const { state } = useContext(AuthContext);
+    const [storeProfile, setStoreProfile] = useState({
+        isStoreRegistered: false,
+        profile: null,
+    });
     const { completed, formPage } = useSelector(
         (storeState: RootState) => storeState.setupStore,
     );
     const navigation = useNavigation();
     const isSignedIn = hasTokenExpired(state.userToken);
+
+    useEffect(() => {
+        getStoreDetailsRequest()
+            .then((response) => {
+                console.log("response getStoreDetailsRequest", response.data);
+                if (response.data.bank) {
+                    setStoreProfile({
+                        ...storeProfile,
+                        isStoreRegistered: true,
+                    });
+                }
+            })
+            .catch((error) => {
+                if (error.response) {
+                    console.log("error response", error.response);
+                } else if (error.request) {
+                    console.log("error request", error.request);
+                }
+            });
+    }, []);
 
     useEffect(() => {
         if (state.userToken) {
@@ -47,7 +72,7 @@ export default function RootNavigator() {
             <Spinner visible={state.isLoading} color={colors.cloudOrange5} />
             {!isSignedIn && !completed ? (
                 <StoreDetailsNavigation />
-            ) : !isSignedIn && completed ? (
+            ) : (!isSignedIn && completed) || storeProfile.isStoreRegistered ? (
                 <DrawerNavigation />
             ) : (
                 <PublicNavigation />

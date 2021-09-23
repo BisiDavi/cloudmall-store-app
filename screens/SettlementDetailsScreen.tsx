@@ -1,4 +1,3 @@
-import { StackScreenProps } from "@react-navigation/stack";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -9,13 +8,11 @@ import {
     ScrollView,
     Dimensions,
 } from "react-native";
-import { RootStackParamList } from "@customTypes/.";
 import ProgressIndicator from "@components/ProgressIndicator";
 import SettlementDetailsForm from "@components/forms/SettlementDetailsForm";
 
-export default function SettlementDetailsScreen({
-    navigation,
-}: StackScreenProps<RootStackParamList, "SettlementDetailsScreen">) {
+export default function SettlementDetailsScreen() {
+
     return (
         <SafeAreaView style={styles.view}>
             <KeyboardAvoidingView

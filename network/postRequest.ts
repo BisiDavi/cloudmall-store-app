@@ -8,7 +8,6 @@ import {
     postStoreDetailsType,
     toggleSpecificationStatusRequestType,
 } from "@customTypes/postRequestTypes";
-import showToast from "@utils/showToast";
 import axiosInstance, { axiosImageInstance } from "./axiosInstance";
 
 export async function postStoreDetailsRequest(data: postStoreDetailsType) {
@@ -85,5 +84,11 @@ export async function getProductMainExtra(productId: string) {
     return await axiosInstance.post(
         "/api/store/get-product-main-extras",
         productId,
+    );
+}
+export async function getProductsCategories(storeId: string) {
+    return await axiosInstance.post(
+        "/api/store/get-products-categories",
+        storeId,
     );
 }

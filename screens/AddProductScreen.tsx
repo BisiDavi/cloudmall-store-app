@@ -4,10 +4,9 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { RouteProp } from "@react-navigation/native";
 import { Image } from "react-native-elements";
 import * as ImagePicker from "expo-image-picker";
-import addproductContent from "@json/add-product.json";
-import pizza from "@assets/pizza.png";
 import { DrawerStackParamList } from "@customTypes/.";
 import ProgressIndicator from "@components/ProgressIndicator";
+import Spinner from "react-native-loading-spinner-overlay";
 import { ScrollView } from "react-native-gesture-handler";
 import AddNewProductForm from "@components/forms/AddNewProductForm";
 import Fab from "@components/Fab";
@@ -51,6 +50,7 @@ export default function AddProductScreen({ navigation }: Props) {
     };
     return (
         <ScrollView>
+            <Spinner visible={loading} color={colors.cloudOrange5} />
             <View style={styles.container}>
                 <View style={styles.progressIndicatorView}>
                     <ProgressIndicator

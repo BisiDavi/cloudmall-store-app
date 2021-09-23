@@ -74,7 +74,7 @@ export default function UploadStoreImageScreen() {
     };
     return (
         <SafeAreaView style={styles.view}>
-            <Spinner visible={loading} color="blue" />
+            <Spinner visible={loading} color={colors.cloudOrange5} />
             <ScrollView>
                 <View style={styles.container}>
                     <ProgressIndicator

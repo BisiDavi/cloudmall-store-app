@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { ScrollView } from "react-native-gesture-handler";
 import { StyleSheet, View, Text } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import Spinner from "react-native-loading-spinner-overlay";
 import { RouteProp } from "@react-navigation/native";
 import { Image } from "react-native-elements";
-import { DrawerStackParamList } from "@customTypes/.";
+
 import useUploadImage from "@hooks/useUploadImage";
-import ProgressIndicator from "@components/ProgressIndicator";
-import { ScrollView } from "react-native-gesture-handler";
 import AddNewProductForm from "@components/forms/AddNewProductForm";
-import Fab from "@components/Fab";
-import colors from "@utils/colors";
-import Spinner from "react-native-loading-spinner-overlay";
+import { colors, showToast } from "@utils/.";
+import { ProgressIndicator, Fab } from "@components/.";
 import { uploadProductImageRequest } from "@network/postRequest";
-import showToast from "@utils/showToast";
+import { DrawerStackParamList } from "@customTypes/.";
 
 type AddProductScreenNavigationProps = StackNavigationProp<
     DrawerStackParamList,

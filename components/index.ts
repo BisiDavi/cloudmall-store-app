@@ -7,3 +7,4 @@ export { default as NewOrdersTab } from "./NewOrdersTab";
 export { default as ProgressIndicator } from "./ProgressIndicator";
 export { default as RadioField } from "./RadioField";
 export { default as SelectField } from "./SelectField";
+export { default as Fab } from "./Fab";

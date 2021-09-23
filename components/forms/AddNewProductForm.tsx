@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import addNewProductSchema from "@components/forms/AddNewProductSchema";
 import { DisplayFormElements } from "@components/forms/DisplayFormElements";
@@ -12,11 +12,12 @@ import { getProductsCategories } from "@network/postRequest";
 import { RootState } from "@store/RootReducer";
 
 export default function AddNewProductForm({ navigation }: any) {
+    const [productCategories, setProductCategories] = useState<any>([]);
+
     const dispatch = useDispatch();
     const { storeProfile }: any = useSelector(
         (state: RootState) => state.storeProfile,
     );
-    const [productCategories, setProductCategories] = useState<any>([]);
 
     useEffect(() => {
         getProductsCategories(storeProfile._id)
@@ -126,5 +127,32 @@ const styles = StyleSheet.create({
         width: "92%",
         margin: 10,
         marginTop: 10,
+    },
+    uploadProductImage: {
+        justifyContent: "center",
+        alignItems: "center",
+        margin: 20,
+    },
+    fabContainer: {
+        alignItems: "center",
+        justifyContent: "center",
+        height: 50,
+        width: 70,
+        marginTop: 30,
+    },
+    productImage: {
+        height: 150,
+        width: 200,
+        marginBottom: 20,
+    },
+    FabView: {
+        height: 160,
+        width: 160,
+        backgroundColor: colors.neutral3,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 5,
     },
 });

@@ -1,17 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-    StyleSheet,
-    View,
-    Text,
-    Platform,
-    ToastAndroid,
-    Dimensions,
-    ScrollView,
-} from "react-native";
+import { StyleSheet, View, Text, Dimensions, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image, Button } from "react-native-elements";
 import { useDispatch } from "react-redux";
-import * as ImagePicker from "expo-image-picker";
 import Spinner from "react-native-loading-spinner-overlay";
 
 import useStoreSetupNavigation from "@hooks/useStoreSetupNavigation";
@@ -20,32 +11,25 @@ import colors from "@utils/colors";
 import ProgressIndicator from "@components/ProgressIndicator";
 import { StoreLogoUploadAction } from "@store/actions/StoreDetailsAction";
 import { uploadStoreLogoRequest } from "@network/postRequest";
-import formatUploadedImage from "@utils/formatUploadedImage";
 import showToast from "@utils/showToast";
+import useUploadImage from "@hooks/useUploadImage";
 
 export default function UploadStoreLogoScreen() {
-    const [formDataState, setFormDataState] = useState({});
-    const [storeLogo, setStoreLogo] = useState<any>(null);
     const [loading, setLoading] = useState(false);
+    const {
+        formDataState,
+        image: storeLogo,
+        pickImage,
+        permissionToUploadImage,
+    } = useUploadImage(setLoading, "logo");
     const { onBoardingNextScreen } = useStoreSetupNavigation();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const displayAfter2Secs = setTimeout(() => {
-            (async () => {
-                if (Platform.OS !== "web") {
-                    const { status } =
-                        await ImagePicker.requestMediaLibraryPermissionsAsync();
-                    if (status !== "granted") {
-                        ToastAndroid.show(
-                            "Sorry we need your permission to upload stores image.",
-                            ToastAndroid.LONG,
-                        );
-                    }
-                }
-            })();
-        }, 2000);
-
+        const displayAfter2Secs = setTimeout(
+            () => permissionToUploadImage,
+            2000,
+        );
         return () => clearTimeout(displayAfter2Secs);
     }, []);
 
@@ -76,26 +60,6 @@ export default function UploadStoreLogoScreen() {
         return onBoardingNextScreen(6, true);
     }
 
-    async function pickImage() {
-        setLoading(true);
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
-            allowsEditing: false,
-            aspect: [4, 3],
-        });
-        if (result.cancelled) {
-            ToastAndroid.show(
-                "To upload your stores logo, we need your permission to view your gallery",
-                ToastAndroid.LONG,
-            );
-        }
-        if (!result.cancelled) {
-            let formData = formatUploadedImage("logo", result);
-            setFormDataState(formData);
-            setStoreLogo(result.uri);
-        }
-        setLoading(false);
-    }
     return (
         <SafeAreaView style={styles.view}>
             <Spinner visible={loading} color={colors.cloudOrange5} />

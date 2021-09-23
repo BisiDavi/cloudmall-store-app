@@ -39,6 +39,10 @@ export async function uploadStoreBackgroundRequest(background: any) {
     );
 }
 
+export async function uploadProductImageRequest(image: any) {
+    return await axiosImageInstance.post("/api/store/add-product-image", image);
+}
+
 export async function pullCatalogProductsWithCategoryIdRequest(
     categoryId: number,
 ) {

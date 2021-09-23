@@ -48,6 +48,11 @@ export default function AddProductScreen({ navigation }: Props) {
         }
         setLoading(false);
     };
+		/**
+		 * TODO
+		 * post product image to add-product-image endpoint
+		 */
+
     return (
         <ScrollView>
             <Spinner visible={loading} color={colors.cloudOrange5} />

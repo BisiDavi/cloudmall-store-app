@@ -1,16 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import { View, StyleSheet } from "react-native";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import addNewProductSchema from "@components/forms/AddNewProductSchema";
 import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import { Button } from "react-native-elements";
 import addproductContent from "@json/add-product.json";
 import colors from "@utils/colors";
 import { AddProductStep1Action } from "@store/actions/addProductAction";
+import { getProductsCategories } from "@network/postRequest";
+import { RootState } from "@store/RootReducer";
 
 export default function AddNewProductForm({ navigation }: any) {
     const dispatch = useDispatch();
+    const { storeProfile }: any = useSelector(
+        (state: RootState) => state.storeProfile,
+    );
+    const [productCategories, setProductCategories] = useState<any>([]);
+
+    useEffect(() => {
+        getProductsCategories(storeProfile._id)
+            .then((response) => {
+                console.log("productCategories", response.data);
+                return setProductCategories(response.data);
+            })
+            .catch((error) => {
+                console.log("error", error);
+            });
+    }, [storeProfile._id]);
+
+    useEffect(() => {
+        if (productCategories.length !== 0) {
+            addproductContent[1].options = productCategories;
+        }
+    }, [productCategories]);
+
     function navigationHandler(handleSubmit: any) {
         handleSubmit();
         navigation.navigate("AddProductOtherDetailsScreen");

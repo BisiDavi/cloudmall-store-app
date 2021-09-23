@@ -1,6 +1,13 @@
 [
     { "label": "Name of Product", "name": "name", "type": "input" },
-    { "label": "Product Category", "name": "categoryId", "type": "input" },
+    {
+        "label": "Product Category",
+        "name": "categoryId",
+        "type": "select",
+        "placeholder": "Select Product Category",
+        "value": "_id",
+        "options": []
+    },
     {
         "label": "Product Description",
         "name": "description",

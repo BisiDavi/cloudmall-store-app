@@ -25,13 +25,15 @@ type Props = {
 export default function AddProductCategoryScreen({ navigation }: Props) {
     return (
         <View style={styles.container}>
-            <InputField label="Add Product Category" />
-            <View style={styles.buttonViewStyle}>
-                <Button
-                    buttonStyle={styles.buttonStyle}
-                    titleStyle={styles.buttonText}
-                    title="Add Product Category"
-                />
+            <View style={styles.form}>
+                <InputField label="Add Product Category" />
+                <View style={styles.buttonViewStyle}>
+                    <Button
+                        buttonStyle={styles.buttonStyle}
+                        titleStyle={styles.buttonText}
+                        title="Add Product Category"
+                    />
+                </View>
             </View>
         </View>
     );
@@ -39,17 +41,24 @@ export default function AddProductCategoryScreen({ navigation }: Props) {
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: "center",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        flex: 1,
     },
     buttonStyle: {
         backgroundColor: colors.mallBlue5,
         width: "100%",
     },
-    buttonViewStyle: {
-        position: "absolute",
-        bottom: 20,
+    input: {
+        height: 50,
     },
+    buttonViewStyle: {},
     buttonText: {
         color: colors.neutralWhite,
+    },
+    form: {
+        flexDirection: "column",
+        alignItems: "center",
+        marginTop: 10,
     },
 });

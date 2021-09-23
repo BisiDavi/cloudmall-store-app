@@ -1,0 +1,17 @@
+{
+    "main": ["main Extra 1", "main Extra 2", "main Extra 3"],
+    "secondary": [
+        "secondary Extra 1",
+        "secondary Extra 2",
+        "secondary Extra 3"
+    ],
+    "productAvailabilty": {
+        "label": "Availability Duration",
+        "name": "availabiltyDuration",
+        "type": "input-group",
+        "inputs": [
+            { "placeholder": "from", "type": "input", "name": "From" },
+            { "placeholder": "To", "type": "input", "name": "To" }
+        ]
+    }
+}

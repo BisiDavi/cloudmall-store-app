@@ -10,15 +10,16 @@ const middleware = [thunk];
 const storage = createSecureStore();
 
 const config = {
-  key: "root",
-  storage,
+    key: "root",
+    storage,
+    whitelist: ["storeProfile"],
 };
 
 const reducer = persistReducer(config, RootReducer);
 
 export default function configureStore() {
-  const store: any = createStore(reducer, applyMiddleware(...middleware));
-  const persistor = persistStore(store);
+    const store: any = createStore(reducer, applyMiddleware(...middleware));
+    const persistor = persistStore(store);
 
-  return { persistor, store };
+    return { persistor, store };
 }

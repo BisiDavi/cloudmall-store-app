@@ -28,7 +28,6 @@ export type DrawerStackParamList = {
     OrdersScreen: undefined;
     EditProductScreen: undefined;
     StatisticsScreen: undefined;
-    FoodCategoryScreen: undefined;
     ProductWithISBN: undefined;
     AddExtraScreen: undefined;
     AddProductOtherDetailsScreen: undefined;
@@ -47,4 +46,5 @@ export type DrawerStackParamList = {
     DeliveryAddressScreen: undefined;
     ViewOrderScreen: undefined;
     AddProductCategoryScreen: undefined;
+    FoodCategoryScreen: undefined;
 };

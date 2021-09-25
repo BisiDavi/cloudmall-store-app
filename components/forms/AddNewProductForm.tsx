@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import addNewProductSchema from "@components/forms/AddNewProductSchema";
 import { DisplayFormElements } from "@components/forms/DisplayFormElements";
@@ -19,6 +19,8 @@ export default function AddNewProductForm({ navigation }: any) {
         (state: RootState) => state.storeProfile,
     );
 
+    console.log("storeProfile", storeProfile);
+
     useEffect(() => {
         getProductsCategories(storeProfile._id)
             .then((response) => {
@@ -28,7 +30,7 @@ export default function AddNewProductForm({ navigation }: any) {
             .catch((error) => {
                 console.log("error", error);
             });
-    }, [storeProfile._id]);
+    }, []);
 
     useEffect(() => {
         if (productCategories.length !== 0) {

@@ -29,7 +29,7 @@ export default function useUploadImage(
     async function pickImage() {
         setLoading(true);
         let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: false,
             aspect: [4, 3],
         });

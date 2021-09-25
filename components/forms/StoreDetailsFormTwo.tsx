@@ -13,8 +13,10 @@ import { colors } from "@utils/.";
 
 export default function StoreDetailsFormTwo() {
     const [loading, setLoading] = useState(false);
-    const { onBoardingNextScreen } = useStoreSetupNavigation();
+    const { onBoardingNextScreen, setupStorestate } = useStoreSetupNavigation();
     const dispatch = useDispatch();
+
+    console.log("setupStorestate", setupStorestate);
 
     return (
         <>

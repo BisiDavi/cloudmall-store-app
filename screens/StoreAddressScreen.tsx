@@ -1,5 +1,4 @@
-import { StackScreenProps } from "@react-navigation/stack";
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import {
     StyleSheet,
@@ -11,8 +10,6 @@ import {
 } from "react-native";
 import Map from "@components/Map";
 import { Button, Text } from "react-native-elements";
-
-import { RootStackParamList } from "@customTypes/.";
 import { getDeviceDimensions, colors } from "@utils/.";
 import GoogleAutoCompleteInput from "@components/GoogleAutoCompleteInput";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -45,25 +42,16 @@ function RenderGoogleInput(nextPage: () => void) {
     );
 }
 
-export default function StoreAddressScreen({
-    navigation,
-}: StackScreenProps<RootStackParamList, "StoreAddressScreen">) {
+export default function StoreAddressScreen() {
     const { storeDetails } = useSelector(
         (state: RootState) => state.storeDetails,
     );
     const { latitude, longitude } = storeDetails;
     const { onBoardingNextScreen } = useStoreSetupNavigation();
 
-    useEffect(() => {
-        console.log("latitude", latitude);
-        if (latitude !== null || longitude !== null) {
-            onBoardingNextScreen(2, false);
-        }
-    }, [latitude, longitude]);
-
     function nextPage() {
         if (latitude || longitude) {
-            onBoardingNextScreen(2, false);
+            return onBoardingNextScreen(2, false);
         }
     }
 

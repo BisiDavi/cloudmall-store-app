@@ -37,7 +37,7 @@ export default function UploadStoreImageScreen() {
                 setLoading(false);
                 console.log("response", response);
                 showToast(response.data.message);
-                onBoardingNextScreen(6, true);
+                return onBoardingNextScreen(6, true);
             })
             .catch((error) => {
                 setLoading(false);

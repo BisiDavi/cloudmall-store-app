@@ -41,7 +41,7 @@ export default function UploadStoreLogoScreen() {
                 console.log("response", response.data.message);
                 setLoading(false);
                 showToast(response.data.message);
-                onBoardingNextScreen(5, false);
+                return onBoardingNextScreen(5, false);
             })
             .catch((error) => {
                 console.log("uploadImage error", error);

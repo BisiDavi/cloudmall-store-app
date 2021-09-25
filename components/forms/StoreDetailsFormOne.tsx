@@ -70,7 +70,7 @@ export default function StoreDetailsFormOne() {
                         setLoading(true);
                         dispatch(StoreDetailsAction(values));
                         setLoading(false);
-                        onBoardingNextScreen(1, false);
+                        return onBoardingNextScreen(1, false);
                     }}
                 >
                     {({

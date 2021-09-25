@@ -21,6 +21,7 @@ let savedToken: string | null;
 
 getAuthtoken().then((response) => {
     savedToken = response;
+    return savedToken;
 });
 
 axiosInstance.interceptors.request.use(
@@ -39,9 +40,9 @@ axiosInstance.interceptors.request.use(
 axiosImageInstance.interceptors.request.use(
     (config) => {
         if (savedToken) {
+            console.log("axiosImageInstance savedToken", savedToken);
             config.headers["Authorization"] = "Bearer " + savedToken;
         }
-        console.log("savedToken", savedToken);
         config.headers["content-type"] = "multipart/form-data;application/json";
         return config;
     },

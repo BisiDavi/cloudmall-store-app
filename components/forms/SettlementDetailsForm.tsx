@@ -58,7 +58,7 @@ export default function SettlementDetailsForm() {
                     );
                     setLoading(false);
                     showToast(response.data.message);
-                    onBoardingNextScreen(4, false);
+                    return onBoardingNextScreen(4, false);
                 })
                 .catch((error) => {
                     console.log("error postStoreDetailsRequest", error);

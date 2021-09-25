@@ -37,6 +37,7 @@ export async function loginUser(
         .then((response) => {
             showToast(response?.data.message);
             token = response.data.token;
+            console.log("login token", token);
             return token;
         })
         .catch((error) => {

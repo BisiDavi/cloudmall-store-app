@@ -6,10 +6,7 @@ import LinkingConfiguration from "./LinkingConfiguration";
 
 export default function Navigation() {
     return (
-        <NavigationContainer
-            linking={LinkingConfiguration}
-            fallback={<LoadingActivityIndicator />}
-        >
+        <NavigationContainer fallback={<LoadingActivityIndicator />}>
             <RootNavigator />
         </NavigationContainer>
     );

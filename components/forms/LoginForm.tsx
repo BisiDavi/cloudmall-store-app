@@ -35,7 +35,7 @@ export default function LoginForm({ navigation }: loginFormProps) {
             initialValues={{ email: "", password: "" }}
             onSubmit={async (values) => {
                 const { email, password } = values;
-                authContext.loginIn(email, password, navigation);
+                authContext.loginIn(email, password, navigation)
             }}
         >
             {({

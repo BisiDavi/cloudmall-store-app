@@ -3,11 +3,11 @@ import { StyleSheet, View, Text } from "react-native";
 import { ListItem, Image } from "react-native-elements";
 import { Button } from "react-native-elements";
 import { useSelector } from "react-redux";
-import profileJson from "@json/profile.json";
+import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
+import profileJson from "@json/profile.json";
 import JollofRice from "@assets/jollofRice.png";
 import colors from "@utils/colors";
-import { ScrollView } from "react-native-gesture-handler";
 import { RootState } from "@store/RootReducer";
 
 export default function ProfileScreen() {

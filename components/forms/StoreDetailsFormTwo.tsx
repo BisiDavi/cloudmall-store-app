@@ -33,7 +33,7 @@ export default function StoreDetailsFormTwo() {
                     setLoading(true);
                     dispatch(StoreOwnerAction(values));
                     setLoading(false);
-                    return onBoardingNextScreen(3, false);
+                    onBoardingNextScreen(3, false);
                 }}
             >
                 {({

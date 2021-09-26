@@ -29,23 +29,7 @@ export default function RootNavigator() {
     const isSignedIn = hasTokenExpired(state.userToken);
 
     useEffect(() => {
-        getStoreDetailsRequest()
-            .then((response) => {
-                console.log("response getStoreDetailsRequest", response.data);
-                if (response.data.bank) {
-                    setStoreProfile({
-                        ...storeProfile,
-                        isStoreRegistered: true,
-                    });
-                }
-            })
-            .catch((error) => {
-                if (error.response) {
-                    console.log("error response", error.response);
-                } else if (error.request) {
-                    console.log("error request", error.request);
-                }
-            });
+        
     }, []);
 
     useEffect(() => {

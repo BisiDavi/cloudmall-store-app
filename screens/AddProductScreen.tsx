@@ -57,6 +57,7 @@ export default function AddProductScreen({ navigation }: Props) {
 
     useEffect(() => {
         const isFormDataStateEmpty = Object.keys(formDataState).length > 0;
+        console.log("isFormDataStateEmpty", isFormDataStateEmpty);
         if (isFormDataStateEmpty) {
             uploadImage();
         }

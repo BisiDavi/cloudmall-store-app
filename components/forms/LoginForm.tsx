@@ -33,9 +33,9 @@ export default function LoginForm({ navigation }: loginFormProps) {
         <Formik
             validationSchema={loginSchema}
             initialValues={{ email: "", password: "" }}
-            onSubmit={async (values) => {
+            onSubmit={(values) => {
                 const { email, password } = values;
-                authContext.loginIn(email, password, navigation)
+                authContext.loginIn(email, password, navigation);
             }}
         >
             {({

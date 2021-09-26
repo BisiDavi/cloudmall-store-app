@@ -14,23 +14,17 @@ import {
 import DrawerNavigation from "./DrawerNavigation";
 import PublicNavigation from "./PublicNavigation";
 import StoreDetailsNavigation from "./StoreDetailsNavigation";
-import { getStoreDetailsRequest } from "@network/getRequest";
 
 export default function RootNavigator() {
     const { state } = useContext(AuthContext);
-    const [storeProfile, setStoreProfile] = useState({
-        isStoreRegistered: false,
-        profile: null,
-    });
+
     const { completed, formPage } = useSelector(
         (storeState: RootState) => storeState.setupStore,
     );
     const navigation = useNavigation();
     const isSignedIn = hasTokenExpired(state.userToken);
 
-    useEffect(() => {
-        
-    }, []);
+    useEffect(() => {}, []);
 
     useEffect(() => {
         if (state.userToken) {
@@ -40,7 +34,6 @@ export default function RootNavigator() {
                 if (formPage !== 0) {
                     screenNavigate(formPage, navigation);
                 }
-                //checkExistingStore(navigation, userEmail);
             }
         }
     }, [state]);
@@ -56,7 +49,7 @@ export default function RootNavigator() {
             <Spinner visible={state.isLoading} color={colors.cloudOrange5} />
             {!isSignedIn && !completed ? (
                 <StoreDetailsNavigation />
-            ) : (!isSignedIn && completed) || storeProfile.isStoreRegistered ? (
+            ) : !isSignedIn && completed ? (
                 <DrawerNavigation />
             ) : (
                 <PublicNavigation />

@@ -8,6 +8,8 @@ import useCachedResources from "@hooks/useCachedResources";
 import Navigation from "@navigation/.";
 import AuthProvider from "context/AuthProvider";
 import configureStore from "./store/Store";
+import Spinner from "react-native-loading-spinner-overlay";
+import colors from "@utils/colors";
 
 export default function App() {
     const isLoadingComplete = useCachedResources();
@@ -18,7 +20,10 @@ export default function App() {
         return (
             <SafeAreaProvider>
                 <Provider store={store}>
-                    <PersistGate loading={null} persistor={persistor}>
+                    <PersistGate
+                        loading={<Spinner color={colors.cloudOrange5} />}
+                        persistor={persistor}
+                    >
                         <AuthProvider>
                             <Navigation />
                             <StatusBar style="auto" />

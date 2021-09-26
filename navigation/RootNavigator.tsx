@@ -30,15 +30,13 @@ export default function RootNavigator() {
     const tokenExpiry = hasTokenExpired(state.userToken);
 
     async function getRegStatus() {
-        const registrationStatus: boolean = await getFromStorage(
-            "registrationCompleted",
-        );
-        return registrationStatus;
+        return await getFromStorage("registrationCompleted");
     }
     useEffect(() => {
-        const registrationStatus: any = getRegStatus();
-        console.log("registrationStatus", registrationStatus);
-        setAccountRegistration(registrationStatus);
+        getRegStatus().then((response) => {
+            console.log("response getRegStatus", response);
+            setAccountRegistration(response);
+        });
     }, []);
 
     useEffect(() => {
@@ -52,8 +50,6 @@ export default function RootNavigator() {
             }
         }
     }, [state]);
-
-    //console.log()
 
     useEffect(() => {
         if (!tokenExpiry) {

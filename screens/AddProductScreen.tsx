@@ -36,6 +36,7 @@ export default function AddProductScreen({ navigation }: Props) {
         image: productImage,
         pickImage,
     } = useUploadImage(setLoading, "image");
+    console.log("uploadImageStatus", uploadImageStatus);
 
     async function uploadImage() {
         await uploadProductImageRequest(formDataState)

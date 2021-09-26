@@ -20,15 +20,19 @@ export default function AddNewProductForm({ navigation }: any) {
     );
 
     useEffect(() => {
-        getProductsCategories(storeProfile._id)
-            .then((response) => {
-                console.log("productCategories", response.data);
-                return setProductCategories(response.data);
-            })
-            .catch((error) => {
-                console.log("error", error);
-            });
+        if (productCategories.length === 0) {
+            getProductsCategories(storeProfile.id)
+                .then((response) => {
+                    const { data } = response.data;
+                    setProductCategories(data);
+                })
+                .catch((error) => {
+                    console.log("productCategories error", error);
+                });
+        }
     }, []);
+
+    console.log("productCategories state", productCategories.length);
 
     useEffect(() => {
         if (productCategories.length !== 0) {
@@ -67,7 +71,7 @@ export default function AddNewProductForm({ navigation }: any) {
                 touched,
                 isValid,
             }) => (
-                <>
+                <View style={styles.formView}>
                     {addproductContent.map((formElement, index) => (
                         <DisplayFormElements
                             key={index}
@@ -95,7 +99,7 @@ export default function AddNewProductForm({ navigation }: any) {
                             buttonStyle={styles.nextButton}
                         />
                     </View>
-                </>
+                </View>
             )}
         </Formik>
     );
@@ -127,6 +131,10 @@ const styles = StyleSheet.create({
         width: "92%",
         margin: 10,
         marginTop: 10,
+    },
+    formView: {
+        justifyContent: "center",
+        alignItems: "center",
     },
     uploadProductImage: {
         justifyContent: "center",

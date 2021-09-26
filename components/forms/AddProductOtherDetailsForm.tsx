@@ -77,14 +77,14 @@ const AddProductOtherDetailsForm = ({ navigation }: any) => {
                     }}
                 >
                     <Button
-                        onPress={() => isAvailableHandler(true)}
+                        onPress={() => isAvailableHandler(false)}
                         type="outline"
                         buttonStyle={styles.backButton}
                         titleStyle={styles.backButtonTitle}
                         title="Yes"
                     />
                     <Button
-                        onPress={() => isAvailableHandler(false)}
+                        onPress={() => isAvailableHandler(true)}
                         buttonStyle={styles.nextButton}
                         title="No"
                     />

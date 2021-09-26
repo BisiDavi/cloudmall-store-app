@@ -11,6 +11,7 @@ import { AddProductStep1Action } from "@store/actions/addProductAction";
 import { getProductsCategories } from "@network/postRequest";
 import { RootState } from "@store/RootReducer";
 import { checkObjectKey } from "@utils/checkExistingStore";
+import showToast from "@utils/showToast";
 
 export default function AddNewProductForm({ navigation }: any) {
     const [productCategories, setProductCategories] = useState<any>([]);
@@ -28,6 +29,13 @@ export default function AddNewProductForm({ navigation }: any) {
                     setProductCategories(data);
                 })
                 .catch((error) => {
+                    if (error.response) {
+                        showToast(error.response.data.message);
+                    } else if (error.request) {
+                        showToast(
+                            "Oops, poor network, unable to fetch product categories",
+                        );
+                    }
                     console.log("productCategories error", error);
                 });
         }

@@ -5,7 +5,7 @@ const addNewProductSchema = yup.object().shape({
     categoryId: yup.string().required("Product category is required"),
     description: yup.string().required("Product description is required"),
     price: yup.number().positive().required("Product price is required"),
-    takeawayPrice: yup
+    takeAwayPrice: yup
         .number()
         .positive()
         .moreThan(50)

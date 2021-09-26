@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { CheckBox } from "react-native-elements";
+import { useSelector } from "react-redux";
 import { Formik } from "formik";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Button } from "react-native-elements";
@@ -7,6 +8,7 @@ import colors from "@utils/colors";
 import productExtras from "@json/add-product-extras.json";
 import PromoTagForm from "./PromoTagForm";
 import InputGroup from "@components/InputGroup";
+import { RootState } from "@store/RootReducer";
 
 interface DisplayCheckboxProps {
     title: string;
@@ -23,9 +25,12 @@ function DisplayCheckbox({ title }: DisplayCheckboxProps) {
 }
 
 const AddProductOtherDetailsForm = ({ navigation }: any) => {
+    const addedProduct: any = useSelector(
+        (state: RootState) => state.addProduct,
+    );
     const [showPromoTag, setShowPromoTag] = useState(false);
-    const [isProductAvailable, setIsProductAvailable] = useState({
-        isAvailable: false,
+    const [isProductAvailable, setIsProductAvailable] = useState<any>({
+        isAvailable: null,
         duration: {
             from: null,
             to: null,
@@ -68,7 +73,7 @@ const AddProductOtherDetailsForm = ({ navigation }: any) => {
             </View>
             <View>
                 <Text style={styles.promoTagText}>
-                    Is product always available?
+                    Is {addedProduct.name} always available?
                 </Text>
                 <View
                     style={{
@@ -76,25 +81,27 @@ const AddProductOtherDetailsForm = ({ navigation }: any) => {
                         ...styles.productAvailabiltyButtonGroup,
                     }}
                 >
-                    <Button
-                        onPress={() => isAvailableHandler(false)}
-                        type="outline"
-                        buttonStyle={styles.backButton}
-                        titleStyle={styles.backButtonTitle}
-                        title="Yes"
-                    />
-                    <Button
-                        onPress={() => isAvailableHandler(true)}
-                        buttonStyle={styles.nextButton}
-                        title="No"
-                    />
+                    <>
+                        <Button
+                            onPress={() => isAvailableHandler(false)}
+                            type="outline"
+                            buttonStyle={styles.backButton}
+                            titleStyle={styles.backButtonTitle}
+                            title="Yes"
+                        />
+                        <Button
+                            onPress={() => isAvailableHandler(true)}
+                            buttonStyle={styles.nextButton}
+                            title="No"
+                        />
+                        {isProductAvailable.isAvailable === null && (
+                            <Text>Product Availablity is required</Text>
+                        )}
+                    </>
                 </View>
                 {isProductAvailable.isAvailable && (
                     <View>
-                        <InputGroup
-                            inputGroup={productAvailabilty}
-                            //onChangeText={props?.handleChange(formElement.name)}
-                        />
+                        <InputGroup inputGroup={productAvailabilty} />
                     </View>
                 )}
             </View>
@@ -116,7 +123,6 @@ const AddProductOtherDetailsForm = ({ navigation }: any) => {
                     // disabled={!isValid}
                     title="Submit"
                     type="solid"
-                    // onPress={handleSubmit}
                     buttonStyle={styles.nextButton}
                 />
             </View>

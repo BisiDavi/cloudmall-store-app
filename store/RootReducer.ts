@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { AddProductReducer } from "./reducers/AddProductReducer";
 import { SetupStoreReducer } from "./reducers/SetupStoreReducer";
 import { StoreDetailsReducer } from "./reducers/StoreDetailsReducer";
 import StoreProfileReducer from "./reducers/StoreProfileReducer";
@@ -9,6 +10,7 @@ export const RootReducer = combineReducers({
     storeDetails: StoreDetailsReducer,
     coordinates: UserCoordinateReducer,
     storeProfile: StoreProfileReducer,
+    addProduct: AddProductReducer,
 });
 
 export type RootState = ReturnType<typeof RootReducer>;

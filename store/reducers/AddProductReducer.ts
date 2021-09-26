@@ -27,6 +27,7 @@ export function AddProductReducer(
                 name: payload.name,
                 description: payload.description,
                 price: payload.price,
+                takeAwayPrice: payload.takeAwayPrice,
                 quantity: payload.quantity,
                 categoryId: payload.categoryId,
             };
@@ -36,7 +37,6 @@ export function AddProductReducer(
                 ...state,
                 duration: payload.duration,
                 isAvailable: payload.isAvailable,
-                takeAwayPrice: payload.takeAwayPrice,
             };
         }
         default:

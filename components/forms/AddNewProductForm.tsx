@@ -40,9 +40,10 @@ export default function AddNewProductForm({ navigation }: any) {
         }
     }, [productCategories]);
 
-    function navigationHandler(handleSubmit: any) {
+    function navigationHandler(handleSubmit: any, isValid: boolean) {
+        console.log("isValid", isValid);
         handleSubmit();
-        navigation.navigate("AddProductOtherDetailsScreen");
+        !isValid && navigation.navigate("AddProductOtherDetailsScreen");
     }
     function goBack() {
         navigation.goBack();
@@ -54,7 +55,7 @@ export default function AddNewProductForm({ navigation }: any) {
                 categoryId: "",
                 description: "",
                 price: "",
-                takeawayPrice: 0,
+                takeAwayPrice: 0,
                 quantity: 0,
             }}
             validationSchema={addNewProductSchema}
@@ -96,7 +97,9 @@ export default function AddNewProductForm({ navigation }: any) {
                             disabled={!isValid}
                             title="Next"
                             type="solid"
-                            onPress={() => navigationHandler(handleSubmit)}
+                            onPress={() =>
+                                navigationHandler(handleSubmit, isValid)
+                            }
                             buttonStyle={styles.nextButton}
                         />
                     </View>

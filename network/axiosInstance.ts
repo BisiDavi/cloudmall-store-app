@@ -26,7 +26,6 @@ export const setClientToken = (token: any) => {
 
 axiosInstance.interceptors.request.use(
     (config) => {
-        console.log("authToken", authToken);
         config.headers["Authorization"] = "Bearer " + authToken;
         config.headers["Content-Type"] = "application/json";
         return config;
@@ -38,6 +37,7 @@ axiosInstance.interceptors.request.use(
 
 axiosImageInstance.interceptors.request.use(
     (config) => {
+        console.log("authToken", authToken);
         config.headers["Authorization"] = "Bearer " + authToken;
         config.headers["content-type"] = "multipart/form-data;application/json";
         return config;

@@ -6,17 +6,47 @@ import { DisplayFormElements } from "@components/forms/DisplayFormElements";
 import { Button } from "react-native-elements";
 import formContent from "@json/add-extra.json";
 import colors from "@utils/colors";
+import { addExtrasRequest } from "@network/postRequest";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/RootReducer";
+import showToast from "@utils/showToast";
 
 export default function AddExtraForm({ navigation: { goBack } }: any) {
+    const { storeProfile }: any = useSelector(
+        (state: RootState) => state.storeProfile,
+    );
+    function addExtras(data: any) {
+        addExtrasRequest(data)
+            .then((response) => {
+                console.log("response", response.data);
+                showToast(response.data.message);
+            })
+            .catch((error) => {
+                if (error.request) {
+                    console.log("error", error.request);
+                } else {
+                    console.log("error", error.response);
+                }
+            });
+    }
     return (
         <Formik
             validationSchema={addExtraSchema}
             initialValues={{
-                extraName: "",
-                productPrice: "",
+                name: "",
+                price: "",
+                isAvailable: true,
+                isCompulsory: false,
+                quantity: 1,
             }}
             onSubmit={(values: any) => {
-                console.log("values", values);
+                const formValues = {
+                    ...values,
+                    storeId: storeProfile.id,
+                    price: Number(values.price),
+                };
+                console.log("addExtras", addExtras);
+                addExtras(formValues);
             }}
         >
             {({

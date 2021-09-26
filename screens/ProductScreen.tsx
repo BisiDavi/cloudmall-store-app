@@ -105,6 +105,7 @@ export default function ProductScreen({ navigation }: Props) {
                 console.log("error", error);
             });
     }, []);
+
     return (
         <View style={styles.container}>
             <ScrollView>

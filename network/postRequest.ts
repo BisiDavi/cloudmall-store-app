@@ -95,3 +95,7 @@ export async function getProductsCategories(storeId: string) {
         storeId: storeId,
     });
 }
+
+export async function addExtrasRequest(extra: any) {
+    return await axiosInstance.post("/api/store/add-extras", extra);
+}

@@ -29,11 +29,6 @@ export default function OrdersScreen({ navigation }: Props) {
         (state: RootState) => state.setupStore,
     );
 
-    const { storeProfile } = useSelector(
-        (state: RootState) => state.storeProfile,
-    );
-    console.log("storeProfile", storeProfile);
-
     function closeModal() {
         return setWelcomeModal(false);
     }

@@ -12,6 +12,7 @@ import {
 import { setClientToken } from "@network/axiosInstance";
 import getExistingStoreProfile from "@utils/getExistingStoreProfile";
 import { UserOnboardingCompletedAction } from "@store/actions/SetupStoreAction";
+import { saveToStorage } from "@utils/authToken";
 
 export default function AuthProvider({ children }: PropsWithChildren<{}>) {
     const { state, dispatch } = useAuthReducer();
@@ -38,22 +39,21 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
                     email,
                     password,
                 );
-                await saveAuthtoken(loginInToken);
-                setClientToken(loginInToken);
-                let isStoreRegistrationCompleted: boolean;
-                console.log("loginInToken", loginInToken);
+                !loginInToken && dispatch({ type: "STOP_LOADING" });
                 loginInToken &&
                     getExistingStoreProfile(dispatchRedux)
                         .then((response: any) => {
                             console.log("response", response);
-                            let completedRegistration = response.bank;
-                            isStoreRegistrationCompleted = response.bank;
+                            saveToStorage(
+                                "registrationCompleted",
+                                response.bank,
+                            );
                             if (response.bank) {
                                 showToast(`Welcome, ${response.name}`);
                                 dispatchRedux(UserOnboardingCompletedAction());
                                 dispatch({
                                     type: "HAS_ACCOUNT",
-                                    ownsAccount: isStoreRegistrationCompleted,
+                                    ownsAccount: response.bank,
                                 });
                             }
                             dispatch({
@@ -67,6 +67,7 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
                                 token: loginInToken,
                             });
                         });
+                dispatch({ type: "STOP_LOADING" });
             },
             signOut: () => dispatch({ type: "SIGN_OUT" }),
             signUp: async (email: string, password: string) => {

@@ -43,6 +43,12 @@ export default function useAuthReducer() {
                         isLoading: false,
                         hasAccount: ownsAccount,
                     };
+                case "STOP_LOADING": {
+                    return {
+                        ...prevState,
+                        isLoading: false,
+                    };
+                }
             }
         },
         {
@@ -62,6 +68,7 @@ type actionType = {
         | "SIGN_UP"
         | "LOADING"
         | "APP_LOAD"
+        | "STOP_LOADING"
         | "HAS_ACCOUNT";
     token?: string;
     ownsAccount?: boolean;

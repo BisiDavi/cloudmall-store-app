@@ -1,4 +1,5 @@
-import axiosInstance from "network/axiosInstance";
+import axiosInstance, { setClientToken } from "network/axiosInstance";
+import { saveAuthtoken } from ".";
 import showToast from "./showToast";
 
 export async function signupUser(
@@ -36,6 +37,8 @@ export async function loginUser(
         .then((response) => {
             showToast(response?.data.message);
             token = response.data.token;
+            saveAuthtoken(token);
+            setClientToken(token);
             return token;
         })
         .catch((error) => {

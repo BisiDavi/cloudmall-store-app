@@ -18,3 +18,11 @@ export async function getAuthtoken() {
         return null;
     }
 }
+
+export async function saveToStorage(name: string, item: any) {
+    return await SecureStore.setItemAsync(name, item);
+}
+
+export async function getFromStorage(name: string) {
+    return await SecureStore.getItemAsync(name);
+}

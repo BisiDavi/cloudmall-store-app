@@ -9,7 +9,10 @@ import { DrawerStackParamList } from "@customTypes/.";
 import colors from "@utils/colors";
 import Fab from "@components/Fab";
 import displayAsset from "@utils/displayAsset";
-import { getAllProductsRequest } from "@network/postRequest";
+import {
+    getAllProductsRequest,
+    toggleSpecificationStatusRequest,
+} from "@network/postRequest";
 import { RootState } from "@store/RootReducer";
 import showToast from "@utils/showToast";
 
@@ -26,17 +29,34 @@ type Props = {
 };
 
 interface productType {
-    product: "staple" | "swallow";
+    products: [] | null;
 }
 
 function ListView({ item }: any) {
     const [toggle, setToggle] = useState(false);
 
+    function postSpecificationStatus() {
+        toggleSpecificationStatusRequest({
+            specificationId: item._id,
+            status: toggle,
+        })
+            .then((response) => {
+                showToast(`${item.name}, ${response.data.message}`);
+            })
+            .catch((error) => {
+                if (error.response) {
+                    showToast(error.response.data.message);
+                } else if (error.request) {
+                    showToast("Oops, unable to update, due to poor network");
+                }
+            });
+    }
+
     return (
         <ListItem bottomDivider style={styles.listItem}>
             <ListItem.Content>
                 <View style={styles.listViewContent}>
-                    <Text style={styles.meal}>{item.meal}</Text>
+                    <Text style={styles.meal}>{item.name}</Text>
                     <Text style={styles.edit}>
                         <Image
                             source={displayAsset("editIcon")}
@@ -45,7 +65,10 @@ function ListView({ item }: any) {
                     </Text>
                     <Switch
                         value={toggle}
-                        onValueChange={() => setToggle(!toggle)}
+                        onValueChange={() => {
+                            setToggle(!toggle);
+                            postSpecificationStatus();
+                        }}
                         style={styles.switch}
                         color={colors.cloudOrange5}
                     />
@@ -55,11 +78,11 @@ function ListView({ item }: any) {
     );
 }
 
-function ProductListView({ product }: productType) {
+function ProductListView({ products }: productType) {
     return (
         <>
-            {productContent[product].map((item, index) => (
-                <ListView item={item} key={index} />
+            {products?.map((item: any) => (
+                <ListView item={item} key={item._id} />
             ))}
         </>
     );
@@ -71,13 +94,11 @@ export default function ProductScreen({ navigation }: Props) {
         (state: RootState) => state.storeProfile,
     );
 
-    console.log("storeProducts", storeProducts);
-
     useEffect(() => {
-        getAllProductsRequest(storeProfile.id)
+        getAllProductsRequest({ storeId: storeProfile.id })
             .then((response: any) => {
-                console.log("response, getAllProductsRequest", response.data);
                 const { products } = response.data.data;
+                console.log("products", products);
                 setStoreProducts(products);
             })
             .catch((error: any) => {
@@ -88,14 +109,13 @@ export default function ProductScreen({ navigation }: Props) {
         <View style={styles.container}>
             <ScrollView>
                 <View style={styles.productView}>
-                    <View style={styles.textView}>
-                        <Text style={styles.category}>Staple Food</Text>
-                    </View>
-                    <ProductListView product="staple" />
-                    <View style={styles.textView}>
-                        <Text style={styles.category}>Swallow</Text>
-                    </View>
-                    <ProductListView product="swallow" />
+                    {storeProducts ? (
+                        <ProductListView products={storeProducts} />
+                    ) : (
+                        <Text style={styles.indicator}>
+                            Fetching Products...
+                        </Text>
+                    )}
                 </View>
             </ScrollView>
             <View style={styles.fabView}>
@@ -119,6 +139,10 @@ const styles = StyleSheet.create({
     },
     meal: {
         width: 100,
+    },
+    indicator: {
+        marginLeft: 30,
+        marginTop: 20,
     },
     edit: {
         color: colors.mallBlue5,

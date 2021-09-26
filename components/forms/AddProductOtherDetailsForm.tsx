@@ -11,6 +11,7 @@ import { RootState } from "@store/RootReducer";
 import { addProductsRequest } from "@network/postRequest";
 import showToast from "@utils/showToast";
 import Spinner from "react-native-loading-spinner-overlay";
+import { add } from "react-native-reanimated";
 
 interface DisplayCheckboxProps {
     title: string;
@@ -55,6 +56,9 @@ const AddProductOtherDetailsForm = ({ navigation }: any) => {
             duration: 0,
             isAvailable: isProductAvailable.isAvailable,
             kg: 0,
+            takeAwayPrice: Number(addedProduct.takeAwayPrice),
+            quantity: Number(addedProduct.quantity),
+            price: Number(addedProduct.price),
             storeId: storeProfile.id,
         });
         addProductsRequest(productFields)

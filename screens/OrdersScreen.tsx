@@ -10,8 +10,6 @@ import WelcomeModal from "@components/WelcomeModal";
 import { CloseWelcomeModalAction } from "@store/actions/SetupStoreAction";
 import { colors } from "@utils/.";
 import { DrawerStackParamList } from "@customTypes/.";
-import StoreProfileActions from "@store/actions/StoreProfileActions";
-import { getStoreDetailsRequest } from "@network/getRequest";
 
 type OrdersScreenNavigationProps = StackNavigationProp<
     DrawerStackParamList,
@@ -31,6 +29,11 @@ export default function OrdersScreen({ navigation }: Props) {
         (state: RootState) => state.setupStore,
     );
 
+    const { storeProfile } = useSelector(
+        (state: RootState) => state.storeProfile,
+    );
+    console.log("storeProfile", storeProfile);
+
     function closeModal() {
         return setWelcomeModal(false);
     }
@@ -38,17 +41,6 @@ export default function OrdersScreen({ navigation }: Props) {
     useEffect(() => {
         completed && !isWelcomeModalShown && setWelcomeModal(true);
         dispatch(CloseWelcomeModalAction());
-    }, []);
-
-    useEffect(() => {
-        getStoreDetailsRequest()
-            .then((response) => {
-                console.log("response getStoredetailsRequest", response.data);
-                dispatch(StoreProfileActions(response.data.data));
-            })
-            .catch((error) => {
-                console.log("error", error);
-            });
     }, []);
 
     return (

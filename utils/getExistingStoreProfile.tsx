@@ -1,11 +1,14 @@
 import { getStoreDetailsRequest } from "@network/getRequest";
+import StoreProfileActions from "@store/actions/StoreProfileActions";
+import { Dispatch } from "redux";
 
-export default async function getExistingStoreProfile() {
+export default async function getExistingStoreProfile(reduxDispatch: Dispatch<any>) {
     return await getStoreDetailsRequest()
         .then((response) => {
             const { data } = response.data;
             console.log("response getStoreDetailsRequest", data);
             const isBankRegisted = Object.keys(data).includes("bank");
+            reduxDispatch(StoreProfileActions(data));
             console.log("isBankRegisted", isBankRegisted);
             return { bank: isBankRegisted, name: data.name };
         })

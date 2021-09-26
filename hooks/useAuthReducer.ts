@@ -2,8 +2,8 @@ import { useReducer } from "react";
 
 export default function useAuthReducer() {
     const [state, dispatch] = useReducer(
-        (prevState: contextStateType, action: actionType) => {
-            const { type, token } = action;
+        (prevState: any, action: any) => {
+            const { type, token, ownsAccount } = action;
             switch (type) {
                 case "SIGN_IN":
                     return {
@@ -40,14 +40,8 @@ export default function useAuthReducer() {
                 case "HAS_ACCOUNT":
                     return {
                         ...prevState,
-                        hasAccount: true,
                         isLoading: false,
-                    };
-                case "NO_ACCOUNT":
-                    return {
-                        ...prevState,
-                        hasAccount: false,
-                        isLoading: false,
+                        hasAccount: ownsAccount,
                     };
             }
         },
@@ -68,9 +62,9 @@ type actionType = {
         | "SIGN_UP"
         | "LOADING"
         | "APP_LOAD"
-        | "HAS_ACCOUNT"
-        | "NO_ACCOUNT";
+        | "HAS_ACCOUNT";
     token?: string;
+    ownsAccount?: boolean;
 };
 
 export type contextStateType = {

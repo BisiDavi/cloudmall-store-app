@@ -34,29 +34,39 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
         () => ({
             loginIn: async (email: string, password: string) => {
                 dispatch({ type: "LOADING" });
-                const loginInToken = await loginUser(email, password);
+                const loginInToken: string | null | void = await loginUser(
+                    email,
+                    password,
+                );
                 await saveAuthtoken(loginInToken);
                 setClientToken(loginInToken);
-                getExistingStoreProfile()
-                    .then((response: any) => {
-                        console.log("response", response);
-                        if (response.bank) {
-                            showToast(`Welcome, ${response.name}`);
-                            dispatchRedux(UserOnboardingCompletedAction());
-                            dispatch({ type: "HAS_ACCOUNT" });
-                        }
-                        dispatch({
-                            type: "SIGN_IN",
-                            token: loginInToken,
+                let isStoreRegistrationCompleted: boolean;
+                console.log("loginInToken", loginInToken);
+                loginInToken &&
+                    getExistingStoreProfile(dispatchRedux)
+                        .then((response: any) => {
+                            console.log("response", response);
+                            let completedRegistration = response.bank;
+                            isStoreRegistrationCompleted = response.bank;
+                            if (response.bank) {
+                                showToast(`Welcome, ${response.name}`);
+                                dispatchRedux(UserOnboardingCompletedAction());
+                                dispatch({
+                                    type: "HAS_ACCOUNT",
+                                    ownsAccount: isStoreRegistrationCompleted,
+                                });
+                            }
+                            dispatch({
+                                type: "SIGN_IN",
+                                token: loginInToken,
+                            });
+                        })
+                        .catch(() => {
+                            dispatch({
+                                type: "SIGN_IN",
+                                token: loginInToken,
+                            });
                         });
-                    })
-                    .catch(() => {
-                        dispatch({ type: "NO_ACCOUNT" });
-                        dispatch({
-                            type: "SIGN_IN",
-                            token: loginInToken,
-                        });
-                    });
             },
             signOut: () => dispatch({ type: "SIGN_OUT" }),
             signUp: async (email: string, password: string) => {

@@ -43,10 +43,9 @@ export default function DrawerNavigation() {
                         />
                     );
                 })}
-                <Drawer.Screen
-                    name="ProfileScreen"
-                    component={() => <ProfileScreen />}
-                />
+                <Drawer.Screen name="ProfileScreen">
+                    {() => <ProfileScreen />}
+                </Drawer.Screen>
             </>
         </Drawer.Navigator>
     );

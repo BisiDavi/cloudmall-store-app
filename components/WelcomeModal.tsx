@@ -7,10 +7,9 @@ import { colors } from "@utils/.";
 import { RootState } from "@store/RootReducer";
 
 export default function WelcomeModal({ closeModal, visible }: AppModalProps) {
-    const { storeDetails }: string | any = useSelector(
-        (state: RootState) => state.storeDetails,
+    const { name }: string | any = useSelector(
+        (state: RootState) => state.storeProfile,
     );
-    const { name } = storeDetails;
     const storeFirstLetter = name.split("")[0];
 
     return (

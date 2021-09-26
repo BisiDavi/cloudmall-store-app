@@ -1,7 +1,7 @@
 import { getStoreDetailsRequest } from "@network/getRequest";
 import { showToast } from ".";
 
-export default async function getExistingStoreProfile(navigation: any) {
+export default async function getExistingStoreProfile(dispatch: any) {
     return await getStoreDetailsRequest()
         .then((response) => {
             const { data } = response.data;
@@ -9,9 +9,9 @@ export default async function getExistingStoreProfile(navigation: any) {
             const isBankRegisted = Object.keys(data).includes("bank");
             if (isBankRegisted) {
                 showToast(`Welcome, ${data.name}`);
-                navigation.navigate("Orders");
+                dispatch({ type: "HAS_ACCOUNT" });
             } else {
-                navigation.navigate("StoreDetailsScreenOne");
+                dispatch({ type: "NO_ACCOUNT" });
             }
         })
         .catch((error) => {
@@ -20,13 +20,13 @@ export default async function getExistingStoreProfile(navigation: any) {
                     "getStoreDetailsRequest error response",
                     error.response,
                 );
-                navigation.navigate("StoreDetailsScreenOne");
+                dispatch({ type: "NO_ACCOUNT" });
             } else if (error.request) {
                 console.log(
                     "getStoreDetailsRequest error request",
                     error.request,
                 );
-                navigation.navigate("StoreDetailsScreenOne");
+                dispatch({ type: "NO_ACCOUNT" });
             }
         });
 }

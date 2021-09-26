@@ -1,5 +1,6 @@
 import jwtDecode from "jwt-decode";
 
+//return TRUE if token has EXPIRED, and FALSE if token hasn't EXPIRED
 export default function hasTokenExpired(token: string | null) {
   if (token === null || token === undefined) return true;
   const decoded: { exp: number; iat: number } = jwtDecode(token);
@@ -13,6 +14,7 @@ export default function hasTokenExpired(token: string | null) {
   }
   return tokenExpired;
 }
+
 
 export function getsignedUserEmail(token: string): string {
   const decoded: decodedType = jwtDecode(token);

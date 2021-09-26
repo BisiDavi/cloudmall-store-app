@@ -18,18 +18,18 @@ import StoreDetailsNavigation from "./StoreDetailsNavigation";
 export default function RootNavigator() {
     const { state } = useContext(AuthContext);
 
+    console.log("context state", state);
+
     const { completed, formPage } = useSelector(
         (storeState: RootState) => storeState.setupStore,
     );
     const navigation = useNavigation();
-    const isSignedIn = hasTokenExpired(state.userToken);
-
-    useEffect(() => {}, []);
+    const tokenExpiry = hasTokenExpired(state.userToken);
 
     useEffect(() => {
         if (state.userToken) {
             const userEmail = getsignedUserEmail(state.userToken);
-            if (userEmail && !isSignedIn) {
+            if (userEmail && !tokenExpiry) {
                 setClientToken(state.userToken);
                 if (formPage !== 0) {
                     screenNavigate(formPage, navigation);
@@ -39,17 +39,17 @@ export default function RootNavigator() {
     }, [state]);
 
     useEffect(() => {
-        if (!isSignedIn) {
+        if (!tokenExpiry) {
             setClientToken(state.userToken);
         }
-    }, [isSignedIn]);
+    }, [tokenExpiry]);
 
     return (
         <>
             <Spinner visible={state.isLoading} color={colors.cloudOrange5} />
-            {!isSignedIn && !completed ? (
+            {!tokenExpiry && !state.hasAccount ? (
                 <StoreDetailsNavigation />
-            ) : !isSignedIn && completed ? (
+            ) : (!tokenExpiry && completed) || state.hasAccount ? (
                 <DrawerNavigation />
             ) : (
                 <PublicNavigation />

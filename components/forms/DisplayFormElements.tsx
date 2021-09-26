@@ -86,6 +86,7 @@ interface displayFormElementsProps {
         keyboardType?: KeyboardTypeOptions | undefined | any;
         options?: any;
         iconName?: string;
+        helperText?: string;
         inputs?: { placeholder: string; name: string; type: string }[];
         textContentType?:
             | "password"

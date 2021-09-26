@@ -22,7 +22,7 @@ export default async function checkExistingStore(
         });
 }
 
-export function checkObjectKey(name: string) {
+export function checkObjectKey(name: string | {}) {
     const keysLength = Object.keys(name).length;
     return keysLength;
 }

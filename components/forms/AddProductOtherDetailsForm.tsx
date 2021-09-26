@@ -8,6 +8,9 @@ import productExtras from "@json/add-product-extras.json";
 import PromoTagForm from "./PromoTagForm";
 import InputGroup from "@components/InputGroup";
 import { RootState } from "@store/RootReducer";
+import { addProductsRequest } from "@network/postRequest";
+import showToast from "@utils/showToast";
+import Spinner from "react-native-loading-spinner-overlay";
 
 interface DisplayCheckboxProps {
     title: string;
@@ -24,8 +27,13 @@ function DisplayCheckbox({ title }: DisplayCheckboxProps) {
 }
 
 const AddProductOtherDetailsForm = ({ navigation }: any) => {
+    const [loading, setLoading] = useState(false);
+    const [productFields, setProductFields] = useState<any>({});
     const addedProduct: any = useSelector(
         (state: RootState) => state.addProduct,
+    );
+    const { storeProfile }: any = useSelector(
+        (state: RootState) => state.storeProfile,
     );
     const [showPromoTag, setShowPromoTag] = useState(false);
     const [isProductAvailable, setIsProductAvailable] = useState<any>({
@@ -36,6 +44,31 @@ const AddProductOtherDetailsForm = ({ navigation }: any) => {
         },
     });
     const { main, secondary, productAvailabilty } = productExtras;
+
+    console.log("productFields", productFields);
+
+    function submitProduct() {
+        setLoading(true);
+        setProductFields({
+            ...productFields,
+            ...addedProduct,
+            duration: 0,
+            isAvailable: isProductAvailable.isAvailable,
+            kg: 0,
+            storeId: storeProfile.id,
+        });
+        addProductsRequest(productFields)
+            .then((response) => {
+                setLoading(false);
+                console.log("response", response.data);
+                showToast(response.data.message);
+            })
+            .catch((error) => {
+                setLoading(false);
+                console.log("response addProductsRequest", error);
+                showToast(error.response.data.message);
+            });
+    }
 
     function isAvailableHandler(status: boolean) {
         return setIsProductAvailable({
@@ -52,80 +85,87 @@ const AddProductOtherDetailsForm = ({ navigation }: any) => {
         setShowPromoTag(!showPromoTag);
     }
     return (
-        <View style={styles.form}>
-            <View>
-                <Text style={styles.extra}>Main Extras</Text>
-                <View style={styles.checkboxView}>
-                    {main.map((extra) => (
-                        <DisplayCheckbox title={extra} key={extra} />
-                    ))}
-                </View>
-            </View>
-            <View>
-                <Text style={styles.extra}>Secondary Extras</Text>
-
-                <View style={styles.checkboxView}>
-                    {secondary.map((extra) => (
-                        <DisplayCheckbox title={extra} key={extra} />
-                    ))}
-                </View>
-            </View>
-            <View>
-                <Text style={styles.promoTagText}>
-                    Is {addedProduct.name} always available?
-                </Text>
-                <View
-                    style={{
-                        ...styles.buttonGroup,
-                        ...styles.productAvailabiltyButtonGroup,
-                    }}
-                >
-                    <>
-                        <Button
-                            onPress={() => isAvailableHandler(false)}
-                            type="outline"
-                            buttonStyle={styles.backButton}
-                            titleStyle={styles.backButtonTitle}
-                            title="Yes"
-                        />
-                        <Button
-                            onPress={() => isAvailableHandler(true)}
-                            buttonStyle={styles.nextButton}
-                            title="No"
-                        />
-                        {isProductAvailable.isAvailable === null && (
-                            <Text>Product Availablity is required</Text>
-                        )}
-                    </>
-                </View>
-                {isProductAvailable.isAvailable && (
-                    <View>
-                        <InputGroup inputGroup={productAvailabilty} />
+        <>
+            <Spinner visible={loading} color={colors.cloudOrange5} />
+            <View style={styles.form}>
+                <View>
+                    <Text style={styles.extra}>Main Extras</Text>
+                    <View style={styles.checkboxView}>
+                        {main.map((extra) => (
+                            <DisplayCheckbox title={extra} key={extra} />
+                        ))}
                     </View>
-                )}
+                </View>
+                <View>
+                    <Text style={styles.extra}>Secondary Extras</Text>
+
+                    <View style={styles.checkboxView}>
+                        {secondary.map((extra) => (
+                            <DisplayCheckbox title={extra} key={extra} />
+                        ))}
+                    </View>
+                </View>
+                <View>
+                    <Text style={styles.promoTagText}>
+                        Is {addedProduct.name} always available?
+                    </Text>
+                    <View
+                        style={{
+                            ...styles.buttonGroup,
+                            ...styles.productAvailabiltyButtonGroup,
+                        }}
+                    >
+                        <View style={styles.buttonView}>
+                            <View style={styles.productButtonGroup}>
+                                <Button
+                                    onPress={() => isAvailableHandler(true)}
+                                    type="outline"
+                                    buttonStyle={styles.backButton}
+                                    titleStyle={styles.backButtonTitle}
+                                    title="Yes"
+                                />
+                                <Button
+                                    onPress={() => isAvailableHandler(false)}
+                                    buttonStyle={styles.nextButton}
+                                    title="No"
+                                />
+                            </View>
+                            {isProductAvailable.isAvailable === null && (
+                                <Text style={styles.error}>
+                                    Product Availablity is required
+                                </Text>
+                            )}
+                        </View>
+                    </View>
+                    {!isProductAvailable.isAvailable && (
+                        <View>
+                            <InputGroup inputGroup={productAvailabilty} />
+                        </View>
+                    )}
+                </View>
+                <View>
+                    <TouchableOpacity onPress={promoTagFormHandler}>
+                        <Text style={styles.promoTagText}>Add Promo Tag</Text>
+                    </TouchableOpacity>
+                </View>
+                {showPromoTag && <PromoTagForm />}
+                <View style={styles.buttonGroup}>
+                    <Button
+                        title="Back"
+                        type="solid"
+                        titleStyle={styles.backButtonTitle}
+                        onPress={() => goBack()}
+                        buttonStyle={styles.backButton}
+                    />
+                    <Button
+                        title="Submit"
+                        type="solid"
+                        onPress={submitProduct}
+                        buttonStyle={styles.nextButton}
+                    />
+                </View>
             </View>
-            <View>
-                <TouchableOpacity onPress={promoTagFormHandler}>
-                    <Text style={styles.promoTagText}>Add Promo Tag</Text>
-                </TouchableOpacity>
-            </View>
-            {showPromoTag && <PromoTagForm />}
-            <View style={styles.buttonGroup}>
-                <Button
-                    title="Back"
-                    type="solid"
-                    titleStyle={styles.backButtonTitle}
-                    onPress={() => goBack()}
-                    buttonStyle={styles.backButton}
-                />
-                <Button
-                    // disabled={!isValid}
-                    title="Submit"
-                    type="solid"
-                    buttonStyle={styles.nextButton}
-                />
-            </View>
-        </View>
+        </>
     );
 };
 
@@ -134,6 +174,9 @@ const styles = StyleSheet.create({
         padding: 0,
         margin: 0,
         width: "100%",
+    },
+    buttonView: {
+        flexDirection: "column",
     },
     checkboxView: {},
     nextButton: {
@@ -173,6 +216,19 @@ const styles = StyleSheet.create({
         width: "92%",
         margin: 10,
         marginTop: 30,
+    },
+    productButtonGroup: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        width: "86%",
+        margin: 10,
+        marginTop: 30,
+    },
+    error: {
+        color: colors.accentRed,
+        fontSize: 13,
+        marginLeft: 10,
     },
     productAvailabiltyButtonGroup: {
         marginTop: 5,

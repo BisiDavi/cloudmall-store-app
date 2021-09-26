@@ -33,8 +33,6 @@ export default function AddNewProductForm({ navigation }: any) {
         }
     }, []);
 
-    console.log("productCategories state", productCategories.length);
-
     useEffect(() => {
         if (productCategories.length !== 0) {
             addproductContent[1].options = productCategories;
@@ -56,13 +54,12 @@ export default function AddNewProductForm({ navigation }: any) {
                 name: "",
                 categoryId: "",
                 description: "",
-                price: "",
+                price: 0,
                 takeAwayPrice: 0,
-                quantity: 0,
+                quantity: 100,
             }}
             validationSchema={addNewProductSchema}
             onSubmit={(values: any) => {
-                console.log("values", values);
                 dispatch(AddProductStep1Action(values));
             }}
         >
@@ -76,10 +73,6 @@ export default function AddNewProductForm({ navigation }: any) {
                 isValid,
             }) => {
                 const isFormFilled = checkObjectKey("errors");
-
-                console.log("isFormFilled", isFormFilled);
-                console.log("touched", touched);
-
                 return (
                     <View style={styles.formView}>
                         {addproductContent.map((formElement, index) => (
@@ -93,9 +86,6 @@ export default function AddNewProductForm({ navigation }: any) {
                                 touched={touched}
                             />
                         ))}
-                        {console.log("errors", errors)}
-                        {console.log("values", values)}
-
                         <View style={styles.buttonGroup}>
                             <Button
                                 title="Back"

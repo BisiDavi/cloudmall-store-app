@@ -30,6 +30,7 @@ type Props = {
 
 export default function AddProductScreen({ navigation }: Props) {
     const [loading, setLoading] = useState(false);
+    const [uploadImageStatus, setUploadImageStatus] = useState(false);
     const {
         formDataState,
         image: productImage,
@@ -41,7 +42,13 @@ export default function AddProductScreen({ navigation }: Props) {
             .then((response) => {
                 console.log("response", response.data.message);
                 setLoading(false);
-                showToast(response.data.message);
+                if (
+                    response.data.message.includes(
+                        "Product image uploaded successfully",
+                    )
+                ) {
+                    setUploadImageStatus(true);
+                }
             })
             .catch((error) => {
                 console.log("uploadImage error", error);
@@ -50,7 +57,6 @@ export default function AddProductScreen({ navigation }: Props) {
                     console.log("error.request", error.request);
                     errorMessage = error.request._response;
                 }
-                showToast(errorMessage);
             });
         return;
     }
@@ -58,7 +64,7 @@ export default function AddProductScreen({ navigation }: Props) {
     useEffect(() => {
         const isFormDataStateEmpty = Object.keys(formDataState).length > 0;
         console.log("isFormDataStateEmpty", isFormDataStateEmpty);
-        if (isFormDataStateEmpty) {
+        if (isFormDataStateEmpty && !uploadImageStatus) {
             uploadImage();
         }
     }, [formDataState]);

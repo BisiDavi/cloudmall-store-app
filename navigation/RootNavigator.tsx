@@ -14,7 +14,7 @@ import {
 import DrawerNavigation from "./DrawerNavigation";
 import PublicNavigation from "./PublicNavigation";
 import StoreDetailsNavigation from "./StoreDetailsNavigation";
-import { getFromStorage } from "@utils/authToken";
+//import { getFromStorage } from "@utils/authToken";
 
 export default function RootNavigator() {
     const { state } = useContext(AuthContext);
@@ -29,15 +29,15 @@ export default function RootNavigator() {
     const navigation = useNavigation();
     const tokenExpiry = hasTokenExpired(state.userToken);
 
-    async function getRegStatus() {
-        return await getFromStorage("registrationCompleted");
-    }
-    useEffect(() => {
-        getRegStatus().then((response) => {
-            console.log("response getRegStatus", response);
-            setAccountRegistration(response);
-        });
-    }, []);
+    //async function getRegStatus() {
+    //    return await getFromStorage("registrationCompleted");
+    //}
+    //useEffect(() => {
+    //    getRegStatus().then((response) => {
+    //        console.log("response getRegStatus", response);
+    //        setAccountRegistration(response);
+    //    });
+    //}, []);
 
     useEffect(() => {
         if (state.userToken && !completed) {

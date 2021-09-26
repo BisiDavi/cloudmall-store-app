@@ -19,8 +19,6 @@ export default function AddNewProductForm({ navigation }: any) {
         (state: RootState) => state.storeProfile,
     );
 
-    console.log("storeProfile", storeProfile);
-
     useEffect(() => {
         getProductsCategories(storeProfile._id)
             .then((response) => {

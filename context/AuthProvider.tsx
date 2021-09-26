@@ -11,7 +11,10 @@ import {
 } from "@utils/.";
 import { setClientToken } from "@network/axiosInstance";
 import getExistingStoreProfile from "@utils/getExistingStoreProfile";
-import { UserOnboardingCompletedAction } from "@store/actions/SetupStoreAction";
+import {
+    AuthTokenAction,
+    UserOnboardingCompletedAction,
+} from "@store/actions/SetupStoreAction";
 import { saveToStorage } from "@utils/authToken";
 
 export default function AuthProvider({ children }: PropsWithChildren<{}>) {
@@ -40,6 +43,7 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
                     password,
                 );
                 !loginInToken && dispatch({ type: "STOP_LOADING" });
+                dispatchRedux(AuthTokenAction(loginInToken));
                 if (loginInToken) {
                     saveAuthtoken(loginInToken);
                     setClientToken(loginInToken);

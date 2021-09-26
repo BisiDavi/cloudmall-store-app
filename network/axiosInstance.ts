@@ -1,6 +1,8 @@
 import axios from "axios";
 import { CLOUDMALL_BASE_API } from "@env";
 import { getAuthtoken } from "@utils/authToken";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/RootReducer";
 
 const axiosInstance = axios.create({
     baseURL: CLOUDMALL_BASE_API,
@@ -16,19 +18,19 @@ export const axiosImageInstance = axios.create({
         accept: "application/json",
     },
 });
+let authToken: string;
 
-let savedToken: string | null;
-
-getAuthtoken().then((response) => {
-    savedToken = response;
-    return savedToken;
-});
+export const setClientToken = (token: any) => {
+    authToken = token;
+    console.log("authToken setClientToken", authToken);
+    axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    return authToken;
+};
 
 axiosInstance.interceptors.request.use(
     (config) => {
-        if (savedToken) {
-            config.headers["Authorization"] = "Bearer " + savedToken;
-        }
+        console.log("token from redux", authToken);
+        config.headers["Authorization"] = "Bearer " + authToken;
         config.headers["Content-Type"] = "application/json";
         return config;
     },
@@ -39,10 +41,8 @@ axiosInstance.interceptors.request.use(
 
 axiosImageInstance.interceptors.request.use(
     (config) => {
-        if (savedToken) {
-            console.log("axiosImageInstance savedToken", savedToken);
-            config.headers["Authorization"] = "Bearer " + savedToken;
-        }
+        console.log("axiosImageInstance token", authToken);
+        config.headers["Authorization"] = "Bearer " + authToken;
         config.headers["content-type"] = "multipart/form-data;application/json";
         return config;
     },
@@ -50,11 +50,5 @@ axiosImageInstance.interceptors.request.use(
         Promise.reject(error);
     },
 );
-
-export const setClientToken = (token: any) => {
-    return (axiosInstance.defaults.headers.common[
-        "Authorization"
-    ] = `Bearer ${token}`);
-};
 
 export default axiosInstance;

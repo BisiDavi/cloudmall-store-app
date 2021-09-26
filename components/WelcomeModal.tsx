@@ -13,7 +13,6 @@ export default function WelcomeModal({ closeModal, visible }: AppModalProps) {
         (state: RootState) => state.storeProfile,
     );
 
-    //const { name }: any = storeProfile;
     useEffect(() => {
         if (storeProfile !== null) {
             const { name } = storeProfile;

@@ -55,6 +55,6 @@ type actionType = {
     payload: {
         status: boolean;
         page: number;
-        token: string;
+        token: string | null;
     };
 };

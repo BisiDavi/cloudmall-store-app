@@ -28,8 +28,6 @@ export default function ProfileIcon(props: any) {
         }
     }, [storeProfile]);
 
-    console.log("storeName", storeName);
-		
     return (
         <DrawerContentScrollView style={styles.drawerScrollView} {...props}>
             <TouchableOpacity onPress={navigateToProfile}>

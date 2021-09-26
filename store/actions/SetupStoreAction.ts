@@ -24,7 +24,13 @@ export const CloseWelcomeModalAction =
     };
 
 export const AuthTokenAction =
-    (token: string) => (dispatch: (arg0: authArgType) => void) => {
+    (token: string | null) =>
+    (
+        dispatch: (arg0: {
+            type: string;
+            payload: { token: string | null };
+        }) => void,
+    ) => {
         dispatch({
             type: AUTH_TOKEN,
             payload: {

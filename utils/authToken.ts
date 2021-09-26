@@ -3,6 +3,7 @@ import hasTokenExpired from "./hasTokenExpired";
 
 export async function saveAuthtoken(token: any) {
     if (token === null || undefined) return;
+    console.log("token was saved", token);
     const checkTokenExpiry = hasTokenExpired(token);
     if (!checkTokenExpiry) {
         await SecureStore.setItemAsync("secure_auth_token", token);
@@ -11,8 +12,7 @@ export async function saveAuthtoken(token: any) {
 
 export async function getAuthtoken() {
     try {
-        const authToken = await SecureStore.getItemAsync("secure_auth_token");
-        return authToken;
+        return await SecureStore.getItemAsync("secure_auth_token");
     } catch (e) {
         console.log("error", e);
         return null;

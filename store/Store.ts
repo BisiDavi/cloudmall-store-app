@@ -11,7 +11,6 @@ const storage = createSecureStore();
 
 const config = {
     key: "root",
-    blacklist: ["storeProfile"],
     storage,
 };
 

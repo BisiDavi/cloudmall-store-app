@@ -10,6 +10,7 @@ import {
 } from "@utils/.";
 import { setClientToken } from "@network/axiosInstance";
 import { getStoreDetailsRequest } from "@network/getRequest";
+import getExistingStoreProfile from "@utils/getExistingStoreProfile";
 
 export default function AuthProvider({ children }: PropsWithChildren<{}>) {
     const { state, dispatch } = useAuthReducer();
@@ -39,34 +40,7 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
                 await saveAuthtoken(loginInToken);
                 dispatch({ type: "SIGN_IN", token: loginInToken });
                 setClientToken(loginInToken);
-                getStoreDetailsRequest()
-                    .then((response) => {
-                        console.log(
-                            "response getStoreDetailsRequest",
-                            response.data,
-                        );
-                        if (response.data.bank) {
-                            showToast(`Welcome, ${response.data.name}`);
-                            navigation.navigate("Orders");
-                        } else {
-                            navigation.navigate("StoreDetailsScreenOne");
-                        }
-                    })
-                    .catch((error) => {
-                        if (error.response) {
-                            console.log(
-                                "getStoreDetailsRequest error response",
-                                error.response,
-                            );
-                            navigation.navigate("StoreDetailsScreenOne");
-                        } else if (error.request) {
-                            console.log(
-                                "getStoreDetailsRequest error request",
-                                error.request,
-                            );
-                            navigation.navigate("StoreDetailsScreenOne");
-                        }
-                    });
+                getExistingStoreProfile(navigation);
             },
             signOut: () => dispatch({ type: "SIGN_OUT" }),
             signUp: async (email: string, password: string) => {

@@ -10,6 +10,7 @@ import colors from "@utils/colors";
 import { AddProductStep1Action } from "@store/actions/addProductAction";
 import { getProductsCategories } from "@network/postRequest";
 import { RootState } from "@store/RootReducer";
+import { checkObjectKey } from "@utils/checkExistingStore";
 
 export default function AddNewProductForm({ navigation }: any) {
     const [productCategories, setProductCategories] = useState<any>([]);
@@ -40,10 +41,11 @@ export default function AddNewProductForm({ navigation }: any) {
         }
     }, [productCategories]);
 
-    function navigationHandler(handleSubmit: any, isValid: boolean) {
-        console.log("isValid", isValid);
+    function navigationHandler(handleSubmit: any, isFormFilled: number) {
         handleSubmit();
-        !isValid && navigation.navigate("AddProductOtherDetailsScreen");
+        if (isFormFilled === 6) {
+            navigation.navigate("AddProductOtherDetailsScreen");
+        }
     }
     function goBack() {
         navigation.goBack();
@@ -72,39 +74,52 @@ export default function AddNewProductForm({ navigation }: any) {
                 errors,
                 touched,
                 isValid,
-            }) => (
-                <View style={styles.formView}>
-                    {addproductContent.map((formElement, index) => (
-                        <DisplayFormElements
-                            key={index}
-                            formElement={formElement}
-                            handleChange={handleChange}
-                            handleBlur={handleBlur}
-                            values={values}
-                            errors={errors}
-                            touched={touched}
-                        />
-                    ))}
-                    <View style={styles.buttonGroup}>
-                        <Button
-                            title="Back"
-                            type="solid"
-                            titleStyle={styles.backButtonTitle}
-                            onPress={goBack}
-                            buttonStyle={styles.backButton}
-                        />
-                        <Button
-                            disabled={!isValid}
-                            title="Next"
-                            type="solid"
-                            onPress={() =>
-                                navigationHandler(handleSubmit, isValid)
-                            }
-                            buttonStyle={styles.nextButton}
-                        />
+            }) => {
+                const isFormFilled = checkObjectKey("errors");
+
+                console.log("isFormFilled", isFormFilled);
+                console.log("touched", touched);
+
+                return (
+                    <View style={styles.formView}>
+                        {addproductContent.map((formElement, index) => (
+                            <DisplayFormElements
+                                key={index}
+                                formElement={formElement}
+                                handleChange={handleChange}
+                                handleBlur={handleBlur}
+                                values={values}
+                                errors={errors}
+                                touched={touched}
+                            />
+                        ))}
+                        {console.log("errors", errors)}
+                        {console.log("values", values)}
+
+                        <View style={styles.buttonGroup}>
+                            <Button
+                                title="Back"
+                                type="solid"
+                                titleStyle={styles.backButtonTitle}
+                                onPress={goBack}
+                                buttonStyle={styles.backButton}
+                            />
+                            <Button
+                                disabled={!isValid}
+                                title="Next"
+                                type="solid"
+                                onPress={() =>
+                                    navigationHandler(
+                                        handleSubmit,
+                                        isFormFilled,
+                                    )
+                                }
+                                buttonStyle={styles.nextButton}
+                            />
+                        </View>
                     </View>
-                </View>
-            )}
+                );
+            }}
         </Formik>
     );
 }

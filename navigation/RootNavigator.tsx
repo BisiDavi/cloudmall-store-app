@@ -23,20 +23,20 @@ export default function RootNavigator() {
     const { completed, formPage } = useSelector(
         (storeState: RootState) => storeState.setupStore,
     );
-    const navigation = useNavigation();
+    //const navigation = useNavigation();
     const tokenExpiry = hasTokenExpired(state.userToken);
 
-    useEffect(() => {
-        if (state.userToken) {
-            const userEmail = getsignedUserEmail(state.userToken);
-            if (userEmail && !tokenExpiry) {
-                setClientToken(state.userToken);
-                if (formPage !== 0) {
-                    screenNavigate(formPage, navigation);
-                }
-            }
-        }
-    }, [state]);
+    //useEffect(() => {
+    //    if (state.userToken && !state.hasAccount) {
+    //        const userEmail = getsignedUserEmail(state.userToken);
+    //        if (userEmail && !tokenExpiry) {
+    //            setClientToken(state.userToken);
+    //            if (formPage !== 0) {
+    //                screenNavigate(formPage, navigation);
+    //            }
+    //        }
+    //    }
+    //}, [state]);
 
     useEffect(() => {
         if (!tokenExpiry) {

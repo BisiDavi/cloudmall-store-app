@@ -7,6 +7,7 @@ export default async function getExistingStoreProfile(dispatch: any) {
             const { data } = response.data;
             console.log("response getStoreDetailsRequest", data);
             const isBankRegisted = Object.keys(data).includes("bank");
+            console.log("isBankRegisted", isBankRegisted);
             if (isBankRegisted) {
                 showToast(`Welcome, ${data.name}`);
                 dispatch({ type: "HAS_ACCOUNT" });

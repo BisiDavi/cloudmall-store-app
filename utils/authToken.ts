@@ -23,6 +23,6 @@ export async function saveToStorage(name: string, item: any) {
     return await SecureStore.setItemAsync(name, item);
 }
 
-export async function getFromStorage(name: string) {
+export async function getFromStorage(name: string): Promise<any> {
     return await SecureStore.getItemAsync(name);
 }

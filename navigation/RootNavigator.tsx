@@ -14,17 +14,32 @@ import {
 import DrawerNavigation from "./DrawerNavigation";
 import PublicNavigation from "./PublicNavigation";
 import StoreDetailsNavigation from "./StoreDetailsNavigation";
+import { getFromStorage } from "@utils/authToken";
 
 export default function RootNavigator() {
     const { state } = useContext(AuthContext);
+    const [accountRegistration, setAccountRegistration] = useState(false);
 
     console.log("context state", state);
 
     const { completed, formPage } = useSelector(
         (storeState: RootState) => storeState.setupStore,
     );
+    console.log("completed", completed);
     const navigation = useNavigation();
     const tokenExpiry = hasTokenExpired(state.userToken);
+
+    async function getRegStatus() {
+        const registrationStatus: boolean = await getFromStorage(
+            "registrationCompleted",
+        );
+        return registrationStatus;
+    }
+    useEffect(() => {
+        const registrationStatus: any = getRegStatus();
+        console.log("registrationStatus", registrationStatus);
+        setAccountRegistration(registrationStatus);
+    }, []);
 
     useEffect(() => {
         if (state.userToken && !completed) {
@@ -38,6 +53,8 @@ export default function RootNavigator() {
         }
     }, [state]);
 
+    //console.log()
+
     useEffect(() => {
         if (!tokenExpiry) {
             setClientToken(state.userToken);
@@ -47,9 +64,9 @@ export default function RootNavigator() {
     return (
         <>
             <Spinner visible={state.isLoading} color={colors.cloudOrange5} />
-            {!tokenExpiry && !state.hasAccount ? (
+            {!tokenExpiry && !completed ? (
                 <StoreDetailsNavigation />
-            ) : state.hasAccount ? (
+            ) : !tokenExpiry && completed ? (
                 <DrawerNavigation />
             ) : (
                 <PublicNavigation />

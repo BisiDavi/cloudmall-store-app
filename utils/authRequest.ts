@@ -37,8 +37,6 @@ export async function loginUser(
         .then((response) => {
             showToast(response?.data.message);
             token = response.data.token;
-            saveAuthtoken(token);
-            setClientToken(token);
             return token;
         })
         .catch((error) => {

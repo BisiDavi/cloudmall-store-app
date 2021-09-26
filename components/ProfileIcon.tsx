@@ -13,10 +13,13 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { RootState } from "@store/RootReducer";
 
 export default function ProfileIcon(props: any) {
-    const { name } = useSelector((state: RootState) => state.storeProfile);
+    const { storeProfile } = useSelector(
+        (state: RootState) => state.storeProfile,
+    );
     function navigateToProfile() {
         props.navigation.navigate("ProfileScreen");
     }
+    const { name } = storeProfile;
     return (
         <DrawerContentScrollView style={styles.drawerScrollView} {...props}>
             <TouchableOpacity onPress={navigateToProfile}>

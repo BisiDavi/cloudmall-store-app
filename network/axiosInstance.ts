@@ -52,7 +52,9 @@ axiosImageInstance.interceptors.request.use(
 );
 
 export const setClientToken = (token: any) => {
-    axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    return (axiosInstance.defaults.headers.common[
+        "Authorization"
+    ] = `Bearer ${token}`);
 };
 
 export default axiosInstance;

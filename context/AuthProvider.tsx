@@ -40,10 +40,16 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
                     password,
                 );
                 !loginInToken && dispatch({ type: "STOP_LOADING" });
+                if (loginInToken) {
+                    saveAuthtoken(loginInToken);
+                    setClientToken(loginInToken);
+                }
+                console.log("loginToken", loginInToken);
+                let bankStatus: boolean;
                 loginInToken &&
                     getExistingStoreProfile(dispatchRedux)
                         .then((response: any) => {
-                            console.log("response", response);
+                            bankStatus = response.bank;
                             saveToStorage(
                                 "registrationCompleted",
                                 response.bank,
@@ -65,6 +71,10 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
                             dispatch({
                                 type: "SIGN_IN",
                                 token: loginInToken,
+                            });
+                            dispatch({
+                                type: "HAS_ACCOUNT",
+                                ownsAccount: bankStatus,
                             });
                         });
                 dispatch({ type: "STOP_LOADING" });

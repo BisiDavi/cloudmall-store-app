@@ -1,4 +1,5 @@
 import React, { PropsWithChildren, useState, useMemo, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import useAuthReducer from "@hooks/useAuthReducer";
 import AuthContext from "./AuthContext";
 import {
@@ -10,9 +11,11 @@ import {
 } from "@utils/.";
 import { setClientToken } from "@network/axiosInstance";
 import getExistingStoreProfile from "@utils/getExistingStoreProfile";
+import { UserOnboardingCompletedAction } from "@store/actions/SetupStoreAction";
 
 export default function AuthProvider({ children }: PropsWithChildren<{}>) {
     const { state, dispatch } = useAuthReducer();
+    const dispatchRedux = useDispatch();
     const [authToken, setAuthToken] = useState<string | null>(null);
 
     async function storedToken() {
@@ -39,9 +42,8 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
                         console.log("response", response);
                         if (response.bank) {
                             showToast(`Welcome, ${response.name}`);
+                            dispatchRedux(UserOnboardingCompletedAction());
                             dispatch({ type: "HAS_ACCOUNT" });
-                        } else {
-                            dispatch({ type: "NO_ACCOUNT" });
                         }
                         dispatch({
                             type: "SIGN_IN",
@@ -49,6 +51,7 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
                         });
                     })
                     .catch(() => {
+                        dispatch({ type: "NO_ACCOUNT" });
                         dispatch({
                             type: "SIGN_IN",
                             token: loginInToken,

@@ -8,8 +8,7 @@
         { "name": "DashboardScreen", "title": "Dashboard" },
         { "name": "AvailableBalanceScreen", "title": "Available Balance" },
         { "name": "AmountPaidScreen", "title": "Amount Paid" },
-        { "name": "StatisticsScreen", "title": "Statistics" },
-        { "name": "ProfileScreen", "title": "Profile" }
+        { "name": "StatisticsScreen", "title": "Statistics" }
     ],
     "products": [
         { "name": "ProductScreen", "title": "My Product" },

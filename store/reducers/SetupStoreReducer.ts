@@ -1,6 +1,7 @@
 import {
     AUTH_TOKEN,
     CLOSE_WELCOME_MODAL,
+    ONBOARDING_COMPLETED,
     STOREDETAILS_PAGE,
 } from "../constant";
 
@@ -34,13 +35,23 @@ export function SetupStoreReducer(
                 token: payload.token,
             };
         }
+        case ONBOARDING_COMPLETED: {
+            return {
+                ...state,
+                completed: true,
+            };
+        }
         default:
             return state;
     }
 }
 
 type actionType = {
-    type: "STOREDETAILS_PAGE" | "CLOSE_WELCOME_MODAL" | "AUTH_TOKEN";
+    type:
+        | "STOREDETAILS_PAGE"
+        | "CLOSE_WELCOME_MODAL"
+        | "AUTH_TOKEN"
+        | "ONBOARDING_COMPLETED";
     payload: {
         status: boolean;
         page: number;

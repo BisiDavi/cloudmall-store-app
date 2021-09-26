@@ -47,4 +47,5 @@ export type DrawerStackParamList = {
     ViewOrderScreen: undefined;
     AddProductCategoryScreen: undefined;
     FoodCategoryScreen: undefined;
+    ProfileScreen: undefined;
 };

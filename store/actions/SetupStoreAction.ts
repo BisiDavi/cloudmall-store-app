@@ -1,6 +1,7 @@
 import {
     AUTH_TOKEN,
     CLOSE_WELCOME_MODAL,
+    ONBOARDING_COMPLETED,
     STOREDETAILS_PAGE,
 } from "../constant";
 
@@ -29,6 +30,13 @@ export const AuthTokenAction =
             payload: {
                 token,
             },
+        });
+    };
+
+export const UserOnboardingCompletedAction =
+    () => (dispatch: (arg0: { type: "ONBOARDING_COMPLETED" }) => void) => {
+        dispatch({
+            type: ONBOARDING_COMPLETED,
         });
     };
 

@@ -1,7 +1,13 @@
 import React, { PropsWithChildren, useState, useMemo, useEffect } from "react";
 import useAuthReducer from "@hooks/useAuthReducer";
 import AuthContext from "./AuthContext";
-import { getAuthtoken, saveAuthtoken, signupUser, loginUser } from "@utils/.";
+import {
+    getAuthtoken,
+    saveAuthtoken,
+    signupUser,
+    loginUser,
+    showToast,
+} from "@utils/.";
 import { setClientToken } from "@network/axiosInstance";
 import getExistingStoreProfile from "@utils/getExistingStoreProfile";
 
@@ -27,12 +33,27 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
                 dispatch({ type: "LOADING" });
                 const loginInToken = await loginUser(email, password);
                 await saveAuthtoken(loginInToken);
-								setClientToken(loginInToken);
-								getExistingStoreProfile(dispatch);
-                dispatch({
-                    type: "SIGN_IN",
-                    token: loginInToken,
-                });
+                setClientToken(loginInToken);
+                getExistingStoreProfile()
+                    .then((response: any) => {
+                        console.log("response", response);
+                        if (response.bank) {
+                            showToast(`Welcome, ${response.name}`);
+                            dispatch({ type: "HAS_ACCOUNT" });
+                        } else {
+                            dispatch({ type: "NO_ACCOUNT" });
+                        }
+                        dispatch({
+                            type: "SIGN_IN",
+                            token: loginInToken,
+                        });
+                    })
+                    .catch(() => {
+                        dispatch({
+                            type: "SIGN_IN",
+                            token: loginInToken,
+                        });
+                    });
             },
             signOut: () => dispatch({ type: "SIGN_OUT" }),
             signUp: async (email: string, password: string) => {

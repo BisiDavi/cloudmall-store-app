@@ -62,11 +62,20 @@ const AddProductOtherDetailsForm = ({ navigation }: any) => {
                 setLoading(false);
                 console.log("response", response.data);
                 showToast(response.data.message);
+                navigation.navigate("ProductScreen");
             })
             .catch((error) => {
                 setLoading(false);
                 console.log("response addProductsRequest", error);
-                showToast(error.response.data.message);
+                if (error.request) {
+                    console.log("error.request", error.request);
+                    showToast(
+                        "Oops network is bad, unable to submit, please try again",
+                    );
+                } else if (error.response) {
+                    console.log("error.response", error.response);
+                    showToast(error.response.data.message);
+                }
             });
     }
 

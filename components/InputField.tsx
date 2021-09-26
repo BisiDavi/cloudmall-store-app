@@ -3,6 +3,7 @@ import { Input } from "react-native-elements";
 import {
     StyleSheet,
     KeyboardTypeOptions,
+    Text,
     Dimensions,
     View,
 } from "react-native";
@@ -20,25 +21,32 @@ export default function InputField({
     ...props
 }: InputFieldProps) {
     return (
-        <Input
-            {...props}
-            label={label}
-            placeholder={props.placeholder}
-            inputContainerStyle={[
-                inputStyles.inputContainer,
-                props.styleContainer,
-            ]}
-            labelStyle={[inputStyles.label, props.styleLabel]}
-            inputStyle={[inputStyles.input, props.styleInput]}
-            keyboardType={keyboardType}
-            value={value}
-            placeholderTextColor={colors.neutral4}
-            errorMessage={errorMessage}
-            onChangeText={onChangeText}
-            secureTextEntry={secureTextEntry}
-            rightIcon={rightIcon}
-            rightIconContainerStyle={inputStyles.rightIconStyle}
-        />
+        <View style={inputStyles.inputView}>
+            <Input
+                {...props}
+                label={label}
+                placeholder={props.placeholder}
+                inputContainerStyle={[
+                    inputStyles.inputContainer,
+                    props.styleContainer,
+                ]}
+                labelStyle={[inputStyles.label, props.styleLabel]}
+                inputStyle={[inputStyles.input, props.styleInput]}
+                keyboardType={keyboardType}
+                value={value}
+                placeholderTextColor={colors.neutral4}
+                errorMessage={errorMessage}
+                onChangeText={onChangeText}
+                secureTextEntry={secureTextEntry}
+                rightIcon={rightIcon}
+                rightIconContainerStyle={inputStyles.rightIconStyle}
+            />
+            {props.helperText && !errorMessage && (
+                <Text style={inputStyles.helperTextStyle}>
+                    {props.helperText}
+                </Text>
+            )}
+        </View>
     );
 }
 
@@ -69,6 +77,19 @@ const inputStyles = StyleSheet.create({
     rightIconStyle: {
         width: 30,
     },
+    inputView: {
+        //position: "relative",
+    },
+    helperTextStyle: {
+        textAlign: "left",
+        fontSize: 12,
+        //justifyContent: "flex-start",
+        //alignItems: "flex-start",
+        //width: 10,
+        color: colors.mallBlue5,
+        marginLeft: 15,
+        marginTop: -15,
+    },
 });
 
 interface InputFieldProps {
@@ -84,6 +105,7 @@ interface InputFieldProps {
     styleLabel?: any;
     styleInput?: any;
     placeholder?: string;
+    helperText?: string;
     onBlur?: (e: string | ChangeEvent<any>) => void | undefined;
     textContentType?:
         | "password"

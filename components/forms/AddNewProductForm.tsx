@@ -54,6 +54,7 @@ export default function AddNewProductForm({ navigation }: any) {
                 categoryId: "",
                 description: "",
                 price: "",
+                takeawayPrice: 0,
                 quantity: 0,
             }}
             validationSchema={addNewProductSchema}

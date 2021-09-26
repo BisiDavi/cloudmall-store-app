@@ -16,7 +16,15 @@
     {
         "label": "Product Price",
         "name": "price",
+        "keyboardType": "numeric",
         "type": "input"
+    },
+    {
+        "label": "Take away price (Optional)",
+        "name": "takeawayPrice",
+        "type": "input",
+        "keyboardType": "numeric",
+        "helperText": "if product requires take away"
     },
     {
         "label": "Quantity",

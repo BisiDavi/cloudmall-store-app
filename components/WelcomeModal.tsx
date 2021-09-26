@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { StyleSheet, View, Text, Image } from "react-native";
 import Modal from "react-native-modal";
@@ -7,13 +7,21 @@ import { colors } from "@utils/.";
 import { RootState } from "@store/RootReducer";
 
 export default function WelcomeModal({ closeModal, visible }: AppModalProps) {
+    const [storeName, setStoreName] = useState("");
+
     const { storeProfile } = useSelector(
         (state: RootState) => state.storeProfile,
     );
 
-    const { name }: any = storeProfile;
+    //const { name }: any = storeProfile;
+    useEffect(() => {
+        if (storeProfile !== null) {
+            const { name } = storeProfile;
+            setStoreName(name);
+        }
+    }, [storeProfile]);
 
-    const storeFirstLetter = name.split("")[0];
+    const storeFirstLetter = storeName.split("")[0];
 
     return (
         <Modal
@@ -26,7 +34,7 @@ export default function WelcomeModal({ closeModal, visible }: AppModalProps) {
                     <View style={styles.userNameView}>
                         <Text style={styles.userName}>{storeFirstLetter}</Text>
                     </View>
-                    <Text style={styles.welcome}>Welcome {name}. </Text>
+                    <Text style={styles.welcome}>Welcome {storeName}. </Text>
                     <Image source={HandWave} />
                 </View>
                 <Text style={styles.modalContent}>

@@ -77,7 +77,6 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
                                 ownsAccount: bankStatus,
                             });
                         });
-                dispatch({ type: "STOP_LOADING" });
             },
             signOut: () => dispatch({ type: "SIGN_OUT" }),
             signUp: async (email: string, password: string) => {

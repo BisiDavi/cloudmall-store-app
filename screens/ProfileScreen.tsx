@@ -15,8 +15,8 @@ export default function ProfileScreen() {
         (state: RootState) => state.storeProfile,
     );
     return (
-        <ScrollView>
-            <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.container}>
+            <ScrollView>
                 <View style={styles.profileDetails}>
                     <Image style={styles.profileImage} source={JollofRice} />
                     <View>
@@ -40,8 +40,8 @@ export default function ProfileScreen() {
                         </ListItem>
                     ))}
                 </View>
-            </SafeAreaView>
-        </ScrollView>
+            </ScrollView>
+        </SafeAreaView>
     );
 }
 
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
         justifyContent: "space-between",
         padding: 20,
-        paddingTop: 0,
+        //paddingTop: 0,
         backgroundColor: colors.neutralWhite,
     },
     reviewBtn: {

@@ -20,9 +20,10 @@ const reducer = persistReducer(config, RootReducer);
 export default function configureStore() {
     const store: any = createStore(reducer, applyMiddleware(...middleware));
     const persistor = persistStore(store);
+    let hotModuleReplacement: any = module;
 
-    if (module.hot) {
-        module.hot.accept("./RootReducer", () => {
+    if (hotModuleReplacement.hot) {
+        hotModuleReplacement.hot.accept("./RootReducer", () => {
             // This fetch the new state of the above reducers.
             const nextRootReducer = require("./RootReducer").default;
             store.replaceReducer(persistReducer(config, nextRootReducer));

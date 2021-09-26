@@ -8,7 +8,11 @@ export default async function getExistingStoreProfile(reduxDispatch: Dispatch<an
             const { data } = response.data;
             console.log("response getStoreDetailsRequest", data);
             const isBankRegisted = Object.keys(data).includes("bank");
-            reduxDispatch(StoreProfileActions(data));
+						const storeProfile = {
+							name: data.name,
+							id: data._id,
+						}
+            reduxDispatch(StoreProfileActions(storeProfile));
             console.log("isBankRegisted", isBankRegisted);
             return { bank: isBankRegisted, name: data.name };
         })

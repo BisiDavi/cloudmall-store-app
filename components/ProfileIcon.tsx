@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Image } from "react-native-elements";
 import { useSelector } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
@@ -13,19 +13,29 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { RootState } from "@store/RootReducer";
 
 export default function ProfileIcon(props: any) {
+    const [storeName, setStoreName] = useState("");
     const { storeProfile } = useSelector(
         (state: RootState) => state.storeProfile,
     );
     function navigateToProfile() {
         props.navigation.navigate("ProfileScreen");
     }
-    const { name } = storeProfile;
+
+    useEffect(() => {
+        if (storeProfile !== null) {
+            const { name } = storeProfile;
+            setStoreName(name);
+        }
+    }, [storeProfile]);
+
+    console.log("storeName", storeName);
+		
     return (
         <DrawerContentScrollView style={styles.drawerScrollView} {...props}>
             <TouchableOpacity onPress={navigateToProfile}>
                 <View style={styles.profileIconView}>
                     <Image source={JollofRice} style={styles.avatar} />
-                    <Text style={styles.userName}>{name}</Text>
+                    <Text style={styles.userName}>{storeName}</Text>
                 </View>
             </TouchableOpacity>
             <DrawerItemList {...props} />

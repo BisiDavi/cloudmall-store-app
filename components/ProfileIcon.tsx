@@ -21,9 +21,6 @@ export default function ProfileIcon(props: any) {
     const { storeDetails }: StoreDetailsStateType = useSelector(
         (state: RootState) => state.storeDetails,
     );
-    function navigateToProfile() {
-        props.navigation.navigate("ProfileScreen");
-    }
 
     useEffect(() => {
         if (storeProfile !== null) {
@@ -36,12 +33,10 @@ export default function ProfileIcon(props: any) {
 
     return (
         <DrawerContentScrollView style={styles.drawerScrollView} {...props}>
-            <TouchableOpacity onPress={navigateToProfile}>
-                <View style={styles.profileIconView}>
-                    <Image source={JollofRice} style={styles.avatar} />
-                    <Text style={styles.userName}>{storeName}</Text>
-                </View>
-            </TouchableOpacity>
+            <View style={styles.profileIconView}>
+                <Image source={JollofRice} style={styles.avatar} />
+                <Text style={styles.userName}>{storeName}</Text>
+            </View>
             <DrawerItemList {...props} />
             <DrawerItem
                 labelStyle={styles.drawerItem}

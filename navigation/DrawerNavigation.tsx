@@ -8,7 +8,6 @@ import displayAsset from "@utils/displayAsset";
 import displayNavigators from "@utils/displayNavigators";
 import ProfileIcon from "@components/ProfileIcon";
 import colors from "@utils/colors";
-import ProfileScreen from "@screens/ProfileScreen";
 
 export default function DrawerNavigation() {
     const Drawer = createDrawerNavigator<DrawerStackParamList>();
@@ -32,21 +31,16 @@ export default function DrawerNavigation() {
                 ),
             }}
         >
-            <>
-                {drawerJson.map((drawer: drawer, item) => {
-                    const displayDrawer: any = displayNavigators(drawer.stack);
-                    return (
-                        <Drawer.Screen
-                            key={item}
-                            name={drawer.name}
-                            component={displayDrawer}
-                        />
-                    );
-                })}
-                <Drawer.Screen name="ProfileScreen">
-                    {() => <ProfileScreen />}
-                </Drawer.Screen>
-            </>
+            {drawerJson.map((drawer: drawer, item) => {
+                const displayDrawer: any = displayNavigators(drawer.stack);
+                return (
+                    <Drawer.Screen
+                        key={item}
+                        name={drawer.name}
+                        component={displayDrawer}
+                    />
+                );
+            })}
         </Drawer.Navigator>
     );
 }

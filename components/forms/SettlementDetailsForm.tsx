@@ -30,6 +30,7 @@ export default function SettlementDetailsForm() {
     const { storeDetails } = useSelector(
         (state: RootState) => state.storeDetails,
     );
+
     console.log("storeDetails", storeDetails);
 
     useEffect(() => {
@@ -65,7 +66,7 @@ export default function SettlementDetailsForm() {
                     setLoading(false);
                     let errorMessage;
                     if (error.request) {
-                        errorMessage = error.request;
+                        errorMessage = "Oops, poor network, try again";
                         console.log("error", error);
                     } else if (error.response) {
                         errorMessage = error.response.data.message;

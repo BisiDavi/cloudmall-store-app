@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Dimensions, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image, Button } from "react-native-elements";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Spinner from "react-native-loading-spinner-overlay";
 
 import useStoreSetupNavigation from "@hooks/useStoreSetupNavigation";
@@ -13,6 +13,9 @@ import { StoreLogoUploadAction } from "@store/actions/StoreDetailsAction";
 import { uploadStoreLogoRequest } from "@network/postRequest";
 import showToast from "@utils/showToast";
 import useUploadImage from "@hooks/useUploadImage";
+import { RootState } from "@store/RootReducer";
+import StoreProfileActions from "@store/actions/StoreProfileActions";
+import getExistingStoreProfile from "@utils/getExistingStoreProfile";
 
 export default function UploadStoreLogoScreen() {
     const [loading, setLoading] = useState(false);
@@ -23,6 +26,9 @@ export default function UploadStoreLogoScreen() {
         permissionToUploadImage,
     } = useUploadImage(setLoading, "logo");
     const { onBoardingNextScreen } = useStoreSetupNavigation();
+    const { storeProfile } = useSelector(
+        (state: RootState) => state.storeProfile,
+    );
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -32,6 +38,21 @@ export default function UploadStoreLogoScreen() {
         );
         return () => clearTimeout(displayAfter2Secs);
     }, []);
+
+    useEffect(() => {
+        if (storeProfile === null) {
+            getExistingStoreProfile()
+                .then((response) => {
+                    if (response !== null) {
+                        console.log("getExistingStoreProfile", response);
+                        dispatch(StoreProfileActions(response));
+                    }
+                })
+                .catch((error) => {
+                    console.log("getExistingStoreProfile error", error);
+                });
+        }
+    }, [storeProfile]);
 
     async function uploadImage() {
         dispatch(StoreLogoUploadAction(formDataState));

@@ -19,7 +19,7 @@ export default function screenNavigate(page: number, navigation: any) {
             return navigation.navigate("UploadStoreImageScreen");
         }
         case 6: {
-            return navigation.navigate("Orders");
+            return navigation.navigate("OrdersScreen");
         }
 
         default:

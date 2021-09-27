@@ -16,6 +16,7 @@ import {
     UserOnboardingCompletedAction,
 } from "@store/actions/SetupStoreAction";
 import { saveToStorage } from "@utils/authToken";
+import StoreProfileActions from "@store/actions/StoreProfileActions";
 
 export default function AuthProvider({ children }: PropsWithChildren<{}>) {
     const { state, dispatch } = useAuthReducer();
@@ -51,8 +52,10 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
                 console.log("loginToken", loginInToken);
                 let bankStatus: boolean;
                 loginInToken &&
-                    getExistingStoreProfile(dispatchRedux)
+                    getExistingStoreProfile()
                         .then((response: any) => {
+                            response !== null &&
+                                dispatchRedux(StoreProfileActions(response));
                             bankStatus = response.bank;
                             saveToStorage(
                                 "registrationCompleted",
@@ -86,7 +89,7 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
             signUp: async (email: string, password: string) => {
                 dispatch({ type: "LOADING" });
                 const signUpToken = await signupUser(email, password);
-								!signUpToken && dispatch({ type: "STOP_LOADING" });
+                !signUpToken && dispatch({ type: "STOP_LOADING" });
                 console.log("signupToken", signUpToken);
                 await saveAuthtoken(signUpToken);
                 setClientToken(signUpToken);

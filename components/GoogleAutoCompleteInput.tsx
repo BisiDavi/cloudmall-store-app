@@ -37,14 +37,14 @@ const GoogleAutoCompleteInput = ({
             keyboardShouldPersistTaps={"handled"}
             listUnderlayColor={"blue"}
             minLength={1}
-            enableTypingLoader={true}
-            renderTypingLoader={() => (
-                <ActivityIndicator
-                    style={{ marginTop: 20 }}
-                    color={colors.cloudOrange5}
-                    animating={true}
-                />
-            )}
+            //enableTypingLoader={true}
+            //renderTypingLoader={
+            //    <ActivityIndicator
+            //        style={{ marginTop: 20 }}
+            //        color={colors.cloudOrange5}
+            //        animating={true}
+            //    />
+            //}
             onNotFound={() => showToast("Oops, address not found")}
             onTimeout={() => showToast("Oops, timeout, try again")}
             listViewDisplayed={true}
@@ -85,14 +85,12 @@ const GoogleAutoCompleteInput = ({
                     shadowOffset: { x: 0, y: 0 },
                     shadowRadius: 15,
                     marginTop: 10,
-                    height: 300,
                 },
                 loader: {
                     borderColor: "red",
                     flexDirection: "row",
                     justifyContent: "flex-end",
                     height: 50,
-                    backgroundColor: "blue",
                 },
                 separator: {
                     height: 0.5,

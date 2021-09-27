@@ -11,11 +11,15 @@ import JollofRice from "@assets/jollofRice.png";
 import colors from "@utils/colors";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { RootState } from "@store/RootReducer";
+import { StoreDetailsStateType } from "@customTypes/storeDetailsTypes";
 
 export default function ProfileIcon(props: any) {
     const [storeName, setStoreName] = useState("");
     const { storeProfile } = useSelector(
         (state: RootState) => state.storeProfile,
+    );
+    const { storeDetails }: StoreDetailsStateType = useSelector(
+        (state: RootState) => state.storeDetails,
     );
     function navigateToProfile() {
         props.navigation.navigate("ProfileScreen");
@@ -25,6 +29,8 @@ export default function ProfileIcon(props: any) {
         if (storeProfile !== null) {
             const { name } = storeProfile;
             setStoreName(name);
+        } else {
+            setStoreName(storeDetails.name);
         }
     }, [storeProfile]);
 

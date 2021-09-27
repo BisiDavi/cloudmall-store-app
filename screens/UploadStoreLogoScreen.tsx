@@ -52,7 +52,7 @@ export default function UploadStoreLogoScreen() {
                     console.log("getExistingStoreProfile error", error);
                 });
         }
-    }, [storeProfile]);
+    }, []);
 
     async function uploadImage() {
         dispatch(StoreLogoUploadAction(formDataState));

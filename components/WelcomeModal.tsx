@@ -5,6 +5,7 @@ import Modal from "react-native-modal";
 import HandWave from "@assets/hand-wave.png";
 import { colors } from "@utils/.";
 import { RootState } from "@store/RootReducer";
+import { StoreDetailsStateType } from "@customTypes/storeDetailsTypes";
 
 export default function WelcomeModal({ closeModal, visible }: AppModalProps) {
     const [storeName, setStoreName] = useState("");
@@ -13,10 +14,16 @@ export default function WelcomeModal({ closeModal, visible }: AppModalProps) {
         (state: RootState) => state.storeProfile,
     );
 
+    const { storeDetails }: StoreDetailsStateType = useSelector(
+        (state: RootState) => state.storeDetails,
+    );
+
     useEffect(() => {
         if (storeProfile !== null) {
             const { name } = storeProfile;
             setStoreName(name);
+        } else {
+            setStoreName(storeDetails.name);
         }
     }, [storeProfile]);
 

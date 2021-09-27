@@ -4,7 +4,7 @@
         "slug": "cloudmall-stores-app",
         "version": "1.0.0",
         "orientation": "portrait",
-        "icon": "./assets/icon.png", 
+        "icon": "./assets/icon.png",
         "scheme": "cloudmall-stores-app",
         "userInterfaceStyle": "automatic",
         "updates": {
@@ -35,6 +35,11 @@
                 "xxhdpi": "./assets/android/drawable-xxhdpi/splash.png",
                 "xxxhdpi": "./assets/android/drawable-xxxhdpi/splash.png",
                 "resizeMode": "cover"
+            },
+            "config": {
+                "googleMaps": {
+                    "apiKey": "AIzaSyDU7mH3j8xLd9I2u8p5u5LYt7e8gKRGXx0"
+                }
             }
         },
         "web": {

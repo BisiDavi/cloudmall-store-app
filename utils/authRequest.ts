@@ -21,7 +21,7 @@ export async function signupUser(
             } else if (error.request) {
                 showToast("Oops, poor network, please check your network");
             }
-            token = error.response.data.token;
+            token = null;
             return token;
         });
     return token;

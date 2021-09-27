@@ -65,7 +65,8 @@ export default function SettlementDetailsForm() {
                     setLoading(false);
                     let errorMessage;
                     if (error.request) {
-                        errorMessage = "Oops, poor network, try again";
+                        errorMessage = error.request;
+                        console.log("error", error);
                     } else if (error.response) {
                         errorMessage = error.response.data.message;
                     }

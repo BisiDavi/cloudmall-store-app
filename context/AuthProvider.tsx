@@ -86,6 +86,8 @@ export default function AuthProvider({ children }: PropsWithChildren<{}>) {
             signUp: async (email: string, password: string) => {
                 dispatch({ type: "LOADING" });
                 const signUpToken = await signupUser(email, password);
+								!signUpToken && dispatch({ type: "STOP_LOADING" });
+                console.log("signupToken", signUpToken);
                 await saveAuthtoken(signUpToken);
                 setClientToken(signUpToken);
                 dispatch({ type: "SIGN_UP", token: signUpToken });

@@ -1,0 +1,27 @@
+[
+    { "label": "Name of the fresh food product", "name": "name", "type": "input" },
+    {
+        "label": "Product Description",
+        "name": "description",
+        "type": "input"
+    },
+    {
+        "label": "Fresh food product price",
+        "name": "price",
+        "keyboardType": "numeric",
+        "type": "input"
+    },
+    {
+        "label": "Take away price (Optional)",
+        "name": "takeAwayPrice",
+        "type": "input",
+        "keyboardType": "numeric",
+        "helperText": "if product requires take away"
+    },
+    {
+        "label": "Quantity",
+        "name": "quantity",
+        "type": "input",
+        "keyboardType": "numeric"
+    }
+]

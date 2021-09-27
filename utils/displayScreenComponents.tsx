@@ -34,6 +34,8 @@ import DeliveryAddressScreen from "@screens/DeliveryAddressScreen";
 import ProductWithISBNScreen from "@screens/ProductWithISBNScreen";
 import ViewOrderScreen from "@screens/ViewOrderScreen";
 import AddProductCategoryScreen from "@screens/AddProductCategoryScreen";
+import FreshFoodProductScreen from "@screens/FreshFoodProductScreen";
+import AddFreshFoodOtherDetailsScreen from "@screens/AddFreshFoodOtherDetailsScreen";
 
 export default function displayScreenComponent(
     name: string | RootStackParamList,
@@ -109,6 +111,10 @@ export default function displayScreenComponent(
             return ViewOrderScreen;
         case "AddProductCategoryScreen":
             return AddProductCategoryScreen;
+        case "FreshFoodProductScreen":
+            return FreshFoodProductScreen;
+        case "AddFreshFoodOtherDetailsScreen":
+            return AddFreshFoodOtherDetailsScreen;
         default:
             return null;
     }

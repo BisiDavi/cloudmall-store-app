@@ -7,7 +7,7 @@
     },
     {
         "content": [
-            { "name": "Fresh Food Product", "link": "FoodCategoryScreen" },
+            { "name": "Fresh Food Product", "link": "FreshFoodProductScreen" },
             { "name": "Scan to Upload", "link": "FoodCategoryScreen" }
         ]
     },

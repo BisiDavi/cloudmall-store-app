@@ -26,7 +26,15 @@
             "title": "Add a Product Category"
         },
         { "name": "AddExtraScreen", "title": "Add an Extra" },
-        { "name": "AddProductOtherDetailsScreen", "title": "Add a new Product" }
+        {
+            "name": "AddProductOtherDetailsScreen",
+            "title": "Add a new Product"
+        },
+        { "name": "FreshFoodProductScreen", "title": "Fresh food product" },
+        {
+            "name": "AddFreshFoodOtherDetailsScreen",
+            "title": "Add fresh food details"
+        }
     ],
     "confirmRider": [
         { "name": "RequestARiderScreen", "title": "Request a Rider" },

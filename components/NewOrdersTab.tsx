@@ -1,8 +1,7 @@
 import React, { useCallback } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList } from "react-native";
 import NewOrdersList from "@json/new-order.json";
 import OrdersListItem from "@components/OrdersListItem";
-import { ScrollView } from "react-native-gesture-handler";
 
 export type ordersList = {
     id: number;

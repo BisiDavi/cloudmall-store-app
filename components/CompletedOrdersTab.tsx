@@ -1,5 +1,5 @@
 import React from "react";
-import { View, FlatList } from "react-native";
+import {  FlatList } from "react-native";
 import CompletedOrdersList from "@json/completed-order.json";
 import OrdersListItem from "@components/OrdersListItem";
 

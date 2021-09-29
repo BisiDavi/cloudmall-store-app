@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { ListItem, Image } from "react-native-elements";
+import { TouchableHighlight } from "react-native-gesture-handler";
 import clipboard from "@assets/clipboard.png";
 import colors from "@utils/colors";
 import displayAsset from "@utils/displayAsset";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
     const statusStyle =
@@ -15,7 +15,7 @@ export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
             : styles.completed;
 
     return (
-        <TouchableOpacity
+        <TouchableHighlight
             style={styles.touchableOpacity}
             key={item?.id}
             onPress={onPress}
@@ -39,7 +39,7 @@ export default function OrdersListItem({ item, onPress }: OrdersViewProps) {
                     </View>
                 </ListItem.Content>
             </ListItem>
-        </TouchableOpacity>
+        </TouchableHighlight>
     );
 }
 

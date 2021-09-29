@@ -7,7 +7,6 @@ import { ScrollView } from "react-native-gesture-handler";
 
 export default function ViewOrderScreen({ route }: any) {
     const [note, setNote] = useState("");
-    console.log("route viewOrderScreen", route.params);
 
     const userOrders = route.params;
     return (

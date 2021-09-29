@@ -77,6 +77,7 @@ export default function StoreDetailsFormTwo() {
 const styles = StyleSheet.create({
     form: {
         marginTop: 10,
+				flex:1,
     },
     buttonStyle: {
         width: Dimensions.get("window").width * 0.7,

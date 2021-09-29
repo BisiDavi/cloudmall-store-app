@@ -130,6 +130,7 @@ export default function UploadStoreImageScreen() {
 const styles = StyleSheet.create({
     view: {
         flex: 1,
+        backgroundColor: colors.neutralWhite,
     },
     container: {
         flex: 1,

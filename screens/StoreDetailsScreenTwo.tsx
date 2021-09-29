@@ -20,15 +20,13 @@ export default function StoreDetailsScreenTwo() {
             style={{ flex: 1 }}
         >
             <SafeAreaView style={{ flex: 1 }}>
-                <ScrollView style={{ flex: 1 }}>
-                    <View style={styles.container}>
-                        <ProgressIndicator
-                            title="Step 2: Owner Details"
-                            selected={2}
-                        />
-                        <StoreDetailsFormTwo />
-                    </View>
-                </ScrollView>
+                <View style={styles.container}>
+                    <ProgressIndicator
+                        title="Step 2: Owner Details"
+                        selected={2}
+                    />
+                    <StoreDetailsFormTwo />
+                </View>
             </SafeAreaView>
         </KeyboardAvoidingView>
     );

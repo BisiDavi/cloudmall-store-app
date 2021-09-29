@@ -10,9 +10,9 @@ import {
 } from "react-native";
 import ProgressIndicator from "@components/ProgressIndicator";
 import SettlementDetailsForm from "@components/forms/SettlementDetailsForm";
+import { colors } from "@utils/.";
 
 export default function SettlementDetailsScreen() {
-
     return (
         <SafeAreaView style={styles.view}>
             <KeyboardAvoidingView
@@ -39,13 +39,14 @@ export default function SettlementDetailsScreen() {
 const styles = StyleSheet.create({
     view: {
         flex: 1,
+        backgroundColor: colors.neutralWhite,
     },
     container: {
         flex: 1,
         justifyContent: "flex-start",
         flexDirection: "column",
         margin: 20,
-        width: Dimensions.get("window").width * 0.95,
+        width: Dimensions.get("window").width * 0.93,
         alignItems: "center",
     },
     indicator: {

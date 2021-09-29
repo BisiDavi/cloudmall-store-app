@@ -58,7 +58,6 @@ const Map = () => {
                     <Marker
                         draggable
                         onDragEnd={(e) => {
-                            console.log("onDragEnd", e.nativeEvent.coordinate);
                             setCoordinate({
                                 ...coordinate,
                                 latitude: e.nativeEvent.coordinate,
